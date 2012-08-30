@@ -11,13 +11,55 @@ namespace getGradesForms
         CS,
         MATH
     }
-    
-    struct Course
+
+
+    struct PersonalDetails
+    {
+        DateTime date;
+        string id;
+        string name;
+        string program;
+        string degree;
+        public PersonalDetails(string[] det)
+        {
+            date = DateTime.Parse(det[0]);
+            id = det[1].Trim().PadLeft(9, '0');
+            name = det[2];
+            program = det[3];
+            degree = det[4];
+        }
+
+        public override string ToString()
+        {
+            return string.Join("\r\n", date, id, name, program, degree);
+        }
+    }
+
+    struct Summary
+    {
+        internal decimal totalPoints;
+        internal decimal average;
+        internal decimal successRate;
+
+        public Summary(string[] det)
+        {
+            decimal.TryParse(det[0], out totalPoints);
+            average     = decimal.Parse(det[1]);
+            successRate = decimal.Parse(det[2]);
+        }
+
+        public override string ToString()
+        {
+            return string.Join(" , ", totalPoints, average, successRate);
+        }
+    }
+
+    internal struct Course
     {
         internal int id;
         internal string name;
         internal decimal points;
-        internal Faculty faculty { get { return Faculty.CS; } }
+        internal Faculty faculty { get { return id/10000==23 ? Faculty.CS : Faculty.MATH; } }
 
         internal Course(string _id, string _name, string _points)
         {
@@ -25,7 +67,6 @@ namespace getGradesForms
             name = _name;
             points = Decimal.Parse(_points);
         }
-
 
         public override string ToString()
         {
@@ -40,36 +81,38 @@ namespace getGradesForms
         internal string hebrewYear;
 
         internal decimal numberOfCourses;
-        internal decimal TotalPoints;
-        internal decimal Average;
-        internal decimal successRate;
+        internal Summary summary;
         internal SemesterDetails(string _name)
         {
             this.year = _name;
         }
+
+        //hebrewYear, year, season
+        internal SemesterDetails(string[] args)
+        {
+            this.year = args[0];
+            this.hebrewYear = args[1];
+            this.season = args[2];
+        }
+
         public override string ToString()
         {
-            return string.Join(" , ", new object[] { year, season, hebrewYear, numberOfCourses, TotalPoints, Average, successRate}) ;
+            return string.Join(" , ", year, season, hebrewYear, numberOfCourses, summary);
         }
     }
 
-    public class CourseSession
+    internal class CourseSession
     {
-        Course course = new Course();
+        Course course;
         int semester;
 
         string[] grades = new string[] {"", "", ""};
 
-        public CourseSession(string[] details, int _semester)
+        public CourseSession(Course c, string grade, int _semester)
         {
-            this.course = new Course(details[0], details[1], details[2]);
-            this.grades[0] = details[3];
+            this.course = c;
+            this.grades[0] = grade;
             this.semester = _semester;
-        }
-
-        public static CourseSession Create(string[] details, int _semester)
-        {
-            return new CourseSession(details, _semester);
         }
 
         public override string ToString()

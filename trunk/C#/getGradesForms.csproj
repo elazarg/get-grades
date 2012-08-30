@@ -71,10 +71,10 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <None Include="Properties\DataSources\Connection.datasource" />
     <None Include="Properties\DataSources\Connection.Tick.datasource" />
+    <None Include="Properties\DataSources\Degree.datasource" />
     <None Include="Properties\DataSources\MainForm.datasource" />
     <None Include="Properties\DataSources\Processor.datasource" />
     <None Include="Properties\DataSources\Processor.Tick.datasource" />
