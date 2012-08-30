@@ -44,8 +44,8 @@ namespace getGradesForms
         {
             degree = new Degree();
             r = new Result();
-            try
-            {
+  //          try
+ //           {
                 r.label = "Connecting";
                 backgroundWorker1.ReportProgress(1);
                 using (Connection conn = new Connection())
@@ -56,14 +56,14 @@ namespace getGradesForms
                     r.html = conn.retrieveHTML(useridTextbox.Text, passwordBox.Text);
                     r.label = "Processing";
                     backgroundWorker1.ReportProgress(1);
-                    r.csv = processor.processText(r.html, degree);
+                    r.csv = processor.processText(new StringReader(r.html), degree);
                     r.label = "Done";
                 }
-            }
+    /*        }
             catch (Exception ex)
             {
                 r.label = ex.Message;
-            }
+            }*/
         }
 
         private void goButton_Click(object sender, EventArgs e)
@@ -115,6 +115,7 @@ namespace getGradesForms
             textBox1.Text = r.csv;
             htmlTextBox.Text = r.html;
             statusLabel.Text = r.label;
+            
         }
 
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -133,6 +134,11 @@ namespace getGradesForms
         {
             ab.Activate();
             ab.Show();
+        }
+
+        private void degreeBindingSource_CurrentChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
