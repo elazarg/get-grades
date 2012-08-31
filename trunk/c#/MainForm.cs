@@ -24,8 +24,6 @@ namespace getGradesForms
     {
         class Result
         {
-            internal String html;
-            internal String csv;
             internal String label;
         };
 
@@ -88,7 +86,7 @@ namespace getGradesForms
 
         private void saveFileDialog1_FileOk(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            File.WriteAllText(saveFileDialog1.FileName, textBox1.Text, Connection.hebrewEncoding);
+            File.WriteAllText(saveFileDialog1.FileName, textBox2.Text, Connection.hebrewEncoding);
         }
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
@@ -100,16 +98,12 @@ namespace getGradesForms
         private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             toolStripProgressBar1.Increment(e.ProgressPercentage);
-            textBox1.Text = r.csv;
-            htmlTextBox.Text = r.html;
             statusLabel.Text = r.label;
         }
 
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             Result res = r;
-            textBox1.Text = res.csv;
-            htmlTextBox.Text = res.html;
             statusLabel.Text = r.label;
 
             textBox3.Text = degree.ToString();
