@@ -43,7 +43,7 @@ namespace getGradesForms
             return sb.ToString();
         }
 
-        private IEnumerable<String[]> getTables(StringReader sr)
+        private IEnumerable<String[]> getTables(TextReader sr)
         {
             
             string temp;
@@ -52,7 +52,7 @@ namespace getGradesForms
                 List<string> table = new List<string>();
                 do {
                     temp = sr.ReadLine();
-                    if (temp == null)
+                    if (temp == null || temp.Contains("</HTML>"))
                          yield break;
                 } while (!temp.StartsWith("<TABLE"));
                 String line = "";
@@ -78,7 +78,7 @@ namespace getGradesForms
             return removeXML(line.Replace("</td><td>", specialsep).Replace("&nbsp;", "   "));
         }
 
-        internal string processText(StringReader html, Degree degree)
+        internal string processText(TextReader html, Degree degree)
         {
 
             string[][] tables = getTables(html).ToArray();
