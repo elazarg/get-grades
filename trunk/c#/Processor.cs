@@ -10,12 +10,14 @@ namespace getGradesForms
 {
     class Processor
     {
-        Processor(ReadLine inputMethod)
+        internal Processor(ReadLine inputMethod)
         {
-                readLine = inputMethod;
+            readLine = inputMethod;
         }
-	public delegate string ReadLine();
-        private Readline readLine;	
+
+	    public delegate string ReadLine();
+        private ReadLine readLine;
+
         private IEnumerable<String[]> getTables()
         {
             while (true)
@@ -49,7 +51,7 @@ namespace getGradesForms
             return removeXML(line.Replace("</td><td>", specialsep).Replace("&nbsp;", "   "));
         }
 
-        internal Degree processText(Degree degree)
+        internal void processText(Degree degree)
         {
             string[][] tables = getTables().ToArray();
 
