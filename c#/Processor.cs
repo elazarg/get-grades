@@ -10,45 +10,17 @@ namespace getGradesForms
 {
     class Processor
     {
-        static string seperator = ",";
-        static string spaceseperator = " " + seperator + " ";
-        static string reverse(string str)
+        Processor(ReadLine inputMethod)
         {
-            return new string(str.Reverse().ToArray());
+                readLine = inputMethod;
         }
-
-        static string putSpace(string str)
-        {
-            return str.Replace("&nbsp;", " ");
-        }     
-
-        static string strip(string str)
-        {
-            return str.Replace("<td>", "").Replace("</td>", "").Replace("&nbsp;", " ");
-        }
-
-        static private string removeXML(string str)
-        {
-            var sb = new StringBuilder(str.Length);
-            bool copy = true;
-            foreach (char i in str)
-            {
-                if (i == '<')
-                    copy = false;
-                if (copy)
-                    sb.Append(i);
-                if (i == '>')
-                    copy = true;
-            }
-            return sb.ToString();
-        }
-	
-	
-        private IEnumerable<String[]> getTables(TextReader sr)
+	public delegate string ReadLine();
+        private Readline readLine;	
+        private IEnumerable<String[]> getTables()
         {
             while (true)
             {
-                for (string temp = sr.ReadLine(); !temp.StartsWith("<TABLE"); temp = sr.ReadLine()) 
+                for (string temp = readLine(); !temp.StartsWith("<TABLE"); temp = readLine()) 
                 {
                     if (temp == null || temp.Contains("</HTML>"))
                          yield break;
@@ -56,7 +28,7 @@ namespace getGradesForms
                 
                 var table = new List<string>();
                 string line = "";
-                for (string temp = sr.ReadLine(); !temp.StartsWith("</TABLE"); temp = sr.ReadLine())
+                for (string temp = readLine(); !temp.StartsWith("</TABLE"); temp = readLine())
                 {
                     if (temp == null)
                         yield break;
@@ -77,9 +49,9 @@ namespace getGradesForms
             return removeXML(line.Replace("</td><td>", specialsep).Replace("&nbsp;", "   "));
         }
 
-        internal Degree processText(TextReader html, Degree degree)
+        internal Degree processText(Degree degree)
         {
-            string[][] tables = getTables(html).ToArray();
+            string[][] tables = getTables().ToArray();
 
             parseDetails(tables[0]);
             parseSummary(tables[1]);
@@ -160,7 +132,38 @@ namespace getGradesForms
                     degree.AddSession(parseLine(line, semester));
         }
 
+        static string seperator = ",";
+        static string spaceseperator = " " + seperator + " ";
+        static string reverse(string str)
+        {
+            return new string(str.Reverse().ToArray());
+        }
 
+        static string putSpace(string str)
+        {
+            return str.Replace("&nbsp;", " ");
+        }     
+
+        static string strip(string str)
+        {
+            return str.Replace("<td>", "").Replace("</td>", "").Replace("&nbsp;", " ");
+        }
+
+        static private string removeXML(string str)
+        {
+            var sb = new StringBuilder(str.Length);
+            bool copy = true;
+            foreach (char i in str)
+            {
+                if (i == '<')
+                    copy = false;
+                if (copy)
+                    sb.Append(i);
+                if (i == '>')
+                    copy = true;
+            }
+            return sb.ToString();
+        }
     }
 
 }

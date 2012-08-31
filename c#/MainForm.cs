@@ -29,40 +29,34 @@ namespace getGradesForms
             internal String label;
         };
 
-        Result r;
 
         public MainForm()
         {
             InitializeComponent();
         }
 
+        Result r;
         Degree degree;
 
         void go()
         {
             r = new Result();
-  //          try
- //           {
-                r.label = "Connecting";
-                backgroundWorker1.ReportProgress(1);
-                using (Connection conn = new Connection())
-                {
-                    conn.tick += delegate { backgroundWorker1.ReportProgress(20); };
-                    r.label = "Authenticating";
-                    TextReader reader = conn.retrieveHTML(useridTextbox.Text, passwordBox.Text);
-
-                    r.label = "Processing";
-                    degree = new Degree();
-                    degree.tick += delegate { backgroundWorker1.ReportProgress(1); };
-                    new Processor().processText(reader, degree);
-                    
-                    r.label = "Done";
-                }
-    /*        }
-            catch (Exception ex)
+            r.label = "Connecting"; backgroundWorker1.ReportProgress(1);
+            using (Connection conn = new Connection())
             {
-                r.label = ex.Message;
-            }*/
+                conn.tick += delegate { backgroundWorker1.ReportProgress(20); };
+                r.label = "Authenticating";  backgroundWorker1.ReportProgress(1);
+                
+                TextReader reader = conn.retrieveHTML(useridTextbox.Text, passwordBox.Text);
+            
+                r.label = "Processing"; backgroundWorker1.ReportProgress(1);
+                degree = new Degree();
+                degree.tick += delegate { backgroundWorker1.ReportProgress(1); };
+                
+                new Processor(reader.ReadLine).processText(degree);
+                
+                r.label = "Done";
+            }
         }
 
         private void goButton_Click(object sender, EventArgs e)
@@ -70,12 +64,7 @@ namespace getGradesForms
             goButton.Enabled = false;
             toolStripProgressBar1.Value = toolStripProgressBar1.Minimum;
             backgroundWorker1.RunWorkerAsync();
-
-            browser.Navigated += delegate { 
-                string x = browser.DocumentText.Split(new char[] { '"' })[23];
-            };
             browser.Navigate("www.undergraduate.technion.ac.il/Tadpis.html");
-            
         }
 
         private void passwordBox_TextChanged(object sender, EventArgs e)
@@ -114,7 +103,6 @@ namespace getGradesForms
             textBox1.Text = r.csv;
             htmlTextBox.Text = r.html;
             statusLabel.Text = r.label;
-            
         }
 
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
