@@ -22,7 +22,6 @@ namespace getGradesForms
 {
     public partial class MainForm : Form
     {
-        Processor processor = new Processor();
         class Result
         {
             internal String html;
@@ -35,14 +34,12 @@ namespace getGradesForms
         public MainForm()
         {
             InitializeComponent();
-            processor.tick += delegate { backgroundWorker1.ReportProgress(1); };
         }
 
         Degree degree;
 
         void go()
         {
-            degree = new Degree();
             r = new Result();
   //          try
  //           {
@@ -52,11 +49,13 @@ namespace getGradesForms
                 {
                     conn.tick += delegate { backgroundWorker1.ReportProgress(20); };
                     r.label = "Authenticating";
-                    backgroundWorker1.ReportProgress(1);
-                    r.html = conn.retrieveHTML(useridTextbox.Text, passwordBox.Text);
+                    TextReader reader = conn.retrieveHTML(useridTextbox.Text, passwordBox.Text);
+
                     r.label = "Processing";
-                    backgroundWorker1.ReportProgress(1);
-                    r.csv = processor.processText(new StringReader(r.html), degree);
+                    degree = new Degree();
+                    degree.tick += delegate { backgroundWorker1.ReportProgress(1); };
+                    new Processor().processText(reader, degree);
+                    
                     r.label = "Done";
                 }
     /*        }
@@ -129,12 +128,15 @@ namespace getGradesForms
             goButton.Enabled = true;
             saveAsButton.Enabled = true;
         }
+        
+        
         AboutBox ab = new AboutBox();
         private void button1_Click(object sender, EventArgs e)
         {
             ab.Activate();
             ab.Show();
         }
+
 
         private void degreeBindingSource_CurrentChanged(object sender, EventArgs e)
         {
