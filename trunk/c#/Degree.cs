@@ -14,6 +14,7 @@ namespace getGradesForms
         internal void AddSession(CourseSession cs)
         {
             chrono.Add(cs);
+            tick();
         }
 
         internal void AddSemester(SemesterDetails sd)
@@ -27,6 +28,8 @@ namespace getGradesForms
             string str2 = string.Join("\r\n", semesters);
             return str1 + "\r\n{}\r\n" + str2;
         }
-
+        
+        public delegate void Tick();
+        public event Tick tick = delegate { };
     }
 }

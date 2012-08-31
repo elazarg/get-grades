@@ -111,12 +111,11 @@ namespace getGradesForms
             this.input_hebrew = new StreamReader(ns, hebrewEncoding);
             tick();            
             
-            
             while (redirect() < 0) ;
         }
 
 
-        internal string retrieveHTML(string userid, string password)
+        internal TextReader retrieveHTML(string userid, string password)
         {
             send("POST", "function=signon&userid=" + userid + "&password=" + password);
 
@@ -128,9 +127,8 @@ namespace getGradesForms
             send("GET");
             skipBlock();
 
-
             s.Disconnect(false);
-            return input_hebrew.ReadToEnd();
+            return input_hebrew;
         }
 
         public void Dispose()

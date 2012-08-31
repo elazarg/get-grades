@@ -31,7 +31,7 @@ namespace getGradesForms
         {
             var sb = new StringBuilder(str.Length);
             bool copy = true;
-            foreach (var i in str)
+            foreach (char i in str)
             {
                 if (i == '<')
                     copy = false;
@@ -42,23 +42,22 @@ namespace getGradesForms
             }
             return sb.ToString();
         }
-
+	
+	
         private IEnumerable<String[]> getTables(TextReader sr)
         {
-            
-            string temp;
             while (true)
             {
-                List<string> table = new List<string>();
-                do {
-                    temp = sr.ReadLine();
+                for (string temp = sr.ReadLine(); !temp.StartsWith("<TABLE"); temp = sr.ReadLine()) 
+                {
                     if (temp == null || temp.Contains("</HTML>"))
                          yield break;
-                } while (!temp.StartsWith("<TABLE"));
-                String line = "";
-                do
+                }
+                
+                var table = new List<string>();
+                string line = "";
+                for (string temp = sr.ReadLine(); !temp.StartsWith("</TABLE"); temp = sr.ReadLine())
                 {
-                    temp = sr.ReadLine();
                     if (temp == null)
                         yield break;
                     line += temp;
@@ -67,7 +66,7 @@ namespace getGradesForms
                         table.Add(line);
                         line = "";
                     }
-                } while (!temp.StartsWith("</TABLE"));
+                }
                 yield return table.ToArray();
             }
         }
@@ -78,9 +77,8 @@ namespace getGradesForms
             return removeXML(line.Replace("</td><td>", specialsep).Replace("&nbsp;", "   "));
         }
 
-        internal string processText(TextReader html, Degree degree)
+        internal Degree processText(TextReader html, Degree degree)
         {
-
             string[][] tables = getTables(html).ToArray();
 
             parseDetails(tables[0]);
@@ -89,7 +87,6 @@ namespace getGradesForms
             int i;
             for (i = 3; i < tables.Length - 1; i++)
                 parseSemester(tables[i].ToArray(), i, i == tables.Length, degree);
-            return "DFG";
         }
 
         private PersonalDetails parseDetails(string[] table)
@@ -121,10 +118,7 @@ namespace getGradesForms
 
             foreach (string line in table)
                 if (line.StartsWith("<TR ALIGN"))
-                {
                     degree.AddSession(parseLine(line, 0));
-                    tick();
-                }
         }
 
         private CourseSession parseLine(string line, int semester)
@@ -163,14 +157,10 @@ namespace getGradesForms
 
             foreach (string line in table)
                 if (line.StartsWith("<TR ALIGN"))
-                {
                     degree.AddSession(parseLine(line, semester));
-                    tick();
-                }
         }
 
-        public delegate void Tick();
-        public event Tick tick = delegate { };
+
     }
 
 }
