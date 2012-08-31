@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.goButton = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.passwordBox = new System.Windows.Forms.TextBox();
             this.personalDetailsGroup = new System.Windows.Forms.GroupBox();
             this.passwordCheckBox = new System.Windows.Forms.CheckBox();
@@ -39,12 +38,10 @@
             this.useridTextbox = new System.Windows.Forms.TextBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
-            this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.session = new System.Windows.Forms.ToolStripStatusLabel();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.saveAsButton = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.csvTab = new System.Windows.Forms.TabPage();
             this.browserTab = new System.Windows.Forms.TabPage();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.browser = new System.Windows.Forms.WebBrowser();
@@ -53,34 +50,28 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.button1 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dataSet1 = new System.Data.DataSet();
-            this.dataTable1 = new System.Data.DataTable();
-            this.dataColumn1 = new System.Data.DataColumn();
-            this.dataColumn2 = new System.Data.DataColumn();
-            this.dataColumn3 = new System.Data.DataColumn();
-            this.dataColumn4 = new System.Data.DataColumn();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.degreeBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.connectionBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.statusStrip2 = new System.Windows.Forms.StatusStrip();
+            this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this._MyDatabase_2DataSet = new getGradesForms._MyDatabase_2DataSet();
             this.personalDetailsGroup.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
-            this.csvTab.SuspendLayout();
             this.browserTab.SuspendLayout();
             this.htmlTab.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataTable1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.degreeBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.connectionBindingSource)).BeginInit();
+            this.statusStrip2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this._MyDatabase_2DataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // goButton
@@ -92,17 +83,6 @@
             this.goButton.Text = "GO";
             this.goButton.UseVisualStyleBackColor = true;
             this.goButton.Click += new System.EventHandler(this.goButton_Click);
-            // 
-            // textBox1
-            // 
-            this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox1.Location = new System.Drawing.Point(3, 3);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox1.Size = new System.Drawing.Size(443, 168);
-            this.textBox1.TabIndex = 3;
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // passwordBox
             // 
@@ -117,9 +97,9 @@
             // 
             // personalDetailsGroup
             // 
-            this.personalDetailsGroup.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.personalDetailsGroup.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.personalDetailsGroup.Controls.Add(this.passwordCheckBox);
             this.personalDetailsGroup.Controls.Add(this.label3);
             this.personalDetailsGroup.Controls.Add(this.label2);
@@ -177,33 +157,29 @@
             // 
             // statusStrip1
             // 
+            this.tableLayoutPanel1.SetColumnSpan(this.statusStrip1, 2);
+            this.statusStrip1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripProgressBar1,
-            this.statusLabel,
             this.session});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 288);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 290);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(463, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(321, 20);
+            this.statusStrip1.SizingGrip = false;
             this.statusStrip1.TabIndex = 7;
             this.statusStrip1.Text = "statusStrip1";
             // 
             // toolStripProgressBar1
             // 
-            this.toolStripProgressBar1.Maximum = 350;
+            this.toolStripProgressBar1.Maximum = 130;
             this.toolStripProgressBar1.Name = "toolStripProgressBar1";
-            this.toolStripProgressBar1.Size = new System.Drawing.Size(100, 16);
+            this.toolStripProgressBar1.Size = new System.Drawing.Size(100, 14);
             this.toolStripProgressBar1.Step = 1;
-            // 
-            // statusLabel
-            // 
-            this.statusLabel.Name = "statusLabel";
-            this.statusLabel.Size = new System.Drawing.Size(38, 17);
-            this.statusLabel.Text = "Ready";
             // 
             // session
             // 
             this.session.Name = "session";
-            this.session.Size = new System.Drawing.Size(90, 17);
+            this.session.Size = new System.Drawing.Size(103, 15);
             this.session.Text = "Unknown Session";
             this.session.Visible = false;
             // 
@@ -225,31 +201,19 @@
             // 
             // tabControl1
             // 
-            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel1.SetColumnSpan(this.tabControl1, 3);
-            this.tabControl1.Controls.Add(this.csvTab);
+            this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.browserTab);
             this.tabControl1.Controls.Add(this.htmlTab);
-            this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Location = new System.Drawing.Point(3, 87);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(457, 200);
             this.tabControl1.TabIndex = 9;
-            // 
-            // csvTab
-            // 
-            this.csvTab.Controls.Add(this.textBox1);
-            this.csvTab.Location = new System.Drawing.Point(4, 22);
-            this.csvTab.Name = "csvTab";
-            this.csvTab.Padding = new System.Windows.Forms.Padding(3);
-            this.csvTab.Size = new System.Drawing.Size(449, 174);
-            this.csvTab.TabIndex = 0;
-            this.csvTab.Text = "CSV";
-            this.csvTab.UseVisualStyleBackColor = true;
             // 
             // browserTab
             // 
@@ -307,7 +271,7 @@
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(449, 174);
             this.tabPage1.TabIndex = 3;
-            this.tabPage1.Text = "tabPage1";
+            this.tabPage1.Text = "Edited";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // textBox3
@@ -333,6 +297,17 @@
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.DataSource = this._MyDatabase_2DataSet;
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(3, 3);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(443, 168);
+            this.dataGridView1.TabIndex = 0;
+            // 
             // backgroundWorker1
             // 
             this.backgroundWorker1.WorkerReportsProgress = true;
@@ -357,8 +332,10 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 149F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.groupBox1, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.tabControl1, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.personalDetailsGroup, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.tabControl1, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.statusStrip1, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.statusStrip2, 2, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -381,64 +358,40 @@
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
             // 
-            // dataSet1
+            // statusStrip2
             // 
-            this.dataSet1.DataSetName = "NewDataSet";
-            this.dataSet1.Tables.AddRange(new System.Data.DataTable[] {
-            this.dataTable1});
+            this.statusStrip2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.statusStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.statusLabel});
+            this.statusStrip2.Location = new System.Drawing.Point(321, 290);
+            this.statusStrip2.Name = "statusStrip2";
+            this.statusStrip2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.statusStrip2.Size = new System.Drawing.Size(142, 20);
+            this.statusStrip2.SizingGrip = false;
+            this.statusStrip2.TabIndex = 10;
+            this.statusStrip2.Text = "statusStrip2";
             // 
-            // dataTable1
+            // statusLabel
             // 
-            this.dataTable1.Columns.AddRange(new System.Data.DataColumn[] {
-            this.dataColumn1,
-            this.dataColumn2,
-            this.dataColumn3,
-            this.dataColumn4});
-            this.dataTable1.TableName = "מקצועות";
+            this.statusLabel.Name = "statusLabel";
+            this.statusLabel.Size = new System.Drawing.Size(40, 15);
+            this.statusLabel.Text = "Ready";
             // 
-            // dataColumn1
+            // bindingSource1
             // 
-            this.dataColumn1.Caption = "מספר קורס";
-            this.dataColumn1.ColumnName = "מספר קורס";
+            this.bindingSource1.DataSource = this._MyDatabase_2DataSet;
+            this.bindingSource1.Position = 0;
             // 
-            // dataColumn2
+            // _MyDatabase_2DataSet
             // 
-            this.dataColumn2.ColumnName = "שם קורס";
-            // 
-            // dataColumn3
-            // 
-            this.dataColumn3.ColumnName = "נקודות";
-            // 
-            // dataColumn4
-            // 
-            this.dataColumn4.ColumnName = "ציון";
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.DataSource = this.dataSet1;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 3);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(443, 168);
-            this.dataGridView1.TabIndex = 0;
-            // 
-            // degreeBindingSource
-            // 
-            this.degreeBindingSource.DataSource = typeof(getGradesForms.Degree);
-            this.degreeBindingSource.CurrentChanged += new System.EventHandler(this.degreeBindingSource_CurrentChanged);
-            // 
-            // connectionBindingSource
-            // 
-            this.connectionBindingSource.DataSource = typeof(getGradesForms.Connection);
+            this._MyDatabase_2DataSet.DataSetName = "_MyDatabase_2DataSet";
+            this._MyDatabase_2DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(463, 310);
-            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.tableLayoutPanel1);
             this.MinimumSize = new System.Drawing.Size(365, 200);
             this.Name = "MainForm";
@@ -449,49 +402,43 @@
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
-            this.csvTab.ResumeLayout(false);
-            this.csvTab.PerformLayout();
             this.browserTab.ResumeLayout(false);
             this.browserTab.PerformLayout();
             this.htmlTab.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataTable1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.degreeBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.connectionBindingSource)).EndInit();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.statusStrip2.ResumeLayout(false);
+            this.statusStrip2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._MyDatabase_2DataSet)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.Button goButton;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox passwordBox;
         private System.Windows.Forms.GroupBox personalDetailsGroup;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
-        private System.Windows.Forms.ToolStripStatusLabel statusLabel;
         private System.Windows.Forms.CheckBox passwordCheckBox;
         private System.Windows.Forms.TextBox useridTextbox;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.Button saveAsButton;
         private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage csvTab;
         private System.Windows.Forms.TabPage browserTab;
         private System.Windows.Forms.WebBrowser browser;
         private System.Windows.Forms.TabPage htmlTab;
         private System.Windows.Forms.TextBox textBox2;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
-        private System.Windows.Forms.BindingSource connectionBindingSource;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Button button1;
@@ -500,14 +447,11 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RichTextBox htmlTextBox;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.BindingSource degreeBindingSource;
-        private System.Data.DataSet dataSet1;
-        private System.Data.DataTable dataTable1;
-        private System.Data.DataColumn dataColumn1;
-        private System.Data.DataColumn dataColumn2;
-        private System.Data.DataColumn dataColumn3;
-        private System.Data.DataColumn dataColumn4;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.StatusStrip statusStrip2;
+        private System.Windows.Forms.ToolStripStatusLabel statusLabel;
+        private _MyDatabase_2DataSet _MyDatabase_2DataSet;
+        private System.Windows.Forms.BindingSource bindingSource1;
     }
 }
 
