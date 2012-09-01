@@ -1,23 +1,8 @@
 ﻿using System;
-using System.IO;
-using System.Net.Sockets;
-using System.Windows;
-using System.Text;
-
-using System.Linq;
-using System.Linq.Expressions;
-
-using System.Collections.Generic;
-
-using System.Text.RegularExpressions;
-
-using System.Drawing;
-using System.Windows.Forms;
-
-using System.Threading;
 using System.ComponentModel;
-using System.Net;
-
+using System.IO;
+using System.Windows.Forms;
+using System.Linq;
 namespace getGradesForms
 {
     public partial class MainForm : Form
@@ -27,17 +12,17 @@ namespace getGradesForms
             internal String label;
         };
 
-
         public MainForm()
         {
             InitializeComponent();
+            _MyDatabase_2DataSet.init();
         }
 
         Result r;
-        Degree degree;
 
         void go()
         {
+            
             r = new Result();
             r.label = "Connecting"; backgroundWorker1.ReportProgress(1);
             using (Connection conn = new Connection())
@@ -48,10 +33,12 @@ namespace getGradesForms
                 TextReader reader = conn.retrieveHTML(useridTextbox.Text, passwordBox.Text);
             
                 r.label = "Processing"; backgroundWorker1.ReportProgress(1);
-                degree = new Degree();
-                degree.tick += delegate { backgroundWorker1.ReportProgress(1); };
-                
-                new Processor(reader.ReadLine).processText(degree);
+
+               
+                var pr = new Processor(reader.ReadLine);
+                pr.sessionFound += _MyDatabase_2DataSet.addSessionToSQL;
+                pr.semesterFound += _MyDatabase_2DataSet.addSemesterToSQL;
+                pr.processText();
                 
                 r.label = "Done";
             }
@@ -99,16 +86,17 @@ namespace getGradesForms
         {
             toolStripProgressBar1.Increment(e.ProgressPercentage);
             statusLabel.Text = r.label;
+
         }
 
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             Result res = r;
             statusLabel.Text = r.label;
-
-            textBox3.Text = degree.ToString();
             goButton.Enabled = true;
             saveAsButton.Enabled = true;
+
+            dataGridView2.Refresh();
         }
         
         
@@ -119,15 +107,5 @@ namespace getGradesForms
             ab.Show();
         }
 
-
-        private void degreeBindingSource_CurrentChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
     }
 }

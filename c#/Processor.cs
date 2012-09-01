@@ -18,6 +18,12 @@ namespace getGradesForms
 	    public delegate string ReadLine();
         private ReadLine readLine;
 
+        public delegate void SessionFound(string Course_ID,string name, string points, string grade);
+        public event SessionFound sessionFound = delegate { };
+
+        public delegate void SemesterFound(string year, string hebrewYear, string season);
+        public event SemesterFound semesterFound = delegate { };
+
         private IEnumerable<String[]> getTables()
         {
             while (true)
@@ -51,16 +57,16 @@ namespace getGradesForms
             return removeXML(line.Replace("</td><td>", specialsep).Replace("&nbsp;", "   "));
         }
 
-        internal void processText(Degree degree)
+        internal void processText()
         {
             string[][] tables = getTables().ToArray();
 
             parseDetails(tables[0]);
             parseSummary(tables[1]);
-            parseZikui(tables[2], degree);
+            parseZikui(tables[2]);
             int i;
             for (i = 3; i < tables.Length - 1; i++)
-                parseSemester(tables[i].ToArray(), i, i == tables.Length, degree);
+                parseSemester(tables[i].ToArray(), i, i == tables.Length);
         }
 
         private PersonalDetails parseDetails(string[] table)
@@ -80,7 +86,7 @@ namespace getGradesForms
             return new Summary(removeXML(table[1].Replace("</TD><TD>", ",")).Split(','));
         }
 
-        private void parseZikui(string[] table, Degree degree)
+        private void parseZikui(string[] table)
         {
             SemesterDetails sem = new SemesterDetails("זיכויים");
             sem.summary = new Summary(new string[] { "100", "100", "100" });
@@ -88,32 +94,18 @@ namespace getGradesForms
             sem.numberOfCourses = table.Length - 3;
             string points = table[table.Length - 2].Split(new char[] { '<', '>' }, StringSplitOptions.RemoveEmptyEntries)[5];
             sem.summary.totalPoints = decimal.Parse(points);
-            degree.AddSemester(sem);
 
             foreach (string line in table)
                 if (line.StartsWith("<TR ALIGN"))
-                    degree.AddSession(parseLine(line, 0));
+                    parseLine(line);
         }
 
-        private CourseSession parseLine(string line, int semester)
-        {
-            string[] x = line.Split(new string[] { "<TR ALIGN=RIGHT><td>", "</td><td>", "</td></TR>" }, 5, StringSplitOptions.RemoveEmptyEntries);
-            string grade = x[0].Contains('י') ? reverse(x[0]) : x[0];
-            string points = x[1];
-
-            string[] nameAndId = x[2].Split(new string[] { "&nbsp;" }, 10, StringSplitOptions.RemoveEmptyEntries);
-            string id = nameAndId.Last();
-            string name = reverse(string.Join(" ", nameAndId.TakeWhile( str => str==id)));
-
-            return new CourseSession(new Course(id, name, points), grade, semester);
-        }
-
-        private void parseSemester(string[] table, int semester, bool islast, Degree degree)
+        private void parseSemester(string[] table, int semester, bool islast)
         {
             string[] args = strip(removeXML(table[0])).Split("() ".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
             args[0] = reverse(args[0]);
             args[2] = reverse(args[2]);
-            SemesterDetails sem = new SemesterDetails(args);;
+            SemesterDetails sem = new SemesterDetails(args); ;
             if (!islast)
             {
                 string[] results = table[table.Length - 1].Split(new string[] {
@@ -127,11 +119,25 @@ namespace getGradesForms
             }
             sem.numberOfCourses = table.Length - 2;
 
-            degree.AddSemester(sem);
+            semesterFound(sem.year, sem.hebrewYear, sem.season);
 
             foreach (string line in table)
                 if (line.StartsWith("<TR ALIGN"))
-                    degree.AddSession(parseLine(line, semester));
+                    parseLine(line);
+        }
+
+        private void parseLine(string line)
+        {
+            string[] x = line.Split(new string[] { "<TR ALIGN=RIGHT><td>", "</td><td>", "</td></TR>" }, 5, StringSplitOptions.RemoveEmptyEntries);
+            string grade = x[0].Contains('י') ? reverse(x[0]) : x[0];
+            string points = x[1];
+
+            string[] nameAndId = x[2].Split(new string[] { "&nbsp;" }, 10, StringSplitOptions.RemoveEmptyEntries);
+            
+            string courseId = nameAndId.Last();
+            string name = reverse(string.Join(" ", nameAndId.TakeWhile( str => str!=courseId)));
+
+            sessionFound(courseId, name, points, grade);
         }
 
         static string seperator = ",";

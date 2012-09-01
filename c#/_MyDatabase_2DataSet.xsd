@@ -37,21 +37,21 @@
         <xs:element name="CourseSessions" msprop:Generator_TableClassName="CourseSessionsDataTable" msprop:Generator_TableVarName="tableCourseSessions" msprop:Generator_TablePropName="CourseSessions" msprop:Generator_RowDeletingName="CourseSessionsRowDeleting" msprop:Generator_UserTableName="CourseSessions" msprop:Generator_RowChangingName="CourseSessionsRowChanging" msprop:Generator_RowEvHandlerName="CourseSessionsRowChangeEventHandler" msprop:Generator_RowDeletedName="CourseSessionsRowDeleted" msprop:Generator_RowEvArgName="CourseSessionsRowChangeEvent" msprop:Generator_RowChangedName="CourseSessionsRowChanged" msprop:Generator_RowClassName="CourseSessionsRow">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="Semester_x0020_ID" msprop:Generator_ColumnVarNameInTable="columnSemester_ID" msprop:Generator_ColumnPropNameInRow="Semester_ID" msprop:Generator_ColumnPropNameInTable="Semester_IDColumn" msprop:Generator_UserColumnName="Semester ID" type="xs:string" />
-              <xs:element name="Course_x0020_ID" msprop:Generator_ColumnVarNameInTable="columnCourse_ID" msprop:Generator_ColumnPropNameInRow="Course_ID" msprop:Generator_ColumnPropNameInTable="Course_IDColumn" msprop:Generator_UserColumnName="Course ID" type="xs:string" />
-              <xs:element name="FinalA" msprop:Generator_ColumnVarNameInTable="columnFinalA" msprop:Generator_ColumnPropNameInRow="FinalA" msprop:Generator_ColumnPropNameInTable="FinalAColumn" msprop:Generator_UserColumnName="FinalA" type="xs:string" minOccurs="0" />
-              <xs:element name="FinalB" msprop:Generator_ColumnVarNameInTable="columnFinalB" msprop:Generator_ColumnPropNameInRow="FinalB" msprop:Generator_ColumnPropNameInTable="FinalBColumn" msprop:Generator_UserColumnName="FinalB" type="xs:string" minOccurs="0" />
-              <xs:element name="Taken" msprop:Generator_ColumnVarNameInTable="columnTaken" msprop:Generator_ColumnPropNameInRow="Taken" msprop:Generator_ColumnPropNameInTable="TakenColumn" msprop:Generator_UserColumnName="Taken" type="xs:string" minOccurs="0" />
-              <xs:element name="Session_x0020_ID" msprop:Generator_ColumnVarNameInTable="columnSession_ID" msprop:Generator_ColumnPropNameInRow="Session_ID" msprop:Generator_ColumnPropNameInTable="Session_IDColumn" msprop:Generator_UserColumnName="Session ID" type="xs:string" />
+              <xs:element name="ID" msdata:AutoIncrement="true" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:long" />
+              <xs:element name="Semester_x0020_ID" msprop:Generator_ColumnVarNameInTable="columnSemester_ID" msprop:Generator_ColumnPropNameInRow="Semester_ID" msprop:Generator_ColumnPropNameInTable="Semester_IDColumn" msprop:Generator_UserColumnName="Semester ID" type="xs:int" minOccurs="0" />
+              <xs:element name="RD" msprop:Generator_ColumnVarNameInTable="columnRD" msprop:Generator_ColumnPropNameInRow="RD" msprop:Generator_ColumnPropNameInTable="RDColumn" msprop:Generator_UserColumnName="RD" type="xs:string" minOccurs="0" />
+              <xs:element name="Course_x0020_ID" msprop:Generator_ColumnVarNameInTable="columnCourse_ID" msprop:Generator_ColumnPropNameInRow="Course_ID" msprop:Generator_ColumnPropNameInTable="Course_IDColumn" msprop:Generator_UserColumnName="Course ID" type="xs:string" minOccurs="0" />
+              <xs:element name="Grade" msprop:Generator_ColumnVarNameInTable="columnGrade" msprop:Generator_ColumnPropNameInRow="Grade" msprop:Generator_ColumnPropNameInTable="GradeColumn" msprop:Generator_UserColumnName="Grade" type="xs:decimal" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
         <xs:element name="Semester" msprop:Generator_TableClassName="SemesterDataTable" msprop:Generator_TableVarName="tableSemester" msprop:Generator_TablePropName="Semester" msprop:Generator_RowDeletingName="SemesterRowDeleting" msprop:Generator_UserTableName="Semester" msprop:Generator_RowChangingName="SemesterRowChanging" msprop:Generator_RowEvHandlerName="SemesterRowChangeEventHandler" msprop:Generator_RowDeletedName="SemesterRowDeleted" msprop:Generator_RowEvArgName="SemesterRowChangeEvent" msprop:Generator_RowChangedName="SemesterRowChanged" msprop:Generator_RowClassName="SemesterRow">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:string" minOccurs="0" />
+              <xs:element name="ID" msdata:AutoIncrement="true" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
               <xs:element name="Year" msprop:Generator_ColumnVarNameInTable="columnYear" msprop:Generator_ColumnPropNameInRow="Year" msprop:Generator_ColumnPropNameInTable="YearColumn" msprop:Generator_UserColumnName="Year" type="xs:string" minOccurs="0" />
-              <xs:element name="Season" msprop:Generator_ColumnVarNameInTable="columnSeason" msprop:Generator_ColumnPropNameInRow="Season" msprop:Generator_ColumnPropNameInTable="SeasonColumn" msprop:Generator_UserColumnName="Season" type="xs:string" minOccurs="0" />
+              <xs:element name="Season" msprop:nullValue="_empty" msprop:Generator_ColumnPropNameInRow="Season" msprop:Generator_ColumnVarNameInTable="columnSeason" msprop:Generator_ColumnPropNameInTable="SeasonColumn" msprop:Generator_UserColumnName="Season" type="xs:string" minOccurs="0" />
+              <xs:element name="Hebrew_x0020_Year" msprop:nullValue="_empty" msprop:Generator_ColumnPropNameInRow="Hebrew_Year" msprop:Generator_ColumnVarNameInTable="columnHebrew_Year" msprop:Generator_ColumnPropNameInTable="Hebrew_YearColumn" msprop:Generator_UserColumnName="Hebrew Year" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -61,24 +61,19 @@
       <xs:selector xpath=".//mstns:CourseList" />
       <xs:field xpath="mstns:ID" />
     </xs:unique>
-    <xs:unique name="CourseSessions_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+    <xs:unique name="Constraint3" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:CourseSessions" />
-      <xs:field xpath="mstns:Semester_x0020_ID" />
-      <xs:field xpath="mstns:Course_x0020_ID" />
-      <xs:field xpath="mstns:Session_x0020_ID" />
+      <xs:field xpath="mstns:ID" />
     </xs:unique>
-    <xs:unique name="Constraint2">
-      <xs:selector xpath=".//mstns:CourseSessions" />
-      <xs:field xpath="mstns:Course_x0020_ID" />
-    </xs:unique>
-    <xs:keyref name="FK_CourseSessions_Semester" refer="Constraint2" msprop:rel_Generator_UserChildTable="Semester" msprop:rel_Generator_ChildPropName="GetSemesterRows" msprop:rel_Generator_ParentPropName="CourseSessionsRow" msprop:rel_Generator_UserRelationName="FK_CourseSessions_Semester" msprop:rel_Generator_RelationVarName="relationFK_CourseSessions_Semester" msprop:rel_Generator_UserParentTable="CourseSessions">
+    <xs:unique name="Semester_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:Semester" />
       <xs:field xpath="mstns:ID" />
-    </xs:keyref>
+    </xs:unique>
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
       <msdata:Relationship name="CourseList_CourseSessions" msdata:parent="CourseList" msdata:child="CourseSessions" msdata:parentkey="ID" msdata:childkey="Course_x0020_ID" msprop:Generator_UserChildTable="CourseSessions" msprop:Generator_ChildPropName="GetCourseSessionsRows" msprop:Generator_ParentPropName="CourseListRow" msprop:Generator_UserRelationName="CourseList_CourseSessions" msprop:Generator_RelationVarName="relationCourseList_CourseSessions" msprop:Generator_UserParentTable="CourseList" />
+      <msdata:Relationship name="Semester_CourseSessions" msdata:parent="Semester" msdata:child="CourseSessions" msdata:parentkey="ID" msdata:childkey="Semester_x0020_ID" msprop:Generator_UserChildTable="CourseSessions" msprop:Generator_ChildPropName="GetCourseSessionsRows" msprop:Generator_ParentPropName="SemesterRow" msprop:Generator_UserRelationName="Semester_CourseSessions" msprop:Generator_RelationVarName="relationSemester_CourseSessions" msprop:Generator_UserParentTable="Semester" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>
