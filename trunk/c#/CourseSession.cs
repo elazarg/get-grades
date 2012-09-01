@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
 
 namespace getGradesForms
 {
@@ -12,28 +9,6 @@ namespace getGradesForms
         MATH
     }
 
-
-    struct PersonalDetails
-    {
-        DateTime date;
-        string id;
-        string name;
-        string program;
-        string degree;
-        public PersonalDetails(string[] det)
-        {
-            date = DateTime.Parse(det[0]);
-            id = det[1].Trim().PadLeft(9, '0');
-            name = det[2];
-            program = det[3];
-            degree = det[4];
-        }
-
-        public override string ToString()
-        {
-            return string.Join("\r\n", date, id, name, program, degree);
-        }
-    }
 
     struct Summary
     {
@@ -91,8 +66,8 @@ namespace getGradesForms
         //hebrewYear, year, season
         internal SemesterDetails(string[] args)
         {
-            this.year = args[0];
-            this.hebrewYear = args[1];
+            this.year = args[1];
+            this.hebrewYear = args[0];
             this.season = args[2];
         }
 
@@ -104,10 +79,10 @@ namespace getGradesForms
 
     internal class CourseSession
     {
-        Course course;
-        int semester;
+        internal Course course;
+        internal int semester;
 
-        string[] grades = new string[] {"", "", ""};
+        internal string[] grades = new string[] {"", "", ""};
 
         public CourseSession(Course c, string grade, int _semester)
         {
@@ -121,33 +96,5 @@ namespace getGradesForms
             return string.Join(" , ", new object[] { course, String.Join("/", grades) , semester} );
         }
     }
-
-
-    class Degree
-    {
-        List<CourseSession> chrono = new List<CourseSession>(200);
-
-        List<SemesterDetails> semesters = new List<SemesterDetails>(20);
-
-        internal void AddSession(CourseSession cs)
-        {
-            chrono.Add(cs);
-            tick();
-        }
-
-        internal void AddSemester(SemesterDetails sd)
-        {
-            semesters.Add(sd);
-        }
-
-        public override string ToString()
-        {
-            string str1 = string.Join("\r\n", chrono);
-            string str2 = string.Join("\r\n", semesters);
-            return str1 + "\r\n{}\r\n" + str2;
-        }
-
-        public delegate void Tick();
-        public event Tick tick = delegate { };
-    }
+    
 }
