@@ -31,7 +31,6 @@ namespace getGradesForms
         internal void addPersonalDetails(string date, string id, string name, string program, string faculty)
         {
             string[] fullName = name.Split(new char[] {' '});
-       //     MessageBox.Show(id + ";" + fullName[0] + ";" + fullName[1] + ";" + program + ";" + faculty);
             this.tablePersonalDetails.AddPersonalDetailsRow(date, id, fullName[0], fullName[1], program, faculty);
         }
         
