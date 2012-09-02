@@ -70,11 +70,13 @@
       <xs:selector xpath=".//mstns:Semester" />
       <xs:field xpath="mstns:ID" />
     </xs:unique>
+    <xs:keyref name="CourseList_CourseSessions" refer="Constraint1" msprop:rel_Generator_UserChildTable="CourseSessions" msprop:rel_Generator_ChildPropName="GetCourseSessionsRows" msprop:rel_Generator_ParentPropName="CourseListRow" msprop:rel_Generator_UserRelationName="CourseList_CourseSessions" msprop:rel_Generator_RelationVarName="relationCourseList_CourseSessions" msprop:rel_Generator_UserParentTable="CourseList" msdata:DeleteRule="None">
+      <xs:selector xpath=".//mstns:CourseSessions" />
+      <xs:field xpath="mstns:Course_x0020_ID" />
+    </xs:keyref>
+    <xs:keyref name="Semester_CourseSessions" refer="Semester_Constraint1" msprop:rel_Generator_UserChildTable="CourseSessions" msprop:rel_Generator_ChildPropName="GetCourseSessionsRows" msprop:rel_Generator_ParentPropName="SemesterRow" msprop:rel_Generator_UserRelationName="Semester_CourseSessions" msprop:rel_Generator_RelationVarName="relationSemester_CourseSessions" msprop:rel_Generator_UserParentTable="Semester" msdata:DeleteRule="None">
+      <xs:selector xpath=".//mstns:CourseSessions" />
+      <xs:field xpath="mstns:Semester_x0020_ID" />
+    </xs:keyref>
   </xs:element>
-  <xs:annotation>
-    <xs:appinfo>
-      <msdata:Relationship name="CourseList_CourseSessions" msdata:parent="CourseList" msdata:child="CourseSessions" msdata:parentkey="ID" msdata:childkey="Course_x0020_ID" msprop:Generator_UserChildTable="CourseSessions" msprop:Generator_ChildPropName="GetCourseSessionsRows" msprop:Generator_UserParentTable="CourseList" msprop:Generator_UserRelationName="CourseList_CourseSessions" msprop:Generator_RelationVarName="relationCourseList_CourseSessions" msprop:Generator_ParentPropName="CourseListRow" />
-      <msdata:Relationship name="Semester_CourseSessions" msdata:parent="Semester" msdata:child="CourseSessions" msdata:parentkey="ID" msdata:childkey="Semester_x0020_ID" msprop:Generator_UserChildTable="CourseSessions" msprop:Generator_ChildPropName="GetCourseSessionsRows" msprop:Generator_UserParentTable="Semester" msprop:Generator_UserRelationName="Semester_CourseSessions" msprop:Generator_RelationVarName="relationSemester_CourseSessions" msprop:Generator_ParentPropName="SemesterRow" />
-    </xs:appinfo>
-  </xs:annotation>
 </xs:schema>
