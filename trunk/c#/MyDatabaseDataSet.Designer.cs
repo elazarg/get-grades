@@ -1306,7 +1306,9 @@ namespace getGradesForms {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class PersonalDetailsDataTable : global::System.Data.TypedTableBase<PersonalDetailsRow> {
             
-            private global::System.Data.DataColumn columnID;
+            private global::System.Data.DataColumn columnDate;
+            
+            private global::System.Data.DataColumn columnId;
             
             private global::System.Data.DataColumn columnFirst_Name;
             
@@ -1351,9 +1353,17 @@ namespace getGradesForms {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn IDColumn {
+            public global::System.Data.DataColumn DateColumn {
                 get {
-                    return this.columnID;
+                    return this.columnDate;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn IdColumn {
+                get {
+                    return this.columnId;
                 }
             }
             
@@ -1426,10 +1436,11 @@ namespace getGradesForms {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public PersonalDetailsRow AddPersonalDetailsRow(string ID, string First_Name, string Last_Name, string Program, string Faculty) {
+            public PersonalDetailsRow AddPersonalDetailsRow(string Date, string Id, string First_Name, string Last_Name, string Program, string Faculty) {
                 PersonalDetailsRow rowPersonalDetailsRow = ((PersonalDetailsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        ID,
+                        Date,
+                        Id,
                         First_Name,
                         Last_Name,
                         Program,
@@ -1456,7 +1467,8 @@ namespace getGradesForms {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
-                this.columnID = base.Columns["ID"];
+                this.columnDate = base.Columns["Date"];
+                this.columnId = base.Columns["Id"];
                 this.columnFirst_Name = base.Columns["First Name"];
                 this.columnLast_Name = base.Columns["Last Name"];
                 this.columnProgram = base.Columns["Program"];
@@ -1466,8 +1478,10 @@ namespace getGradesForms {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnID = new global::System.Data.DataColumn("ID", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnID);
+                this.columnDate = new global::System.Data.DataColumn("Date", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDate);
+                this.columnId = new global::System.Data.DataColumn("Id", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnId);
                 this.columnFirst_Name = new global::System.Data.DataColumn("First Name", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnFirst_Name);
                 this.columnLast_Name = new global::System.Data.DataColumn("Last Name", typeof(string), null, global::System.Data.MappingType.Element);
@@ -1992,17 +2006,33 @@ namespace getGradesForms {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string ID {
+            public string Date {
                 get {
                     try {
-                        return ((string)(this[this.tablePersonalDetails.IDColumn]));
+                        return ((string)(this[this.tablePersonalDetails.DateColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'ID\' in table \'PersonalDetails\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Date\' in table \'PersonalDetails\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tablePersonalDetails.IDColumn] = value;
+                    this[this.tablePersonalDetails.DateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Id {
+                get {
+                    try {
+                        return ((string)(this[this.tablePersonalDetails.IdColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Id\' in table \'PersonalDetails\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePersonalDetails.IdColumn] = value;
                 }
             }
             
@@ -2072,14 +2102,26 @@ namespace getGradesForms {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsIDNull() {
-                return this.IsNull(this.tablePersonalDetails.IDColumn);
+            public bool IsDateNull() {
+                return this.IsNull(this.tablePersonalDetails.DateColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetIDNull() {
-                this[this.tablePersonalDetails.IDColumn] = global::System.Convert.DBNull;
+            public void SetDateNull() {
+                this[this.tablePersonalDetails.DateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsIdNull() {
+                return this.IsNull(this.tablePersonalDetails.IdColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetIdNull() {
+                this[this.tablePersonalDetails.IdColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

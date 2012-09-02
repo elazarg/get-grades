@@ -28,11 +28,11 @@ namespace getGradesForms
             return crow;
         }
 
-        internal void addPersonalDetails(string id, string name, string program, string faculty)
+        internal void addPersonalDetails(string date, string id, string name, string program, string faculty)
         {
             string[] fullName = name.Split(new char[] {' '});
-            
-            this.tablePersonalDetails.AddPersonalDetailsRow(id, fullName[0], fullName[1], program, faculty);
+       //     MessageBox.Show(id + ";" + fullName[0] + ";" + fullName[1] + ";" + program + ";" + faculty);
+            this.tablePersonalDetails.AddPersonalDetailsRow(date, id, fullName[0], fullName[1], program, faculty);
         }
         
         internal void addSessionToSQL(string course_ID, string course_Name, string points, string grade)

@@ -18,10 +18,10 @@ namespace getGradesForms
 	    public delegate string ReadLine();
         private ReadLine readLine;
 
-        public delegate void PersonalDetailsFound(string id, string name, string program, string faculty);
+        public delegate void PersonalDetailsFound(string date, string id, string name, string program, string faculty);
         public event PersonalDetailsFound personalDetailsFound = delegate { };
 
-        public delegate void SessionFound(string Course_ID,string name, string points, string grade);
+        public delegate void SessionFound(string Course_ID, string name, string points, string grade);
         public event SessionFound sessionFound = delegate { };
 
         public delegate void SemesterFound(string year, string hebrewYear, string season);
@@ -82,7 +82,7 @@ namespace getGradesForms
                 if (i > 1)
                     table[i] = reverse(table[i]);
             }
-            personalDetailsFound(table[0], table[1], table[2], table[3]);
+            personalDetailsFound(table[0], table[1], table[2], table[3], table[4]);
         }
 
         private void parseSummary(string[] table)
