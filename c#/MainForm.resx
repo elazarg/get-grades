@@ -180,78 +180,6 @@
   <data name="personalDetailsGroup.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
-  <data name="&gt;&gt;passwordCheckBox.Name" xml:space="preserve">
-    <value>passwordCheckBox</value>
-  </data>
-  <data name="&gt;&gt;passwordCheckBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;passwordCheckBox.Parent" xml:space="preserve">
-    <value>personalDetailsGroup</value>
-  </data>
-  <data name="&gt;&gt;passwordCheckBox.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;label3.Name" xml:space="preserve">
-    <value>label3</value>
-  </data>
-  <data name="&gt;&gt;label3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
-    <value>personalDetailsGroup</value>
-  </data>
-  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;label2.Name" xml:space="preserve">
-    <value>label2</value>
-  </data>
-  <data name="&gt;&gt;label2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
-    <value>personalDetailsGroup</value>
-  </data>
-  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;useridTextbox.Name" xml:space="preserve">
-    <value>useridTextbox</value>
-  </data>
-  <data name="&gt;&gt;useridTextbox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;useridTextbox.Parent" xml:space="preserve">
-    <value>personalDetailsGroup</value>
-  </data>
-  <data name="&gt;&gt;useridTextbox.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="personalDetailsGroup.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
-  </data>
-  <data name="personalDetailsGroup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>166, 78</value>
-  </data>
-  <data name="personalDetailsGroup.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="personalDetailsGroup.Text" xml:space="preserve">
-    <value>Personal Details</value>
-  </data>
-  <data name="&gt;&gt;personalDetailsGroup.Name" xml:space="preserve">
-    <value>personalDetailsGroup</value>
-  </data>
-  <data name="&gt;&gt;personalDetailsGroup.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;personalDetailsGroup.Parent" xml:space="preserve">
-    <value>tableLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;personalDetailsGroup.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="passwordCheckBox.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -375,9 +303,36 @@
   <data name="&gt;&gt;useridTextbox.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <data name="personalDetailsGroup.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="personalDetailsGroup.Size" type="System.Drawing.Size, System.Drawing">
+    <value>166, 78</value>
+  </data>
+  <data name="personalDetailsGroup.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="personalDetailsGroup.Text" xml:space="preserve">
+    <value>Personal Details</value>
+  </data>
+  <data name="&gt;&gt;personalDetailsGroup.Name" xml:space="preserve">
+    <value>personalDetailsGroup</value>
+  </data>
+  <data name="&gt;&gt;personalDetailsGroup.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;personalDetailsGroup.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;personalDetailsGroup.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <data name="toolStripProgressBar1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 14</value>
+  </data>
   <data name="statusStrip1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 354</value>
   </data>
@@ -398,9 +353,6 @@
   </data>
   <data name="&gt;&gt;statusStrip1.ZOrder" xml:space="preserve">
     <value>2</value>
-  </data>
-  <data name="toolStripProgressBar1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 14</value>
   </data>
   <data name="session.Size" type="System.Drawing.Size, System.Drawing">
     <value>103, 15</value>
@@ -482,6 +434,12 @@
   </metadata>
   <data name="statusStrip2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
+  </data>
+  <data name="statusLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>40, 15</value>
+  </data>
+  <data name="statusLabel.Text" xml:space="preserve">
+    <value>Ready</value>
   </data>
   <data name="statusStrip2.Location" type="System.Drawing.Point, System.Drawing">
     <value>359, 354</value>
@@ -771,6 +729,18 @@
   <data name="&gt;&gt;tabPage4.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <data name="browser.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="browser.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="browser.Size" type="System.Drawing.Size, System.Drawing">
+    <value>608, 232</value>
+  </data>
+  <data name="browser.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
   <data name="&gt;&gt;browser.Name" xml:space="preserve">
     <value>browser</value>
   </data>
@@ -867,36 +837,6 @@
   <data name="tableLayoutPanel1.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
     <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="groupBox1" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="personalDetailsGroup" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="statusStrip1" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="statusStrip2" Row="2" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="tabControl1" Row="0" RowSpan="1" Column="2" ColumnSpan="3" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Absolute,172,Absolute,187,Percent,100" /&gt;&lt;Rows Styles="Absolute,84,Percent,100,Absolute,20,Absolute,20" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
-  <data name="statusLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>40, 15</value>
-  </data>
-  <data name="statusLabel.Text" xml:space="preserve">
-    <value>Ready</value>
-  </data>
-  <data name="browser.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="browser.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
-  </data>
-  <data name="browser.Size" type="System.Drawing.Size, System.Drawing">
-    <value>608, 232</value>
-  </data>
-  <data name="browser.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;browser.Name" xml:space="preserve">
-    <value>browser</value>
-  </data>
-  <data name="&gt;&gt;browser.Type" xml:space="preserve">
-    <value>System.Windows.Forms.WebBrowser, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;browser.Parent" xml:space="preserve">
-    <value>browserTab</value>
-  </data>
-  <data name="&gt;&gt;browser.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -947,6 +887,36 @@
   </data>
   <data name="&gt;&gt;statusLabel.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;iDDataGridViewTextBoxColumn3.Name" xml:space="preserve">
+    <value>iDDataGridViewTextBoxColumn3</value>
+  </data>
+  <data name="&gt;&gt;iDDataGridViewTextBoxColumn3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;firstNameDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>firstNameDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;firstNameDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lastNameDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>lastNameDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;lastNameDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;programDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>programDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;programDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;facultyDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>facultyDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;facultyDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;myDatabaseDataSet.Name" xml:space="preserve">
     <value>myDatabaseDataSet</value>
@@ -1024,36 +994,6 @@
     <value>hebrewYearDataGridViewTextBoxColumn</value>
   </data>
   <data name="&gt;&gt;hebrewYearDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;iDDataGridViewTextBoxColumn3.Name" xml:space="preserve">
-    <value>iDDataGridViewTextBoxColumn3</value>
-  </data>
-  <data name="&gt;&gt;iDDataGridViewTextBoxColumn3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;firstNameDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>firstNameDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;firstNameDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lastNameDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>lastNameDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;lastNameDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;programDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>programDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;programDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;facultyDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>facultyDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;facultyDataGridViewTextBoxColumn.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">

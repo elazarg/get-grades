@@ -73,7 +73,6 @@ namespace getGradesForms
         }
 
 
-
         private void parseDetails(string[] table)
         {
             for (int i = 0; i < table.Length; i++)
