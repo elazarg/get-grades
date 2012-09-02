@@ -471,9 +471,6 @@
   <data name="tabControl1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
-  <data name="iDDataGridViewTextBoxColumn3.HeaderText" xml:space="preserve">
-    <value>ID</value>
-  </data>
   <data name="firstNameDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
     <value>First Name</value>
   </data>
@@ -887,12 +884,6 @@
   </data>
   <data name="&gt;&gt;statusLabel.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;iDDataGridViewTextBoxColumn3.Name" xml:space="preserve">
-    <value>iDDataGridViewTextBoxColumn3</value>
-  </data>
-  <data name="&gt;&gt;iDDataGridViewTextBoxColumn3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;firstNameDataGridViewTextBoxColumn.Name" xml:space="preserve">
     <value>firstNameDataGridViewTextBoxColumn</value>

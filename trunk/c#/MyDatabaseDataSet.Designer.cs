@@ -290,6 +290,21 @@ namespace getGradesForms {
             base.Tables.Add(this.tableSemester);
             this.tablePersonalDetails = new PersonalDetailsDataTable();
             base.Tables.Add(this.tablePersonalDetails);
+            global::System.Data.ForeignKeyConstraint fkc;
+            fkc = new global::System.Data.ForeignKeyConstraint("CourseList_CourseSessions", new global::System.Data.DataColumn[] {
+                        this.tableCourseList.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableCourseSessions.Course_IDColumn});
+            this.tableCourseSessions.Constraints.Add(fkc);
+            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
+            fkc.DeleteRule = global::System.Data.Rule.None;
+            fkc.UpdateRule = global::System.Data.Rule.Cascade;
+            fkc = new global::System.Data.ForeignKeyConstraint("Semester_CourseSessions", new global::System.Data.DataColumn[] {
+                        this.tableSemester.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableCourseSessions.Semester_IDColumn});
+            this.tableCourseSessions.Constraints.Add(fkc);
+            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
+            fkc.DeleteRule = global::System.Data.Rule.None;
+            fkc.UpdateRule = global::System.Data.Rule.Cascade;
             this.relationCourseList_CourseSessions = new global::System.Data.DataRelation("CourseList_CourseSessions", new global::System.Data.DataColumn[] {
                         this.tableCourseList.IDColumn}, new global::System.Data.DataColumn[] {
                         this.tableCourseSessions.Course_IDColumn}, false);
