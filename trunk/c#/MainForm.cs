@@ -21,7 +21,7 @@ namespace getGradesForms
 
         void go()
         {
-            _MyDatabase_2DataSet.init();
+            this.myDatabaseDataSet.init();
             r = new Result();
             r.label = "Connecting"; backgroundWorker1.ReportProgress(1);
             using (Connection conn = new Connection())
@@ -34,8 +34,9 @@ namespace getGradesForms
                 r.label = "Processing"; backgroundWorker1.ReportProgress(1);
 
                 var pr = new Processor(reader.ReadLine);
-                pr.sessionFound += _MyDatabase_2DataSet.addSessionToSQL;
-                pr.semesterFound += _MyDatabase_2DataSet.addSemesterToSQL;
+                pr.sessionFound += this.myDatabaseDataSet.addSessionToSQL;
+                pr.semesterFound += this.myDatabaseDataSet.addSemesterToSQL;
+                pr.personalDetailsFound += this.myDatabaseDataSet.addPersonalDetails;
                 pr.processText();
 
                 r.label = "Done";
@@ -71,7 +72,7 @@ namespace getGradesForms
 
         private void saveFileDialog1_FileOk(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            File.WriteAllText(saveFileDialog1.FileName, textBox2.Text, Connection.hebrewEncoding);
+           // File.WriteAllText(saveFileDialog1.FileName, textBox2.Text, Connection.hebrewEncoding);
         }
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
@@ -93,11 +94,7 @@ namespace getGradesForms
             statusLabel.Text = r.label;
             goButton.Enabled = true;
             saveAsButton.Enabled = true;
-
-            courseSessionsBindingSource.ResetBindings(true);
-            courseListBindingSource.ResetBindings(true);
-            semesterBindingSource.ResetBindings(true);
-
+            
             this.Refresh();
         }
         

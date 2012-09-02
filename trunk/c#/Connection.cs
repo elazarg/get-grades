@@ -23,6 +23,7 @@ namespace getGradesForms
         const string path = "/cics/wmn/wmngrad";
 
         private Socket s = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.IP);
+        NetworkStream ns;
         private StreamWriter output;
         private StreamReader input;
         private StreamReader input_hebrew;
@@ -94,18 +95,15 @@ namespace getGradesForms
 
         private void skipLines(int num)
         {
-            while (num > 0)
-            {
+            for (; num > 0; num-- )
                 input_hebrew.ReadLine();
-                num--;
-            }
         }
 
         internal Connection()
         {
             this.s.Connect(host, 80);
 
-            NetworkStream ns = new NetworkStream(s);
+            ns = new NetworkStream(s);
             this.output = new StreamWriter(ns);
             this.input = new StreamReader(ns);
             this.input_hebrew = new StreamReader(ns, hebrewEncoding);
@@ -133,7 +131,9 @@ namespace getGradesForms
 
         public void Dispose()
         {
-
+            output.Dispose();
+            input.Dispose();
+            ns.Dispose();
         }
     }
 

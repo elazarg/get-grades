@@ -26,7 +26,7 @@ namespace getGradesForms.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=|DataDirectory|\\MyDatabase#2.sdf")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=|DataDirectory|\\MyDatabase.sdf")]
         public string MyDatabase_2ConnectionString {
             get {
                 return ((string)(this["MyDatabase_2ConnectionString"]));

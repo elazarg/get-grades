@@ -51,7 +51,10 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Data.SqlServerCe, Version=3.5.1.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Transactions" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
@@ -73,29 +76,27 @@
     </Compile>
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="Connection.cs" />
-    <Compile Include="CourseSession.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="PersonalDetails.cs" />
+    <Compile Include="MyDatabaseDataSet.cs">
+      <DependentUpon>MyDatabaseDataSet.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MyDatabaseDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MyDatabaseDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Processor.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
-    </Compile>
-    <Compile Include="_MyDatabase_2DataSet.cs">
-      <DependentUpon>_MyDatabase_2DataSet.xsd</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="_MyDatabase_2DataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>_MyDatabase_2DataSet.xsd</DependentUpon>
     </Compile>
     <EmbeddedResource Include="AboutBox.resx">
       <DependentUpon>AboutBox.cs</DependentUpon>
@@ -106,35 +107,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="Properties\DataSources\Connection.Tick.datasource" />
-    <None Include="Properties\DataSources\Course.datasource" />
-    <None Include="Properties\DataSources\CourseSession.datasource" />
-    <None Include="Properties\DataSources\PersonalDetails.datasource" />
-    <None Include="Properties\DataSources\Processor.datasource" />
-    <None Include="Properties\DataSources\Processor.Tick.datasource" />
-    <None Include="Properties\DataSources\Program.datasource" />
-    <None Include="Properties\DataSources\SemesterDetails.datasource" />
+    <None Include="MyDatabaseDataSet.xsc">
+      <DependentUpon>MyDatabaseDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="MyDatabaseDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>MyDatabaseDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="MyDatabaseDataSet.xss">
+      <DependentUpon>MyDatabaseDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="_MyDatabase_2DataSet.xsc">
-      <DependentUpon>_MyDatabase_2DataSet.xsd</DependentUpon>
-    </None>
-    <None Include="_MyDatabase_2DataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>_MyDatabase_2DataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="_MyDatabase_2DataSet.xss">
-      <DependentUpon>_MyDatabase_2DataSet.xsd</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="MyDatabase#2.sdf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="TypedData.sdf">
+    <Content Include="MyDatabase.sdf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
@@ -164,6 +154,9 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\DataSources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

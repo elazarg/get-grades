@@ -1,48 +1,59 @@
 ﻿using System.Windows.Forms;
 using System.Linq;
 using System.Collections.Generic;
-namespace getGradesForms {
-    
-    
-    public partial class _MyDatabase_2DataSet {
-        int semester = 0;
+
+
+namespace getGradesForms
+{
+    public partial class MyDatabaseDataSet
+    {
         HashSet<string> s = new HashSet<string>();
 
         internal void init()
         {
             this.Clear();
-            semester = 0;
             this.tableSemester.AddSemesterRow("זיכויים", null, null);
         }
-
-        internal void addSessionToSQL(string course_ID, string name, string points, string grade)
+        
+        private CourseListRow addCourse(string id, string name, string points)
         {
             CourseListRow crow = this.tableCourseList.NewCourseListRow();
-            crow.ID = course_ID;
+            crow.ID = id;
             crow.Name = name;
             crow.Points = points;
-            if (!s.Contains(course_ID))
+            if (!s.Contains(id))
                 this.tableCourseList.AddCourseListRow(crow);
-            s.Add(course_ID);
-            decimal d;
+            s.Add(id);
+            this.tableCourseList.AcceptChanges();
+            return crow;
+        }
 
+        internal void addPersonalDetails(string id, string name, string program, string faculty)
+        {
+            string[] fullName = name.Split(new char[] {' '});
+            
+            this.tablePersonalDetails.AddPersonalDetailsRow(id, fullName[0], fullName[1], program, faculty);
+        }
+        
+        internal void addSessionToSQL(string course_ID, string course_Name, string points, string grade)
+        {
             CourseSessionsRow cs = this.tableCourseSessions.NewCourseSessionsRow();
-            cs.CourseListRow = crow;
+            cs.CourseListRow = addCourse(course_ID, course_Name, points);
             cs.SemesterRow = this.tableSemester.Last();
 
-            if (decimal.TryParse(grade, out d)) {
+            decimal d;
+            if (decimal.TryParse(grade, out d))
+            {
                 cs.Grade = d;
             }
             if (grade.Contains("*"))
                 cs.RD = "RD";
             this.tableCourseSessions.AddCourseSessionsRow(cs);
-
-            
+            this.tableCourseSessions.AcceptChanges();
         }
 
         internal void addSemesterToSQL(string year, string hebrewYear, string season)
         {
-            semester++;
             this.tableSemester.AddSemesterRow(year, season, hebrewYear);
         }
     }

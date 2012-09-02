@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Get Grades")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Elazar Gershuni")]
+[assembly: AssemblyCompany("אלעזר גרשוני")]
 [assembly: AssemblyProduct("Get Grades")]
-[assembly: AssemblyCopyright("Copyright ©  2012")]
+[assembly: AssemblyCopyright("2012")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -29,5 +29,5 @@ using System.Runtime.InteropServices;
 //      Build Number
 //      Revision
 //
-[assembly: AssemblyVersion("0.0.2.0")]
+[assembly: AssemblyVersion("0.0.3.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
