@@ -18,11 +18,26 @@ namespace getGradesForms
 	    public delegate string ReadLine();
         private ReadLine readLine;
 
+        public delegate void PersonalDetailsFound(string id, string name, string program, string faculty);
+        public event PersonalDetailsFound personalDetailsFound = delegate { };
+
         public delegate void SessionFound(string Course_ID,string name, string points, string grade);
         public event SessionFound sessionFound = delegate { };
 
         public delegate void SemesterFound(string year, string hebrewYear, string season);
         public event SemesterFound semesterFound = delegate { };
+
+        internal void processText()
+        {
+            string[][] tables = getTables().ToArray();
+
+            parseDetails(tables[0]);
+            parseSummary(tables[1]);
+            parseZikui(tables[2]);
+
+            for (int i = 3; i < tables.Length; i++)
+                parseSemester(tables[i].ToArray(), i, i == tables.Length);
+        }
 
         private IEnumerable<String[]> getTables()
         {
@@ -57,19 +72,9 @@ namespace getGradesForms
             return removeXML(line.Replace("</td><td>", specialsep).Replace("&nbsp;", "   "));
         }
 
-        internal void processText()
-        {
-            string[][] tables = getTables().ToArray();
 
-            parseDetails(tables[0]);
-            parseSummary(tables[1]);
-            parseZikui(tables[2]);
-            int i;
-            for (i = 3; i < tables.Length - 1; i++)
-                parseSemester(tables[i].ToArray(), i, i == tables.Length);
-        }
 
-        private PersonalDetails parseDetails(string[] table)
+        private void parseDetails(string[] table)
         {
             for (int i = 0; i < table.Length; i++)
             {
@@ -78,23 +83,24 @@ namespace getGradesForms
                 if (i > 1)
                     table[i] = reverse(table[i]);
             }
-            return new PersonalDetails(table);
+            personalDetailsFound(table[0], table[1], table[2], table[3]);
         }
 
-        private Summary parseSummary(string[] table)
+        private void parseSummary(string[] table)
         {
-            return new Summary(removeXML(table[1].Replace("</TD><TD>", ",")).Split(','));
+           // return new Summary(removeXML(table[1].Replace("</TD><TD>", ",")).Split(','));
         }
 
         private void parseZikui(string[] table)
         {
+            /*
             SemesterDetails sem = new SemesterDetails("זיכויים");
             sem.summary = new Summary(new string[] { "100", "100", "100" });
             sem.hebrewYear = sem.season = "";
             sem.numberOfCourses = table.Length - 3;
             string points = table[table.Length - 2].Split(new char[] { '<', '>' }, StringSplitOptions.RemoveEmptyEntries)[5];
             sem.summary.totalPoints = decimal.Parse(points);
-
+            */
             foreach (string line in table)
                 if (line.StartsWith("<TR ALIGN"))
                     parseLine(line);
@@ -105,6 +111,9 @@ namespace getGradesForms
             string[] args = strip(removeXML(table[0])).Split("() ".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
             args[0] = reverse(args[0]);
             args[2] = reverse(args[2]);
+
+            semesterFound(args[1], args[0], args[2]);
+            /*
             SemesterDetails sem = new SemesterDetails(args); ;
             if (!islast)
             {
@@ -119,7 +128,7 @@ namespace getGradesForms
             }
             sem.numberOfCourses = table.Length - 2;
 
-            semesterFound(sem.year, sem.hebrewYear, sem.season);
+            */
 
             foreach (string line in table)
                 if (line.StartsWith("<TR ALIGN"))
