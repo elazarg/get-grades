@@ -72,8 +72,8 @@
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
-      <msdata:Relationship name="CourseList_CourseSessions" msdata:parent="CourseList" msdata:child="CourseSessions" msdata:parentkey="ID" msdata:childkey="Course_x0020_ID" msprop:Generator_UserChildTable="CourseSessions" msprop:Generator_ChildPropName="GetCourseSessionsRows" msprop:Generator_ParentPropName="CourseListRow" msprop:Generator_UserRelationName="CourseList_CourseSessions" msprop:Generator_RelationVarName="relationCourseList_CourseSessions" msprop:Generator_UserParentTable="CourseList" />
-      <msdata:Relationship name="Semester_CourseSessions" msdata:parent="Semester" msdata:child="CourseSessions" msdata:parentkey="ID" msdata:childkey="Semester_x0020_ID" msprop:Generator_UserChildTable="CourseSessions" msprop:Generator_ChildPropName="GetCourseSessionsRows" msprop:Generator_ParentPropName="SemesterRow" msprop:Generator_UserRelationName="Semester_CourseSessions" msprop:Generator_RelationVarName="relationSemester_CourseSessions" msprop:Generator_UserParentTable="Semester" />
+      <msdata:Relationship name="CourseList_CourseSessions" msdata:parent="CourseList" msdata:child="CourseSessions" msdata:parentkey="ID" msdata:childkey="Course_x0020_ID" msprop:Generator_UserChildTable="CourseSessions" msprop:Generator_ChildPropName="GetCourseSessionsRows" msprop:Generator_UserParentTable="CourseList" msprop:Generator_UserRelationName="CourseList_CourseSessions" msprop:Generator_RelationVarName="relationCourseList_CourseSessions" msprop:Generator_ParentPropName="CourseListRow" />
+      <msdata:Relationship name="Semester_CourseSessions" msdata:parent="Semester" msdata:child="CourseSessions" msdata:parentkey="ID" msdata:childkey="Semester_x0020_ID" msprop:Generator_UserChildTable="CourseSessions" msprop:Generator_ChildPropName="GetCourseSessionsRows" msprop:Generator_UserParentTable="Semester" msprop:Generator_UserRelationName="Semester_CourseSessions" msprop:Generator_RelationVarName="relationSemester_CourseSessions" msprop:Generator_ParentPropName="SemesterRow" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>
