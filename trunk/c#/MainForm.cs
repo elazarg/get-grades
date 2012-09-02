@@ -15,14 +15,13 @@ namespace getGradesForms
         public MainForm()
         {
             InitializeComponent();
-            _MyDatabase_2DataSet.init();
         }
 
         Result r;
 
         void go()
         {
-            
+            _MyDatabase_2DataSet.init();
             r = new Result();
             r.label = "Connecting"; backgroundWorker1.ReportProgress(1);
             using (Connection conn = new Connection())
@@ -34,12 +33,11 @@ namespace getGradesForms
             
                 r.label = "Processing"; backgroundWorker1.ReportProgress(1);
 
-               
                 var pr = new Processor(reader.ReadLine);
                 pr.sessionFound += _MyDatabase_2DataSet.addSessionToSQL;
                 pr.semesterFound += _MyDatabase_2DataSet.addSemesterToSQL;
                 pr.processText();
-                
+
                 r.label = "Done";
             }
         }
@@ -96,7 +94,11 @@ namespace getGradesForms
             goButton.Enabled = true;
             saveAsButton.Enabled = true;
 
-            dataGridView2.Refresh();
+            courseSessionsBindingSource.ResetBindings(true);
+            courseListBindingSource.ResetBindings(true);
+            semesterBindingSource.ResetBindings(true);
+
+            this.Refresh();
         }
         
         

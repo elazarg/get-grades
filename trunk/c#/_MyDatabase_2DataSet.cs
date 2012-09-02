@@ -10,6 +10,8 @@ namespace getGradesForms {
 
         internal void init()
         {
+            this.Clear();
+            semester = 0;
             this.tableSemester.AddSemesterRow("זיכויים", null, null);
         }
 
