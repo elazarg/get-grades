@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Windows.Forms;
 using System.Linq;
+using System.Data.SqlTypes;
 namespace getGradesForms
 {
     public partial class MainForm : Form
@@ -94,7 +95,15 @@ namespace getGradesForms
             statusLabel.Text = r.label;
             goButton.Enabled = true;
             saveAsButton.Enabled = true;
-            
+
+            var view = (from session in myDatabaseDataSet.CourseSessions
+                        join course in myDatabaseDataSet.CourseList on session.Course_ID equals course.ID
+                        select new Tuple<string, string, decimal>(session.Course_ID, course.Name, session.Grade)).Reverse();
+
+            foreach (var row in view)
+                if ((from c in myDatabaseDataSet.ViewTable where c.Course_Name == row.Item2 select 1).Count() == 0)
+                    myDatabaseDataSet.ViewTable.AddViewTableRow(row.Item1, row.Item2, row.Item3);
+
             this.Refresh();
         }
         
