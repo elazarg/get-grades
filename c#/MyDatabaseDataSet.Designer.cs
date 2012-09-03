@@ -1678,6 +1678,8 @@ namespace getGradesForms {
             
             private global::System.Data.DataColumn columnCourse_Name;
             
+            private global::System.Data.DataColumn columnPoints;
+            
             private global::System.Data.DataColumn columnGrade;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1731,6 +1733,14 @@ namespace getGradesForms {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn PointsColumn {
+                get {
+                    return this.columnPoints;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn GradeColumn {
                 get {
                     return this.columnGrade;
@@ -1774,11 +1784,12 @@ namespace getGradesForms {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ViewTableRow AddViewTableRow(string Course_ID, string Course_Name, decimal Grade) {
+            public ViewTableRow AddViewTableRow(string Course_ID, string Course_Name, string Points, decimal Grade) {
                 ViewTableRow rowViewTableRow = ((ViewTableRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Course_ID,
                         Course_Name,
+                        Points,
                         Grade};
                 rowViewTableRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowViewTableRow);
@@ -1804,6 +1815,7 @@ namespace getGradesForms {
             internal void InitVars() {
                 this.columnCourse_ID = base.Columns["Course ID"];
                 this.columnCourse_Name = base.Columns["Course Name"];
+                this.columnPoints = base.Columns["Points"];
                 this.columnGrade = base.Columns["Grade"];
             }
             
@@ -1814,6 +1826,8 @@ namespace getGradesForms {
                 base.Columns.Add(this.columnCourse_ID);
                 this.columnCourse_Name = new global::System.Data.DataColumn("Course Name", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCourse_Name);
+                this.columnPoints = new global::System.Data.DataColumn("Points", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPoints);
                 this.columnGrade = new global::System.Data.DataColumn("Grade", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnGrade);
             }
@@ -2547,6 +2561,22 @@ namespace getGradesForms {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Points {
+                get {
+                    try {
+                        return ((string)(this[this.tableViewTable.PointsColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Points\' in table \'ViewTable\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableViewTable.PointsColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public decimal Grade {
                 get {
                     try {
@@ -2583,6 +2613,18 @@ namespace getGradesForms {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetCourse_NameNull() {
                 this[this.tableViewTable.Course_NameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsPointsNull() {
+                return this.IsNull(this.tableViewTable.PointsColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetPointsNull() {
+                this[this.tableViewTable.PointsColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
