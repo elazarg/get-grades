@@ -61,7 +61,8 @@
             <xs:sequence>
               <xs:element name="Course_x0020_ID" msprop:nullValue="_null" msprop:Generator_ColumnPropNameInRow="Course_ID" msprop:Generator_ColumnVarNameInTable="columnCourse_ID" msprop:Generator_ColumnPropNameInTable="Course_IDColumn" msprop:Generator_UserColumnName="Course ID" type="xs:string" minOccurs="0" />
               <xs:element name="Course_x0020_Name" msprop:nullValue="_null" msprop:Generator_ColumnPropNameInRow="Course_Name" msprop:Generator_ColumnVarNameInTable="columnCourse_Name" msprop:Generator_ColumnPropNameInTable="Course_NameColumn" msprop:Generator_UserColumnName="Course Name" type="xs:string" minOccurs="0" />
-              <xs:element name="Grade" msprop:nullValue="_throw" msprop:Generator_ColumnPropNameInRow="Grade" msprop:Generator_ColumnVarNameInTable="columnGrade" msprop:Generator_ColumnPropNameInTable="GradeColumn" msprop:Generator_UserColumnName="Grade" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Points" msprop:nullValue="_throw" msprop:Generator_ColumnPropNameInRow="Points" msprop:Generator_ColumnVarNameInTable="columnPoints" msprop:Generator_ColumnPropNameInTable="PointsColumn" msprop:Generator_UserColumnName="Points" type="xs:string" minOccurs="0" />
+              <xs:element name="Grade" msprop:Generator_ColumnVarNameInTable="columnGrade" msprop:Generator_ColumnPropNameInRow="Grade" msprop:Generator_ColumnPropNameInTable="GradeColumn" msprop:Generator_UserColumnName="Grade" type="xs:decimal" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

@@ -92,6 +92,7 @@ namespace getGradesForms
 
         private void parseZikui(string[] table)
         {
+            #region todo
             /*
             SemesterDetails sem = new SemesterDetails("זיכויים");
             sem.summary = new Summary(new string[] { "100", "100", "100" });
@@ -100,6 +101,7 @@ namespace getGradesForms
             string points = table[table.Length - 2].Split(new char[] { '<', '>' }, StringSplitOptions.RemoveEmptyEntries)[5];
             sem.summary.totalPoints = decimal.Parse(points);
             */
+            #endregion
             foreach (string line in table)
                 if (line.StartsWith("<TR ALIGN"))
                     parseLine(line);
@@ -112,6 +114,7 @@ namespace getGradesForms
             args[2] = reverse(args[2]);
 
             semesterFound(args[1], args[0], args[2]);
+            #region todo
             /*
             SemesterDetails sem = new SemesterDetails(args); ;
             if (!islast)
@@ -128,6 +131,7 @@ namespace getGradesForms
             sem.numberOfCourses = table.Length - 2;
 
             */
+            #endregion
 
             foreach (string line in table)
                 if (line.StartsWith("<TR ALIGN"))

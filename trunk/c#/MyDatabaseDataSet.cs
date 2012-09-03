@@ -1,6 +1,7 @@
 ﻿using System.Windows.Forms;
 using System.Linq;
 using System.Collections.Generic;
+using System;
 
 
 namespace getGradesForms
@@ -51,6 +52,18 @@ namespace getGradesForms
         internal void addSemesterToSQL(string year, string hebrewYear, string season)
         {
             this.tableSemester.AddSemesterRow(year, season, hebrewYear);
+        }
+
+        internal void updateCleanSlate(bool show_empty = false)
+        {
+            var view = (from session in CourseSessions
+                        join course in CourseList on session.Course_ID equals course.ID
+                        select new Tuple<string, string, string, decimal>(course.ID, course.Name, course.Points, session.Grade)).Reverse();
+
+            foreach (var row in view)
+                if ((from c in ViewTable where c.Course_Name == row.Item2 select 1).Count() == 0
+                    && (show_empty || row.Item4 > -1) )
+                    ViewTable.AddViewTableRow(row.Item1, row.Item2, row.Item3, row.Item4);
         }
     }
 }
