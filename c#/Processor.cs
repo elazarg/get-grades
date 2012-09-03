@@ -143,8 +143,7 @@ namespace getGradesForms
             string[] nameAndId = x[2].Split(new string[] { "&nbsp;" }, 10, StringSplitOptions.RemoveEmptyEntries);
             
             string courseId = nameAndId.Last();
-            string name = reverse(string.Join(" ", nameAndId.TakeWhile( str => str!=courseId)));
-
+            string name = reverse(string.Join(" ", nameAndId.TakeWhile(str => str != courseId))).Replace('(', '$').Replace(')', '(').Replace('$', ')');
             sessionFound(courseId, name, points, grade);
         }
 

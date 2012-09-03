@@ -7,21 +7,20 @@ namespace getGradesForms
 {
     public partial class MyDatabaseDataSet
     {
-        HashSet<string> s = new HashSet<string>();
-
         internal void init()
         {
             this.Clear();
             this.tableSemester.AddSemesterRow("זיכויים", null, null);
         }
-        
+
+        HashSet<string> s = new HashSet<string>();
         private CourseListRow addCourse(string id, string name, string points)
         {
             CourseListRow crow = this.tableCourseList.NewCourseListRow();
             crow.ID = id;
             crow.Name = name;
             crow.Points = points;
-            if (!s.Contains(id))
+            if (!this.tableCourseList.Rows.Contains(id))// !s.Contains(id))
                 this.tableCourseList.AddCourseListRow(crow);
             s.Add(id);
             this.tableCourseList.AcceptChanges();
@@ -40,11 +39,9 @@ namespace getGradesForms
             cs.CourseListRow = addCourse(course_ID, course_Name, points);
             cs.SemesterRow = this.tableSemester.Last();
 
-            decimal d;
-            if (decimal.TryParse(grade, out d))
-            {
-                cs.Grade = d;
-            }
+            decimal decimalGrade;
+            if (decimal.TryParse(grade, out decimalGrade))
+                cs.Grade = decimalGrade;
             if (grade.Contains("*"))
                 cs.RD = "RD";
             this.tableCourseSessions.AddCourseSessionsRow(cs);
