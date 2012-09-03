@@ -24,15 +24,15 @@ namespace getGradesForms
         {
             this.myDatabaseDataSet.init();
             r = new Result();
-            r.label = "Connecting"; backgroundWorker1.ReportProgress(1);
+            r.label = "מתחבר"; backgroundWorker1.ReportProgress(1);
             using (Connection conn = new Connection())
             {
                 conn.tick += delegate { backgroundWorker1.ReportProgress(20); };
-                r.label = "Authenticating";  backgroundWorker1.ReportProgress(1);
+                r.label = "מבצע הזדהות";  backgroundWorker1.ReportProgress(1);
                 
                 TextReader reader = conn.retrieveHTML(useridTextbox.Text, passwordBox.Text);
             
-                r.label = "Processing"; backgroundWorker1.ReportProgress(1);
+                r.label = "מעבד"; backgroundWorker1.ReportProgress(1);
 
                 var pr = new Processor(reader.ReadLine);
                 pr.sessionFound += this.myDatabaseDataSet.addSessionToSQL;
@@ -40,7 +40,7 @@ namespace getGradesForms
                 pr.personalDetailsFound += this.myDatabaseDataSet.addPersonalDetails;
                 pr.processText();
 
-                r.label = "Done";
+                r.label = "סיים";
             }
         }
 

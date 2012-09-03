@@ -30,22 +30,12 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.goButton = new System.Windows.Forms.Button();
-            this.passwordBox = new System.Windows.Forms.TextBox();
-            this.personalDetailsGroup = new System.Windows.Forms.GroupBox();
-            this.passwordCheckBox = new System.Windows.Forms.CheckBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.useridTextbox = new System.Windows.Forms.TextBox();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
             this.session = new System.Windows.Forms.ToolStripStatusLabel();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.saveAsButton = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.statusStrip2 = new System.Windows.Forms.StatusStrip();
-            this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPersonal = new System.Windows.Forms.TabPage();
             this.dataGridView4 = new System.Windows.Forms.DataGridView();
@@ -79,11 +69,18 @@
             this.yearDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.seasonDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.hebrewYearDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.personalDetailsGroup.SuspendLayout();
-            this.statusStrip1.SuspendLayout();
+            this.passwordBox = new System.Windows.Forms.TextBox();
+            this.useridTextbox = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.passwordCheckBox = new System.Windows.Forms.CheckBox();
+            this.personalDetailsGroup = new System.Windows.Forms.GroupBox();
+            this.statusStrip2 = new System.Windows.Forms.StatusStrip();
+            this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.statusStrip2.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPersonal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
@@ -97,6 +94,9 @@
             this.tabBrowser.SuspendLayout();
             this.tabCleanSlate.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).BeginInit();
+            this.personalDetailsGroup.SuspendLayout();
+            this.statusStrip2.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // goButton
@@ -105,64 +105,6 @@
             this.goButton.Name = "goButton";
             this.goButton.UseVisualStyleBackColor = true;
             this.goButton.Click += new System.EventHandler(this.goButton_Click);
-            // 
-            // passwordBox
-            // 
-            resources.ApplyResources(this.passwordBox, "passwordBox");
-            this.passwordBox.Name = "passwordBox";
-            this.passwordBox.TextChanged += new System.EventHandler(this.passwordBox_TextChanged);
-            // 
-            // personalDetailsGroup
-            // 
-            resources.ApplyResources(this.personalDetailsGroup, "personalDetailsGroup");
-            this.personalDetailsGroup.Controls.Add(this.passwordCheckBox);
-            this.personalDetailsGroup.Controls.Add(this.label3);
-            this.personalDetailsGroup.Controls.Add(this.label2);
-            this.personalDetailsGroup.Controls.Add(this.useridTextbox);
-            this.personalDetailsGroup.Controls.Add(this.passwordBox);
-            this.personalDetailsGroup.Name = "personalDetailsGroup";
-            this.personalDetailsGroup.TabStop = false;
-            // 
-            // passwordCheckBox
-            // 
-            resources.ApplyResources(this.passwordCheckBox, "passwordCheckBox");
-            this.passwordCheckBox.Checked = true;
-            this.passwordCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.passwordCheckBox.Name = "passwordCheckBox";
-            this.passwordCheckBox.UseVisualStyleBackColor = true;
-            this.passwordCheckBox.CheckStateChanged += new System.EventHandler(this.passwordCheckBox_CheckStateChanged);
-            // 
-            // label3
-            // 
-            resources.ApplyResources(this.label3, "label3");
-            this.label3.Name = "label3";
-            // 
-            // label2
-            // 
-            resources.ApplyResources(this.label2, "label2");
-            this.label2.Name = "label2";
-            // 
-            // useridTextbox
-            // 
-            resources.ApplyResources(this.useridTextbox, "useridTextbox");
-            this.useridTextbox.Name = "useridTextbox";
-            this.useridTextbox.TextChanged += new System.EventHandler(this.passwordBox_TextChanged);
-            // 
-            // statusStrip1
-            // 
-            this.tableLayoutPanel1.SetColumnSpan(this.statusStrip1, 2);
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripProgressBar1});
-            resources.ApplyResources(this.statusStrip1, "statusStrip1");
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.SizingGrip = false;
-            // 
-            // toolStripProgressBar1
-            // 
-            this.toolStripProgressBar1.Maximum = 141;
-            this.toolStripProgressBar1.Name = "toolStripProgressBar1";
-            resources.ApplyResources(this.toolStripProgressBar1, "toolStripProgressBar1");
-            this.toolStripProgressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             // 
             // session
             // 
@@ -191,11 +133,11 @@
             // tableLayoutPanel1
             // 
             resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
+            this.tableLayoutPanel1.Controls.Add(this.statusStrip1, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.groupBox1, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.personalDetailsGroup, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.statusStrip1, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.statusStrip2, 2, 2);
             this.tableLayoutPanel1.Controls.Add(this.tabControl1, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.personalDetailsGroup, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.statusStrip2, 0, 2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             // 
             // groupBox1
@@ -206,22 +148,8 @@
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
             // 
-            // statusStrip2
-            // 
-            resources.ApplyResources(this.statusStrip2, "statusStrip2");
-            this.statusStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.statusLabel});
-            this.statusStrip2.Name = "statusStrip2";
-            this.statusStrip2.SizingGrip = false;
-            // 
-            // statusLabel
-            // 
-            this.statusLabel.Name = "statusLabel";
-            resources.ApplyResources(this.statusLabel, "statusLabel");
-            // 
             // tabControl1
             // 
-            resources.ApplyResources(this.tabControl1, "tabControl1");
             this.tableLayoutPanel1.SetColumnSpan(this.tabControl1, 3);
             this.tabControl1.Controls.Add(this.tabCleanSlate);
             this.tabControl1.Controls.Add(this.tabPersonal);
@@ -229,6 +157,7 @@
             this.tabControl1.Controls.Add(this.tabCourses);
             this.tabControl1.Controls.Add(this.tabSemesters);
             this.tabControl1.Controls.Add(this.tabBrowser);
+            resources.ApplyResources(this.tabControl1, "tabControl1");
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             // 
@@ -524,6 +453,77 @@
             this.hebrewYearDataGridViewTextBoxColumn.Name = "hebrewYearDataGridViewTextBoxColumn";
             this.hebrewYearDataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // passwordBox
+            // 
+            resources.ApplyResources(this.passwordBox, "passwordBox");
+            this.passwordBox.Name = "passwordBox";
+            this.passwordBox.TextChanged += new System.EventHandler(this.passwordBox_TextChanged);
+            // 
+            // useridTextbox
+            // 
+            resources.ApplyResources(this.useridTextbox, "useridTextbox");
+            this.useridTextbox.Name = "useridTextbox";
+            this.useridTextbox.TextChanged += new System.EventHandler(this.passwordBox_TextChanged);
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
+            // label3
+            // 
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.Name = "label3";
+            // 
+            // passwordCheckBox
+            // 
+            resources.ApplyResources(this.passwordCheckBox, "passwordCheckBox");
+            this.passwordCheckBox.Checked = true;
+            this.passwordCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.passwordCheckBox.Name = "passwordCheckBox";
+            this.passwordCheckBox.UseVisualStyleBackColor = true;
+            this.passwordCheckBox.CheckStateChanged += new System.EventHandler(this.passwordCheckBox_CheckStateChanged);
+            // 
+            // personalDetailsGroup
+            // 
+            this.personalDetailsGroup.Controls.Add(this.passwordCheckBox);
+            this.personalDetailsGroup.Controls.Add(this.label3);
+            this.personalDetailsGroup.Controls.Add(this.label2);
+            this.personalDetailsGroup.Controls.Add(this.useridTextbox);
+            this.personalDetailsGroup.Controls.Add(this.passwordBox);
+            resources.ApplyResources(this.personalDetailsGroup, "personalDetailsGroup");
+            this.personalDetailsGroup.Name = "personalDetailsGroup";
+            this.personalDetailsGroup.TabStop = false;
+            // 
+            // statusStrip2
+            // 
+            resources.ApplyResources(this.statusStrip2, "statusStrip2");
+            this.statusStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.statusLabel});
+            this.statusStrip2.Name = "statusStrip2";
+            this.statusStrip2.SizingGrip = false;
+            // 
+            // statusLabel
+            // 
+            this.statusLabel.Name = "statusLabel";
+            resources.ApplyResources(this.statusLabel, "statusLabel");
+            // 
+            // statusStrip1
+            // 
+            this.tableLayoutPanel1.SetColumnSpan(this.statusStrip1, 2);
+            resources.ApplyResources(this.statusStrip1, "statusStrip1");
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripProgressBar1});
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.SizingGrip = false;
+            // 
+            // toolStripProgressBar1
+            // 
+            this.toolStripProgressBar1.Maximum = 141;
+            this.toolStripProgressBar1.Name = "toolStripProgressBar1";
+            resources.ApplyResources(this.toolStripProgressBar1, "toolStripProgressBar1");
+            this.toolStripProgressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            // 
             // MainForm
             // 
             resources.ApplyResources(this, "$this");
@@ -531,15 +531,9 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "MainForm";
             this.ShowIcon = false;
-            this.personalDetailsGroup.ResumeLayout(false);
-            this.personalDetailsGroup.PerformLayout();
-            this.statusStrip1.ResumeLayout(false);
-            this.statusStrip1.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
-            this.statusStrip2.ResumeLayout(false);
-            this.statusStrip2.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.tabPersonal.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
@@ -553,6 +547,12 @@
             this.tabBrowser.ResumeLayout(false);
             this.tabCleanSlate.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).EndInit();
+            this.personalDetailsGroup.ResumeLayout(false);
+            this.personalDetailsGroup.PerformLayout();
+            this.statusStrip2.ResumeLayout(false);
+            this.statusStrip2.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -560,21 +560,12 @@
         #endregion
 
         private System.Windows.Forms.Button goButton;
-        private System.Windows.Forms.TextBox passwordBox;
-        private System.Windows.Forms.GroupBox personalDetailsGroup;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.CheckBox passwordCheckBox;
-        private System.Windows.Forms.TextBox useridTextbox;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.Button saveAsButton;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.ToolStripStatusLabel session;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.StatusStrip statusStrip2;
-        private System.Windows.Forms.ToolStripStatusLabel statusLabel;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabCourses;
         private System.Windows.Forms.TabPage tabSemesters;
@@ -586,7 +577,6 @@
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.DataGridView dataGridView4;
         private System.Windows.Forms.DataGridView dataGridView3;
-        private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.TabPage tabCleanSlate;
         private System.Windows.Forms.DataGridView dataGridView5;
@@ -609,6 +599,16 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn yearDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn seasonDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn hebrewYearDataGridViewTextBoxColumn;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
+        private System.Windows.Forms.GroupBox personalDetailsGroup;
+        private System.Windows.Forms.CheckBox passwordCheckBox;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox useridTextbox;
+        private System.Windows.Forms.TextBox passwordBox;
+        private System.Windows.Forms.StatusStrip statusStrip2;
+        private System.Windows.Forms.ToolStripStatusLabel statusLabel;
     }
 }
 
