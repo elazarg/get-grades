@@ -71,8 +71,7 @@ namespace getGradesForms
         {
             return removeXML(line.Replace("</td><td>", specialsep).Replace("&nbsp;", "   "));
         }
-
-
+        
         private void parseDetails(string[] table)
         {
             for (int i = 0; i < table.Length; i++)
@@ -151,8 +150,6 @@ namespace getGradesForms
             sessionFound(courseId, name, points, grade);
         }
 
-        static string seperator = ",";
-        static string spaceseperator = " " + seperator + " ";
         static string reverse(string str)
         {
             return new string(str.Reverse().ToArray());
@@ -182,6 +179,30 @@ namespace getGradesForms
                     copy = true;
             }
             return sb.ToString();
+        }
+
+
+        string reverseSession(Match s)
+        {
+            string[] nameAndId = s.Value.Split(new string[] { " " }, 10, StringSplitOptions.None);
+
+            var courseId = Regex.Match(s.Value, "[0-9]{6}", RegexOptions.Compiled);
+            string name = reverse(string.Join(" ", nameAndId.TakeWhile(str => str != courseId.Value)))
+                            .Replace('(', '$').Replace(')', '(').Replace('$', ')');
+            if (courseId.Success)
+                name += "</td><td>" + courseId.Value;
+            return name;
+        }
+
+        internal string flipHtml(String htmltemp)
+        {
+            string html = htmltemp.Replace("&nbsp;", " ");
+            string pattern = "[א-ת]" + "(&nbsp;|[0-9" + "א-ת \\-\"'\\./()])*";
+            return Regex.Replace(html, pattern, reverseSession)
+                        .Replace("<TD>ציון</TD><TD>.נק</TD><TD>שם מקצוע</TD></TR>",
+                                 "<TD>ציון</TD><TD>.נק</TD><TD>שם מקצוע</TD><TD>מספר מקצוע</TD></TR>")
+                        .Replace("<TD COLSPAN=3>", "<TD COLSPAN=4>")
+                        .Replace("ע<BR>", "ע</TD><TD>");
         }
     }
 
