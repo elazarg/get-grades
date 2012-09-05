@@ -37,7 +37,6 @@
             this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripProgressBar = new System.Windows.Forms.ToolStripProgressBar();
             this.groupBoxAuthentication = new System.Windows.Forms.GroupBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabCleanSlate = new System.Windows.Forms.TabPage();
@@ -55,11 +54,6 @@
             this.facultyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabSessions = new System.Windows.Forms.TabPage();
             this.dataGridViewSessions = new System.Windows.Forms.DataGridView();
-            this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.courseIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gradeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.semesterIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabCourses = new System.Windows.Forms.TabPage();
             this.dataGridViewCourseList = new System.Windows.Forms.DataGridView();
             this.iDDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -67,12 +61,10 @@
             this.pointsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabSemesters = new System.Windows.Forms.TabPage();
             this.dataGridViewSemesters = new System.Windows.Forms.DataGridView();
-            this.iDDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.yearDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.seasonDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.hebrewYearDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabBrowser = new System.Windows.Forms.TabPage();
             this.browser = new System.Windows.Forms.WebBrowser();
+            this.tabHtml = new System.Windows.Forms.TabPage();
+            this.richTextBoxHtml = new System.Windows.Forms.RichTextBox();
             this.personalDetailsGroup = new System.Windows.Forms.GroupBox();
             this.passwordCheckBox = new System.Windows.Forms.CheckBox();
             this.labelPassword = new System.Windows.Forms.Label();
@@ -80,7 +72,6 @@
             this.useridTextbox = new System.Windows.Forms.TextBox();
             this.passwordBox = new System.Windows.Forms.TextBox();
             this.statusStrip2 = new System.Windows.Forms.StatusStrip();
-            this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.groupBoxDetails = new System.Windows.Forms.GroupBox();
             this.textBoxFaculty = new System.Windows.Forms.TextBox();
             this.textBoxLastName = new System.Windows.Forms.TextBox();
@@ -90,11 +81,53 @@
             this.labelLastName = new System.Windows.Forms.Label();
             this.labelProgram = new System.Windows.Forms.Label();
             this.labelFirstName = new System.Windows.Forms.Label();
+            this.toolStripProgressBar = new System.Windows.Forms.ToolStripProgressBar();
+            this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.tabHtml = new System.Windows.Forms.TabPage();
-            this.richTextBoxHtml = new System.Windows.Forms.RichTextBox();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator = new System.Windows.Forms.ToolStripSeparator();
+            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.printToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.printPreviewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.undoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.redoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.cutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pasteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.selectAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.customizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.indexToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.searchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.פרטיםToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripComboBox1 = new System.Windows.Forms.ToolStripTextBox();
+            this.courseIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gradeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.semesterIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.commentsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.iDDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.yearDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.seasonDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hebrewYearDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.averageDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.successRateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pointsDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
-            this.statusStrip1.SuspendLayout();
             this.groupBoxAuthentication.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabCleanSlate.SuspendLayout();
@@ -109,10 +142,10 @@
             this.tabSemesters.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSemesters)).BeginInit();
             this.tabBrowser.SuspendLayout();
-            this.personalDetailsGroup.SuspendLayout();
-            this.statusStrip2.SuspendLayout();
-            this.groupBoxDetails.SuspendLayout();
             this.tabHtml.SuspendLayout();
+            this.personalDetailsGroup.SuspendLayout();
+            this.groupBoxDetails.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // goButton
@@ -149,29 +182,21 @@
             // tableLayoutPanel1
             // 
             resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
-            this.tableLayoutPanel1.Controls.Add(this.statusStrip1, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.groupBoxAuthentication, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.tabControl1, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.personalDetailsGroup, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.statusStrip2, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.groupBoxDetails, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.statusStrip1, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(this.groupBoxAuthentication, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.tabControl1, 2, 1);
+            this.tableLayoutPanel1.Controls.Add(this.personalDetailsGroup, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.menuStrip1, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.statusStrip2, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.groupBoxDetails, 2, 1);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             // 
             // statusStrip1
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.statusStrip1, 2);
             resources.ApplyResources(this.statusStrip1, "statusStrip1");
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripProgressBar});
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.SizingGrip = false;
-            // 
-            // toolStripProgressBar
-            // 
-            this.toolStripProgressBar.Maximum = 141;
-            this.toolStripProgressBar.Name = "toolStripProgressBar";
-            resources.ApplyResources(this.toolStripProgressBar, "toolStripProgressBar");
-            this.toolStripProgressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             // 
             // groupBoxAuthentication
             // 
@@ -328,57 +353,15 @@
             this.dataGridViewSessions.AutoGenerateColumns = false;
             this.dataGridViewSessions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewSessions.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.iDDataGridViewTextBoxColumn,
             this.courseIDDataGridViewTextBoxColumn,
             this.gradeDataGridViewTextBoxColumn,
             this.semesterIDDataGridViewTextBoxColumn,
-            this.rDDataGridViewTextBoxColumn});
+            this.commentsDataGridViewTextBoxColumn});
             this.dataGridViewSessions.DataMember = "CourseSessions";
             this.dataGridViewSessions.DataSource = this.myDatabaseDataSet;
             resources.ApplyResources(this.dataGridViewSessions, "dataGridViewSessions");
             this.dataGridViewSessions.Name = "dataGridViewSessions";
             this.dataGridViewSessions.ReadOnly = true;
-            // 
-            // iDDataGridViewTextBoxColumn
-            // 
-            this.iDDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
-            resources.ApplyResources(this.iDDataGridViewTextBoxColumn, "iDDataGridViewTextBoxColumn");
-            this.iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
-            this.iDDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // courseIDDataGridViewTextBoxColumn
-            // 
-            this.courseIDDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.courseIDDataGridViewTextBoxColumn.DataPropertyName = "Course ID";
-            resources.ApplyResources(this.courseIDDataGridViewTextBoxColumn, "courseIDDataGridViewTextBoxColumn");
-            this.courseIDDataGridViewTextBoxColumn.MaxInputLength = 6;
-            this.courseIDDataGridViewTextBoxColumn.Name = "courseIDDataGridViewTextBoxColumn";
-            this.courseIDDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // gradeDataGridViewTextBoxColumn
-            // 
-            this.gradeDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.gradeDataGridViewTextBoxColumn.DataPropertyName = "Grade";
-            resources.ApplyResources(this.gradeDataGridViewTextBoxColumn, "gradeDataGridViewTextBoxColumn");
-            this.gradeDataGridViewTextBoxColumn.Name = "gradeDataGridViewTextBoxColumn";
-            this.gradeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // semesterIDDataGridViewTextBoxColumn
-            // 
-            this.semesterIDDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.semesterIDDataGridViewTextBoxColumn.DataPropertyName = "Semester ID";
-            resources.ApplyResources(this.semesterIDDataGridViewTextBoxColumn, "semesterIDDataGridViewTextBoxColumn");
-            this.semesterIDDataGridViewTextBoxColumn.Name = "semesterIDDataGridViewTextBoxColumn";
-            this.semesterIDDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // rDDataGridViewTextBoxColumn
-            // 
-            this.rDDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.rDDataGridViewTextBoxColumn.DataPropertyName = "RD";
-            resources.ApplyResources(this.rDDataGridViewTextBoxColumn, "rDDataGridViewTextBoxColumn");
-            this.rDDataGridViewTextBoxColumn.Name = "rDDataGridViewTextBoxColumn";
-            this.rDDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // tabCourses
             // 
@@ -444,44 +427,15 @@
             this.iDDataGridViewTextBoxColumn2,
             this.yearDataGridViewTextBoxColumn,
             this.seasonDataGridViewTextBoxColumn,
-            this.hebrewYearDataGridViewTextBoxColumn});
+            this.hebrewYearDataGridViewTextBoxColumn,
+            this.averageDataGridViewTextBoxColumn,
+            this.successRateDataGridViewTextBoxColumn,
+            this.pointsDataGridViewTextBoxColumn1});
             this.dataGridViewSemesters.DataMember = "Semester";
             this.dataGridViewSemesters.DataSource = this.myDatabaseDataSet;
             resources.ApplyResources(this.dataGridViewSemesters, "dataGridViewSemesters");
             this.dataGridViewSemesters.Name = "dataGridViewSemesters";
             this.dataGridViewSemesters.ReadOnly = true;
-            // 
-            // iDDataGridViewTextBoxColumn2
-            // 
-            this.iDDataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.iDDataGridViewTextBoxColumn2.DataPropertyName = "ID";
-            resources.ApplyResources(this.iDDataGridViewTextBoxColumn2, "iDDataGridViewTextBoxColumn2");
-            this.iDDataGridViewTextBoxColumn2.Name = "iDDataGridViewTextBoxColumn2";
-            this.iDDataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // yearDataGridViewTextBoxColumn
-            // 
-            this.yearDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.yearDataGridViewTextBoxColumn.DataPropertyName = "Year";
-            resources.ApplyResources(this.yearDataGridViewTextBoxColumn, "yearDataGridViewTextBoxColumn");
-            this.yearDataGridViewTextBoxColumn.Name = "yearDataGridViewTextBoxColumn";
-            this.yearDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // seasonDataGridViewTextBoxColumn
-            // 
-            this.seasonDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.seasonDataGridViewTextBoxColumn.DataPropertyName = "Season";
-            resources.ApplyResources(this.seasonDataGridViewTextBoxColumn, "seasonDataGridViewTextBoxColumn");
-            this.seasonDataGridViewTextBoxColumn.Name = "seasonDataGridViewTextBoxColumn";
-            this.seasonDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // hebrewYearDataGridViewTextBoxColumn
-            // 
-            this.hebrewYearDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.hebrewYearDataGridViewTextBoxColumn.DataPropertyName = "Hebrew Year";
-            resources.ApplyResources(this.hebrewYearDataGridViewTextBoxColumn, "hebrewYearDataGridViewTextBoxColumn");
-            this.hebrewYearDataGridViewTextBoxColumn.Name = "hebrewYearDataGridViewTextBoxColumn";
-            this.hebrewYearDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // tabBrowser
             // 
@@ -495,6 +449,18 @@
             resources.ApplyResources(this.browser, "browser");
             this.browser.MinimumSize = new System.Drawing.Size(20, 20);
             this.browser.Name = "browser";
+            // 
+            // tabHtml
+            // 
+            this.tabHtml.Controls.Add(this.richTextBoxHtml);
+            resources.ApplyResources(this.tabHtml, "tabHtml");
+            this.tabHtml.Name = "tabHtml";
+            this.tabHtml.UseVisualStyleBackColor = true;
+            // 
+            // richTextBoxHtml
+            // 
+            resources.ApplyResources(this.richTextBoxHtml, "richTextBoxHtml");
+            this.richTextBoxHtml.Name = "richTextBoxHtml";
             // 
             // personalDetailsGroup
             // 
@@ -541,15 +507,8 @@
             // statusStrip2
             // 
             resources.ApplyResources(this.statusStrip2, "statusStrip2");
-            this.statusStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.statusLabel});
             this.statusStrip2.Name = "statusStrip2";
             this.statusStrip2.SizingGrip = false;
-            // 
-            // statusLabel
-            // 
-            this.statusLabel.Name = "statusLabel";
-            resources.ApplyResources(this.statusLabel, "statusLabel");
             // 
             // groupBoxDetails
             // 
@@ -617,17 +576,315 @@
             resources.ApplyResources(this.labelFirstName, "labelFirstName");
             this.labelFirstName.Name = "labelFirstName";
             // 
-            // tabHtml
+            // toolStripProgressBar
             // 
-            this.tabHtml.Controls.Add(this.richTextBoxHtml);
-            resources.ApplyResources(this.tabHtml, "tabHtml");
-            this.tabHtml.Name = "tabHtml";
-            this.tabHtml.UseVisualStyleBackColor = true;
+            this.toolStripProgressBar.Maximum = 141;
+            this.toolStripProgressBar.Name = "toolStripProgressBar";
+            resources.ApplyResources(this.toolStripProgressBar, "toolStripProgressBar");
+            this.toolStripProgressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             // 
-            // richTextBoxHtml
+            // statusLabel
             // 
-            resources.ApplyResources(this.richTextBoxHtml, "richTextBoxHtml");
-            this.richTextBoxHtml.Name = "richTextBoxHtml";
+            this.statusLabel.Name = "statusLabel";
+            resources.ApplyResources(this.statusLabel, "statusLabel");
+            // 
+            // menuStrip1
+            // 
+            this.tableLayoutPanel1.SetColumnSpan(this.menuStrip1, 3);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem,
+            this.editToolStripMenuItem,
+            this.פרטיםToolStripMenuItem,
+            this.toolsToolStripMenuItem,
+            this.helpToolStripMenuItem});
+            resources.ApplyResources(this.menuStrip1, "menuStrip1");
+            this.menuStrip1.Name = "menuStrip1";
+            // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.newToolStripMenuItem,
+            this.openToolStripMenuItem,
+            this.toolStripSeparator,
+            this.saveToolStripMenuItem,
+            this.saveAsToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.printToolStripMenuItem,
+            this.printPreviewToolStripMenuItem,
+            this.toolStripSeparator2,
+            this.exitToolStripMenuItem});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            resources.ApplyResources(this.fileToolStripMenuItem, "fileToolStripMenuItem");
+            // 
+            // newToolStripMenuItem
+            // 
+            resources.ApplyResources(this.newToolStripMenuItem, "newToolStripMenuItem");
+            this.newToolStripMenuItem.Name = "newToolStripMenuItem";
+            // 
+            // openToolStripMenuItem
+            // 
+            resources.ApplyResources(this.openToolStripMenuItem, "openToolStripMenuItem");
+            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
+            // 
+            // toolStripSeparator
+            // 
+            this.toolStripSeparator.Name = "toolStripSeparator";
+            resources.ApplyResources(this.toolStripSeparator, "toolStripSeparator");
+            // 
+            // saveToolStripMenuItem
+            // 
+            resources.ApplyResources(this.saveToolStripMenuItem, "saveToolStripMenuItem");
+            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            // 
+            // saveAsToolStripMenuItem
+            // 
+            this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
+            resources.ApplyResources(this.saveAsToolStripMenuItem, "saveAsToolStripMenuItem");
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
+            // 
+            // printToolStripMenuItem
+            // 
+            resources.ApplyResources(this.printToolStripMenuItem, "printToolStripMenuItem");
+            this.printToolStripMenuItem.Name = "printToolStripMenuItem";
+            // 
+            // printPreviewToolStripMenuItem
+            // 
+            resources.ApplyResources(this.printPreviewToolStripMenuItem, "printPreviewToolStripMenuItem");
+            this.printPreviewToolStripMenuItem.Name = "printPreviewToolStripMenuItem";
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            resources.ApplyResources(this.toolStripSeparator2, "toolStripSeparator2");
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            resources.ApplyResources(this.exitToolStripMenuItem, "exitToolStripMenuItem");
+            // 
+            // editToolStripMenuItem
+            // 
+            this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.undoToolStripMenuItem,
+            this.redoToolStripMenuItem,
+            this.toolStripSeparator3,
+            this.cutToolStripMenuItem,
+            this.copyToolStripMenuItem,
+            this.pasteToolStripMenuItem,
+            this.toolStripSeparator4,
+            this.selectAllToolStripMenuItem});
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            resources.ApplyResources(this.editToolStripMenuItem, "editToolStripMenuItem");
+            // 
+            // undoToolStripMenuItem
+            // 
+            this.undoToolStripMenuItem.Name = "undoToolStripMenuItem";
+            resources.ApplyResources(this.undoToolStripMenuItem, "undoToolStripMenuItem");
+            // 
+            // redoToolStripMenuItem
+            // 
+            this.redoToolStripMenuItem.Name = "redoToolStripMenuItem";
+            resources.ApplyResources(this.redoToolStripMenuItem, "redoToolStripMenuItem");
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            resources.ApplyResources(this.toolStripSeparator3, "toolStripSeparator3");
+            // 
+            // cutToolStripMenuItem
+            // 
+            resources.ApplyResources(this.cutToolStripMenuItem, "cutToolStripMenuItem");
+            this.cutToolStripMenuItem.Name = "cutToolStripMenuItem";
+            // 
+            // copyToolStripMenuItem
+            // 
+            resources.ApplyResources(this.copyToolStripMenuItem, "copyToolStripMenuItem");
+            this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
+            // 
+            // pasteToolStripMenuItem
+            // 
+            resources.ApplyResources(this.pasteToolStripMenuItem, "pasteToolStripMenuItem");
+            this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            resources.ApplyResources(this.toolStripSeparator4, "toolStripSeparator4");
+            // 
+            // selectAllToolStripMenuItem
+            // 
+            this.selectAllToolStripMenuItem.Name = "selectAllToolStripMenuItem";
+            resources.ApplyResources(this.selectAllToolStripMenuItem, "selectAllToolStripMenuItem");
+            // 
+            // toolsToolStripMenuItem
+            // 
+            this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.customizeToolStripMenuItem,
+            this.optionsToolStripMenuItem});
+            this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
+            resources.ApplyResources(this.toolsToolStripMenuItem, "toolsToolStripMenuItem");
+            this.toolsToolStripMenuItem.Click += new System.EventHandler(this.toolsToolStripMenuItem_Click);
+            // 
+            // customizeToolStripMenuItem
+            // 
+            this.customizeToolStripMenuItem.Name = "customizeToolStripMenuItem";
+            resources.ApplyResources(this.customizeToolStripMenuItem, "customizeToolStripMenuItem");
+            // 
+            // optionsToolStripMenuItem
+            // 
+            this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
+            resources.ApplyResources(this.optionsToolStripMenuItem, "optionsToolStripMenuItem");
+            // 
+            // helpToolStripMenuItem
+            // 
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.contentsToolStripMenuItem,
+            this.indexToolStripMenuItem,
+            this.searchToolStripMenuItem,
+            this.toolStripSeparator5,
+            this.aboutToolStripMenuItem});
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            resources.ApplyResources(this.helpToolStripMenuItem, "helpToolStripMenuItem");
+            // 
+            // contentsToolStripMenuItem
+            // 
+            this.contentsToolStripMenuItem.Name = "contentsToolStripMenuItem";
+            resources.ApplyResources(this.contentsToolStripMenuItem, "contentsToolStripMenuItem");
+            // 
+            // indexToolStripMenuItem
+            // 
+            this.indexToolStripMenuItem.Name = "indexToolStripMenuItem";
+            resources.ApplyResources(this.indexToolStripMenuItem, "indexToolStripMenuItem");
+            // 
+            // searchToolStripMenuItem
+            // 
+            this.searchToolStripMenuItem.Name = "searchToolStripMenuItem";
+            resources.ApplyResources(this.searchToolStripMenuItem, "searchToolStripMenuItem");
+            // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            resources.ApplyResources(this.toolStripSeparator5, "toolStripSeparator5");
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            resources.ApplyResources(this.aboutToolStripMenuItem, "aboutToolStripMenuItem");
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // פרטיםToolStripMenuItem
+            // 
+            this.פרטיםToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripComboBox1});
+            this.פרטיםToolStripMenuItem.Name = "פרטיםToolStripMenuItem";
+            resources.ApplyResources(this.פרטיםToolStripMenuItem, "פרטיםToolStripMenuItem");
+            // 
+            // toolStripComboBox1
+            // 
+            resources.ApplyResources(this.toolStripComboBox1, "toolStripComboBox1");
+            this.toolStripComboBox1.Name = "toolStripComboBox1";
+            // 
+            // courseIDDataGridViewTextBoxColumn
+            // 
+            this.courseIDDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.courseIDDataGridViewTextBoxColumn.DataPropertyName = "Course ID";
+            resources.ApplyResources(this.courseIDDataGridViewTextBoxColumn, "courseIDDataGridViewTextBoxColumn");
+            this.courseIDDataGridViewTextBoxColumn.MaxInputLength = 6;
+            this.courseIDDataGridViewTextBoxColumn.Name = "courseIDDataGridViewTextBoxColumn";
+            this.courseIDDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // gradeDataGridViewTextBoxColumn
+            // 
+            this.gradeDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.gradeDataGridViewTextBoxColumn.DataPropertyName = "Grade";
+            resources.ApplyResources(this.gradeDataGridViewTextBoxColumn, "gradeDataGridViewTextBoxColumn");
+            this.gradeDataGridViewTextBoxColumn.MaxInputLength = 5;
+            this.gradeDataGridViewTextBoxColumn.Name = "gradeDataGridViewTextBoxColumn";
+            this.gradeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // semesterIDDataGridViewTextBoxColumn
+            // 
+            this.semesterIDDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.semesterIDDataGridViewTextBoxColumn.DataPropertyName = "Semester ID";
+            resources.ApplyResources(this.semesterIDDataGridViewTextBoxColumn, "semesterIDDataGridViewTextBoxColumn");
+            this.semesterIDDataGridViewTextBoxColumn.MaxInputLength = 2;
+            this.semesterIDDataGridViewTextBoxColumn.Name = "semesterIDDataGridViewTextBoxColumn";
+            this.semesterIDDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // commentsDataGridViewTextBoxColumn
+            // 
+            this.commentsDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.commentsDataGridViewTextBoxColumn.DataPropertyName = "Comments";
+            resources.ApplyResources(this.commentsDataGridViewTextBoxColumn, "commentsDataGridViewTextBoxColumn");
+            this.commentsDataGridViewTextBoxColumn.MaxInputLength = 15;
+            this.commentsDataGridViewTextBoxColumn.Name = "commentsDataGridViewTextBoxColumn";
+            this.commentsDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // iDDataGridViewTextBoxColumn2
+            // 
+            this.iDDataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.iDDataGridViewTextBoxColumn2.DataPropertyName = "ID";
+            resources.ApplyResources(this.iDDataGridViewTextBoxColumn2, "iDDataGridViewTextBoxColumn2");
+            this.iDDataGridViewTextBoxColumn2.MaxInputLength = 3;
+            this.iDDataGridViewTextBoxColumn2.Name = "iDDataGridViewTextBoxColumn2";
+            this.iDDataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // yearDataGridViewTextBoxColumn
+            // 
+            this.yearDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.yearDataGridViewTextBoxColumn.DataPropertyName = "Year";
+            resources.ApplyResources(this.yearDataGridViewTextBoxColumn, "yearDataGridViewTextBoxColumn");
+            this.yearDataGridViewTextBoxColumn.MaxInputLength = 10;
+            this.yearDataGridViewTextBoxColumn.Name = "yearDataGridViewTextBoxColumn";
+            this.yearDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // seasonDataGridViewTextBoxColumn
+            // 
+            this.seasonDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.seasonDataGridViewTextBoxColumn.DataPropertyName = "Season";
+            resources.ApplyResources(this.seasonDataGridViewTextBoxColumn, "seasonDataGridViewTextBoxColumn");
+            this.seasonDataGridViewTextBoxColumn.MaxInputLength = 4;
+            this.seasonDataGridViewTextBoxColumn.Name = "seasonDataGridViewTextBoxColumn";
+            this.seasonDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // hebrewYearDataGridViewTextBoxColumn
+            // 
+            this.hebrewYearDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.hebrewYearDataGridViewTextBoxColumn.DataPropertyName = "Hebrew Year";
+            resources.ApplyResources(this.hebrewYearDataGridViewTextBoxColumn, "hebrewYearDataGridViewTextBoxColumn");
+            this.hebrewYearDataGridViewTextBoxColumn.MaxInputLength = 5;
+            this.hebrewYearDataGridViewTextBoxColumn.Name = "hebrewYearDataGridViewTextBoxColumn";
+            this.hebrewYearDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // averageDataGridViewTextBoxColumn
+            // 
+            this.averageDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.averageDataGridViewTextBoxColumn.DataPropertyName = "Average";
+            resources.ApplyResources(this.averageDataGridViewTextBoxColumn, "averageDataGridViewTextBoxColumn");
+            this.averageDataGridViewTextBoxColumn.MaxInputLength = 6;
+            this.averageDataGridViewTextBoxColumn.Name = "averageDataGridViewTextBoxColumn";
+            this.averageDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // successRateDataGridViewTextBoxColumn
+            // 
+            this.successRateDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.successRateDataGridViewTextBoxColumn.DataPropertyName = "Success Rate";
+            resources.ApplyResources(this.successRateDataGridViewTextBoxColumn, "successRateDataGridViewTextBoxColumn");
+            this.successRateDataGridViewTextBoxColumn.MaxInputLength = 6;
+            this.successRateDataGridViewTextBoxColumn.Name = "successRateDataGridViewTextBoxColumn";
+            this.successRateDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // pointsDataGridViewTextBoxColumn1
+            // 
+            this.pointsDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.pointsDataGridViewTextBoxColumn1.DataPropertyName = "Points";
+            resources.ApplyResources(this.pointsDataGridViewTextBoxColumn1, "pointsDataGridViewTextBoxColumn1");
+            this.pointsDataGridViewTextBoxColumn1.Name = "pointsDataGridViewTextBoxColumn1";
+            this.pointsDataGridViewTextBoxColumn1.ReadOnly = true;
             // 
             // MainForm
             // 
@@ -635,12 +892,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel1);
             this.Cursor = System.Windows.Forms.Cursors.Default;
+            this.DoubleBuffered = true;
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
             this.ShowIcon = false;
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            this.statusStrip1.ResumeLayout(false);
-            this.statusStrip1.PerformLayout();
             this.groupBoxAuthentication.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tabCleanSlate.ResumeLayout(false);
@@ -655,13 +912,13 @@
             this.tabSemesters.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSemesters)).EndInit();
             this.tabBrowser.ResumeLayout(false);
+            this.tabHtml.ResumeLayout(false);
             this.personalDetailsGroup.ResumeLayout(false);
             this.personalDetailsGroup.PerformLayout();
-            this.statusStrip2.ResumeLayout(false);
-            this.statusStrip2.PerformLayout();
             this.groupBoxDetails.ResumeLayout(false);
             this.groupBoxDetails.PerformLayout();
-            this.tabHtml.ResumeLayout(false);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -686,25 +943,15 @@
         private System.Windows.Forms.DataGridView dataGridViewCourseList;
         private System.Windows.Forms.DataGridView dataGridViewPersonalDetails;
         private System.Windows.Forms.DataGridView dataGridViewSemesters;
-        private System.Windows.Forms.DataGridView dataGridViewSessions;
         private System.Windows.Forms.TabPage tabCleanSlate;
         private System.Windows.Forms.DataGridView dataGridViewCleanSlate;
         private System.Windows.Forms.DataGridViewTextBoxColumn firstNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn lastNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn programDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn facultyDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn courseIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn gradeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn semesterIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn rDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn pointsDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn yearDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn seasonDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn hebrewYearDataGridViewTextBoxColumn;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar;
         private System.Windows.Forms.GroupBox personalDetailsGroup;
@@ -731,6 +978,50 @@
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.TabPage tabHtml;
         private System.Windows.Forms.RichTextBox richTextBoxHtml;
+        private System.Windows.Forms.DataGridView dataGridViewSessions;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator;
+        private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem printToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem printPreviewToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem undoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem redoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripMenuItem cutToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pasteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripMenuItem selectAllToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem customizeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem contentsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem indexToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem searchToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
+        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem פרטיםToolStripMenuItem;
+        private System.Windows.Forms.ToolStripTextBox toolStripComboBox1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn courseIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gradeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn semesterIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn commentsDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn yearDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn seasonDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn hebrewYearDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn averageDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn successRateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pointsDataGridViewTextBoxColumn1;
     }
 }
 
