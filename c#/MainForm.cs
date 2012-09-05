@@ -13,66 +13,29 @@ namespace getGradesForms
             InitializeComponent();
         }
 
-        class Result
-        {
-            internal String label;
-        };
-
-        Result r;
-
-        void go()
-        {
-            r = new Result();
-            r.label = "מתחבר";
-            using (Connection conn = new Connection())
-            {
-                conn.tick += delegate { backgroundWorker1.ReportProgress(20); };
-                r.label = "מבצע הזדהות";
-                
-                TextReader reader = conn.retrieveHTML(useridTextbox.Text, passwordBox.Text);
-            
-                r.label = "מעבד";
-
-                var pr = new Processor(reader.ReadLine);
-                pr.sessionFound += this.myDatabaseDataSet.addSessionToSQL;
-                pr.semesterFound += this.myDatabaseDataSet.addSemesterToSQL;
-                pr.personalDetailsFound += this.myDatabaseDataSet.addPersonalDetails;
-                pr.processText();
-
-                r.label = "סיים";
-            }
-        }
-
         private void goButton_Click(object sender, EventArgs e)
         {
             this.Cursor = System.Windows.Forms.Cursors.WaitCursor;
-            tabControl1.Enabled = false;
-            foreach (var i in new DataGridView[] { dataGridView1, dataGridView2, dataGridView3, dataGridView4, dataGridView5 })
-            {
-                if (i.Rows.Count > 0)
-                    i.Rows.RemoveAt(0);
-            }
-            tabControl1.Enabled = true;
-
-
-            myDatabaseDataSet.Clear();
-
-            this.myDatabaseDataSet.init();
-
             goButton.Enabled = false;
-            toolStripProgressBar1.Value = toolStripProgressBar1.Minimum;
-            backgroundWorker1.RunWorkerAsync();
+            toolStripProgressBar.Value = toolStripProgressBar.Minimum;
+            backgroundWorker.RunWorkerAsync();
             browser.Navigate("www.undergraduate.technion.ac.il/Tadpis.html");
         }
 
-        private void passwordBox_TextChanged(object sender, EventArgs e)
+        private void TextBox_TextChanged(object sender, EventArgs e)
         {
-            //Dooes not work for some reason
-            if (passwordBox.Text.Length == 0)
+            //Does not work for some reason
+            TextBox textbox = (TextBox)sender;
+            if (textbox.Text.Length == 0)
                 return;
-            if (! Char.IsDigit(passwordBox.Text[passwordBox.Text.Length-1]))
-                passwordBox.Text.Remove(passwordBox.Text.Length-1);
-            goButton.Enabled = passwordBox.TextLength == passwordBox.MaxLength && (useridTextbox.TextLength/4==2);
+            string old = textbox.Text;
+            textbox.Text = new string(textbox.Text.Where(char.IsDigit).ToArray());
+            if (textbox.Text != old)
+            {
+                toolTip1.IsBalloon = true;
+                toolTip1.Show("יש להזין ספרות בלבד", textbox, 1500);
+            }
+            goButton.Enabled = textbox.TextLength == textbox.MaxLength && (textbox.TextLength / 4 == 2);
         }
 
         private void passwordCheckBox_CheckStateChanged(object sender, EventArgs e)
@@ -82,35 +45,46 @@ namespace getGradesForms
 
         private void saveAs_Click(object sender, EventArgs e)
         {
-            saveFileDialog1.ShowDialog();
+            saveFileDialog.ShowDialog();
         }
 
         private void saveFileDialog1_FileOk(object sender, System.ComponentModel.CancelEventArgs e)
         {
             var txt = string.Join("\r\n", from row in myDatabaseDataSet.ViewTable
                     select string.Join(" , ", row.ItemArray));
-            File.WriteAllText(saveFileDialog1.FileName, txt , Connection.hebrewEncoding);
+            File.WriteAllText(saveFileDialog.FileName, txt , Connection.hebrewEncoding);
         }
+
+        Grades grades;
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
-            e.Result = r;
-            go();
+            grades = new Grades(useridTextbox.Text, passwordBox.Text, backgroundWorker);
         }
 
         private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-            toolStripProgressBar1.Increment(e.ProgressPercentage);
-            statusLabel.Text = r.label;
+            toolStripProgressBar.Increment(e.ProgressPercentage);
+            if (e.UserState != null)
+                switch ((Grades.State)e.UserState) {
+                    case Grades.State.AUTHENTICATING: statusLabel.Text = "מבצע הזדהות"; break;
+                    case Grades.State.CONNECTING: statusLabel.Text = "מתחבר"; break;
+                    case Grades.State.DONE: statusLabel.Text = "סיים"; break;
+                    case Grades.State.PROCESSING: statusLabel.Text = "מעבד"; break;
+                } 
         }
 
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            statusLabel.Text = r.label;
             goButton.Enabled = true;
             saveAsButton.Enabled = true;
 
-            myDatabaseDataSet.updateCleanSlate();
+            myDatabaseDataSet = grades.dataSet;
+            foreach (var i in new DataGridView[] { dataGridViewSessions, dataGridViewCourseList, dataGridViewSemesters, dataGridViewPersonalDetails, dataGridViewCleanSlate })
+            {
+                i.DataSource = this.myDatabaseDataSet;
+            }
+            richTextBoxHtml.Text = browser.DocumentText = grades.html;
             this.Refresh();
             this.Focus();
             this.Cursor = System.Windows.Forms.Cursors.Default;
