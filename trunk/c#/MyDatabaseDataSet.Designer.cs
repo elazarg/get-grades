@@ -34,7 +34,7 @@ namespace getGradesForms {
         
         private ViewTableDataTable tableViewTable;
         
-        private global::System.Data.DataRelation relationFK_CourseSessions_Semester;
+        private global::System.Data.DataRelation relationFK_Semester_CourseSessions;
         
         private global::System.Data.DataRelation relationCourseList_CourseSessions;
         
@@ -294,7 +294,7 @@ namespace getGradesForms {
                     this.tableViewTable.InitVars();
                 }
             }
-            this.relationFK_CourseSessions_Semester = this.Relations["FK_CourseSessions_Semester"];
+            this.relationFK_Semester_CourseSessions = this.Relations["FK_Semester_CourseSessions"];
             this.relationCourseList_CourseSessions = this.Relations["CourseList_CourseSessions"];
         }
         
@@ -317,7 +317,7 @@ namespace getGradesForms {
             this.tableViewTable = new ViewTableDataTable();
             base.Tables.Add(this.tableViewTable);
             global::System.Data.ForeignKeyConstraint fkc;
-            fkc = new global::System.Data.ForeignKeyConstraint("FK_CourseSessions_Semester", new global::System.Data.DataColumn[] {
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_Semester_CourseSessions", new global::System.Data.DataColumn[] {
                         this.tableSemester.IDColumn}, new global::System.Data.DataColumn[] {
                         this.tableCourseSessions.Semester_IDColumn});
             this.tableCourseSessions.Constraints.Add(fkc);
@@ -331,10 +331,10 @@ namespace getGradesForms {
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
             fkc.DeleteRule = global::System.Data.Rule.None;
             fkc.UpdateRule = global::System.Data.Rule.Cascade;
-            this.relationFK_CourseSessions_Semester = new global::System.Data.DataRelation("FK_CourseSessions_Semester", new global::System.Data.DataColumn[] {
+            this.relationFK_Semester_CourseSessions = new global::System.Data.DataRelation("FK_Semester_CourseSessions", new global::System.Data.DataColumn[] {
                         this.tableSemester.IDColumn}, new global::System.Data.DataColumn[] {
                         this.tableCourseSessions.Semester_IDColumn}, false);
-            this.Relations.Add(this.relationFK_CourseSessions_Semester);
+            this.Relations.Add(this.relationFK_Semester_CourseSessions);
             this.relationCourseList_CourseSessions = new global::System.Data.DataRelation("CourseList_CourseSessions", new global::System.Data.DataColumn[] {
                         this.tableCourseList.IDColumn}, new global::System.Data.DataColumn[] {
                         this.tableCourseSessions.Course_IDColumn}, false);
@@ -548,7 +548,7 @@ namespace getGradesForms {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public CourseListRow AddCourseListRow(string ID, string Name, string Points) {
+            public CourseListRow AddCourseListRow(string ID, string Name, decimal Points) {
                 CourseListRow rowCourseListRow = ((CourseListRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ID,
@@ -595,7 +595,7 @@ namespace getGradesForms {
                 base.Columns.Add(this.columnID);
                 this.columnName = new global::System.Data.DataColumn("Name", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnName);
-                this.columnPoints = new global::System.Data.DataColumn("Points", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnPoints = new global::System.Data.DataColumn("Points", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPoints);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
@@ -742,7 +742,7 @@ namespace getGradesForms {
             
             private global::System.Data.DataColumn columnSemester_ID;
             
-            private global::System.Data.DataColumn columnRD;
+            private global::System.Data.DataColumn columnComments;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -811,9 +811,9 @@ namespace getGradesForms {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn RDColumn {
+            public global::System.Data.DataColumn CommentsColumn {
                 get {
-                    return this.columnRD;
+                    return this.columnComments;
                 }
             }
             
@@ -854,19 +854,19 @@ namespace getGradesForms {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public CourseSessionsRow AddCourseSessionsRow(CourseListRow parentCourseListRowByCourseList_CourseSessions, decimal Grade, SemesterRow parentSemesterRowByFK_CourseSessions_Semester, string RD) {
+            public CourseSessionsRow AddCourseSessionsRow(CourseListRow parentCourseListRowByCourseList_CourseSessions, decimal Grade, SemesterRow parentSemesterRowByFK_Semester_CourseSessions, string Comments) {
                 CourseSessionsRow rowCourseSessionsRow = ((CourseSessionsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         null,
                         Grade,
                         null,
-                        RD};
+                        Comments};
                 if ((parentCourseListRowByCourseList_CourseSessions != null)) {
                     columnValuesArray[1] = parentCourseListRowByCourseList_CourseSessions[0];
                 }
-                if ((parentSemesterRowByFK_CourseSessions_Semester != null)) {
-                    columnValuesArray[3] = parentSemesterRowByFK_CourseSessions_Semester[0];
+                if ((parentSemesterRowByFK_Semester_CourseSessions != null)) {
+                    columnValuesArray[3] = parentSemesterRowByFK_Semester_CourseSessions[0];
                 }
                 rowCourseSessionsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowCourseSessionsRow);
@@ -875,7 +875,7 @@ namespace getGradesForms {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public CourseSessionsRow FindByID(long ID) {
+            public CourseSessionsRow FindByID(int ID) {
                 return ((CourseSessionsRow)(this.Rows.Find(new object[] {
                             ID})));
             }
@@ -901,13 +901,13 @@ namespace getGradesForms {
                 this.columnCourse_ID = base.Columns["Course ID"];
                 this.columnGrade = base.Columns["Grade"];
                 this.columnSemester_ID = base.Columns["Semester ID"];
-                this.columnRD = base.Columns["RD"];
+                this.columnComments = base.Columns["Comments"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnID = new global::System.Data.DataColumn("ID", typeof(long), null, global::System.Data.MappingType.Element);
+                this.columnID = new global::System.Data.DataColumn("ID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnID);
                 this.columnCourse_ID = new global::System.Data.DataColumn("Course ID", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCourse_ID);
@@ -915,8 +915,8 @@ namespace getGradesForms {
                 base.Columns.Add(this.columnGrade);
                 this.columnSemester_ID = new global::System.Data.DataColumn("Semester ID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSemester_ID);
-                this.columnRD = new global::System.Data.DataColumn("RD", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRD);
+                this.columnComments = new global::System.Data.DataColumn("Comments", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnComments);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint3", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
                 this.columnID.AutoIncrement = true;
@@ -1064,6 +1064,12 @@ namespace getGradesForms {
             
             private global::System.Data.DataColumn columnHebrew_Year;
             
+            private global::System.Data.DataColumn columnAverage;
+            
+            private global::System.Data.DataColumn columnSuccess_Rate;
+            
+            private global::System.Data.DataColumn columnPoints;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public SemesterDataTable() {
@@ -1131,6 +1137,30 @@ namespace getGradesForms {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn AverageColumn {
+                get {
+                    return this.columnAverage;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn Success_RateColumn {
+                get {
+                    return this.columnSuccess_Rate;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn PointsColumn {
+                get {
+                    return this.columnPoints;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1166,13 +1196,16 @@ namespace getGradesForms {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SemesterRow AddSemesterRow(string Year, string Season, string Hebrew_Year) {
+            public SemesterRow AddSemesterRow(string Year, string Season, string Hebrew_Year, decimal Average, decimal Success_Rate, decimal Points) {
                 SemesterRow rowSemesterRow = ((SemesterRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         Year,
                         Season,
-                        Hebrew_Year};
+                        Hebrew_Year,
+                        Average,
+                        Success_Rate,
+                        Points};
                 rowSemesterRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowSemesterRow);
                 return rowSemesterRow;
@@ -1206,6 +1239,9 @@ namespace getGradesForms {
                 this.columnYear = base.Columns["Year"];
                 this.columnSeason = base.Columns["Season"];
                 this.columnHebrew_Year = base.Columns["Hebrew Year"];
+                this.columnAverage = base.Columns["Average"];
+                this.columnSuccess_Rate = base.Columns["Success Rate"];
+                this.columnPoints = base.Columns["Points"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1219,6 +1255,12 @@ namespace getGradesForms {
                 base.Columns.Add(this.columnSeason);
                 this.columnHebrew_Year = new global::System.Data.DataColumn("Hebrew Year", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnHebrew_Year);
+                this.columnAverage = new global::System.Data.DataColumn("Average", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAverage);
+                this.columnSuccess_Rate = new global::System.Data.DataColumn("Success Rate", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSuccess_Rate);
+                this.columnPoints = new global::System.Data.DataColumn("Points", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPoints);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
                 this.columnID.AutoIncrement = true;
@@ -1784,7 +1826,7 @@ namespace getGradesForms {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ViewTableRow AddViewTableRow(string Course_ID, string Course_Name, string Points, decimal Grade) {
+            public ViewTableRow AddViewTableRow(string Course_ID, string Course_Name, decimal Points, decimal Grade) {
                 ViewTableRow rowViewTableRow = ((ViewTableRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Course_ID,
@@ -1826,7 +1868,7 @@ namespace getGradesForms {
                 base.Columns.Add(this.columnCourse_ID);
                 this.columnCourse_Name = new global::System.Data.DataColumn("Course Name", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCourse_Name);
-                this.columnPoints = new global::System.Data.DataColumn("Points", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnPoints = new global::System.Data.DataColumn("Points", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPoints);
                 this.columnGrade = new global::System.Data.DataColumn("Grade", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnGrade);
@@ -1999,10 +2041,10 @@ namespace getGradesForms {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Points {
+            public decimal Points {
                 get {
                     try {
-                        return ((string)(this[this.tableCourseList.PointsColumn]));
+                        return ((decimal)(this[this.tableCourseList.PointsColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'Points\' in table \'CourseList\' is DBNull.", e);
@@ -2065,9 +2107,9 @@ namespace getGradesForms {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public long ID {
+            public int ID {
                 get {
-                    return ((long)(this[this.tableCourseSessions.IDColumn]));
+                    return ((int)(this[this.tableCourseSessions.IDColumn]));
                 }
                 set {
                     this[this.tableCourseSessions.IDColumn] = value;
@@ -2124,17 +2166,17 @@ namespace getGradesForms {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string RD {
+            public string Comments {
                 get {
-                    if (this.IsRDNull()) {
+                    if (this.IsCommentsNull()) {
                         return string.Empty;
                     }
                     else {
-                        return ((string)(this[this.tableCourseSessions.RDColumn]));
+                        return ((string)(this[this.tableCourseSessions.CommentsColumn]));
                     }
                 }
                 set {
-                    this[this.tableCourseSessions.RDColumn] = value;
+                    this[this.tableCourseSessions.CommentsColumn] = value;
                 }
             }
             
@@ -2142,10 +2184,10 @@ namespace getGradesForms {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public SemesterRow SemesterRow {
                 get {
-                    return ((SemesterRow)(this.GetParentRow(this.Table.ParentRelations["FK_CourseSessions_Semester"])));
+                    return ((SemesterRow)(this.GetParentRow(this.Table.ParentRelations["FK_Semester_CourseSessions"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_CourseSessions_Semester"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Semester_CourseSessions"]);
                 }
             }
             
@@ -2198,14 +2240,14 @@ namespace getGradesForms {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsRDNull() {
-                return this.IsNull(this.tableCourseSessions.RDColumn);
+            public bool IsCommentsNull() {
+                return this.IsNull(this.tableCourseSessions.CommentsColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetRDNull() {
-                this[this.tableCourseSessions.RDColumn] = global::System.Convert.DBNull;
+            public void SetCommentsNull() {
+                this[this.tableCourseSessions.CommentsColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -2284,6 +2326,54 @@ namespace getGradesForms {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal Average {
+                get {
+                    if (this.IsAverageNull()) {
+                        return 0m;
+                    }
+                    else {
+                        return ((decimal)(this[this.tableSemester.AverageColumn]));
+                    }
+                }
+                set {
+                    this[this.tableSemester.AverageColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal Success_Rate {
+                get {
+                    if (this.IsSuccess_RateNull()) {
+                        return 0m;
+                    }
+                    else {
+                        return ((decimal)(this[this.tableSemester.Success_RateColumn]));
+                    }
+                }
+                set {
+                    this[this.tableSemester.Success_RateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal Points {
+                get {
+                    if (this.IsPointsNull()) {
+                        return 0m;
+                    }
+                    else {
+                        return ((decimal)(this[this.tableSemester.PointsColumn]));
+                    }
+                }
+                set {
+                    this[this.tableSemester.PointsColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsYearNull() {
                 return this.IsNull(this.tableSemester.YearColumn);
             }
@@ -2320,12 +2410,48 @@ namespace getGradesForms {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsAverageNull() {
+                return this.IsNull(this.tableSemester.AverageColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetAverageNull() {
+                this[this.tableSemester.AverageColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsSuccess_RateNull() {
+                return this.IsNull(this.tableSemester.Success_RateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetSuccess_RateNull() {
+                this[this.tableSemester.Success_RateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsPointsNull() {
+                return this.IsNull(this.tableSemester.PointsColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetPointsNull() {
+                this[this.tableSemester.PointsColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public CourseSessionsRow[] GetCourseSessionsRows() {
-                if ((this.Table.ChildRelations["FK_CourseSessions_Semester"] == null)) {
+                if ((this.Table.ChildRelations["FK_Semester_CourseSessions"] == null)) {
                     return new CourseSessionsRow[0];
                 }
                 else {
-                    return ((CourseSessionsRow[])(base.GetChildRows(this.Table.ChildRelations["FK_CourseSessions_Semester"])));
+                    return ((CourseSessionsRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Semester_CourseSessions"])));
                 }
             }
         }
@@ -2561,10 +2687,10 @@ namespace getGradesForms {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Points {
+            public decimal Points {
                 get {
                     try {
-                        return ((string)(this[this.tableViewTable.PointsColumn]));
+                        return ((decimal)(this[this.tableViewTable.PointsColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'Points\' in table \'ViewTable\' is DBNull.", e);

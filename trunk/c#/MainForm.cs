@@ -50,9 +50,7 @@ namespace getGradesForms
 
         private void saveFileDialog1_FileOk(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            var txt = string.Join("\r\n", from row in myDatabaseDataSet.ViewTable
-                    select string.Join(" , ", row.ItemArray));
-            File.WriteAllText(saveFileDialog.FileName, txt , Connection.hebrewEncoding);
+            grades.saveFile(saveFileDialog.FileName);
         }
 
         Grades grades;
@@ -98,5 +96,9 @@ namespace getGradesForms
             ab.Show();
         }
 
+        private void toolsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
