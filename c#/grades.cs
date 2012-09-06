@@ -38,7 +38,7 @@ namespace getGradesForms
             {
                 conn.tick += delegate { bw.ReportProgress(20); };
                 state = State.AUTHENTICATING;
-                html = conn.retrieveHTML(userid, password).ReadToEnd();
+                html = conn.retrieveHTML(userid, password);
             }
         }
 
@@ -51,7 +51,7 @@ namespace getGradesForms
             pr.personalDetailsFound += this.dataSet.addPersonalDetails;
             pr.processText();
 
-            html = pr.flipHtml(html);
+            html = pr.fixHtml(html);
 
             dataSet.updateCleanSlate();
         }

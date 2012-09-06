@@ -182,7 +182,7 @@ namespace getGradesForms
         }
 
 
-        string reverseSession(Match s)
+        static private string reverseSession(Match s)
         {
             string[] nameAndId = s.Value.Split(new string[] { " " }, 10, StringSplitOptions.None);
 
@@ -191,19 +191,50 @@ namespace getGradesForms
                             .Replace('(', '$').Replace(')', '(').Replace('$', ')');
             if (courseId.Success)
                 name += "</td><td>" + courseId.Value;
+
             return name;
         }
 
-        internal string flipHtml(String htmltemp)
+        internal string fixHtml(String html)
         {
-            string html = htmltemp.Replace("&nbsp;", " ");
+            html = "<HTML DIR=\"RTL\"><BODY><DIV ALIGN=RIGHT>" + html.Replace("TD", "td").Remove(0, html.IndexOf("<TABLE"))
+                            .Replace("<TR ALIGN=RIGHT><td>", "<TR ALIGN=RIGHT>\r\n<td>").Replace("</td></TR>", "</td>\r\n</TR>")
+                           .Replace("</td>\r\n<td ALIGN=LEFT>", "</td><td>")
+                           .Replace("</td>\r\n<td", "</td><td").Replace("&nbsp;", " ");
+
+            //now html is ready to the actual work
             string pattern = "[א-ת]" + "(&nbsp;|[0-9" + "א-ת \\-\"'\\./()])*";
-            return Regex.Replace(html, pattern, reverseSession)
-                        .Replace("<TD>ציון</TD><TD>.נק</TD><TD>שם מקצוע</TD></TR>",
-                                 "<TD>ציון</TD><TD>.נק</TD><TD>שם מקצוע</TD><TD>מספר מקצוע</TD></TR>")
-                        .Replace("<TD COLSPAN=3>", "<TD COLSPAN=4>")
-                        .Replace("ע<BR>", "ע</TD><TD>");
+            html = Regex.Replace(html, pattern, reverseSession, RegexOptions.Compiled);
+          
+            string[] lines = html.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
+            for (int i = 0; i < lines.Length; i++)
+            {
+                if (lines[i].StartsWith("<td>"))
+                {
+                    lines[i] = "<td>" + string.Join("</td><td>", lines[i].Substring(4, lines[i].Length - 9).Split(new string[] { "</td><td>" }, StringSplitOptions.None).Reverse()) + "</td>";
+                    switch (lines[i].Substring(4, 5))
+                    {
+                        case "ממוצע" : lines[i] = "<td>ממוצע</td><td>שיעור הצלחות</td><td>נקודות מצטברות</td>"; break;
+                        case "סה\"כ ": lines[i] = lines[i].Replace("<td>סה\"כ", "<td COLSPAN=2>סה\"כ"); break;
+                        case "סה\"כ<":
+                            string[] temp = new string[3];
+                            int j = 0;
+                            foreach (Match match in Regex.Matches(lines[i],"[0-9]{1,3}(.[0-9]+)?")) 
+                            {
+                                temp[j] = match.Value;
+                                j++;
+                            }
+                            lines[i] = "<td>" + string.Join("</td><td>", new string[] { "סה\"כ", temp[2]+ "%" + " הצלחות " , temp[0], temp[1] }) + "</td>";
+                            break;
+                        case "שם מק": lines[i] = lines[i].Replace("<td>שם מקצוע</td>", "<td>מספר מקצוע</td><td>שם מקצוע</td>"); break;
+                    }
+                }
+            }
+            html = string.Join("\r\n", lines)//Regex.Replace(, pattern, reverseSession, RegexOptions.Compiled)
+                .Replace("<td COLSPAN=3>", "<td COLSPAN=4>").Replace("ע<BR>", "ע</td><td>");
+            return html;
         }
     }
 
 }
+

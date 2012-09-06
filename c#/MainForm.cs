@@ -65,10 +65,10 @@ namespace getGradesForms
             toolStripProgressBar.Increment(e.ProgressPercentage);
             if (e.UserState != null)
                 switch ((Grades.State)e.UserState) {
-                    case Grades.State.AUTHENTICATING: statusLabel.Text = "מבצע הזדהות"; break;
-                    case Grades.State.CONNECTING: statusLabel.Text = "מתחבר"; break;
                     case Grades.State.DONE: statusLabel.Text = "סיים"; break;
                     case Grades.State.PROCESSING: statusLabel.Text = "מעבד"; break;
+                    case Grades.State.CONNECTING: statusLabel.Text = "מתחבר"; break;
+                    case Grades.State.AUTHENTICATING: statusLabel.Text = "מבצע הזדהות"; break;
                 } 
         }
 
@@ -83,6 +83,7 @@ namespace getGradesForms
                 i.DataSource = this.myDatabaseDataSet;
             }
             richTextBoxHtml.Text = browser.DocumentText = grades.html;
+           // File.WriteAllText("Z:\\grades.html", grades.html);
             this.Refresh();
             this.Focus();
             this.Cursor = System.Windows.Forms.Cursors.Default;
