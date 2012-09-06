@@ -26,7 +26,6 @@ namespace getGradesForms
         NetworkStream ns;
         private StreamWriter output;
         private StreamReader input;
-        private StreamReader input_hebrew;
 
         private void send(string op, string postdata = "", string suff = "ORD=1")
         {
@@ -53,7 +52,7 @@ namespace getGradesForms
             do
             {
                 tick();
-                temp = input_hebrew.ReadLine();
+                temp = input.ReadLine();
                 if (count > 0)
                     res += temp + "\r\n";
                 count--;
@@ -96,7 +95,7 @@ namespace getGradesForms
         private void skipLines(int num)
         {
             for (; num > 0; num-- )
-                input_hebrew.ReadLine();
+                input.ReadLine();
         }
 
         internal Connection()
@@ -106,14 +105,13 @@ namespace getGradesForms
             ns = new NetworkStream(s);
             this.output = new StreamWriter(ns);
             this.input = new StreamReader(ns);
-            this.input_hebrew = new StreamReader(ns, hebrewEncoding);
             tick();            
             
             while (redirect() < 0) ;
         }
 
 
-        internal TextReader retrieveHTML(string userid, string password)
+        internal String retrieveHTML(string userid, string password)
         {
             send("POST", "function=signon&userid=" + userid + "&password=" + password);
 
@@ -126,7 +124,7 @@ namespace getGradesForms
             skipBlock();
 
             s.Disconnect(false);
-            return input_hebrew;
+            return new StreamReader(ns, hebrewEncoding).ReadToEnd();
         }
 
         public void Dispose()
