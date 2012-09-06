@@ -195,6 +195,12 @@ namespace getGradesForms
             return name;
         }
 
+        static private string sortSemesterHead(Match s)
+        {
+            string[] arr = s.Value.Remove(0, 10).Split("() ".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
+            return "<TR BGCOLOR=#AEB404 ALIGN=CENTER><td>" + string.Join("</td><td>", new string[] { arr[4], "<BR>", arr[5], arr[3] });
+        }
+
         internal string fixHtml(String html)
         {
             html = "<HTML DIR=\"RTL\"><BODY><DIV ALIGN=RIGHT>" + html.Replace("TD", "td").Remove(0, html.IndexOf("<TABLE"))
@@ -203,6 +209,10 @@ namespace getGradesForms
                            .Replace("</td>\r\n<td", "</td><td").Replace("&nbsp;", " ");
 
             //now html is ready to the actual work
+            html = Regex.Replace(html, "<TR BGCOLOR=#FFCC00 ALIGN=CENTER><td COLSPAN=3>"
+                    + "[(][א-ת\"]" + "{4,5}[)][ ]?[0-9]{4}/[01][0-9] " + "[א-ת]" + "{3,4}",
+                    sortSemesterHead);
+
             string pattern = "[א-ת]" + "(&nbsp;|[0-9" + "א-ת \\-\"'\\./()])*";
             html = Regex.Replace(html, pattern, reverseSession, RegexOptions.Compiled);
           
