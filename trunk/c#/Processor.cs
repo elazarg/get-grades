@@ -14,13 +14,9 @@ namespace getGradesForms
         {
             this.raw_html = "<HTML DIR=\"RTL\"><BODY><DIV ALIGN=RIGHT>"
                 + Regex.Match(html_in, "(?<=<P>).*</HTML>", RegexOptions.Singleline).Value;
-            fixHtml();
+            tables = fixHtml(raw_html);
         }
-        
-        string raw_html;
-        internal string fixedHtml;
-        private string[][][] tables;
-        
+              
         public delegate void PersonalDetailsFound(string date, string id, string name, string program, string faculty);
         public event PersonalDetailsFound personalDetailsFound = delegate { };
 
@@ -30,35 +26,22 @@ namespace getGradesForms
         public delegate void SemesterFound(string year, string hebrewYear, string season);
         public event SemesterFound semesterFound = delegate { };
 
+        string raw_html;
+        internal string fixedHtml;
+        private string[][][] tables;
+
         internal void processText()
         {
-            parseDetails(tables[0]);
+            personalDetailsFound(tables[0][0][1], tables[0][1][1], tables[0][2][1], tables[0][3][1], tables[0][4][1]);
             //TODO Summary - tables[1][1];
-
-            for (int i = 2; i < tables.Length; i++)
-                parseSemester(tables[i], i, i == tables.Length);
-        }
-        
-        private void parseDetails(string[][] table)
-        {
-            personalDetailsFound(table[0][1], table[1][1], table[2][1], table[3][1], table[4][1]);
-        }
-        
-        private void parseSemester(string[][] table, int semester, bool islast)
-        {
-            //TODO Summary
-            foreach (string[] line in table)
-            {
-                if (Regex.IsMatch(line[0], "[0-9]{6}"))
-                    parseLine(line);
-                else if (line[0].StartsWith("תש"))   
-                    semesterFound(line[3], line[0], line[1]);
-            }
-        }
-
-        private void parseLine(string[] line)
-        {
-            sessionFound(line[0], line[1], line[2], line[3]);
+            foreach (var table in tables.Skip(2))
+                foreach (string[] line in table)
+                {
+                    if (Regex.IsMatch(line[0], "[0-9]{6}"))
+                        sessionFound(line[0], line[1], line[2], line[3]);
+                    else if (line[0].StartsWith("תש"))
+                        semesterFound(line[3], line[0], line[1]);
+                }
         }
 
         static string reverse(string str)
@@ -85,11 +68,11 @@ namespace getGradesForms
             return "<TR BGCOLOR=#D3D3D3 ALIGN=CENTER>\r\n<td>" + string.Join("</td><td>", new string[] { arr[4], "<BR>", arr[5], arr[3] });
         }
 
-        internal void fixHtml()
+        internal string[][][] fixHtml(String raw_html)
         {
             //TODO split function
 
-            string html =raw_html
+            String html =raw_html
                         .Replace("TD", "td")
                         .Replace("<TR ALIGN=RIGHT><td>", "<TR ALIGN=RIGHT>\r\n<td>")
                         .Replace("</TR>", "\r\n</TR>")
@@ -141,7 +124,7 @@ namespace getGradesForms
             this.fixedHtml = fulltables[0] + tabsep + fulltables[1] + tabsep + string.Join("", fulltables.Skip(2));
 
             //the ultimate split - [table][line][cell]
-            tables = (from t in fulltables
+            return (from t in fulltables
                       select (from x in t.Split(new string[] { "\r\n" }, StringSplitOptions.None)
                               where x.StartsWith("<td>")
                               select x.Split(new string[] { "<td>", "</td>" }, StringSplitOptions.RemoveEmptyEntries)
