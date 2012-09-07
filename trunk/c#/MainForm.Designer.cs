@@ -44,12 +44,6 @@
             this.Points = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gradeDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.myDatabaseDataSet = new getGradesForms.MyDatabaseDataSet();
-            this.tabPersonal = new System.Windows.Forms.TabPage();
-            this.dataGridViewPersonalDetails = new System.Windows.Forms.DataGridView();
-            this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.programDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.facultyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabSessions = new System.Windows.Forms.TabPage();
             this.dataGridViewSessions = new System.Windows.Forms.DataGridView();
             this.courseIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -74,25 +68,29 @@
             this.browser = new System.Windows.Forms.WebBrowser();
             this.tabHtml = new System.Windows.Forms.TabPage();
             this.richTextBoxHtml = new System.Windows.Forms.RichTextBox();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripProgressBar = new System.Windows.Forms.ToolStripProgressBar();
             this.personalDetailsGroup = new System.Windows.Forms.GroupBox();
             this.passwordCheckBox = new System.Windows.Forms.CheckBox();
             this.labelPassword = new System.Windows.Forms.Label();
             this.labelUserId = new System.Windows.Forms.Label();
             this.useridTextbox = new System.Windows.Forms.TextBox();
             this.passwordBox = new System.Windows.Forms.TextBox();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripProgressBar = new System.Windows.Forms.ToolStripProgressBar();
             this.statusStrip2 = new System.Windows.Forms.StatusStrip();
             this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.detailsBox = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.labelName = new System.Windows.Forms.Label();
+            this.labelProgram = new System.Windows.Forms.Label();
+            this.labelFaculty = new System.Windows.Forms.Label();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBoxAuthentication.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabCleanSlate.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCleanSlate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.myDatabaseDataSet)).BeginInit();
-            this.tabPersonal.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPersonalDetails)).BeginInit();
             this.tabSessions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSessions)).BeginInit();
             this.tabCourses.SuspendLayout();
@@ -101,9 +99,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSemesters)).BeginInit();
             this.tabBrowser.SuspendLayout();
             this.tabHtml.SuspendLayout();
-            this.personalDetailsGroup.SuspendLayout();
             this.statusStrip1.SuspendLayout();
+            this.personalDetailsGroup.SuspendLayout();
             this.statusStrip2.SuspendLayout();
+            this.detailsBox.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // goButton
@@ -140,6 +141,7 @@
             this.tableLayoutPanel1.Controls.Add(this.statusStrip1, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.personalDetailsGroup, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.statusStrip2, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.detailsBox, 2, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             // 
             // groupBoxAuthentication
@@ -154,7 +156,6 @@
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.tabControl1, 3);
             this.tabControl1.Controls.Add(this.tabCleanSlate);
-            this.tabControl1.Controls.Add(this.tabPersonal);
             this.tabControl1.Controls.Add(this.tabSessions);
             this.tabControl1.Controls.Add(this.tabCourses);
             this.tabControl1.Controls.Add(this.tabSemesters);
@@ -225,63 +226,6 @@
             // 
             this.myDatabaseDataSet.DataSetName = "MyDatabaseDataSet";
             this.myDatabaseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // tabPersonal
-            // 
-            this.tabPersonal.Controls.Add(this.dataGridViewPersonalDetails);
-            resources.ApplyResources(this.tabPersonal, "tabPersonal");
-            this.tabPersonal.Name = "tabPersonal";
-            this.tabPersonal.UseVisualStyleBackColor = true;
-            // 
-            // dataGridViewPersonalDetails
-            // 
-            this.dataGridViewPersonalDetails.AllowUserToAddRows = false;
-            this.dataGridViewPersonalDetails.AllowUserToDeleteRows = false;
-            this.dataGridViewPersonalDetails.AutoGenerateColumns = false;
-            this.dataGridViewPersonalDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewPersonalDetails.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.firstNameDataGridViewTextBoxColumn,
-            this.lastNameDataGridViewTextBoxColumn,
-            this.programDataGridViewTextBoxColumn,
-            this.facultyDataGridViewTextBoxColumn});
-            this.dataGridViewPersonalDetails.DataMember = "PersonalDetails";
-            this.dataGridViewPersonalDetails.DataSource = this.myDatabaseDataSet;
-            resources.ApplyResources(this.dataGridViewPersonalDetails, "dataGridViewPersonalDetails");
-            this.dataGridViewPersonalDetails.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnF2;
-            this.dataGridViewPersonalDetails.Name = "dataGridViewPersonalDetails";
-            this.dataGridViewPersonalDetails.ReadOnly = true;
-            // 
-            // firstNameDataGridViewTextBoxColumn
-            // 
-            this.firstNameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.firstNameDataGridViewTextBoxColumn.DataPropertyName = "First Name";
-            resources.ApplyResources(this.firstNameDataGridViewTextBoxColumn, "firstNameDataGridViewTextBoxColumn");
-            this.firstNameDataGridViewTextBoxColumn.Name = "firstNameDataGridViewTextBoxColumn";
-            this.firstNameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // lastNameDataGridViewTextBoxColumn
-            // 
-            this.lastNameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.lastNameDataGridViewTextBoxColumn.DataPropertyName = "Last Name";
-            resources.ApplyResources(this.lastNameDataGridViewTextBoxColumn, "lastNameDataGridViewTextBoxColumn");
-            this.lastNameDataGridViewTextBoxColumn.Name = "lastNameDataGridViewTextBoxColumn";
-            this.lastNameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // programDataGridViewTextBoxColumn
-            // 
-            this.programDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.programDataGridViewTextBoxColumn.DataPropertyName = "Program";
-            resources.ApplyResources(this.programDataGridViewTextBoxColumn, "programDataGridViewTextBoxColumn");
-            this.programDataGridViewTextBoxColumn.Name = "programDataGridViewTextBoxColumn";
-            this.programDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // facultyDataGridViewTextBoxColumn
-            // 
-            this.facultyDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.facultyDataGridViewTextBoxColumn.DataPropertyName = "Faculty";
-            resources.ApplyResources(this.facultyDataGridViewTextBoxColumn, "facultyDataGridViewTextBoxColumn");
-            this.facultyDataGridViewTextBoxColumn.Name = "facultyDataGridViewTextBoxColumn";
-            this.facultyDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // tabSessions
             // 
@@ -504,6 +448,22 @@
             resources.ApplyResources(this.richTextBoxHtml, "richTextBoxHtml");
             this.richTextBoxHtml.Name = "richTextBoxHtml";
             // 
+            // statusStrip1
+            // 
+            this.tableLayoutPanel1.SetColumnSpan(this.statusStrip1, 2);
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripProgressBar});
+            resources.ApplyResources(this.statusStrip1, "statusStrip1");
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.SizingGrip = false;
+            // 
+            // toolStripProgressBar
+            // 
+            this.toolStripProgressBar.Maximum = 65;
+            this.toolStripProgressBar.Name = "toolStripProgressBar";
+            resources.ApplyResources(this.toolStripProgressBar, "toolStripProgressBar");
+            this.toolStripProgressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            // 
             // personalDetailsGroup
             // 
             this.personalDetailsGroup.Controls.Add(this.passwordCheckBox);
@@ -546,22 +506,6 @@
             this.passwordBox.Name = "passwordBox";
             this.passwordBox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
             // 
-            // statusStrip1
-            // 
-            this.tableLayoutPanel1.SetColumnSpan(this.statusStrip1, 2);
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripProgressBar});
-            resources.ApplyResources(this.statusStrip1, "statusStrip1");
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.SizingGrip = false;
-            // 
-            // toolStripProgressBar
-            // 
-            this.toolStripProgressBar.Maximum = 135;
-            this.toolStripProgressBar.Name = "toolStripProgressBar";
-            resources.ApplyResources(this.toolStripProgressBar, "toolStripProgressBar");
-            this.toolStripProgressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
-            // 
             // statusStrip2
             // 
             this.statusStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -574,6 +518,46 @@
             // 
             this.statusLabel.Name = "statusLabel";
             resources.ApplyResources(this.statusLabel, "statusLabel");
+            // 
+            // detailsBox
+            // 
+            this.detailsBox.Controls.Add(this.tableLayoutPanel2);
+            resources.ApplyResources(this.detailsBox, "detailsBox");
+            this.detailsBox.Name = "detailsBox";
+            this.detailsBox.TabStop = false;
+            // 
+            // tableLayoutPanel2
+            // 
+            resources.ApplyResources(this.tableLayoutPanel2, "tableLayoutPanel2");
+            this.tableLayoutPanel2.Controls.Add(this.labelName, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.labelProgram, 0, 2);
+            this.tableLayoutPanel2.Controls.Add(this.labelFaculty, 0, 1);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            // 
+            // labelName
+            // 
+            resources.ApplyResources(this.labelName, "labelName");
+            this.labelName.Name = "labelName";
+            this.labelName.TextChanged += new System.EventHandler(this.labelPD_TextChanged);
+            // 
+            // labelProgram
+            // 
+            resources.ApplyResources(this.labelProgram, "labelProgram");
+            this.labelProgram.Name = "labelProgram";
+            this.labelProgram.TextChanged += new System.EventHandler(this.labelPD_TextChanged);
+            // 
+            // labelFaculty
+            // 
+            resources.ApplyResources(this.labelFaculty, "labelFaculty");
+            this.labelFaculty.Name = "labelFaculty";
+            this.labelFaculty.TextChanged += new System.EventHandler(this.labelPD_TextChanged);
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.BlinkRate = 500;
+            this.errorProvider1.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.AlwaysBlink;
+            this.errorProvider1.ContainerControl = this;
+            resources.ApplyResources(this.errorProvider1, "errorProvider1");
             // 
             // MainForm
             // 
@@ -591,8 +575,6 @@
             this.tabCleanSlate.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCleanSlate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.myDatabaseDataSet)).EndInit();
-            this.tabPersonal.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPersonalDetails)).EndInit();
             this.tabSessions.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSessions)).EndInit();
             this.tabCourses.ResumeLayout(false);
@@ -601,12 +583,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSemesters)).EndInit();
             this.tabBrowser.ResumeLayout(false);
             this.tabHtml.ResumeLayout(false);
-            this.personalDetailsGroup.ResumeLayout(false);
-            this.personalDetailsGroup.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            this.personalDetailsGroup.ResumeLayout(false);
+            this.personalDetailsGroup.PerformLayout();
             this.statusStrip2.ResumeLayout(false);
             this.statusStrip2.PerformLayout();
+            this.detailsBox.ResumeLayout(false);
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -619,44 +605,43 @@
         private System.ComponentModel.BackgroundWorker backgroundWorker;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.GroupBox groupBoxAuthentication;
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabCourses;
-        private System.Windows.Forms.TabPage tabSemesters;
-        private System.Windows.Forms.TabPage tabBrowser;
-        private System.Windows.Forms.WebBrowser browser;
-        private System.Windows.Forms.TabPage tabSessions;
-        private System.Windows.Forms.TabPage tabPersonal;
         private MyDatabaseDataSet myDatabaseDataSet;
-        private System.Windows.Forms.DataGridView dataGridViewCourseList;
-        private System.Windows.Forms.DataGridView dataGridViewPersonalDetails;
-        private System.Windows.Forms.DataGridView dataGridViewSemesters;
-        private System.Windows.Forms.TabPage tabCleanSlate;
-        private System.Windows.Forms.DataGridView dataGridViewCleanSlate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn firstNameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn lastNameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn programDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn facultyDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn pointsDataGridViewTextBoxColumn;
         private System.Windows.Forms.GroupBox personalDetailsGroup;
         private System.Windows.Forms.CheckBox passwordCheckBox;
         private System.Windows.Forms.Label labelPassword;
         private System.Windows.Forms.Label labelUserId;
         private System.Windows.Forms.TextBox useridTextbox;
         private System.Windows.Forms.TextBox passwordBox;
+        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar;
+        private System.Windows.Forms.StatusStrip statusStrip2;
+        private System.Windows.Forms.ToolStripStatusLabel statusLabel;
+        private System.Windows.Forms.GroupBox detailsBox;
+        private System.Windows.Forms.Label labelName;
+        private System.Windows.Forms.Label labelProgram;
+        private System.Windows.Forms.Label labelFaculty;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabCleanSlate;
+        private System.Windows.Forms.DataGridView dataGridViewCleanSlate;
         private System.Windows.Forms.DataGridViewTextBoxColumn courseIDDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn courseNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Points;
         private System.Windows.Forms.DataGridViewTextBoxColumn gradeDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.ToolTip toolTip1;
-        private System.Windows.Forms.TabPage tabHtml;
-        private System.Windows.Forms.RichTextBox richTextBoxHtml;
+        private System.Windows.Forms.TabPage tabSessions;
         private System.Windows.Forms.DataGridView dataGridViewSessions;
         private System.Windows.Forms.DataGridViewTextBoxColumn courseIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn gradeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn semesterIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn commentsDataGridViewTextBoxColumn;
+        private System.Windows.Forms.TabPage tabCourses;
+        private System.Windows.Forms.DataGridView dataGridViewCourseList;
+        private System.Windows.Forms.DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pointsDataGridViewTextBoxColumn;
+        private System.Windows.Forms.TabPage tabSemesters;
+        private System.Windows.Forms.DataGridView dataGridViewSemesters;
         private System.Windows.Forms.DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn yearDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn seasonDataGridViewTextBoxColumn;
@@ -664,10 +649,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn averageDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn successRateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn pointsDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar;
-        private System.Windows.Forms.StatusStrip statusStrip2;
-        private System.Windows.Forms.ToolStripStatusLabel statusLabel;
+        private System.Windows.Forms.TabPage tabBrowser;
+        private System.Windows.Forms.WebBrowser browser;
+        private System.Windows.Forms.TabPage tabHtml;
+        private System.Windows.Forms.RichTextBox richTextBoxHtml;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }
 

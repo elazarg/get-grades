@@ -5,11 +5,68 @@ using System.Text;
 using System.Net.Sockets;
 using System.IO;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
+using System.Text.RegularExpressions;
 
 namespace getGradesForms
 {
     class Connection : IDisposable
     {
+        #region NETWORK
+
+        [DllImport("wininet.dll", CharSet = CharSet.Auto)]
+        private extern static bool InternetGetConnectedState(ref InternetConnectionState_e lpdwFlags, int dwReserved);
+
+        [Flags]
+        enum InternetConnectionState_e : int
+        {
+            INTERNET_CONNECTION_MODEM = 0x1,
+            INTERNET_CONNECTION_LAN = 0x2,
+            INTERNET_CONNECTION_PROXY = 0x4,
+            INTERNET_RAS_INSTALLED = 0x10,
+            INTERNET_CONNECTION_OFFLINE = 0x20,
+            INTERNET_CONNECTION_CONFIGURED = 0x40
+        }
+
+        internal static SocketError getNetworkConnectionStatus()
+        {
+            InternetConnectionState_e flags = 0;
+            if (InternetGetConnectedState(ref flags, 0))
+            {
+                using (var test1 = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.IP))
+                {
+                    try
+                    {
+                        test1.Connect("www.google.com", 80);
+                        if (!test1.Connected)
+                            return SocketError.HostUnreachable;
+                        test1.Disconnect(true);
+                    }
+                    catch (SocketException ex)
+                    {
+                        return ex.SocketErrorCode;
+                    }
+                }
+                using (var test2 = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.IP))
+                {
+                    try
+                    {
+                        test2.Connect(host, 80);
+                        if (!test2.Connected)
+                            return SocketError.HostDown;
+                    }
+                    catch (SocketException ex)
+                    {
+                        return ex.SocketErrorCode;
+                    }
+                    return SocketError.Success;
+                }
+            }
+            return SocketError.NetworkDown;
+        }
+        #endregion
+
+
         internal bool isConnected { get { return s.Connected && session != null; } }
         public String session { get; private set; }
 
@@ -65,65 +122,53 @@ namespace getGradesForms
             string[] sep = { "Location: http://techmvs.technion.ac.il:80/cics/wmn/wmngrad" };
             send("HEAD");
             tick();
-            string res = input.ReadLine();
-            if (res.Contains("302"))
+            string temp = input.ReadLine();
+            if (temp.Contains("302"))
             {
                 input.ReadLine();
-                res = input.ReadLine();
-                session = res.Split(sep, 3, StringSplitOptions.None)[1].Substring(1, 8);
-                skipBlock();
+                temp = input.ReadLine();
+                session = temp.Split(sep, 3, StringSplitOptions.None)[1].Substring(1, 8);
+                while (input.ReadLine() != "") ;
                 return -1;
             }
-            else if (res.Contains("200"))
+            else if (temp.Contains("200"))
             {
-                String len;
+                String line;
+                int res = -1;
                 do
                 {
-                    len = input.ReadLine();
-                } while (!len.Contains("Content-Length:"));
-                return System.Int32.Parse(len.Substring(16));
+                    line = input.ReadLine();
+                    if (line.Contains("Content-Length:"))
+                        return System.Int32.Parse(line.Substring(16));
+                } while (!input.EndOfStream && line != null && line.Trim() != "");
+                return res;
             }
             return 0;
         }
 
-        private void skipBlock()
+        internal void connect()
         {
-            while (input.ReadLine() != "") ;
-        }
-
-
-        private void skipLines(int num)
-        {
-            for (; num > 0; num-- )
-                input.ReadLine();
-        }
-
-        internal Connection()
-        {
+            this.s = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.IP);
             this.s.Connect(host, 80);
 
-            ns = new NetworkStream(s);
+            this.ns = new NetworkStream(s);
             this.output = new StreamWriter(ns);
             this.input = new StreamReader(ns);
-            tick();            
-            
+            tick();
             while (redirect() < 0) ;
         }
 
-
         internal String retrieveHTML(string userid, string password)
         {
+            if (!s.Connected)
+                connect();
+
             send("POST", "function=signon&userid=" + userid + "&password=" + password);
-
-            redirect();
-            int len = redirect();
             tick();
-            skipBlock();
-            skipBlock();
             send("GET");
-            skipBlock();
 
-            s.Disconnect(false);
+            s.DisconnectAsync(new SocketAsyncEventArgs());
+
             return new StreamReader(ns, hebrewEncoding).ReadToEnd();
         }
 

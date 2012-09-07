@@ -30,12 +30,12 @@ namespace getGradesForms
                 bw.ReportProgress(1, innerState);
             }
         }
-
         private void connectAndDownload(string userid, string password)
         {
             state = State.CONNECTING;
             using (Connection conn = new Connection())
             {
+                conn.connect();
                 conn.tick += delegate { bw.ReportProgress(20); };
                 state = State.AUTHENTICATING;
                 html = conn.retrieveHTML(userid, password);
@@ -45,13 +45,12 @@ namespace getGradesForms
         private void process()
         {
             state = State.PROCESSING;
-            var pr = new Processor(new StringReader(html).ReadLine);
+            var pr = new Processor(html);
             pr.sessionFound         += this.dataSet.addSessionToSQL;
             pr.semesterFound        += this.dataSet.addSemesterToSQL;
             pr.personalDetailsFound += this.dataSet.addPersonalDetails;
             pr.processText();
-
-            html = pr.fixHtml(html);
+            html = pr.fixedHtml;
 
             dataSet.updateCleanSlate();
         }
@@ -62,7 +61,6 @@ namespace getGradesForms
             this.bw = bw;
 
             this.state = State.READY;
-
             connectAndDownload(userid, password);
 
             process();
