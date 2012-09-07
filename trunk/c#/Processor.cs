@@ -16,7 +16,7 @@ namespace getGradesForms
                 + Regex.Match(html_in, "(?<=<P>).*</HTML>", RegexOptions.Singleline).Value;
             fixHtml();
         }
-
+        
         string raw_html;
         internal string fixedHtml;
         private string[][][] tables;
@@ -43,7 +43,7 @@ namespace getGradesForms
         {
             personalDetailsFound(table[0][1], table[1][1], table[2][1], table[3][1], table[4][1]);
         }
-
+        
         private void parseSemester(string[][] table, int semester, bool islast)
         {
             //TODO Summary
@@ -79,7 +79,7 @@ namespace getGradesForms
             return name;
         }
 
-        static private string sortSemesterHead(Match s)
+        static private string fixSemesterHead(Match s)
         {
             string[] arr = s.Value.Remove(0, 10).Split("() ".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
             return "<TR BGCOLOR=#D3D3D3 ALIGN=CENTER>\r\n<td>" + string.Join("</td><td>", new string[] { arr[4], "<BR>", arr[5], arr[3] });
@@ -89,19 +89,19 @@ namespace getGradesForms
         {
             //TODO split function
 
-            string html =raw_html.Replace("TD", "td")
+            string html =raw_html
+                        .Replace("TD", "td")
                         .Replace("<TR ALIGN=RIGHT><td>", "<TR ALIGN=RIGHT>\r\n<td>")
-                        .Replace("</td></TR>", "</td>\r\n</TR>")
-                        .Replace("</td>\r\n<td ALIGN=LEFT>", "</td><td>")
+                        .Replace("</TR>", "\r\n</TR>")
                         .Replace("</td>\r\n<td", "</td><td")
                         .Replace("&nbsp;", " ");
 
             //now html is ready to the actual work
             html = Regex.Replace(html, "<TR BGCOLOR=#FFCC00 ALIGN=CENTER><td COLSPAN=3>"
                     + "[(][א-ת\"]" + "{4,5}[)][ ]?[0-9]{4}/[01][0-9] " + "[א-ת]" + "{3,4}",
-                    sortSemesterHead);
+                    fixSemesterHead, RegexOptions.Compiled);
 
-            string pattern = "[א-ת]" + "(&nbsp;|[0-9" + "א-ת \\-\"'\\./()])*";
+            string pattern = "[א-ת]" + "([0-9" + "א-ת \\-\"'\\./()])*";
             html = Regex.Replace(html, pattern, reverseSession, RegexOptions.Compiled);
 
           
@@ -144,7 +144,8 @@ namespace getGradesForms
             tables = (from t in fulltables
                       select (from x in t.Split(new string[] { "\r\n" }, StringSplitOptions.None)
                               where x.StartsWith("<td>")
-                              select x.Split(new string[] { "<td>", "</td>" }, StringSplitOptions.RemoveEmptyEntries)).ToArray()
+                              select x.Split(new string[] { "<td>", "</td>" }, StringSplitOptions.RemoveEmptyEntries)
+                              ).ToArray()
                              ).ToArray();
         }
     }
