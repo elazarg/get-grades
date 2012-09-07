@@ -4,6 +4,11 @@ using System.IO;
 using System.Windows.Forms;
 using System.Linq;
 using System.Data.SqlTypes;
+using System.Runtime.InteropServices;
+using System.Net.NetworkInformation;
+using getGradesForms.Properties;
+using System.Threading;
+using System.Text.RegularExpressions;
 namespace getGradesForms
 {
     public partial class MainForm : Form
@@ -13,13 +18,32 @@ namespace getGradesForms
             InitializeComponent();
         }
 
+        void browser_Navigated(object sender, WebBrowserDocumentCompletedEventArgs e)
+        {
+            richTextBoxHtml.Text = browser.DocumentText;
+        }
+
+        void browser_Navigating(object sender, WebBrowserNavigatingEventArgs e)
+        {
+            if (e.Url.ToString().Contains("ug"))
+                e.Cancel = true;
+            else
+                MessageBox.Show(e.Url.ToString());
+
+        }
+
         private void goButton_Click(object sender, EventArgs e)
         {
+            if (Connection.getNetworkConnectionStatus() != System.Net.Sockets.SocketError.Success)
+            {
+                errorProvider1.SetError(goButton, "החיבור לשרת נכשל");
+                return;
+            }
+
             this.Cursor = System.Windows.Forms.Cursors.WaitCursor;
             goButton.Enabled = false;
             toolStripProgressBar.Value = toolStripProgressBar.Minimum;
             backgroundWorker.RunWorkerAsync();
-            browser.Navigate("www.undergraduate.technion.ac.il/Tadpis.html");
         }
 
         private void TextBox_TextChanged(object sender, EventArgs e)
@@ -78,11 +102,17 @@ namespace getGradesForms
             saveAsButton.Enabled = true;
 
             myDatabaseDataSet = grades.dataSet;
-            foreach (var i in new DataGridView[] { dataGridViewSessions, dataGridViewCourseList, dataGridViewSemesters, dataGridViewPersonalDetails, dataGridViewCleanSlate })
+            foreach (var i in new DataGridView[] { dataGridViewSessions, dataGridViewCourseList, dataGridViewSemesters, dataGridViewCleanSlate })
             {
                 i.DataSource = this.myDatabaseDataSet;
             }
-            richTextBoxHtml.Text = browser.DocumentText = grades.html;
+            File.WriteAllText("C:\\Temp\\grades.html", grades.html, Connection.hebrewEncoding);
+            richTextBoxHtml.Text = grades.html;
+            browser.Navigate("C:\\Temp\\grades.html");
+            var details = myDatabaseDataSet.PersonalDetails.Last();
+            labelName.Text = details.First_Name + " " + details.Last_Name;
+            labelFaculty.Text = details.Faculty;
+            labelProgram.Text = details.Program;
            // File.WriteAllText("Z:\\grades.html", grades.html);
             this.Refresh();
             this.Focus();
@@ -97,9 +127,10 @@ namespace getGradesForms
             ab.Show();
         }
 
-        private void toolsToolStripMenuItem_Click(object sender, EventArgs e)
+        private void labelPD_TextChanged(object sender, EventArgs e)
         {
-
+            ((Label)sender).Visible = true;
         }
+
     }
 }

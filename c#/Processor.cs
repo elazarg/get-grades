@@ -15,6 +15,17 @@ namespace getGradesForms
             readLine = inputMethod;
         }
 
+        internal Processor(String html_in)
+        {
+            this.raw_html = "<HTML DIR=\"RTL\"><BODY><DIV ALIGN=RIGHT>"
+                + Regex.Match(html_in, "(?<=<P>).*</HTML>", RegexOptions.Singleline).Value;
+            fixHtml();
+            readLine = new StringReader(this.raw_html).ReadLine;
+        }
+
+        string raw_html;
+        internal string fixedHtml;
+
 	    public delegate string ReadLine();
         private ReadLine readLine;
 
@@ -198,15 +209,18 @@ namespace getGradesForms
         static private string sortSemesterHead(Match s)
         {
             string[] arr = s.Value.Remove(0, 10).Split("() ".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
-            return "<TR BGCOLOR=#AEB404 ALIGN=CENTER><td>" + string.Join("</td><td>", new string[] { arr[4], "<BR>", arr[5], arr[3] });
+            return "<TR BGCOLOR=#D3D3D3 ALIGN=CENTER><td>" + string.Join("</td><td>", new string[] { arr[4], "<BR>", arr[5], arr[3] });
         }
 
-        internal string fixHtml(String html)
+        internal void fixHtml()
         {
-            html = "<HTML DIR=\"RTL\"><BODY><DIV ALIGN=RIGHT>" + html.Replace("TD", "td").Remove(0, html.IndexOf("<TABLE"))
-                            .Replace("<TR ALIGN=RIGHT><td>", "<TR ALIGN=RIGHT>\r\n<td>").Replace("</td></TR>", "</td>\r\n</TR>")
-                           .Replace("</td>\r\n<td ALIGN=LEFT>", "</td><td>")
-                           .Replace("</td>\r\n<td", "</td><td").Replace("&nbsp;", " ");
+            string html =raw_html.Replace("TD", "td")
+                      //  .Remove(0, raw_html.IndexOf("<TABLE"))
+                        .Replace("<TR ALIGN=RIGHT><td>", "<TR ALIGN=RIGHT>\r\n<td>")
+                        .Replace("</td></TR>", "</td>\r\n</TR>")
+                        .Replace("</td>\r\n<td ALIGN=LEFT>", "</td><td>")
+                        .Replace("</td>\r\n<td", "</td><td")
+                        .Replace("&nbsp;", " ");
 
             //now html is ready to the actual work
             html = Regex.Replace(html, "<TR BGCOLOR=#FFCC00 ALIGN=CENTER><td COLSPAN=3>"
@@ -215,6 +229,7 @@ namespace getGradesForms
 
             string pattern = "[א-ת]" + "(&nbsp;|[0-9" + "א-ת \\-\"'\\./()])*";
             html = Regex.Replace(html, pattern, reverseSession, RegexOptions.Compiled);
+
           
             string[] lines = html.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
             for (int i = 0; i < lines.Length; i++)
@@ -240,9 +255,16 @@ namespace getGradesForms
                     }
                 }
             }
-            html = string.Join("\r\n", lines)//Regex.Replace(, pattern, reverseSession, RegexOptions.Compiled)
-                .Replace("<td COLSPAN=3>", "<td COLSPAN=4>").Replace("ע<BR>", "ע</td><td>");
-            return html;
+
+            // fix grades headers
+            html = string.Join("\r\n", lines).Replace("<td COLSPAN=3>", "<td COLSPAN=4>")
+                         .Replace("ע<BR>", "ע</td><td>");
+
+            // Union grade tables
+            string tabsep = "</TABLE>\r\n<BR>\r\n<TABLE BORDER=1 CELLPADDING=3 CELLSPACING=0>\r\n";
+            string[] htmls = html.Split(new string[] {tabsep}, StringSplitOptions.None);
+            html = htmls[0] + tabsep + htmls[1] + tabsep + string.Join("", htmls.Skip(2));
+            this.fixedHtml = html;
         }
     }
 
