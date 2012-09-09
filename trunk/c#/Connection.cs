@@ -10,8 +10,13 @@ using System.Text.RegularExpressions;
 
 namespace getGradesForms
 {
+    [Serializable]
     public class ConnectionException : System.ApplicationException { }
+    
+    [Serializable]
     public class ConnectionError : ConnectionException { }
+    
+    [Serializable]
     public class BadHtmlFormat : ConnectionException { }
 
 
@@ -213,6 +218,7 @@ namespace getGradesForms
             output.Dispose();
             input.Dispose();
             ns.Dispose();
+            s.Dispose();
         }
     }
 

@@ -10,6 +10,7 @@ using getGradesForms.Properties;
 using System.Threading;
 using System.Text.RegularExpressions;
 using System.Net.Sockets;
+using System.Text;
 namespace getGradesForms
 {
     public partial class MainForm : Form
@@ -78,12 +79,11 @@ namespace getGradesForms
             }
             catch (SocketException) {
                 statusLabel.Text = "שגיאת חיבור";
-            }/*
-            catch (Exception ex) {
-                statusLabel.Text = "שגיאה לא ידועה";
-                MessageBox.Show(ex.Message, "שגיאה לא ידועה");
-                throw;
-            }*/
+            }
+            catch (BadHtmlFormat) {
+                statusLabel.Text = "שגיאת הזדהות";
+       //        MessageBox.Show(ex.Message, "שגיאה לא ידועה");
+            }
             backgroundWorker.CancelAsync();
             e.Result = false;
         }
@@ -97,7 +97,23 @@ namespace getGradesForms
                     case Grades.State.PROCESSING: statusLabel.Text = "מעבד"; break;
                     case Grades.State.CONNECTING: statusLabel.Text = "מתחבר"; break;
                     case Grades.State.AUTHENTICATING: statusLabel.Text = "מבצע הזדהות"; break;
+                    case Grades.State.FAILED: statusLabel.Text = "נכשל. בדוק שם משתמש וסיסמא"; break;
                 } 
+        }
+
+        private void refresh()
+        {
+            richTextBoxHtml.Text = grades.html;
+
+            string htmlfilename = "Z:\\grades.html";
+            File.WriteAllText(htmlfilename, grades.html, Connection.hebrewEncoding);
+            browser.Navigate(htmlfilename);
+            browser.Document.Encoding = "iso-8859-8-i";
+
+            var details = myDatabaseDataSet.PersonalDetails.Last();
+            labelName.Text = details.First_Name + " " + details.Last_Name;
+            labelFaculty.Text = details.Faculty;
+            labelProgram.Text = details.Program;
         }
 
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -110,15 +126,7 @@ namespace getGradesForms
                 foreach (var i in new DataGridView[] { dataGridViewSessions, dataGridViewCourseList, dataGridViewSemesters, dataGridViewCleanSlate }) {
                     i.DataSource = this.myDatabaseDataSet;
                 }
-                File.WriteAllText("C:\\Temp\\grades.html", grades.html, Connection.hebrewEncoding);
-                richTextBoxHtml.Text = grades.html;
-                browser.Navigate("C:\\Temp\\grades.html");
-                var details = myDatabaseDataSet.PersonalDetails.Last();
-                labelName.Text = details.First_Name + " " + details.Last_Name;
-                labelFaculty.Text = details.Faculty;
-                labelProgram.Text = details.Program;
-                // File.WriteAllText("Z:\\grades.html", grades.html);
-
+                refresh();
                 saveAsButton.Enabled = true;
             }
             finally {
@@ -159,6 +167,11 @@ namespace getGradesForms
                     || goodKeys.Contains(e.KeyData))
                     return;
 
+            if (e.KeyData == Keys.Enter && goButton.Enabled)
+            {
+                goButton.PerformClick();
+                return;
+            }
             e.SuppressKeyPress = true;
         }
 
@@ -166,8 +179,20 @@ namespace getGradesForms
         {
             TextBox Sender = (TextBox)sender;
             goButton.Enabled =
-                useridTextbox.TextLength  == useridTextbox.MaxLength
+                useridTextbox.TextLength /2  == useridTextbox.MaxLength /2 //8 or 9
                 && passwordBox.TextLength == passwordBox.MaxLength;
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            grades.logOut();
+            passwordBox.ResetText();
+            useridTextbox.ResetText();
+            refresh();
+            goButton.Enabled = false;
+            this.Cursor = System.Windows.Forms.Cursors.Default;
+            this.Refresh();
+            this.Focus();
         }
 
 

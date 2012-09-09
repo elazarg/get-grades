@@ -41,6 +41,7 @@ namespace getGradesForms
                         sessionFound(line[0], line[1], line[2], line[3]);
                     else if (line[0].StartsWith("תש"))
                         semesterFound(line[3], line[0], line[1]);
+               //     else MessageBox.Show(string.Join(" , ", line));
                 }
         }
 
@@ -74,6 +75,7 @@ namespace getGradesForms
 
             String html =raw_html
                         .Replace("TD", "td")
+                        .Replace(" ALIGN=LEFT", "")
                         .Replace("<TR ALIGN=RIGHT><td>", "<TR ALIGN=RIGHT>\r\n<td>")
                         .Replace("</TR>", "\r\n</TR>")
                         .Replace("</td>\r\n<td", "</td><td")
@@ -91,14 +93,14 @@ namespace getGradesForms
             string[] lines = html.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
             for (int i = 0; i < lines.Length; i++)
             {
-                if (lines[i].StartsWith("<td>"))
+                if (lines[i].StartsWith("<td"))
                 {
                     lines[i] = "<td>" + string.Join("</td><td>", lines[i].Substring(4, lines[i].Length - 9).Split(new string[] { "</td><td>" }, StringSplitOptions.None).Reverse()) + "</td>";
                     switch (lines[i].Substring(4, 5))
                     {
                         case "ממוצע" : lines[i] = "<td>ממוצע</td><td>שיעור הצלחות</td><td>נקודות מצטברות</td>"; break;
                         case "סה\"כ ": lines[i] = lines[i].Replace("<td>סה\"כ", "<td COLSPAN=2>סה\"כ"); break;
-                        case "סה\"כ<":
+                        case "סה\"כ<": //MessageBox.Show("HERE");
                             string[] temp = new string[3];
                             int j = 0;
                             foreach (Match match in Regex.Matches(lines[i],"[0-9]{1,3}(.[0-9]+)?")) 
@@ -109,6 +111,8 @@ namespace getGradesForms
                             lines[i] = "<td>" + string.Join("</td><td>", new string[] { "סה\"כ", temp[2]+ "%" + " הצלחות " , temp[0], temp[1] }) + "</td>";
                             break;
                         case "שם מק": lines[i] = lines[i].Replace("<td>שם מקצוע</td>", "<td>מספר מקצוע</td><td>שם מקצוע</td>"); break;
+                        default: //MessageBox.Show(lines[i]);
+                            break;
                     }
                 }
             }
