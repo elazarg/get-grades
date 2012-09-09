@@ -13,26 +13,6 @@ namespace getGradesForms
             this.Clear();
             this.Semester.AddSemesterRow("זיכויים", null, null, 0, 0, 0);
         }
-
-        private CourseListRow addCourse(string id, string name, string points)
-        {
-            CourseListRow crow = this.CourseList.NewCourseListRow();
-            crow.ID = id;
-            crow.Name = name;
-
-            crow.Points = decimal.Parse(points);
-            if (!this.CourseList.Rows.Contains(id))
-                this.CourseList.AddCourseListRow(crow);
-            this.CourseList.AcceptChanges();
-            return crow;
-        }
-
-        internal void addPersonalDetails(string date, string id, string name, string program, string faculty)
-        {
-            string[] fullName = name.Split(new char[] { ' ' });
-            this.PersonalDetails.AddPersonalDetailsRow(date, id, fullName[0], fullName[1], program, faculty);
-        }
-
         Dictionary<string, string> idToFaculty = new Dictionary<string, string>
         {
             { "23", "מדעי המחשב" }, 
@@ -56,6 +36,27 @@ namespace getGradesForms
             { "19", "מתמטיקה" }, //advanced
             { "27", "רפואה" },
         };
+        private CourseListRow addCourse(string id, string name, string points)
+        {
+            CourseListRow crow = this.CourseList.NewCourseListRow();
+            crow.ID = id;
+            crow.Name = name;
+            crow.Faculty = idToFaculty[id.Remove(2)];
+
+            crow.Points = decimal.Parse(points);
+            if (!this.CourseList.Rows.Contains(id))
+                this.CourseList.AddCourseListRow(crow);
+            this.CourseList.AcceptChanges();
+            return crow;
+        }
+
+        internal void addPersonalDetails(string date, string id, string name, string program, string faculty)
+        {
+            string[] fullName = name.Split(new char[] { ' ' });
+            this.PersonalDetails.AddPersonalDetailsRow(date, id, fullName[0], fullName[1], program, faculty);
+        }
+
+
 
 
         internal void addSessionToSQL(string course_ID, string course_Name, string points, string grade)
@@ -66,21 +67,21 @@ namespace getGradesForms
             decimal decimalGrade = -1;
             if (decimal.TryParse(grade, out decimalGrade))
                 cs.Grade = decimalGrade;
-      /*      else
-                switch (grade.Trim())
-                {
-                    case "-": MessageBox.Show("0"); break;
-                    case "לא השלים": MessageBox.Show("1"); break;
-                    case "לא השלים*": MessageBox.Show("2"); break;
-                    case "פטור ללא ניקוד": MessageBox.Show("3"); break;
-                    case "פטור עם ניקוד": MessageBox.Show("4"); break;
-                    case "עבר": MessageBox.Show("5"); break;
-                    case "נכשל": MessageBox.Show("6"); break;
-                    case "לא השלים ש": MessageBox.Show("7"); break;
-                    case "לא השלים ש*": MessageBox.Show("8"); break;
-                    default: MessageBox.Show("WOT", grade); break;
-                }
-            */
+            /*      else
+                      switch (grade.Trim())
+                      {
+                          case "-": MessageBox.Show("0"); break;
+                          case "לא השלים": MessageBox.Show("1"); break;
+                          case "לא השלים*": MessageBox.Show("2"); break;
+                          case "פטור ללא ניקוד": MessageBox.Show("3"); break;
+                          case "פטור עם ניקוד": MessageBox.Show("4"); break;
+                          case "עבר": MessageBox.Show("5"); break;
+                          case "נכשל": MessageBox.Show("6"); break;
+                          case "לא השלים ש": MessageBox.Show("7"); break;
+                          case "לא השלים ש*": MessageBox.Show("8"); break;
+                          default: MessageBox.Show("WOT", grade); break;
+                      }
+                  */
             if (grade.Contains("-") || grade.Contains("*")) {
                 cs.Comments = (grade.Contains("-")) ? "טרם ניגש" : "לא נחשב";
                 cs.isLast = false;
@@ -93,7 +94,7 @@ namespace getGradesForms
 
                 cs.isLast = cs.Attended = (cs.Semester_ID != 0);
                 cs.Comments = grade; //could be nothing
-            //    cs.Grade = (cs.Semester_ID == 0) ? 100 : -1; //לא השלים
+                //    cs.Grade = (cs.Semester_ID == 0) ? 100 : -1; //לא השלים
             }
 
             this.CourseSessions.AddCourseSessionsRow(cs);
@@ -117,15 +118,15 @@ namespace getGradesForms
 
             var relevant = from ses in templist
                            where ses.Grade > -1 && ses.isLast
-                           select new
-                           {
+                           select new {
                                points = ses.CourseListRow.Points,
                                sum = ses.CourseListRow.Points * ses.Grade
                            };
 
             if (relevant.Any()) {
                 decimal totalPoints = relevant.Sum(x => x.points);
-                return new Sum {
+                return new Sum
+                {
                     Points = totalPoints,
                     Average = decimal.Round(relevant.Sum(x => x.sum) / totalPoints, 1, MidpointRounding.AwayFromZero),
                     SuccessRate = decimal.Round(
@@ -139,30 +140,27 @@ namespace getGradesForms
 
         internal void addSemesterToSQL(string year, string hebrewYear, string season)
         {
-            var last = this.Semester.Last();
+            var sem = this.Semester.Last();
+            Sum s;
 
-            Sum s = computeSemester(semid => semid == last.ID);
-            last.Points = s.Points;
-            last.Average = s.Average;
-            last.Success_Rate = s.SuccessRate;
+            s = computeSemester(semid => semid == sem.ID);
+            sem.Points = s.Points;
+            sem.Average = s.Average;
+            sem.Success_Rate = s.SuccessRate;
 
             this.Semester.AddSemesterRow(year, season, hebrewYear, 0, 0, 0);
         }
 
         internal void updateCleanSlate(bool show_empty = false)
         {
-            Sum s = computeSemester(semid => true);
+            Sum s;
+
+            s = computeSemester(semid => true);
             this.Semester.AddSemesterRow("סה\"כ", "", "", s.Average, s.SuccessRate, s.Points);
 
-            var view = from session in CourseSessions
-                       where session.isLast
-                       join course in CourseList on session.Course_ID equals course.ID
-                       select new Tuple<string, string, decimal, decimal>(course.ID, course.Name, course.Points, session.Grade);
-
-            foreach (var row in view.Reverse())
-                if ((from c in ViewTable where c.Course_Name == row.Item2 select 1).Count() == 0
-                    && (show_empty || row.Item4 > 55))
-                    ViewTable.AddViewTableRow(row.Item1, row.Item2, row.Item3, row.Item4);
+            foreach (var row in CourseSessions.Where(x => x.isLast).Reverse())
+                if ( (!ViewTable.Any(c => c.Course_Name == row.CourseListRow.Name)) && (show_empty || row.Grade > 55))
+                    ViewTable.AddViewTableRow(row.Course_ID, row.CourseListRow.Name, row.CourseListRow.Points, row.Grade);
         }
     }
 }

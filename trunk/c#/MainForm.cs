@@ -188,14 +188,12 @@ namespace getGradesForms
             if (grades != null)
                 grades.logOut();
             grades = null;
-            passwordBox.ResetText();
-            useridTextbox.ResetText();
 
             browser.Navigate("about:blank");
-
-            labelName.ResetText();
-            labelFaculty.ResetText();
-            labelProgram.ResetText();
+            richTextBoxHtml.ResetText();
+            
+            foreach (var i in new Control[] { passwordBox,  useridTextbox,  labelName,  labelFaculty, labelProgram })
+                i.ResetText();
 
             goButton.Enabled = false;
             this.Cursor = System.Windows.Forms.Cursors.Default;
