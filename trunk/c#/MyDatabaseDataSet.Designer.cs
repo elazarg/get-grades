@@ -34,9 +34,9 @@ namespace getGradesForms {
         
         private ViewTableDataTable tableViewTable;
         
-        private global::System.Data.DataRelation relationFK_Semester_CourseSessions;
-        
         private global::System.Data.DataRelation relationCourseList_CourseSessions;
+        
+        private global::System.Data.DataRelation relationFK_Semester_CourseSessions;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -294,8 +294,8 @@ namespace getGradesForms {
                     this.tableViewTable.InitVars();
                 }
             }
-            this.relationFK_Semester_CourseSessions = this.Relations["FK_Semester_CourseSessions"];
             this.relationCourseList_CourseSessions = this.Relations["CourseList_CourseSessions"];
+            this.relationFK_Semester_CourseSessions = this.Relations["FK_Semester_CourseSessions"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -317,13 +317,6 @@ namespace getGradesForms {
             this.tableViewTable = new ViewTableDataTable();
             base.Tables.Add(this.tableViewTable);
             global::System.Data.ForeignKeyConstraint fkc;
-            fkc = new global::System.Data.ForeignKeyConstraint("FK_Semester_CourseSessions", new global::System.Data.DataColumn[] {
-                        this.tableSemester.IDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableCourseSessions.Semester_IDColumn});
-            this.tableCourseSessions.Constraints.Add(fkc);
-            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
-            fkc.DeleteRule = global::System.Data.Rule.Cascade;
-            fkc.UpdateRule = global::System.Data.Rule.Cascade;
             fkc = new global::System.Data.ForeignKeyConstraint("CourseList_CourseSessions", new global::System.Data.DataColumn[] {
                         this.tableCourseList.IDColumn}, new global::System.Data.DataColumn[] {
                         this.tableCourseSessions.Course_IDColumn});
@@ -331,14 +324,21 @@ namespace getGradesForms {
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
             fkc.DeleteRule = global::System.Data.Rule.None;
             fkc.UpdateRule = global::System.Data.Rule.Cascade;
-            this.relationFK_Semester_CourseSessions = new global::System.Data.DataRelation("FK_Semester_CourseSessions", new global::System.Data.DataColumn[] {
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_Semester_CourseSessions", new global::System.Data.DataColumn[] {
                         this.tableSemester.IDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableCourseSessions.Semester_IDColumn}, false);
-            this.Relations.Add(this.relationFK_Semester_CourseSessions);
+                        this.tableCourseSessions.Semester_IDColumn});
+            this.tableCourseSessions.Constraints.Add(fkc);
+            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
+            fkc.DeleteRule = global::System.Data.Rule.Cascade;
+            fkc.UpdateRule = global::System.Data.Rule.Cascade;
             this.relationCourseList_CourseSessions = new global::System.Data.DataRelation("CourseList_CourseSessions", new global::System.Data.DataColumn[] {
                         this.tableCourseList.IDColumn}, new global::System.Data.DataColumn[] {
                         this.tableCourseSessions.Course_IDColumn}, false);
             this.Relations.Add(this.relationCourseList_CourseSessions);
+            this.relationFK_Semester_CourseSessions = new global::System.Data.DataRelation("FK_Semester_CourseSessions", new global::System.Data.DataColumn[] {
+                        this.tableSemester.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableCourseSessions.Semester_IDColumn}, false);
+            this.Relations.Add(this.relationFK_Semester_CourseSessions);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -744,6 +744,10 @@ namespace getGradesForms {
             
             private global::System.Data.DataColumn columnComments;
             
+            private global::System.Data.DataColumn columnisLast;
+            
+            private global::System.Data.DataColumn columnAttended;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public CourseSessionsDataTable() {
@@ -819,6 +823,22 @@ namespace getGradesForms {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn isLastColumn {
+                get {
+                    return this.columnisLast;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn AttendedColumn {
+                get {
+                    return this.columnAttended;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -854,14 +874,16 @@ namespace getGradesForms {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public CourseSessionsRow AddCourseSessionsRow(CourseListRow parentCourseListRowByCourseList_CourseSessions, decimal Grade, SemesterRow parentSemesterRowByFK_Semester_CourseSessions, string Comments) {
+            public CourseSessionsRow AddCourseSessionsRow(CourseListRow parentCourseListRowByCourseList_CourseSessions, decimal Grade, SemesterRow parentSemesterRowByFK_Semester_CourseSessions, string Comments, bool isLast, bool Attended) {
                 CourseSessionsRow rowCourseSessionsRow = ((CourseSessionsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         null,
                         Grade,
                         null,
-                        Comments};
+                        Comments,
+                        isLast,
+                        Attended};
                 if ((parentCourseListRowByCourseList_CourseSessions != null)) {
                     columnValuesArray[1] = parentCourseListRowByCourseList_CourseSessions[0];
                 }
@@ -902,6 +924,8 @@ namespace getGradesForms {
                 this.columnGrade = base.Columns["Grade"];
                 this.columnSemester_ID = base.Columns["Semester ID"];
                 this.columnComments = base.Columns["Comments"];
+                this.columnisLast = base.Columns["isLast"];
+                this.columnAttended = base.Columns["Attended"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -917,6 +941,10 @@ namespace getGradesForms {
                 base.Columns.Add(this.columnSemester_ID);
                 this.columnComments = new global::System.Data.DataColumn("Comments", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnComments);
+                this.columnisLast = new global::System.Data.DataColumn("isLast", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnisLast);
+                this.columnAttended = new global::System.Data.DataColumn("Attended", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAttended);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint3", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
                 this.columnID.AutoIncrement = true;
@@ -2182,12 +2210,33 @@ namespace getGradesForms {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SemesterRow SemesterRow {
+            public bool isLast {
                 get {
-                    return ((SemesterRow)(this.GetParentRow(this.Table.ParentRelations["FK_Semester_CourseSessions"])));
+                    try {
+                        return ((bool)(this[this.tableCourseSessions.isLastColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'isLast\' in table \'CourseSessions\' is DBNull.", e);
+                    }
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_Semester_CourseSessions"]);
+                    this[this.tableCourseSessions.isLastColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Attended {
+                get {
+                    try {
+                        return ((bool)(this[this.tableCourseSessions.AttendedColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Attended\' in table \'CourseSessions\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableCourseSessions.AttendedColumn] = value;
                 }
             }
             
@@ -2199,6 +2248,17 @@ namespace getGradesForms {
                 }
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["CourseList_CourseSessions"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public SemesterRow SemesterRow {
+                get {
+                    return ((SemesterRow)(this.GetParentRow(this.Table.ParentRelations["FK_Semester_CourseSessions"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Semester_CourseSessions"]);
                 }
             }
             
@@ -2248,6 +2308,30 @@ namespace getGradesForms {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetCommentsNull() {
                 this[this.tableCourseSessions.CommentsColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsisLastNull() {
+                return this.IsNull(this.tableCourseSessions.isLastColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetisLastNull() {
+                this[this.tableCourseSessions.isLastColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsAttendedNull() {
+                return this.IsNull(this.tableCourseSessions.AttendedColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetAttendedNull() {
+                this[this.tableCourseSessions.AttendedColumn] = global::System.Convert.DBNull;
             }
         }
         

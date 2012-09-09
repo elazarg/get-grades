@@ -36,7 +36,7 @@ namespace getGradesForms
             using (Connection conn = new Connection())
             {
                 conn.connect();
-                conn.tick += delegate { bw.ReportProgress(20); };
+                conn.tick += delegate { bw.ReportProgress(10); };
                 state = State.AUTHENTICATING;
                 html = conn.retrieveHTML(userid, password);
             }

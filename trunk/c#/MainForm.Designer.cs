@@ -129,6 +129,7 @@
             // backgroundWorker
             // 
             this.backgroundWorker.WorkerReportsProgress = true;
+            this.backgroundWorker.WorkerSupportsCancellation = true;
             this.backgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
             this.backgroundWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker1_ProgressChanged);
             this.backgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
@@ -459,7 +460,7 @@
             // 
             // toolStripProgressBar
             // 
-            this.toolStripProgressBar.Maximum = 65;
+            this.toolStripProgressBar.Maximum = 75;
             this.toolStripProgressBar.Name = "toolStripProgressBar";
             resources.ApplyResources(this.toolStripProgressBar, "toolStripProgressBar");
             this.toolStripProgressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
@@ -478,8 +479,6 @@
             // passwordCheckBox
             // 
             resources.ApplyResources(this.passwordCheckBox, "passwordCheckBox");
-            this.passwordCheckBox.Checked = true;
-            this.passwordCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.passwordCheckBox.Name = "passwordCheckBox";
             this.passwordCheckBox.UseVisualStyleBackColor = true;
             this.passwordCheckBox.CheckStateChanged += new System.EventHandler(this.passwordCheckBox_CheckStateChanged);
@@ -498,13 +497,18 @@
             // 
             resources.ApplyResources(this.useridTextbox, "useridTextbox");
             this.useridTextbox.Name = "useridTextbox";
+            this.useridTextbox.ShortcutsEnabled = false;
             this.useridTextbox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
+            this.useridTextbox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.numericTextbox_KeyDown);
             // 
             // passwordBox
             // 
             resources.ApplyResources(this.passwordBox, "passwordBox");
             this.passwordBox.Name = "passwordBox";
+            this.passwordBox.ShortcutsEnabled = false;
+            this.passwordBox.UseSystemPasswordChar = true;
             this.passwordBox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
+            this.passwordBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.numericTextbox_KeyDown);
             // 
             // statusStrip2
             // 
