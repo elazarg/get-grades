@@ -16,7 +16,6 @@
             if (disposing && (components != null))
             {
                 components.Dispose();
-                grades.Dispose();
             }
             base.Dispose(disposing);
         }
@@ -580,7 +579,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel1);
             this.Cursor = System.Windows.Forms.Cursors.Default;
-            this.DoubleBuffered = true;
             this.Name = "MainForm";
             this.ShowIcon = false;
             this.tableLayoutPanel1.ResumeLayout(false);
