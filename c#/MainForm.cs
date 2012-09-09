@@ -9,6 +9,7 @@ using System.Net.NetworkInformation;
 using getGradesForms.Properties;
 using System.Threading;
 using System.Text.RegularExpressions;
+using System.Net.Sockets;
 namespace getGradesForms
 {
     public partial class MainForm : Form
@@ -39,6 +40,7 @@ namespace getGradesForms
                 errorProvider1.SetError(goButton, "החיבור לשרת נכשל");
                 return;
             }
+            errorProvider1.Clear();
 
             this.Cursor = System.Windows.Forms.Cursors.WaitCursor;
             goButton.Enabled = false;
@@ -46,21 +48,6 @@ namespace getGradesForms
             backgroundWorker.RunWorkerAsync();
         }
 
-        private void TextBox_TextChanged(object sender, EventArgs e)
-        {
-            //Does not work for some reason
-            TextBox textbox = (TextBox)sender;
-            if (textbox.Text.Length == 0)
-                return;
-            string old = textbox.Text;
-            textbox.Text = new string(textbox.Text.Where(char.IsDigit).ToArray());
-            if (textbox.Text != old)
-            {
-                toolTip1.IsBalloon = true;
-                toolTip1.Show("יש להזין ספרות בלבד", textbox, 1500);
-            }
-            goButton.Enabled = textbox.TextLength == textbox.MaxLength && (textbox.TextLength / 4 == 2);
-        }
 
         private void passwordCheckBox_CheckStateChanged(object sender, EventArgs e)
         {
@@ -81,7 +68,24 @@ namespace getGradesForms
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
-            grades = new Grades(useridTextbox.Text, passwordBox.Text, backgroundWorker);
+            try {
+                grades = new Grades(useridTextbox.Text, passwordBox.Text, backgroundWorker);
+                e.Result = true;
+                return;
+            }
+            catch (ConnectionError) {
+                statusLabel.Text = "שגיאת חיבור";
+            }
+            catch (SocketException) {
+                statusLabel.Text = "שגיאת חיבור";
+            }/*
+            catch (Exception ex) {
+                statusLabel.Text = "שגיאה לא ידועה";
+                MessageBox.Show(ex.Message, "שגיאה לא ידועה");
+                throw;
+            }*/
+            backgroundWorker.CancelAsync();
+            e.Result = false;
         }
 
         private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
@@ -98,25 +102,31 @@ namespace getGradesForms
 
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            goButton.Enabled = true;
-            saveAsButton.Enabled = true;
+            try {
+                if (!(bool)e.Result)
+                    return;
 
-            myDatabaseDataSet = grades.dataSet;
-            foreach (var i in new DataGridView[] { dataGridViewSessions, dataGridViewCourseList, dataGridViewSemesters, dataGridViewCleanSlate })
-            {
-                i.DataSource = this.myDatabaseDataSet;
+                myDatabaseDataSet = grades.dataSet;
+                foreach (var i in new DataGridView[] { dataGridViewSessions, dataGridViewCourseList, dataGridViewSemesters, dataGridViewCleanSlate }) {
+                    i.DataSource = this.myDatabaseDataSet;
+                }
+                File.WriteAllText("C:\\Temp\\grades.html", grades.html, Connection.hebrewEncoding);
+                richTextBoxHtml.Text = grades.html;
+                browser.Navigate("C:\\Temp\\grades.html");
+                var details = myDatabaseDataSet.PersonalDetails.Last();
+                labelName.Text = details.First_Name + " " + details.Last_Name;
+                labelFaculty.Text = details.Faculty;
+                labelProgram.Text = details.Program;
+                // File.WriteAllText("Z:\\grades.html", grades.html);
+
+                saveAsButton.Enabled = true;
             }
-            File.WriteAllText("C:\\Temp\\grades.html", grades.html, Connection.hebrewEncoding);
-            richTextBoxHtml.Text = grades.html;
-            browser.Navigate("C:\\Temp\\grades.html");
-            var details = myDatabaseDataSet.PersonalDetails.Last();
-            labelName.Text = details.First_Name + " " + details.Last_Name;
-            labelFaculty.Text = details.Faculty;
-            labelProgram.Text = details.Program;
-           // File.WriteAllText("Z:\\grades.html", grades.html);
-            this.Refresh();
-            this.Focus();
-            this.Cursor = System.Windows.Forms.Cursors.Default;
+            finally {
+                goButton.Enabled = true;
+                this.Cursor = System.Windows.Forms.Cursors.Default;
+                this.Refresh();
+                this.Focus();
+            }
         }
         
         
@@ -131,6 +141,35 @@ namespace getGradesForms
         {
             ((Label)sender).Visible = true;
         }
+
+        private void numericTextbox_KeyDown(object sender, KeyEventArgs e)
+        {
+            Func<Keys, bool> isNumeral = delegate (Keys k) {
+                return k >= Keys.D0 && k <= Keys.D9
+                    || k >= Keys.NumPad0 && k <= Keys.NumPad9;
+            };
+
+            Keys[] goodKeys = new Keys[] { Keys.Delete, Keys.Back,
+                    Keys.Right, Keys.Left, Keys.Home, Keys.End };
+
+            TextBox Sender = (TextBox)sender;
+            
+            if (!e.Modifiers.HasFlag(Keys.Shift | Keys.Control | Keys.Alt))
+                if (isNumeral(e.KeyData) && (Sender.TextLength < Sender.MaxLength || Sender.SelectionLength > 0)
+                    || goodKeys.Contains(e.KeyData))
+                    return;
+
+            e.SuppressKeyPress = true;
+        }
+
+        private void TextBox_TextChanged(object sender, EventArgs e)
+        {
+            TextBox Sender = (TextBox)sender;
+            goButton.Enabled =
+                useridTextbox.TextLength  == useridTextbox.MaxLength
+                && passwordBox.TextLength == passwordBox.MaxLength;
+        }
+
 
     }
 }

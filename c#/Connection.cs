@@ -10,6 +10,11 @@ using System.Text.RegularExpressions;
 
 namespace getGradesForms
 {
+    public class ConnectionException : System.ApplicationException { }
+    public class ConnectionError : ConnectionException { }
+    public class BadHtmlFormat : ConnectionException { }
+
+
     class Connection : IDisposable
     {
         #region NETWORK
@@ -31,32 +36,25 @@ namespace getGradesForms
         internal static SocketError getNetworkConnectionStatus()
         {
             InternetConnectionState_e flags = 0;
-            if (InternetGetConnectedState(ref flags, 0))
-            {
-                using (var test1 = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.IP))
-                {
-                    try
-                    {
+            if (InternetGetConnectedState(ref flags, 0)) {
+                using (var test1 = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.IP)) {
+                    try {
                         test1.Connect("www.google.com", 80);
                         if (!test1.Connected)
                             return SocketError.HostUnreachable;
                         test1.Disconnect(true);
                     }
-                    catch (SocketException ex)
-                    {
+                    catch (SocketException ex) {
                         return ex.SocketErrorCode;
                     }
                 }
-                using (var test2 = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.IP))
-                {
-                    try
-                    {
+                using (var test2 = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.IP)) {
+                    try {
                         test2.Connect(host, 80);
                         if (!test2.Connected)
                             return SocketError.HostDown;
                     }
-                    catch (SocketException ex)
-                    {
+                    catch (SocketException ex) {
                         return ex.SocketErrorCode;
                     }
                     return SocketError.Success;
@@ -72,14 +70,14 @@ namespace getGradesForms
 
 
         static internal Encoding hebrewEncoding = Encoding.GetEncoding("iso-8859-8-i");
-        
+
         public delegate void Tick();
         public event Tick tick = delegate { };
 
         const string host = "techmvs.technion.ac.il";
         const string path = "/cics/wmn/wmngrad";
 
-        private Socket s = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.IP);
+        private Socket s;
         NetworkStream ns;
         private StreamWriter output;
         private StreamReader input;
@@ -90,8 +88,7 @@ namespace getGradesForms
             string dest = path + "?" + session + "&" + suff;
             output.WriteLine(op + " " + dest + " HTTP/1.1");
             output.WriteLine("Host: " + host);
-            if (postdata != null)
-            {
+            if (postdata != null) {
                 output.WriteLine("Content-Length: " + postdata.Length);
                 output.WriteLine("Content-Type: application/x-www-form-urlencoded");
             }
@@ -106,8 +103,7 @@ namespace getGradesForms
             for (; from > 0; from--)
                 input.ReadLine();
             string res = "", temp = "";
-            do
-            {
+            do {
                 tick();
                 temp = input.ReadLine();
                 if (count > 0)
@@ -123,20 +119,17 @@ namespace getGradesForms
             send("HEAD");
             tick();
             string temp = input.ReadLine();
-            if (temp.Contains("302"))
-            {
+            if (temp.Contains("302")) {
                 input.ReadLine();
                 temp = input.ReadLine();
                 session = temp.Split(sep, 3, StringSplitOptions.None)[1].Substring(1, 8);
                 while (input.ReadLine() != "") ;
                 return -1;
             }
-            else if (temp.Contains("200"))
-            {
+            else if (temp.Contains("200")) {
                 String line;
                 int res = -1;
-                do
-                {
+                do {
                     line = input.ReadLine();
                     if (line.Contains("Content-Length:"))
                         return System.Int32.Parse(line.Substring(16));
@@ -155,21 +148,64 @@ namespace getGradesForms
             this.output = new StreamWriter(ns);
             this.input = new StreamReader(ns);
             tick();
-            while (redirect() < 0) ;
+            int NUM_OF_REDIRECT = 60;
+            for (int i = 0; i < NUM_OF_REDIRECT; i++) {
+                if (redirect() > 0)
+                    return;
+            }
+            throw new ConnectionError();
         }
+
 
         internal String retrieveHTML(string userid, string password)
         {
             if (!s.Connected)
                 connect();
 
+            authenticate(userid, password);
+
+            String html = validateFormat(readInput());
+
+            if (html == "")
+                throw new BadHtmlFormat();
+
+            return html;
+        }
+
+        private string readInput()
+        {
+            var reader = new StreamReader(ns, hebrewEncoding);
+            StringBuilder htmlBuilder = new StringBuilder("");
+
+            bool append = false;
+            for (int i = 0; i < 700; i++) {
+                string line = reader.ReadLine();
+
+                append = append || line.ToUpper().Contains("<HTML>");
+
+                if (append) {
+                    htmlBuilder.AppendLine(line);
+
+                    if (line.ToUpper().Contains("</HTML>"))
+                        break;
+                }
+            }
+
+            return htmlBuilder.ToString();
+        }
+
+        private void authenticate(string userid, string password)
+        {
             send("POST", "function=signon&userid=" + userid + "&password=" + password);
             tick();
+            redirect();
+            redirect();
             send("GET");
+        }
 
-            s.DisconnectAsync(new SocketAsyncEventArgs());
-
-            return new StreamReader(ns, hebrewEncoding).ReadToEnd();
+        private string validateFormat(string html)
+        {
+            return Regex.Match(html, "(?<=.*)<HTML>.*<P>(\\s*<TABLE.*</TABLE>\\s*<BR>)+(\\s*<TABLE.*</TABLE>\\s*)</DIV>\\s*</BODY>\\s*</HTML>", RegexOptions.Singleline).Value;
         }
 
         public void Dispose()

@@ -324,12 +324,6 @@
   <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>495, 17</value>
   </metadata>
-  <data name="toolStripProgressBar.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
-    <value>No</value>
-  </data>
-  <data name="toolStripProgressBar.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 14</value>
-  </data>
   <data name="statusStrip1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 415</value>
   </data>
@@ -357,6 +351,30 @@
   <data name="&gt;&gt;statusStrip1.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="passwordCheckBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Right</value>
+  </data>
+  <data name="passwordCheckBox.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="passwordCheckBox.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="passwordCheckBox.CheckAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="passwordCheckBox.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="passwordCheckBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>144, 47</value>
+  </data>
+  <data name="passwordCheckBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>15, 14</value>
+  </data>
+  <data name="passwordCheckBox.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
   <data name="&gt;&gt;passwordCheckBox.Name" xml:space="preserve">
     <value>passwordCheckBox</value>
   </data>
@@ -368,6 +386,27 @@
   </data>
   <data name="&gt;&gt;passwordCheckBox.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="labelPassword.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Right</value>
+  </data>
+  <data name="labelPassword.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelPassword.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelPassword.Location" type="System.Drawing.Point, System.Drawing">
+    <value>84, 48</value>
+  </data>
+  <data name="labelPassword.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 13</value>
+  </data>
+  <data name="labelPassword.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="labelPassword.Text" xml:space="preserve">
+    <value>סיסמא:</value>
   </data>
   <data name="&gt;&gt;labelPassword.Name" xml:space="preserve">
     <value>labelPassword</value>
@@ -381,6 +420,27 @@
   <data name="&gt;&gt;labelPassword.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="labelUserId.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Right</value>
+  </data>
+  <data name="labelUserId.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelUserId.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelUserId.Location" type="System.Drawing.Point, System.Drawing">
+    <value>84, 22</value>
+  </data>
+  <data name="labelUserId.Size" type="System.Drawing.Size, System.Drawing">
+    <value>78, 13</value>
+  </data>
+  <data name="labelUserId.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="labelUserId.Text" xml:space="preserve">
+    <value>מספר סטודנט:</value>
+  </data>
   <data name="&gt;&gt;labelUserId.Name" xml:space="preserve">
     <value>labelUserId</value>
   </data>
@@ -393,6 +453,30 @@
   <data name="&gt;&gt;labelUserId.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="useridTextbox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Right</value>
+  </data>
+  <data name="useridTextbox.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Courier New, 9pt</value>
+  </data>
+  <data name="useridTextbox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 18</value>
+  </data>
+  <data name="useridTextbox.MaxLength" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="useridTextbox.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
+    <value>No</value>
+  </data>
+  <data name="useridTextbox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>72, 21</value>
+  </data>
+  <data name="useridTextbox.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="useridTextbox.Text" xml:space="preserve">
+    <value>036979821</value>
+  </data>
   <data name="&gt;&gt;useridTextbox.Name" xml:space="preserve">
     <value>useridTextbox</value>
   </data>
@@ -404,6 +488,30 @@
   </data>
   <data name="&gt;&gt;useridTextbox.ZOrder" xml:space="preserve">
     <value>3</value>
+  </data>
+  <data name="passwordBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Right</value>
+  </data>
+  <data name="passwordBox.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Courier New, 9pt</value>
+  </data>
+  <data name="passwordBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>14, 43</value>
+  </data>
+  <data name="passwordBox.MaxLength" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="passwordBox.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
+    <value>No</value>
+  </data>
+  <data name="passwordBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>64, 21</value>
+  </data>
+  <data name="passwordBox.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="passwordBox.Text" xml:space="preserve">
+    <value>50300072</value>
   </data>
   <data name="&gt;&gt;passwordBox.Name" xml:space="preserve">
     <value>passwordBox</value>
@@ -1050,185 +1158,11 @@
   <data name="&gt;&gt;richTextBoxHtml.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="passwordCheckBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Right</value>
-  </data>
-  <data name="passwordCheckBox.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="passwordCheckBox.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
-    <value>Center</value>
-  </data>
-  <data name="passwordCheckBox.CheckAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleCenter</value>
-  </data>
-  <data name="passwordCheckBox.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="passwordCheckBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>144, 47</value>
-  </data>
-  <data name="passwordCheckBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>15, 14</value>
-  </data>
-  <data name="passwordCheckBox.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;passwordCheckBox.Name" xml:space="preserve">
-    <value>passwordCheckBox</value>
-  </data>
-  <data name="&gt;&gt;passwordCheckBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;passwordCheckBox.Parent" xml:space="preserve">
-    <value>personalDetailsGroup</value>
-  </data>
-  <data name="&gt;&gt;passwordCheckBox.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="labelPassword.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Right</value>
-  </data>
-  <data name="labelPassword.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="labelPassword.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="labelPassword.Location" type="System.Drawing.Point, System.Drawing">
-    <value>84, 48</value>
-  </data>
-  <data name="labelPassword.Size" type="System.Drawing.Size, System.Drawing">
-    <value>44, 13</value>
-  </data>
-  <data name="labelPassword.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="labelPassword.Text" xml:space="preserve">
-    <value>סיסמא:</value>
-  </data>
-  <data name="&gt;&gt;labelPassword.Name" xml:space="preserve">
-    <value>labelPassword</value>
-  </data>
-  <data name="&gt;&gt;labelPassword.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelPassword.Parent" xml:space="preserve">
-    <value>personalDetailsGroup</value>
-  </data>
-  <data name="&gt;&gt;labelPassword.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="labelUserId.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Right</value>
-  </data>
-  <data name="labelUserId.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="labelUserId.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="labelUserId.Location" type="System.Drawing.Point, System.Drawing">
-    <value>84, 22</value>
-  </data>
-  <data name="labelUserId.Size" type="System.Drawing.Size, System.Drawing">
-    <value>78, 13</value>
-  </data>
-  <data name="labelUserId.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="labelUserId.Text" xml:space="preserve">
-    <value>מספר סטודנט:</value>
-  </data>
-  <data name="&gt;&gt;labelUserId.Name" xml:space="preserve">
-    <value>labelUserId</value>
-  </data>
-  <data name="&gt;&gt;labelUserId.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelUserId.Parent" xml:space="preserve">
-    <value>personalDetailsGroup</value>
-  </data>
-  <data name="&gt;&gt;labelUserId.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="useridTextbox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Right</value>
-  </data>
-  <data name="useridTextbox.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Courier New, 9pt</value>
-  </data>
-  <data name="useridTextbox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 18</value>
-  </data>
-  <data name="useridTextbox.MaxLength" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="useridTextbox.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
+  <data name="toolStripProgressBar.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
     <value>No</value>
   </data>
-  <data name="useridTextbox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>72, 21</value>
-  </data>
-  <data name="useridTextbox.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="useridTextbox.Text" xml:space="preserve">
-    <value>036979821</value>
-  </data>
-  <data name="useridTextbox.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Center</value>
-  </data>
-  <data name="&gt;&gt;useridTextbox.Name" xml:space="preserve">
-    <value>useridTextbox</value>
-  </data>
-  <data name="&gt;&gt;useridTextbox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;useridTextbox.Parent" xml:space="preserve">
-    <value>personalDetailsGroup</value>
-  </data>
-  <data name="&gt;&gt;useridTextbox.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="passwordBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Right</value>
-  </data>
-  <data name="passwordBox.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Courier New, 9pt</value>
-  </data>
-  <data name="passwordBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>14, 43</value>
-  </data>
-  <data name="passwordBox.MaxLength" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="passwordBox.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
-    <value>No</value>
-  </data>
-  <data name="passwordBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 21</value>
-  </data>
-  <data name="passwordBox.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="passwordBox.Text" xml:space="preserve">
-    <value>50300072</value>
-  </data>
-  <data name="passwordBox.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Center</value>
-  </data>
-  <data name="&gt;&gt;passwordBox.Name" xml:space="preserve">
-    <value>passwordBox</value>
-  </data>
-  <data name="&gt;&gt;passwordBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;passwordBox.Parent" xml:space="preserve">
-    <value>personalDetailsGroup</value>
-  </data>
-  <data name="&gt;&gt;passwordBox.ZOrder" xml:space="preserve">
-    <value>4</value>
+  <data name="toolStripProgressBar.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 14</value>
   </data>
   <data name="statusLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>30, 15</value>
