@@ -185,10 +185,18 @@ namespace getGradesForms
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            grades.logOut();
+            if (grades != null)
+                grades.logOut();
+            grades = null;
             passwordBox.ResetText();
             useridTextbox.ResetText();
-            refresh();
+
+            browser.Navigate("about:blank");
+
+            labelName.ResetText();
+            labelFaculty.ResetText();
+            labelProgram.ResetText();
+
             goButton.Enabled = false;
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.Refresh();
