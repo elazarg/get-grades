@@ -16,6 +16,7 @@
             if (disposing && (components != null))
             {
                 components.Dispose();
+                grades.Dispose();
             }
             base.Dispose(disposing);
         }
@@ -36,6 +37,7 @@
             this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBoxAuthentication = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabCleanSlate = new System.Windows.Forms.TabPage();
             this.dataGridViewCleanSlate = new System.Windows.Forms.DataGridView();
@@ -147,11 +149,19 @@
             // 
             // groupBoxAuthentication
             // 
+            this.groupBoxAuthentication.Controls.Add(this.button1);
             this.groupBoxAuthentication.Controls.Add(this.saveAsButton);
             this.groupBoxAuthentication.Controls.Add(this.goButton);
             resources.ApplyResources(this.groupBoxAuthentication, "groupBoxAuthentication");
             this.groupBoxAuthentication.Name = "groupBoxAuthentication";
             this.groupBoxAuthentication.TabStop = false;
+            // 
+            // button1
+            // 
+            resources.ApplyResources(this.button1, "button1");
+            this.button1.Name = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // tabControl1
             // 
@@ -541,6 +551,7 @@
             // labelName
             // 
             resources.ApplyResources(this.labelName, "labelName");
+            this.labelName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.myDatabaseDataSet, "PersonalDetails.First Name", true));
             this.labelName.Name = "labelName";
             this.labelName.TextChanged += new System.EventHandler(this.labelPD_TextChanged);
             // 
@@ -658,6 +669,7 @@
         private System.Windows.Forms.TabPage tabHtml;
         private System.Windows.Forms.RichTextBox richTextBoxHtml;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.Button button1;
     }
 }
 

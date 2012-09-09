@@ -33,12 +33,54 @@ namespace getGradesForms
             this.PersonalDetails.AddPersonalDetailsRow(date, id, fullName[0], fullName[1], program, faculty);
         }
 
+        Dictionary<string, string> idToFaculty = new Dictionary<string, string>
+        {
+            { "23", "מדעי המחשב" }, 
+            { "13", "ביולוגיה" },
+            { "33", "הנדסה ביו-רפואית" },
+            { "05", "הנדסה כימית" },
+            { "06", "הנדסת ביוטכנולוגיה ומזון" },
+            { "03", "הנדסת מכונות" },
+            { "12", "כימיה" },
+            { "31", "הנדסת חומרים" },
+            { "11", "פיסיקה" },
+            { "20", "ארכיטקטורה ובינוי ערים" },
+            { "21", "הוראת המדעים" },
+            { "01", "הנדסה אזרחית" },
+            { "08", "הנדסת אווירונאוטיקה" },
+            { "04", "הנדסת חשמל" },
+            { "09", "הנדסת תעשיה וניהול" },
+            { "32", "לימודים הומניסטיים ואמנות" },
+            { "39", "לימודים הומניסטיים ואמנות" }, // sport?
+            { "10", "מתמטיקה" },
+            { "19", "מתמטיקה" }, //advanced
+            { "27", "רפואה" },
+        };
+
+
         internal void addSessionToSQL(string course_ID, string course_Name, string points, string grade)
         {
             CourseSessionsRow cs = this.CourseSessions.NewCourseSessionsRow();
             cs.CourseListRow = addCourse(course_ID, course_Name, points);
             cs.SemesterRow = this.Semester.Last();
-
+            decimal decimalGrade = -1;
+            if (decimal.TryParse(grade, out decimalGrade))
+                cs.Grade = decimalGrade;
+      /*      else
+                switch (grade.Trim())
+                {
+                    case "-": MessageBox.Show("0"); break;
+                    case "לא השלים": MessageBox.Show("1"); break;
+                    case "לא השלים*": MessageBox.Show("2"); break;
+                    case "פטור ללא ניקוד": MessageBox.Show("3"); break;
+                    case "פטור עם ניקוד": MessageBox.Show("4"); break;
+                    case "עבר": MessageBox.Show("5"); break;
+                    case "נכשל": MessageBox.Show("6"); break;
+                    case "לא השלים ש": MessageBox.Show("7"); break;
+                    case "לא השלים ש*": MessageBox.Show("8"); break;
+                    default: MessageBox.Show("WOT", grade); break;
+                }
+            */
             if (grade.Contains("-") || grade.Contains("*")) {
                 cs.Comments = (grade.Contains("-")) ? "טרם ניגש" : "לא נחשב";
                 cs.isLast = false;
@@ -51,12 +93,9 @@ namespace getGradesForms
 
                 cs.isLast = cs.Attended = (cs.Semester_ID != 0);
                 cs.Comments = grade; //could be nothing
-                cs.Grade = (cs.Semester_ID == 0) ? 100 : -1; //לא השלים
-
-                decimal decimalGrade = 100;
-                if (decimal.TryParse(grade, out decimalGrade))
-                    cs.Grade = decimalGrade;
+            //    cs.Grade = (cs.Semester_ID == 0) ? 100 : -1; //לא השלים
             }
+
             this.CourseSessions.AddCourseSessionsRow(cs);
             this.CourseSessions.AcceptChanges();
         }

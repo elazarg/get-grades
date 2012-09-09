@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace getGradesForms
 {
-    class Grades
+    class Grades : IDisposable
     {
         public readonly MyDatabaseDataSet dataSet= new getGradesForms.MyDatabaseDataSet();
         public String html { get; private set; }
@@ -19,6 +19,7 @@ namespace getGradesForms
             CONNECTING,
             AUTHENTICATING,
             PROCESSING,
+            FAILED,
             DONE
         }
 
@@ -61,11 +62,11 @@ namespace getGradesForms
             this.bw = bw;
 
             this.state = State.READY;
-            connectAndDownload(userid, password);
 
-            process();
+                connectAndDownload(userid, password);
+                process();
+                state = State.DONE;
 
-            state = State.DONE;
         }
 
         public void saveFile(string fileName)
@@ -73,6 +74,19 @@ namespace getGradesForms
             var txt = string.Join("\r\n", from row in dataSet.ViewTable
                                               select string.Join(" , ", row.ItemArray));
             File.WriteAllText(fileName, txt, Connection.hebrewEncoding);
+        }
+
+        internal void logOut()
+        {
+            html = "";
+            dataSet.init();
+            dataSet.PersonalDetails.AddPersonalDetailsRow("", "", "", "", "", "");
+            dataSet.Semester.Clear();
+        }
+
+        public void Dispose()
+        {
+            dataSet.Dispose();
         }
     }
 }
