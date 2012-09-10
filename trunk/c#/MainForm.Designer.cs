@@ -35,8 +35,6 @@
             this.saveAsButton = new System.Windows.Forms.Button();
             this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.groupBoxAuthentication = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabCleanSlate = new System.Windows.Forms.TabPage();
             this.dataGridViewCleanSlate = new System.Windows.Forms.DataGridView();
@@ -51,8 +49,14 @@
             this.gradeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.semesterIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.commentsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.isLast = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Attended = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tabCourses = new System.Windows.Forms.TabPage();
             this.dataGridViewCourseList = new System.Windows.Forms.DataGridView();
+            this.iDDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pointsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Faculty = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabSemesters = new System.Windows.Forms.TabPage();
             this.dataGridViewSemesters = new System.Windows.Forms.DataGridView();
             this.iDDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -81,21 +85,18 @@
             this.labelName = new System.Windows.Forms.Label();
             this.labelProgram = new System.Windows.Forms.Label();
             this.labelFaculty = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBoxSuccessRate = new System.Windows.Forms.TextBox();
+            this.textBoxPoints = new System.Windows.Forms.TextBox();
+            this.textBoxAvGrade = new System.Windows.Forms.TextBox();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.button1 = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.iDDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pointsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Faculty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBoxAvGrade = new System.Windows.Forms.TextBox();
-            this.textBoxPoints = new System.Windows.Forms.TextBox();
-            this.textBoxSuccessRate = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
-            this.groupBoxAuthentication.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabCleanSlate.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCleanSlate)).BeginInit();
@@ -113,8 +114,9 @@
             this.statusStrip2.SuspendLayout();
             this.detailsBox.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.groupBox1.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // goButton
@@ -147,30 +149,14 @@
             // tableLayoutPanel1
             // 
             resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
-            this.tableLayoutPanel1.Controls.Add(this.groupBoxAuthentication, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.tabControl1, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.statusStrip1, 2, 2);
             this.tableLayoutPanel1.Controls.Add(this.personalDetailsGroup, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.statusStrip2, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.detailsBox, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.groupBox1, 3, 0);
+            this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel1, 1, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            // 
-            // groupBoxAuthentication
-            // 
-            this.groupBoxAuthentication.Controls.Add(this.button1);
-            this.groupBoxAuthentication.Controls.Add(this.saveAsButton);
-            this.groupBoxAuthentication.Controls.Add(this.goButton);
-            resources.ApplyResources(this.groupBoxAuthentication, "groupBoxAuthentication");
-            this.groupBoxAuthentication.Name = "groupBoxAuthentication";
-            this.groupBoxAuthentication.TabStop = false;
-            // 
-            // button1
-            // 
-            resources.ApplyResources(this.button1, "button1");
-            this.button1.Name = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // tabControl1
             // 
@@ -264,7 +250,9 @@
             this.courseIDDataGridViewTextBoxColumn,
             this.gradeDataGridViewTextBoxColumn,
             this.semesterIDDataGridViewTextBoxColumn,
-            this.commentsDataGridViewTextBoxColumn});
+            this.commentsDataGridViewTextBoxColumn,
+            this.isLast,
+            this.Attended});
             this.dataGridViewSessions.DataMember = "CourseSessions";
             this.dataGridViewSessions.DataSource = this.myDatabaseDataSet;
             resources.ApplyResources(this.dataGridViewSessions, "dataGridViewSessions");
@@ -302,6 +290,18 @@
             this.commentsDataGridViewTextBoxColumn.MaxInputLength = 15;
             this.commentsDataGridViewTextBoxColumn.Name = "commentsDataGridViewTextBoxColumn";
             // 
+            // isLast
+            // 
+            this.isLast.DataPropertyName = "isLast";
+            resources.ApplyResources(this.isLast, "isLast");
+            this.isLast.Name = "isLast";
+            // 
+            // Attended
+            // 
+            this.Attended.DataPropertyName = "Attended";
+            resources.ApplyResources(this.Attended, "Attended");
+            this.Attended.Name = "Attended";
+            // 
             // tabCourses
             // 
             this.tabCourses.Controls.Add(this.dataGridViewCourseList);
@@ -325,6 +325,39 @@
             resources.ApplyResources(this.dataGridViewCourseList, "dataGridViewCourseList");
             this.dataGridViewCourseList.Name = "dataGridViewCourseList";
             this.dataGridViewCourseList.ReadOnly = true;
+            // 
+            // iDDataGridViewTextBoxColumn1
+            // 
+            this.iDDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.iDDataGridViewTextBoxColumn1.DataPropertyName = "ID";
+            resources.ApplyResources(this.iDDataGridViewTextBoxColumn1, "iDDataGridViewTextBoxColumn1");
+            this.iDDataGridViewTextBoxColumn1.Name = "iDDataGridViewTextBoxColumn1";
+            this.iDDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            resources.ApplyResources(this.nameDataGridViewTextBoxColumn, "nameDataGridViewTextBoxColumn");
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // pointsDataGridViewTextBoxColumn
+            // 
+            this.pointsDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.pointsDataGridViewTextBoxColumn.DataPropertyName = "Points";
+            resources.ApplyResources(this.pointsDataGridViewTextBoxColumn, "pointsDataGridViewTextBoxColumn");
+            this.pointsDataGridViewTextBoxColumn.Name = "pointsDataGridViewTextBoxColumn";
+            this.pointsDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // Faculty
+            // 
+            this.Faculty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Faculty.DataPropertyName = "Faculty";
+            resources.ApplyResources(this.Faculty, "Faculty");
+            this.Faculty.MaxInputLength = 30;
+            this.Faculty.Name = "Faculty";
+            this.Faculty.ReadOnly = true;
             // 
             // tabSemesters
             // 
@@ -549,46 +582,6 @@
             this.labelFaculty.Name = "labelFaculty";
             this.labelFaculty.TextChanged += new System.EventHandler(this.labelPD_TextChanged);
             // 
-            // errorProvider1
-            // 
-            this.errorProvider1.BlinkRate = 500;
-            this.errorProvider1.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.AlwaysBlink;
-            this.errorProvider1.ContainerControl = this;
-            resources.ApplyResources(this.errorProvider1, "errorProvider1");
-            // 
-            // iDDataGridViewTextBoxColumn1
-            // 
-            this.iDDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.iDDataGridViewTextBoxColumn1.DataPropertyName = "ID";
-            resources.ApplyResources(this.iDDataGridViewTextBoxColumn1, "iDDataGridViewTextBoxColumn1");
-            this.iDDataGridViewTextBoxColumn1.Name = "iDDataGridViewTextBoxColumn1";
-            this.iDDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // nameDataGridViewTextBoxColumn
-            // 
-            this.nameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
-            resources.ApplyResources(this.nameDataGridViewTextBoxColumn, "nameDataGridViewTextBoxColumn");
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // pointsDataGridViewTextBoxColumn
-            // 
-            this.pointsDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.pointsDataGridViewTextBoxColumn.DataPropertyName = "Points";
-            resources.ApplyResources(this.pointsDataGridViewTextBoxColumn, "pointsDataGridViewTextBoxColumn");
-            this.pointsDataGridViewTextBoxColumn.Name = "pointsDataGridViewTextBoxColumn";
-            this.pointsDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // Faculty
-            // 
-            this.Faculty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Faculty.DataPropertyName = "Faculty";
-            resources.ApplyResources(this.Faculty, "Faculty");
-            this.Faculty.MaxInputLength = 30;
-            this.Faculty.Name = "Faculty";
-            this.Faculty.ReadOnly = true;
-            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.label3);
@@ -601,29 +594,11 @@
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
             // 
-            // textBoxAvGrade
+            // label3
             // 
-            resources.ApplyResources(this.textBoxAvGrade, "textBoxAvGrade");
-            this.textBoxAvGrade.Name = "textBoxAvGrade";
-            this.textBoxAvGrade.ReadOnly = true;
-            // 
-            // textBoxPoints
-            // 
-            resources.ApplyResources(this.textBoxPoints, "textBoxPoints");
-            this.textBoxPoints.Name = "textBoxPoints";
-            this.textBoxPoints.ReadOnly = true;
-            // 
-            // textBoxSuccessRate
-            // 
-            resources.ApplyResources(this.textBoxSuccessRate, "textBoxSuccessRate");
-            this.textBoxSuccessRate.Name = "textBoxSuccessRate";
-            this.textBoxSuccessRate.ReadOnly = true;
-            // 
-            // label1
-            // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.Name = "label1";
-            this.label1.TextChanged += new System.EventHandler(this.labelPD_TextChanged);
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.Name = "label3";
+            this.label3.TextChanged += new System.EventHandler(this.labelPD_TextChanged);
             // 
             // label2
             // 
@@ -631,11 +606,51 @@
             this.label2.Name = "label2";
             this.label2.TextChanged += new System.EventHandler(this.labelPD_TextChanged);
             // 
-            // label3
+            // label1
             // 
-            resources.ApplyResources(this.label3, "label3");
-            this.label3.Name = "label3";
-            this.label3.TextChanged += new System.EventHandler(this.labelPD_TextChanged);
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            this.label1.TextChanged += new System.EventHandler(this.labelPD_TextChanged);
+            // 
+            // textBoxSuccessRate
+            // 
+            resources.ApplyResources(this.textBoxSuccessRate, "textBoxSuccessRate");
+            this.textBoxSuccessRate.Name = "textBoxSuccessRate";
+            this.textBoxSuccessRate.ReadOnly = true;
+            // 
+            // textBoxPoints
+            // 
+            resources.ApplyResources(this.textBoxPoints, "textBoxPoints");
+            this.textBoxPoints.Name = "textBoxPoints";
+            this.textBoxPoints.ReadOnly = true;
+            // 
+            // textBoxAvGrade
+            // 
+            resources.ApplyResources(this.textBoxAvGrade, "textBoxAvGrade");
+            this.textBoxAvGrade.Name = "textBoxAvGrade";
+            this.textBoxAvGrade.ReadOnly = true;
+            // 
+            // flowLayoutPanel1
+            // 
+            resources.ApplyResources(this.flowLayoutPanel1, "flowLayoutPanel1");
+            this.flowLayoutPanel1.Controls.Add(this.saveAsButton);
+            this.flowLayoutPanel1.Controls.Add(this.button1);
+            this.flowLayoutPanel1.Controls.Add(this.goButton);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            // 
+            // button1
+            // 
+            resources.ApplyResources(this.button1, "button1");
+            this.button1.Name = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.BlinkRate = 500;
+            this.errorProvider1.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.AlwaysBlink;
+            this.errorProvider1.ContainerControl = this;
+            resources.ApplyResources(this.errorProvider1, "errorProvider1");
             // 
             // MainForm
             // 
@@ -647,7 +662,6 @@
             this.ShowIcon = false;
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            this.groupBoxAuthentication.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tabCleanSlate.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCleanSlate)).EndInit();
@@ -669,9 +683,10 @@
             this.detailsBox.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.flowLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -683,7 +698,6 @@
         private System.Windows.Forms.Button saveAsButton;
         private System.ComponentModel.BackgroundWorker backgroundWorker;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.GroupBox groupBoxAuthentication;
         private MyDatabaseDataSet myDatabaseDataSet;
         private System.Windows.Forms.GroupBox personalDetailsGroup;
         private System.Windows.Forms.CheckBox passwordCheckBox;
@@ -742,6 +756,9 @@
         private System.Windows.Forms.TextBox textBoxSuccessRate;
         private System.Windows.Forms.TextBox textBoxPoints;
         private System.Windows.Forms.TextBox textBoxAvGrade;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn isLast;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Attended;
     }
 }
 
