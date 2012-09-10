@@ -114,6 +114,11 @@ namespace getGradesForms
             labelName.Text = details.First_Name + " " + details.Last_Name;
             labelFaculty.Text = details.Faculty;
             labelProgram.Text = details.Program;
+
+            var total =  myDatabaseDataSet.Semester.Last();
+            textBoxAvGrade.Text = total.Average.ToString();
+            textBoxPoints.Text = total.Points.ToString();
+            textBoxSuccessRate.Text = total.Success_Rate.ToString();
         }
 
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -192,7 +197,10 @@ namespace getGradesForms
             browser.Navigate("about:blank");
             richTextBoxHtml.ResetText();
             
-            foreach (var i in new Control[] { passwordBox,  useridTextbox,  labelName,  labelFaculty, labelProgram })
+            foreach (var i in new Control[] {
+                passwordBox,  useridTextbox,
+                labelName,  labelFaculty, labelProgram,
+                textBoxAvGrade, textBoxPoints, textBoxSuccessRate})
                 i.ResetText();
 
             goButton.Enabled = false;

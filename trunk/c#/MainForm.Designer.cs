@@ -87,6 +87,13 @@
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pointsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Faculty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.textBoxAvGrade = new System.Windows.Forms.TextBox();
+            this.textBoxPoints = new System.Windows.Forms.TextBox();
+            this.textBoxSuccessRate = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBoxAuthentication.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -107,6 +114,7 @@
             this.detailsBox.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // goButton
@@ -140,11 +148,12 @@
             // 
             resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
             this.tableLayoutPanel1.Controls.Add(this.groupBoxAuthentication, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.tabControl1, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.statusStrip1, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.tabControl1, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.statusStrip1, 2, 2);
             this.tableLayoutPanel1.Controls.Add(this.personalDetailsGroup, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.statusStrip2, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.detailsBox, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.groupBox1, 3, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             // 
             // groupBoxAuthentication
@@ -165,7 +174,7 @@
             // 
             // tabControl1
             // 
-            this.tableLayoutPanel1.SetColumnSpan(this.tabControl1, 3);
+            this.tableLayoutPanel1.SetColumnSpan(this.tabControl1, 4);
             this.tabControl1.Controls.Add(this.tabCleanSlate);
             this.tabControl1.Controls.Add(this.tabSessions);
             this.tabControl1.Controls.Add(this.tabCourses);
@@ -494,6 +503,7 @@
             // 
             // statusStrip2
             // 
+            this.tableLayoutPanel1.SetColumnSpan(this.statusStrip2, 2);
             this.statusStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.statusLabel});
             resources.ApplyResources(this.statusStrip2, "statusStrip2");
@@ -579,6 +589,54 @@
             this.Faculty.Name = "Faculty";
             this.Faculty.ReadOnly = true;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.textBoxSuccessRate);
+            this.groupBox1.Controls.Add(this.textBoxPoints);
+            this.groupBox1.Controls.Add(this.textBoxAvGrade);
+            resources.ApplyResources(this.groupBox1, "groupBox1");
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.TabStop = false;
+            // 
+            // textBoxAvGrade
+            // 
+            resources.ApplyResources(this.textBoxAvGrade, "textBoxAvGrade");
+            this.textBoxAvGrade.Name = "textBoxAvGrade";
+            this.textBoxAvGrade.ReadOnly = true;
+            // 
+            // textBoxPoints
+            // 
+            resources.ApplyResources(this.textBoxPoints, "textBoxPoints");
+            this.textBoxPoints.Name = "textBoxPoints";
+            this.textBoxPoints.ReadOnly = true;
+            // 
+            // textBoxSuccessRate
+            // 
+            resources.ApplyResources(this.textBoxSuccessRate, "textBoxSuccessRate");
+            this.textBoxSuccessRate.Name = "textBoxSuccessRate";
+            this.textBoxSuccessRate.ReadOnly = true;
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            this.label1.TextChanged += new System.EventHandler(this.labelPD_TextChanged);
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            this.label2.TextChanged += new System.EventHandler(this.labelPD_TextChanged);
+            // 
+            // label3
+            // 
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.Name = "label3";
+            this.label3.TextChanged += new System.EventHandler(this.labelPD_TextChanged);
+            // 
             // MainForm
             // 
             resources.ApplyResources(this, "$this");
@@ -612,6 +670,8 @@
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -675,6 +735,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn pointsDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Faculty;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox textBoxSuccessRate;
+        private System.Windows.Forms.TextBox textBoxPoints;
+        private System.Windows.Forms.TextBox textBoxAvGrade;
     }
 }
 
