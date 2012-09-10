@@ -59,61 +59,47 @@ namespace getGradesForms
 
         internal void addSessionToSQL(string course_ID, string course_Name, string points, string grade)
         {
-            CourseSessionsRow cs = this.CourseSessions.NewCourseSessionsRow();
+            CourseSessionsRow cs = CourseSessions.NewCourseSessionsRow();
             cs.CourseListRow = addCourse(course_ID, course_Name, points);
-            cs.SemesterRow = this.Semester.Last();
+            cs.SemesterRow = Semester.Last();
+ 
+            switch (grade.Trim()) {
+                case "-":   case "לא השלים*":   case "לא השלים ש":  case "לא השלים ש*":
+                    cs.Comments = (grade.Contains("-")) ? "טרם ניגש" : "לא נחשב";
+                    cs.Grade = 0;
+                    cs.isLast = false;
+                    cs.Attended = grade.Trim() == "לא השלים*";//
+                    cs.inAverage = false;
+                    break;
 
+                case "לא השלים":    case "פטור ללא ניקוד":  case "פטור עם ניקוד":   case "עבר": case "נכשל":
+                    cs.Grade = (grade == "נכשל" || grade == ("לא השלים")) ? 0 : 100;
+                    cs.inAverage = false;
+                    goto finish;
 
-            decimal decimalGrade = -1;
-            if (decimal.TryParse(grade.Replace("*", ""), out decimalGrade))
-                cs.Grade = decimalGrade;
-            /*      else
-                      switch (grade.Trim())
-                      {
-                          case "-": MessageBox.Show("0"); break;
-                          case "לא השלים": MessageBox.Show("1"); break;
-                          case "לא השלים*": MessageBox.Show("2"); break;
-                          case "פטור ללא ניקוד": MessageBox.Show("3"); break;
-                          case "פטור עם ניקוד": MessageBox.Show("4"); break;
-                          case "עבר": MessageBox.Show("5"); break;
-                          case "נכשל": MessageBox.Show("6"); break;
-                          case "לא השלים ש": MessageBox.Show("7"); break;
-                          case "לא השלים ש*": MessageBox.Show("8"); break;
-                          default: MessageBox.Show("WOT", grade); break;
-                      }
-                  */
-            if (grade.Contains("-") || grade == ("לא השלים ש*") || grade == ("לא השלים מ*") || grade == ("לא השלים ש")) {
-                cs.Comments = (grade.Contains("-")) ? "טרם ניגש" : "לא נחשב";
-                cs.isLast = false;
-                cs.Attended = false;
-                cs.inAverage = false;
-            }
-            else if (grade == "עבר" || grade == "נכשל" || grade.StartsWith("פטור")) {
-                if (idToFaculty[course_ID.Remove(2)] != "ספורט") {
-                    CourseSessionsRow last = this.CourseSessions.LastOrDefault(row => row.CourseListRow.Name == course_Name);
-                    if (last != null)
-                        last.isLast = false;
-                }
-                cs.Grade = grade == "נכשל" ? 0 : 100;
-                cs.inAverage = false;
-                cs.isLast = true;
-                cs.Attended = true; //true
-                cs.Comments = grade;
-            }
-            else {
-                if (idToFaculty[course_ID.Remove(2)] != "ספורט") {
-                    CourseSessionsRow last = this.CourseSessions.LastOrDefault(row => row.CourseListRow.Name == course_Name);
-                    if (last != null)
-                        last.isLast = false;
-                }
+                default:
+                    cs.Grade = decimal.Parse(grade.Replace("*", ""));
+                    cs.inAverage = true;
+                    goto finish;
 
-                cs.inAverage = true;
-                cs.isLast = cs.Attended = true;
-                cs.Comments = grade; //could be nothing
+                finish:
+                    removeIsLast(course_ID, course_Name);
+                    cs.isLast = cs.Attended = true;
+                    cs.Comments = grade; //could be nothing 
+                    break;
             }
 
             this.CourseSessions.AddCourseSessionsRow(cs);
             this.CourseSessions.AcceptChanges();
+        }
+
+        private void removeIsLast(string course_ID, string course_Name)
+        {
+            if (idToFaculty[course_ID.Remove(2)] != "ספורט") {
+                CourseSessionsRow last = this.CourseSessions.LastOrDefault(row => row.CourseListRow.Name == course_Name);
+                if (last != null)
+                    last.isLast = false;
+            }
         }
 
         struct Sum
@@ -127,8 +113,8 @@ namespace getGradesForms
         Sum computeSemester(Func<int, bool> pred)
         {
             var taken = CourseSessions.Where(x => pred(x.Semester_ID));
-            var inAverage = taken.Where( x => x.isLast && x.Grade > -1 && x.inAverage);
-            var inpoints = taken.Where(x =>  x.CourseListRow.Points > -1);
+            var inAverage = taken.Where(x => x.isLast && x.Grade > -1 && x.inAverage);
+            var inpoints = taken.Where(x => x.CourseListRow.Points > -1);
             var inSuccess = inpoints.Where(x => x.Attended);
             if (inSuccess.Any()) {
                 return new Sum
@@ -150,13 +136,30 @@ namespace getGradesForms
             this.Semester.AddSemesterRow(year, season, hebrewYear, 0, 0, 0);
         }
 
-        internal void endSemesterSQL(string points, string average, string successRate)
+        internal void endSemesterSQL(string successRate, string points, string average)
         {
             SemesterRow last = this.Semester.Last();
             Sum s = computeSemester(semid => semid == last.ID);
             last.Points = s.Points;
             last.Average = s.Average;
             last.Success_Rate = s.SuccessRate;
+
+            // validation
+            decimal p;
+            if (decimal.TryParse(points, out p)){
+                Sum actual = new Sum {
+                                 Points = decimal.Parse(points),
+                                 Average = decimal.Parse(average),
+                                 SuccessRate = successRate == "" ? 0 : decimal.Parse(successRate),
+                             };
+                if (s.Points != actual.Points || s.Average != actual.Average || s.SuccessRate != actual.SuccessRate)
+                        MessageBox.Show("(" + points + " : " + s.Points + ")" + "(" + successRate + " : " + s.SuccessRate + ")" + "(" + average + " : " + s.Average + ")");
+            }
+            else if (decimal.TryParse(successRate, out p)) {
+                if (p != s.Points)
+                    MessageBox.Show("(" + successRate + " : " + s.Points + ")");
+            }
+            else MessageBox.Show("Error: " + successRate + " is not parsable");
         }
 
         internal void updateCleanSlate(bool show_empty = false)
@@ -164,8 +167,9 @@ namespace getGradesForms
             Sum s = computeSemester(semid => true);
             this.Semester.AddSemesterRow("סה\"כ", "", "", s.Average, s.SuccessRate, s.Points);
 
+            ViewTable.Clear();
             foreach (var row in CourseSessions.Where(x => x.isLast).Reverse())
-                if ( (!ViewTable.Any(c => c.Course_Name == row.CourseListRow.Name)) && (show_empty || row.Grade > 55 || row.Comments == "עבר"))
+                if ((!ViewTable.Any(c => c.Course_Name == row.CourseListRow.Name)) && (show_empty || row.Grade > 55 || row.Comments == "עבר"))
                     ViewTable.AddViewTableRow(row.Course_ID, row.CourseListRow.Name, row.CourseListRow.Points, row.Grade);
         }
     }

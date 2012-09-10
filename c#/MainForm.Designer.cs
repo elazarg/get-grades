@@ -257,6 +257,7 @@
             this.dataGridViewSessions.DataSource = this.myDatabaseDataSet;
             resources.ApplyResources(this.dataGridViewSessions, "dataGridViewSessions");
             this.dataGridViewSessions.Name = "dataGridViewSessions";
+            this.dataGridViewSessions.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSessions_CellValueChanged);
             // 
             // courseIDDataGridViewTextBoxColumn
             // 
