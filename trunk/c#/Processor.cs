@@ -26,7 +26,7 @@ namespace getGradesForms
         public delegate void SemesterFound(string year, string hebrewYear, string season);
         public event SemesterFound semesterFound = delegate { };
 
-        public delegate void SemesterFinished(string points, string average, string successRate);
+        public delegate void SemesterFinished(string successRate, string points, string average);
         public event SemesterFinished semesterFinished = delegate { };
 
         string raw_html;
@@ -40,14 +40,15 @@ namespace getGradesForms
             foreach (var table in tables.Skip(2))
                 foreach (string[] line in table)
                 {
-                 //   MessageBox.Show(string.Join(" , ", line));
                     if (Regex.IsMatch(line[0], "[0-9]{6}"))
                         sessionFound(line[0], line[1], line[2], line[3]);
                     else if (line[0].StartsWith("תש"))
                         semesterFound(line[3], line[0], line[1]);
                     else if (line[0].StartsWith("סה"))
-                        semesterFinished(Regex.Match(line[1], "\\d{1,3}").Value, line[2], line[3]); 
-               //     else  MessageBox.Show(string.Join(" , ", line));// semesterFinished(line[1], line[3], line[4]);
+                        semesterFinished(Regex.Match(line[1], "\\d{1,3}").Value, line.ElementAtOrDefault(2), line.ElementAtOrDefault(3)); 
+                    else if (line[0].StartsWith("מספר"))
+                        { }
+                    else MessageBox.Show(string.Join(" , ", line));// semesterFinished(line[1], line[3], line[4]);
                 }
         }
 
@@ -106,7 +107,7 @@ namespace getGradesForms
                     {
                         case "ממוצע" : lines[i] = "<td>ממוצע</td><td>שיעור הצלחות</td><td>נקודות מצטברות</td>"; break;
                         case "סה\"כ ": lines[i] = lines[i].Replace("<td>סה\"כ", "<td COLSPAN=2>סה\"כ"); break;
-                        case "סה\"כ<": //MessageBox.Show("HERE");
+                        case "סה\"כ<":
                             string[] temp = new string[3];
                             int j = 0;
                             foreach (Match match in Regex.Matches(lines[i],"[0-9]{1,3}(.[0-9]+)?")) 
@@ -136,8 +137,8 @@ namespace getGradesForms
             //the ultimate split - [table][line][cell]
             return (from t in fulltables
                       select (from x in t.Split(new string[] { "\r\n" }, StringSplitOptions.None)
-                              where x.StartsWith("<td>")
-                              select x.Split(new string[] { "<td>", "</td>" }, StringSplitOptions.RemoveEmptyEntries)
+                              where x.StartsWith("<td")
+                              select x.Split(new string[] { "<td>", "</td>", "<td COLSPAN=2>" }, StringSplitOptions.RemoveEmptyEntries)
                               ).ToArray()
                              ).ToArray();
         }
