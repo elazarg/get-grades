@@ -30,7 +30,10 @@ namespace getGradesForms
             if (e.Url.ToString().Contains("ug"))
                 e.Cancel = true;
             else
-                MessageBox.Show(e.Url.ToString());
+            {
+                MessageBox.Show(this, "שגיאה לא צפויה. התוכנית תיסגר");
+                this.Close();
+            }
 
         }
 
@@ -115,10 +118,9 @@ namespace getGradesForms
             labelFaculty.Text = details.Faculty;
             labelProgram.Text = details.Program;
 
-            var total =  myDatabaseDataSet.Semester.Last();
-            textBoxAvGrade.Text = total.Average.ToString();
-            textBoxPoints.Text = total.Points.ToString();
-            textBoxSuccessRate.Text = total.Success_Rate.ToString();
+            textBoxAvGrade.Text = myDatabaseDataSet.total.Average.ToString();
+            textBoxPoints.Text = myDatabaseDataSet.total.Points.ToString();
+            textBoxSuccessRate.Text = myDatabaseDataSet.total.SuccessRate.ToString();
         }
 
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -157,19 +159,14 @@ namespace getGradesForms
 
         private void numericTextbox_KeyDown(object sender, KeyEventArgs e)
         {
-            Func<Keys, bool> isNumeral = delegate (Keys k) {
-                return k >= Keys.D0 && k <= Keys.D9
-                    || k >= Keys.NumPad0 && k <= Keys.NumPad9;
-            };
-
-            Keys[] goodKeys = new Keys[] { Keys.Delete, Keys.Back,
-                    Keys.Right, Keys.Left, Keys.Home, Keys.End };
+            if (new Keys[] { Keys.Delete, Keys.Back,  Keys.Right, Keys.Left, Keys.Home, Keys.End }
+                .Contains(e.KeyData & ~Keys.Shift))
+                return;
 
             TextBox Sender = (TextBox)sender;
-            
-            if (!e.Modifiers.HasFlag(Keys.Shift | Keys.Control | Keys.Alt))
-                if (isNumeral(e.KeyData) && (Sender.TextLength < Sender.MaxLength || Sender.SelectionLength > 0)
-                    || goodKeys.Contains(e.KeyData))
+            if (!e.Modifiers.HasFlag(Keys.Shift | Keys.Control | Keys.Alt)
+                        &&  (e.KeyData >= Keys.D0 && e.KeyData <= Keys.D9 || e.KeyData >= Keys.NumPad0   && e.KeyData <= Keys.NumPad9)
+                        && (Sender.TextLength < Sender.MaxLength || Sender.SelectionLength > 0))
                     return;
 
             if (e.KeyData == Keys.Enter && goButton.Enabled)
@@ -182,13 +179,17 @@ namespace getGradesForms
 
         private void TextBox_TextChanged(object sender, EventArgs e)
         {
-            TextBox Sender = (TextBox)sender;
-            goButton.Enabled =
-                useridTextbox.TextLength /2  == useridTextbox.MaxLength /2 //8 or 9
+            Func<int, int, int> tr = (int d, int i) => i%2==1 ? d : (2*d / 10 ) + (2*d % 10);
+            Func<string, bool> validateId = delegate (string userid) {
+                var usernums = (from c in userid.Reverse() select int.Parse(char.ToString(c))).ToArray();
+                return usernums[0] == (10 - usernums.Skip(1).Select(tr).Sum() % 10);
+            };
+            goButton.Enabled = useridTextbox.TextLength /2  == useridTextbox.MaxLength /2 //8 or 9
+                && validateId(useridTextbox.Text)
                 && passwordBox.TextLength == passwordBox.MaxLength;
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
+        private void buttonClear_Click(object sender, EventArgs e)
         {
             if (grades != null)
                 grades.logOut();
@@ -196,15 +197,19 @@ namespace getGradesForms
 
             browser.Navigate("about:blank");
             richTextBoxHtml.ResetText();
-            
-            foreach (var i in new Control[] {
-                passwordBox,  useridTextbox,
-                labelName,  labelFaculty, labelProgram,
-                textBoxAvGrade, textBoxPoints, textBoxSuccessRate})
+
+            foreach (Control i in new Control[] {
+                    passwordBox,  useridTextbox,
+                    labelName,  labelFaculty, labelProgram,
+                    textBoxAvGrade, textBoxPoints, textBoxSuccessRate
+                })
                 i.ResetText();
 
-            goButton.Enabled = false;
+ 
             this.Cursor = System.Windows.Forms.Cursors.Default;
+
+            this.goButton.Enabled = false;
+            this.saveAsButton.Enabled = false;
             this.Refresh();
             this.Focus();
         }
@@ -217,6 +222,9 @@ namespace getGradesForms
             }
         }
 
-
+        private void textBox_Enter(object sender, EventArgs e)
+        {
+            ((TextBox)sender).SelectAll();
+        }
     }
 }

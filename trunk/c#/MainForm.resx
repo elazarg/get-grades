@@ -175,7 +175,7 @@
     <value>65, 23</value>
   </data>
   <data name="saveAsButton.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
+    <value>4</value>
   </data>
   <data name="saveAsButton.Text" xml:space="preserve">
     <value>שמור</value>
@@ -217,7 +217,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabCleanSlate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>656, 277</value>
+    <value>656, 227</value>
   </data>
   <data name="tabCleanSlate.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -235,57 +235,6 @@
     <value>tabControl1</value>
   </data>
   <data name="&gt;&gt;tabCleanSlate.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="courseIDDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>מספר קורס</value>
-  </data>
-  <data name="courseIDDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
-    <value>87</value>
-  </data>
-  <data name="gradeDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>ציון</value>
-  </data>
-  <data name="gradeDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
-    <value>54</value>
-  </data>
-  <data name="semesterIDDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>מספר סמסטר</value>
-  </data>
-  <data name="semesterIDDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
-    <value>96</value>
-  </data>
-  <data name="commentsDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>הערות</value>
-  </data>
-  <data name="commentsDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
-    <value>64</value>
-  </data>
-  <metadata name="isLast.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="isLast.HeaderText" xml:space="preserve">
-    <value>isLast</value>
-  </data>
-  <metadata name="Attended.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="Attended.HeaderText" xml:space="preserve">
-    <value>Attended</value>
-  </data>
-  <metadata name="myDatabaseDataSet.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>269, 17</value>
-  </metadata>
-  <data name="dataGridViewSessions.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="dataGridViewSessions.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
-  </data>
-  <data name="dataGridViewSessions.Size" type="System.Drawing.Size, System.Drawing">
-    <value>650, 271</value>
-  </data>
-  <data name="dataGridViewSessions.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
   <data name="&gt;&gt;dataGridViewSessions.Name" xml:space="preserve">
@@ -307,7 +256,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabSessions.Size" type="System.Drawing.Size, System.Drawing">
-    <value>656, 277</value>
+    <value>656, 227</value>
   </data>
   <data name="tabSessions.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -346,7 +295,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabCourses.Size" type="System.Drawing.Size, System.Drawing">
-    <value>656, 277</value>
+    <value>656, 227</value>
   </data>
   <data name="tabCourses.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -385,7 +334,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabSemesters.Size" type="System.Drawing.Size, System.Drawing">
-    <value>656, 277</value>
+    <value>656, 227</value>
   </data>
   <data name="tabSemesters.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -424,7 +373,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabBrowser.Size" type="System.Drawing.Size, System.Drawing">
-    <value>656, 277</value>
+    <value>656, 227</value>
   </data>
   <data name="tabBrowser.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -466,7 +415,7 @@
     <value>No</value>
   </data>
   <data name="tabHtml.Size" type="System.Drawing.Size, System.Drawing">
-    <value>656, 277</value>
+    <value>656, 227</value>
   </data>
   <data name="tabHtml.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -499,7 +448,7 @@
     <value>True</value>
   </data>
   <data name="tabControl1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>664, 303</value>
+    <value>664, 253</value>
   </data>
   <data name="tabControl1.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -520,7 +469,7 @@
     <value>495, 17</value>
   </metadata>
   <data name="statusStrip1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 393</value>
+    <value>0, 343</value>
   </data>
   <data name="statusStrip1.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
     <value>No</value>
@@ -637,7 +586,7 @@
     <value>595, 17</value>
   </metadata>
   <data name="statusStrip2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>339, 393</value>
+    <value>339, 343</value>
   </data>
   <data name="statusStrip2.Size" type="System.Drawing.Size, System.Drawing">
     <value>331, 20</value>
@@ -853,7 +802,7 @@
     <value>3</value>
   </data>
   <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>670, 413</value>
+    <value>670, 363</value>
   </data>
   <data name="tableLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -886,7 +835,7 @@
     <value>3, 3</value>
   </data>
   <data name="dataGridViewCleanSlate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>650, 271</value>
+    <value>650, 221</value>
   </data>
   <data name="dataGridViewCleanSlate.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -930,6 +879,9 @@
   <data name="gradeDataGridViewTextBoxColumn1.Width" type="System.Int32, mscorlib">
     <value>54</value>
   </data>
+  <metadata name="myDatabaseDataSet.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>269, 17</value>
+  </metadata>
   <metadata name="Faculty.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -940,7 +892,7 @@
     <value>3, 3</value>
   </data>
   <data name="dataGridViewCourseList.Size" type="System.Drawing.Size, System.Drawing">
-    <value>610, 271</value>
+    <value>650, 221</value>
   </data>
   <data name="dataGridViewCourseList.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -991,7 +943,7 @@
     <value>3, 3</value>
   </data>
   <data name="dataGridViewSemesters.Size" type="System.Drawing.Size, System.Drawing">
-    <value>610, 271</value>
+    <value>650, 221</value>
   </data>
   <data name="dataGridViewSemesters.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1008,48 +960,6 @@
   <data name="&gt;&gt;dataGridViewSemesters.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="iDDataGridViewTextBoxColumn2.HeaderText" xml:space="preserve">
-    <value>מספר סמסטר</value>
-  </data>
-  <data name="iDDataGridViewTextBoxColumn2.Width" type="System.Int32, mscorlib">
-    <value>88</value>
-  </data>
-  <data name="yearDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>שנה</value>
-  </data>
-  <data name="yearDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
-    <value>53</value>
-  </data>
-  <data name="seasonDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>עונה</value>
-  </data>
-  <data name="seasonDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
-    <value>56</value>
-  </data>
-  <data name="hebrewYearDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>שנה עברית</value>
-  </data>
-  <data name="hebrewYearDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
-    <value>81</value>
-  </data>
-  <data name="averageDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>ממוצע</value>
-  </data>
-  <data name="averageDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
-    <value>65</value>
-  </data>
-  <data name="successRateDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>שיעור הצלחות</value>
-  </data>
-  <data name="successRateDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
-    <value>98</value>
-  </data>
-  <data name="pointsDataGridViewTextBoxColumn1.HeaderText" xml:space="preserve">
-    <value>נקודות</value>
-  </data>
-  <data name="pointsDataGridViewTextBoxColumn1.Width" type="System.Int32, mscorlib">
-    <value>68</value>
-  </data>
   <data name="browser.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -1057,7 +967,7 @@
     <value>3, 3</value>
   </data>
   <data name="browser.Size" type="System.Drawing.Size, System.Drawing">
-    <value>610, 271</value>
+    <value>650, 221</value>
   </data>
   <data name="browser.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1081,7 +991,7 @@
     <value>3, 3</value>
   </data>
   <data name="richTextBoxHtml.Size" type="System.Drawing.Size, System.Drawing">
-    <value>610, 271</value>
+    <value>650, 221</value>
   </data>
   <data name="richTextBoxHtml.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1681,7 +1591,7 @@
     <value>65, 23</value>
   </data>
   <data name="button1.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
+    <value>5</value>
   </data>
   <data name="button1.Text" xml:space="preserve">
     <value>נקה</value>
@@ -1717,10 +1627,10 @@
     <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>670, 413</value>
+    <value>670, 363</value>
   </data>
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>638, 200</value>
+    <value>678, 200</value>
   </data>
   <data name="$this.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
     <value>Yes</value>
@@ -1773,42 +1683,6 @@
   <data name="&gt;&gt;myDatabaseDataSet.Type" xml:space="preserve">
     <value>getGradesForms.MyDatabaseDataSet, MyDatabaseDataSet.Designer.cs, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;courseIDDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>courseIDDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;courseIDDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;gradeDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>gradeDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;gradeDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;semesterIDDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>semesterIDDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;semesterIDDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;commentsDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>commentsDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;commentsDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;isLast.Name" xml:space="preserve">
-    <value>isLast</value>
-  </data>
-  <data name="&gt;&gt;isLast.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Attended.Name" xml:space="preserve">
-    <value>Attended</value>
-  </data>
-  <data name="&gt;&gt;Attended.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;iDDataGridViewTextBoxColumn1.Name" xml:space="preserve">
     <value>iDDataGridViewTextBoxColumn1</value>
   </data>
@@ -1831,48 +1705,6 @@
     <value>Faculty</value>
   </data>
   <data name="&gt;&gt;Faculty.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;iDDataGridViewTextBoxColumn2.Name" xml:space="preserve">
-    <value>iDDataGridViewTextBoxColumn2</value>
-  </data>
-  <data name="&gt;&gt;iDDataGridViewTextBoxColumn2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;yearDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>yearDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;yearDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;seasonDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>seasonDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;seasonDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;hebrewYearDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>hebrewYearDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;hebrewYearDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;averageDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>averageDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;averageDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;successRateDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>successRateDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;successRateDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;pointsDataGridViewTextBoxColumn1.Name" xml:space="preserve">
-    <value>pointsDataGridViewTextBoxColumn1</value>
-  </data>
-  <data name="&gt;&gt;pointsDataGridViewTextBoxColumn1.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripProgressBar.Name" xml:space="preserve">
@@ -1899,6 +1731,126 @@
   <data name="&gt;&gt;errorProvider1.Type" xml:space="preserve">
     <value>System.Windows.Forms.ErrorProvider, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;courseIDDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>courseIDDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;courseIDDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;iDDataGridViewTextBoxColumn2.Name" xml:space="preserve">
+    <value>iDDataGridViewTextBoxColumn2</value>
+  </data>
+  <data name="&gt;&gt;iDDataGridViewTextBoxColumn2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;yearDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>yearDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;yearDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;seasonDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>seasonDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;seasonDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;hebrewYearDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>hebrewYearDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;hebrewYearDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;successRateDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>successRateDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;successRateDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pointsDataGridViewTextBoxColumn1.Name" xml:space="preserve">
+    <value>pointsDataGridViewTextBoxColumn1</value>
+  </data>
+  <data name="&gt;&gt;pointsDataGridViewTextBoxColumn1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;averageDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>averageDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;averageDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ID.Name" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="&gt;&gt;ID.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn1.Name" xml:space="preserve">
+    <value>dataGridViewTextBoxColumn1</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;iDDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>iDDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;iDDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;courseIDDataGridViewTextBoxColumn2.Name" xml:space="preserve">
+    <value>courseIDDataGridViewTextBoxColumn2</value>
+  </data>
+  <data name="&gt;&gt;courseIDDataGridViewTextBoxColumn2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;courseNameDataGridViewTextBoxColumn1.Name" xml:space="preserve">
+    <value>courseNameDataGridViewTextBoxColumn1</value>
+  </data>
+  <data name="&gt;&gt;courseNameDataGridViewTextBoxColumn1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;gradeDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>gradeDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;gradeDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;commentsDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>commentsDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;commentsDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;inFinalDataGridViewCheckBoxColumn.Name" xml:space="preserve">
+    <value>inFinalDataGridViewCheckBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;inFinalDataGridViewCheckBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;attendedDataGridViewCheckBoxColumn.Name" xml:space="preserve">
+    <value>attendedDataGridViewCheckBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;attendedDataGridViewCheckBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;inAverageDataGridViewCheckBoxColumn.Name" xml:space="preserve">
+    <value>inAverageDataGridViewCheckBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;inAverageDataGridViewCheckBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;passedDataGridViewCheckBoxColumn.Name" xml:space="preserve">
+    <value>passedDataGridViewCheckBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;passedDataGridViewCheckBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;semesterIDDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>semesterIDDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;semesterIDDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>MainForm</value>
   </data>
@@ -1907,5 +1859,149 @@
   </data>
   <data name="errorProvider1.RightToLeft" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="courseIDDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>מספר קורס</value>
+  </data>
+  <data name="courseIDDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
+    <value>87</value>
+  </data>
+  <data name="iDDataGridViewTextBoxColumn2.HeaderText" xml:space="preserve">
+    <value>מספר סמסטר</value>
+  </data>
+  <data name="iDDataGridViewTextBoxColumn2.Width" type="System.Int32, mscorlib">
+    <value>96</value>
+  </data>
+  <data name="yearDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>שנה</value>
+  </data>
+  <data name="yearDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
+    <value>53</value>
+  </data>
+  <data name="seasonDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>עונה</value>
+  </data>
+  <data name="seasonDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
+    <value>56</value>
+  </data>
+  <data name="hebrewYearDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>שנה עברית</value>
+  </data>
+  <data name="hebrewYearDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
+    <value>88</value>
+  </data>
+  <data name="successRateDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>שיעור הצלחות</value>
+  </data>
+  <data name="successRateDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
+    <value>98</value>
+  </data>
+  <data name="pointsDataGridViewTextBoxColumn1.HeaderText" xml:space="preserve">
+    <value>נקודות</value>
+  </data>
+  <data name="pointsDataGridViewTextBoxColumn1.Width" type="System.Int32, mscorlib">
+    <value>68</value>
+  </data>
+  <data name="averageDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>ממוצע</value>
+  </data>
+  <data name="averageDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
+    <value>65</value>
+  </data>
+  <data name="ID.HeaderText" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="ID.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn1.HeaderText" xml:space="preserve">
+    <value>מספר קורס</value>
+  </data>
+  <metadata name="myDatabaseDataSet.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>269, 17</value>
+  </metadata>
+  <data name="dataGridViewSessions.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="dataGridViewSessions.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="dataGridViewSessions.Size" type="System.Drawing.Size, System.Drawing">
+    <value>650, 221</value>
+  </data>
+  <data name="dataGridViewSessions.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewSessions.Name" xml:space="preserve">
+    <value>dataGridViewSessions</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewSessions.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewSessions.Parent" xml:space="preserve">
+    <value>tabSessions</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewSessions.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="iDDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="iDDataGridViewTextBoxColumn.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="courseIDDataGridViewTextBoxColumn2.HeaderText" xml:space="preserve">
+    <value>מספר קורס</value>
+  </data>
+  <data name="courseIDDataGridViewTextBoxColumn2.Width" type="System.Int32, mscorlib">
+    <value>87</value>
+  </data>
+  <data name="courseNameDataGridViewTextBoxColumn1.HeaderText" xml:space="preserve">
+    <value>שם קורס</value>
+  </data>
+  <data name="courseNameDataGridViewTextBoxColumn1.Width" type="System.Int32, mscorlib">
+    <value>76</value>
+  </data>
+  <data name="gradeDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>ציון</value>
+  </data>
+  <data name="gradeDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
+    <value>54</value>
+  </data>
+  <data name="commentsDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>הערות</value>
+  </data>
+  <data name="commentsDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
+    <value>64</value>
+  </data>
+  <data name="inFinalDataGridViewCheckBoxColumn.HeaderText" xml:space="preserve">
+    <value>inFinal</value>
+  </data>
+  <data name="inFinalDataGridViewCheckBoxColumn.Width" type="System.Int32, mscorlib">
+    <value>43</value>
+  </data>
+  <data name="attendedDataGridViewCheckBoxColumn.HeaderText" xml:space="preserve">
+    <value>Attended</value>
+  </data>
+  <data name="attendedDataGridViewCheckBoxColumn.Width" type="System.Int32, mscorlib">
+    <value>56</value>
+  </data>
+  <data name="inAverageDataGridViewCheckBoxColumn.HeaderText" xml:space="preserve">
+    <value>inAverage</value>
+  </data>
+  <data name="inAverageDataGridViewCheckBoxColumn.Width" type="System.Int32, mscorlib">
+    <value>61</value>
+  </data>
+  <data name="passedDataGridViewCheckBoxColumn.HeaderText" xml:space="preserve">
+    <value>Passed</value>
+  </data>
+  <data name="passedDataGridViewCheckBoxColumn.Width" type="System.Int32, mscorlib">
+    <value>48</value>
+  </data>
+  <data name="semesterIDDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>מספר סמסטר</value>
+  </data>
+  <data name="semesterIDDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
+    <value>5</value>
   </data>
 </root>

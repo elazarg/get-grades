@@ -45,10 +45,13 @@ namespace getGradesForms
                     else if (line[0].StartsWith("תש"))
                         semesterFound(line[3], line[0], line[1]);
                     else if (line[0].StartsWith("סה"))
-                        semesterFinished(Regex.Match(line[1], "\\d{1,3}").Value, line.ElementAtOrDefault(2), line.ElementAtOrDefault(3)); 
+                    {
+                        //MessageBox.Show(line[1]);
+                        semesterFinished(Regex.Match(line[1], "\\d{1,3}").Value, line.ElementAtOrDefault(2), line.ElementAtOrDefault(3));
+                    }
                     else if (line[0].StartsWith("מספר"))
-                        { }
-                    else MessageBox.Show(string.Join(" , ", line));// semesterFinished(line[1], line[3], line[4]);
+                    { }
+                    else MessageBox.Show(string.Join(" , ", line));
                 }
         }
 
