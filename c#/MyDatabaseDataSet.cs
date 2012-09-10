@@ -31,7 +31,7 @@ namespace getGradesForms
             { "04", "הנדסת חשמל" },
             { "09", "הנדסת תעשיה וניהול" },
             { "32", "לימודים הומניסטיים ואמנות" },
-            { "39", "לימודים הומניסטיים ואמנות" }, // sport?
+            { "39", "ספורט" }, // can take many times
             { "10", "מתמטיקה" },
             { "19", "מתמטיקה" }, //advanced
             { "27", "רפואה" },
@@ -57,15 +57,15 @@ namespace getGradesForms
         }
 
 
-
-
         internal void addSessionToSQL(string course_ID, string course_Name, string points, string grade)
         {
             CourseSessionsRow cs = this.CourseSessions.NewCourseSessionsRow();
             cs.CourseListRow = addCourse(course_ID, course_Name, points);
             cs.SemesterRow = this.Semester.Last();
+
+
             decimal decimalGrade = -1;
-            if (decimal.TryParse(grade, out decimalGrade))
+            if (decimal.TryParse(grade.Replace("*", ""), out decimalGrade))
                 cs.Grade = decimalGrade;
             /*      else
                       switch (grade.Trim())
@@ -82,19 +82,34 @@ namespace getGradesForms
                           default: MessageBox.Show("WOT", grade); break;
                       }
                   */
-            if (grade.Contains("-") || grade.Contains("*")) {
+            if (grade.Contains("-") || grade == ("לא השלים ש*") || grade == ("לא השלים מ*") || grade == ("לא השלים ש")) {
                 cs.Comments = (grade.Contains("-")) ? "טרם ניגש" : "לא נחשב";
                 cs.isLast = false;
                 cs.Attended = false;
+                cs.inAverage = false;
+            }
+            else if (grade == "עבר" || grade == "נכשל" || grade.StartsWith("פטור")) {
+                if (idToFaculty[course_ID.Remove(2)] != "ספורט") {
+                    CourseSessionsRow last = this.CourseSessions.LastOrDefault(row => row.CourseListRow.Name == course_Name);
+                    if (last != null)
+                        last.isLast = false;
+                }
+                cs.Grade = grade == "נכשל" ? 0 : 100;
+                cs.inAverage = false;
+                cs.isLast = true;
+                cs.Attended = true; //true
+                cs.Comments = grade;
             }
             else {
-                CourseSessionsRow last = this.CourseSessions.LastOrDefault(row => row.CourseListRow.Name == course_Name);
-                if (last != null)
-                    last.isLast = false;
+                if (idToFaculty[course_ID.Remove(2)] != "ספורט") {
+                    CourseSessionsRow last = this.CourseSessions.LastOrDefault(row => row.CourseListRow.Name == course_Name);
+                    if (last != null)
+                        last.isLast = false;
+                }
 
-                cs.isLast = cs.Attended = (cs.Semester_ID != 0);
+                cs.inAverage = true;
+                cs.isLast = cs.Attended = true;
                 cs.Comments = grade; //could be nothing
-                //    cs.Grade = (cs.Semester_ID == 0) ? 100 : -1; //לא השלים
             }
 
             this.CourseSessions.AddCourseSessionsRow(cs);
@@ -111,27 +126,19 @@ namespace getGradesForms
 
         Sum computeSemester(Func<int, bool> pred)
         {
-            //BAD - does not recompute when theres another semester!!
-            var templist = from ses in CourseSessions
-                           where ses.Attended && pred(ses.Semester_ID)
-                           select ses;
-
-            var relevant = from ses in templist
-                           where ses.Grade > -1 && ses.isLast
-                           select new {
-                               points = ses.CourseListRow.Points,
-                               sum = ses.CourseListRow.Points * ses.Grade
-                           };
-
-            if (relevant.Any()) {
-                decimal totalPoints = relevant.Sum(x => x.points);
+            var taken = CourseSessions.Where(x => pred(x.Semester_ID));
+            var inAverage = taken.Where( x => x.isLast && x.Grade > -1 && x.inAverage);
+            var inpoints = taken.Where(x =>  x.CourseListRow.Points > -1);
+            var inSuccess = inpoints.Where(x => x.Attended);
+            if (inSuccess.Any()) {
                 return new Sum
                 {
-                    Points = totalPoints,
-                    Average = decimal.Round(relevant.Sum(x => x.sum) / totalPoints, 1, MidpointRounding.AwayFromZero),
+                    Points = inpoints.Where(x => x.isLast && x.Grade > 55).Sum(x => x.CourseListRow.Points),
+                    Average = inAverage.Any() ? decimal.Round(inAverage.Sum(x => x.CourseListRow.Points * x.Grade)
+                                            / inAverage.Sum(x => x.CourseListRow.Points), 1, MidpointRounding.AwayFromZero) : 0,
                     SuccessRate = decimal.Round(
-                                    templist.Where(x => x.Grade >= 55).Sum(x => x.CourseListRow.Points) * 100
-                                  / templist.Where(x => x.Attended).Sum(x => x.CourseListRow.Points)
+                                    inSuccess.Where(x => x.Grade >= 55).Sum(x => x.CourseListRow.Points) * 100
+                                  / inSuccess.Sum(x => x.CourseListRow.Points)
                                   , 0, MidpointRounding.AwayFromZero)
                 };
             }
@@ -140,26 +147,25 @@ namespace getGradesForms
 
         internal void addSemesterToSQL(string year, string hebrewYear, string season)
         {
-            var sem = this.Semester.Last();
-            Sum s;
-
-            s = computeSemester(semid => semid == sem.ID);
-            sem.Points = s.Points;
-            sem.Average = s.Average;
-            sem.Success_Rate = s.SuccessRate;
-
             this.Semester.AddSemesterRow(year, season, hebrewYear, 0, 0, 0);
+        }
+
+        internal void endSemesterSQL(string points, string average, string successRate)
+        {
+            SemesterRow last = this.Semester.Last();
+            Sum s = computeSemester(semid => semid == last.ID);
+            last.Points = s.Points;
+            last.Average = s.Average;
+            last.Success_Rate = s.SuccessRate;
         }
 
         internal void updateCleanSlate(bool show_empty = false)
         {
-            Sum s;
-
-            s = computeSemester(semid => true);
+            Sum s = computeSemester(semid => true);
             this.Semester.AddSemesterRow("סה\"כ", "", "", s.Average, s.SuccessRate, s.Points);
 
             foreach (var row in CourseSessions.Where(x => x.isLast).Reverse())
-                if ( (!ViewTable.Any(c => c.Course_Name == row.CourseListRow.Name)) && (show_empty || row.Grade > 55))
+                if ( (!ViewTable.Any(c => c.Course_Name == row.CourseListRow.Name)) && (show_empty || row.Grade > 55 || row.Comments == "עבר"))
                     ViewTable.AddViewTableRow(row.Course_ID, row.CourseListRow.Name, row.CourseListRow.Points, row.Grade);
         }
     }

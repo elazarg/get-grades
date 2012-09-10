@@ -50,6 +50,7 @@ namespace getGradesForms
             pr.sessionFound         += this.dataSet.addSessionToSQL;
             pr.semesterFound        += this.dataSet.addSemesterToSQL;
             pr.personalDetailsFound += this.dataSet.addPersonalDetails;
+            pr.semesterFinished     += this.dataSet.endSemesterSQL;
             pr.processText();
             html = pr.fixedHtml;
 

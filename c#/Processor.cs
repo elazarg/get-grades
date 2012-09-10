@@ -26,6 +26,9 @@ namespace getGradesForms
         public delegate void SemesterFound(string year, string hebrewYear, string season);
         public event SemesterFound semesterFound = delegate { };
 
+        public delegate void SemesterFinished(string points, string average, string successRate);
+        public event SemesterFinished semesterFinished = delegate { };
+
         string raw_html;
         internal string fixedHtml;
         private string[][][] tables;
@@ -37,11 +40,14 @@ namespace getGradesForms
             foreach (var table in tables.Skip(2))
                 foreach (string[] line in table)
                 {
+                 //   MessageBox.Show(string.Join(" , ", line));
                     if (Regex.IsMatch(line[0], "[0-9]{6}"))
                         sessionFound(line[0], line[1], line[2], line[3]);
                     else if (line[0].StartsWith("תש"))
                         semesterFound(line[3], line[0], line[1]);
-               //     else MessageBox.Show(string.Join(" , ", line));
+                    else if (line[0].StartsWith("סה"))
+                        semesterFinished(Regex.Match(line[1], "\\d{1,3}").Value, line[2], line[3]); 
+               //     else  MessageBox.Show(string.Join(" , ", line));// semesterFinished(line[1], line[3], line[4]);
                 }
         }
 
