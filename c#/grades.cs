@@ -64,10 +64,9 @@ namespace getGradesForms
 
             this.state = State.READY;
 
-                connectAndDownload(userid, password);
-                process();
-                state = State.DONE;
-
+            connectAndDownload(userid, password);
+            process();
+            state = State.DONE;
         }
 
         public void saveFile(string fileName)
@@ -81,7 +80,7 @@ namespace getGradesForms
         {
             html = "";
             dataSet.init();
-            dataSet.PersonalDetails.AddPersonalDetailsRow("", "", "", "", "", "");
+            dataSet.PersonalDetails.AddPersonalDetailsRow(new DateTime(), "", "", "", "", "");
             dataSet.Semester.Clear();
         }
 

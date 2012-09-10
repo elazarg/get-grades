@@ -758,11 +758,15 @@ namespace getGradesForms {
             
             private global::System.Data.DataColumn columnComments;
             
-            private global::System.Data.DataColumn columnisLast;
+            private global::System.Data.DataColumn columninFinal;
             
             private global::System.Data.DataColumn columnAttended;
             
             private global::System.Data.DataColumn columninAverage;
+            
+            private global::System.Data.DataColumn columnPassed;
+            
+            private global::System.Data.DataColumn columnCourse_Name;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -839,9 +843,9 @@ namespace getGradesForms {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn isLastColumn {
+            public global::System.Data.DataColumn inFinalColumn {
                 get {
-                    return this.columnisLast;
+                    return this.columninFinal;
                 }
             }
             
@@ -858,6 +862,22 @@ namespace getGradesForms {
             public global::System.Data.DataColumn inAverageColumn {
                 get {
                     return this.columninAverage;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn PassedColumn {
+                get {
+                    return this.columnPassed;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn Course_NameColumn {
+                get {
+                    return this.columnCourse_Name;
                 }
             }
             
@@ -898,7 +918,7 @@ namespace getGradesForms {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public CourseSessionsRow AddCourseSessionsRow(CourseListRow parentCourseListRowByCourseList_CourseSessions, decimal Grade, SemesterRow parentSemesterRowByFK_Semester_CourseSessions, string Comments, bool isLast, bool Attended, bool inAverage) {
+            public CourseSessionsRow AddCourseSessionsRow(CourseListRow parentCourseListRowByCourseList_CourseSessions, decimal Grade, SemesterRow parentSemesterRowByFK_Semester_CourseSessions, string Comments, bool inFinal, bool Attended, bool inAverage, bool Passed, string Course_Name) {
                 CourseSessionsRow rowCourseSessionsRow = ((CourseSessionsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -906,9 +926,11 @@ namespace getGradesForms {
                         Grade,
                         null,
                         Comments,
-                        isLast,
+                        inFinal,
                         Attended,
-                        inAverage};
+                        inAverage,
+                        Passed,
+                        Course_Name};
                 if ((parentCourseListRowByCourseList_CourseSessions != null)) {
                     columnValuesArray[1] = parentCourseListRowByCourseList_CourseSessions[0];
                 }
@@ -949,9 +971,11 @@ namespace getGradesForms {
                 this.columnGrade = base.Columns["Grade"];
                 this.columnSemester_ID = base.Columns["Semester ID"];
                 this.columnComments = base.Columns["Comments"];
-                this.columnisLast = base.Columns["isLast"];
+                this.columninFinal = base.Columns["inFinal"];
                 this.columnAttended = base.Columns["Attended"];
                 this.columninAverage = base.Columns["inAverage"];
+                this.columnPassed = base.Columns["Passed"];
+                this.columnCourse_Name = base.Columns["Course Name"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -967,12 +991,16 @@ namespace getGradesForms {
                 base.Columns.Add(this.columnSemester_ID);
                 this.columnComments = new global::System.Data.DataColumn("Comments", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnComments);
-                this.columnisLast = new global::System.Data.DataColumn("isLast", typeof(bool), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnisLast);
+                this.columninFinal = new global::System.Data.DataColumn("inFinal", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columninFinal);
                 this.columnAttended = new global::System.Data.DataColumn("Attended", typeof(bool), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnAttended);
                 this.columninAverage = new global::System.Data.DataColumn("inAverage", typeof(bool), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columninAverage);
+                this.columnPassed = new global::System.Data.DataColumn("Passed", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPassed);
+                this.columnCourse_Name = new global::System.Data.DataColumn("Course Name", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCourse_Name);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint3", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
                 this.columnID.AutoIncrement = true;
@@ -1585,7 +1613,7 @@ namespace getGradesForms {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public PersonalDetailsRow AddPersonalDetailsRow(string Date, string Id, string First_Name, string Last_Name, string Program, string Faculty) {
+            public PersonalDetailsRow AddPersonalDetailsRow(System.DateTime Date, string Id, string First_Name, string Last_Name, string Program, string Faculty) {
                 PersonalDetailsRow rowPersonalDetailsRow = ((PersonalDetailsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Date,
@@ -1627,7 +1655,7 @@ namespace getGradesForms {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnDate = new global::System.Data.DataColumn("Date", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnDate = new global::System.Data.DataColumn("Date", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDate);
                 this.columnId = new global::System.Data.DataColumn("Id", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnId);
@@ -2266,17 +2294,17 @@ namespace getGradesForms {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool isLast {
+            public bool inFinal {
                 get {
                     try {
-                        return ((bool)(this[this.tableCourseSessions.isLastColumn]));
+                        return ((bool)(this[this.tableCourseSessions.inFinalColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'isLast\' in table \'CourseSessions\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'inFinal\' in table \'CourseSessions\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableCourseSessions.isLastColumn] = value;
+                    this[this.tableCourseSessions.inFinalColumn] = value;
                 }
             }
             
@@ -2309,6 +2337,38 @@ namespace getGradesForms {
                 }
                 set {
                     this[this.tableCourseSessions.inAverageColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Passed {
+                get {
+                    try {
+                        return ((bool)(this[this.tableCourseSessions.PassedColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Passed\' in table \'CourseSessions\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableCourseSessions.PassedColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Course_Name {
+                get {
+                    try {
+                        return ((string)(this[this.tableCourseSessions.Course_NameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Course Name\' in table \'CourseSessions\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableCourseSessions.Course_NameColumn] = value;
                 }
             }
             
@@ -2384,14 +2444,14 @@ namespace getGradesForms {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsisLastNull() {
-                return this.IsNull(this.tableCourseSessions.isLastColumn);
+            public bool IsinFinalNull() {
+                return this.IsNull(this.tableCourseSessions.inFinalColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetisLastNull() {
-                this[this.tableCourseSessions.isLastColumn] = global::System.Convert.DBNull;
+            public void SetinFinalNull() {
+                this[this.tableCourseSessions.inFinalColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2416,6 +2476,30 @@ namespace getGradesForms {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetinAverageNull() {
                 this[this.tableCourseSessions.inAverageColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsPassedNull() {
+                return this.IsNull(this.tableCourseSessions.PassedColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetPassedNull() {
+                this[this.tableCourseSessions.PassedColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsCourse_NameNull() {
+                return this.IsNull(this.tableCourseSessions.Course_NameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetCourse_NameNull() {
+                this[this.tableCourseSessions.Course_NameColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -2640,10 +2724,10 @@ namespace getGradesForms {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Date {
+            public System.DateTime Date {
                 get {
                     try {
-                        return ((string)(this[this.tablePersonalDetails.DateColumn]));
+                        return ((global::System.DateTime)(this[this.tablePersonalDetails.DateColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'Date\' in table \'PersonalDetails\' is DBNull.", e);
