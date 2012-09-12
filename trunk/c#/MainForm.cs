@@ -181,8 +181,8 @@ namespace getGradesForms
                 return;
 
             TextBox Sender = (TextBox)sender;
-            if (!e.Modifiers.HasFlag(Keys.Shift | Keys.Control | Keys.Alt)
-                        &&  (e.KeyData >= Keys.D0 && e.KeyData <= Keys.D9 || e.KeyData >= Keys.NumPad0   && e.KeyData <= Keys.NumPad9)
+            if (// !e.Modifiers.HasFlag(Keys.Shift | Keys.Control | Keys.Alt) &&
+                        (e.KeyData >= Keys.D0 && e.KeyData <= Keys.D9 || e.KeyData >= Keys.NumPad0   && e.KeyData <= Keys.NumPad9)
                         && (Sender.TextLength < Sender.MaxLength || Sender.SelectionLength > 0))
                     return;
 
