@@ -1,18 +1,10 @@
 ﻿using System;
 using System.ComponentModel;
 using System.IO;
-using System.Windows.Forms;
 using System.Linq;
-using System.Data.SqlTypes;
-using System.Runtime.InteropServices;
-using System.Net.NetworkInformation;
-using getGradesForms.Properties;
-using System.Threading;
-using System.Text.RegularExpressions;
 using System.Net.Sockets;
-using System.Text;
+using System.Windows.Forms;
 
-using System.Net;
 
 namespace getGradesForms
 {

@@ -1,13 +1,24 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.IO;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using System.Collections.Generic;
 
 namespace getGradesForms
 {
+    public static class SString
+    {
+        public static string Join(string s, IEnumerable<string> arr)
+        {
+            string x = arr.First();
+            foreach (string i in arr.Skip(1))
+            {
+                x = x + s + i;
+            }
+            return x;
+        }
+    }
+
     class Processor
     {
         internal Processor(String html_in)

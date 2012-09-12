@@ -1,26 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.IO;
 using System.ComponentModel;
+using System.IO;
+using System.Linq;
 
 namespace getGradesForms
 {
-    public static class SString 
-    {
-        public static string Join(string s, IEnumerable<string> arr)
-        {
-            string x = arr.First();
-            foreach (string i in arr.Skip(1))
-            {
-                x = x + s + i;
-            }
-            return x;
-        }
-    }
-
-
     class Grades : IDisposable
     {
         public readonly UGDatabase dataSet = new UGDatabase();
