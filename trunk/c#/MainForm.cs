@@ -143,7 +143,7 @@ namespace getGradesForms
                     return;
 
                 ugDatabase = grades.dataSet;
-                foreach (var i in new DataGridView[] { dataGridViewSessions, /*dataGridViewCourseList,*/ dataGridViewSemesters, dataGridViewCleanSlate
+                foreach (var i in new DataGridView[] { dataGridViewSessions, dataGridViewCourseList, dataGridViewSemesters, dataGridViewCleanSlate
                 }) {
                     uGDatabaseBindingSource.DataSource = this.ugDatabase;
                     i.Refresh();

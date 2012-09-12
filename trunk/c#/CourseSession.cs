@@ -67,21 +67,4 @@ namespace getGradesForms
         public decimal grade { get; set; }
     }
 
-    internal class CourseSessionTable : BindingList<CourseSession>
-    {
-    }
-
-    internal class SemesterTable : BindingList<Semester>
-    {
-
-    }
-
-    internal class CourseTable : Dictionary<string, Course>
-    {
-    }
-
-    internal class CleanViewTable : BindingList<CleanViewRow>
-    {
-
-    }
 }
