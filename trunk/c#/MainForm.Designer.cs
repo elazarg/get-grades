@@ -44,6 +44,17 @@
             this.gradeDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.myDatabaseDataSet = new getGradesForms.MyDatabaseDataSet();
             this.tabSessions = new System.Windows.Forms.TabPage();
+            this.dataGridViewSessions = new System.Windows.Forms.DataGridView();
+            this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.courseIDDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.courseNameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gradeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.commentsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.inFinalDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.attendedDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.inAverageDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.passedDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.semesterIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabCourses = new System.Windows.Forms.TabPage();
             this.dataGridViewCourseList = new System.Windows.Forms.DataGridView();
             this.iDDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -52,6 +63,13 @@
             this.Faculty = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabSemesters = new System.Windows.Forms.TabPage();
             this.dataGridViewSemesters = new System.Windows.Forms.DataGridView();
+            this.iDDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.yearDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.seasonDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hebrewYearDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.successRateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pointsDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.averageDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabBrowser = new System.Windows.Forms.TabPage();
             this.browser = new System.Windows.Forms.WebBrowser();
             this.tabHtml = new System.Windows.Forms.TabPage();
@@ -80,35 +98,19 @@
             this.textBoxAvGrade = new System.Windows.Forms.TextBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.button1 = new System.Windows.Forms.Button();
+            this.aboutButton = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.courseIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.iDDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.yearDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.seasonDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.hebrewYearDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.successRateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pointsDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.averageDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewSessions = new System.Windows.Forms.DataGridView();
-            this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.courseIDDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.courseNameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gradeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.commentsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.inFinalDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.attendedDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.inAverageDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.passedDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.semesterIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabCleanSlate.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCleanSlate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.myDatabaseDataSet)).BeginInit();
             this.tabSessions.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSessions)).BeginInit();
             this.tabCourses.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCourseList)).BeginInit();
             this.tabSemesters.SuspendLayout();
@@ -123,7 +125,6 @@
             this.groupBox1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSessions)).BeginInit();
             this.SuspendLayout();
             // 
             // goButton
@@ -203,6 +204,7 @@
             resources.ApplyResources(this.dataGridViewCleanSlate, "dataGridViewCleanSlate");
             this.dataGridViewCleanSlate.Name = "dataGridViewCleanSlate";
             this.dataGridViewCleanSlate.ReadOnly = true;
+            this.dataGridViewCleanSlate.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSessions_CellValueChanged);
             // 
             // courseIDDataGridViewTextBoxColumn1
             // 
@@ -248,6 +250,96 @@
             resources.ApplyResources(this.tabSessions, "tabSessions");
             this.tabSessions.Name = "tabSessions";
             this.tabSessions.UseVisualStyleBackColor = true;
+            // 
+            // dataGridViewSessions
+            // 
+            this.dataGridViewSessions.AllowUserToAddRows = false;
+            this.dataGridViewSessions.AutoGenerateColumns = false;
+            this.dataGridViewSessions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewSessions.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.iDDataGridViewTextBoxColumn,
+            this.courseIDDataGridViewTextBoxColumn2,
+            this.courseNameDataGridViewTextBoxColumn1,
+            this.gradeDataGridViewTextBoxColumn,
+            this.commentsDataGridViewTextBoxColumn,
+            this.inFinalDataGridViewCheckBoxColumn,
+            this.attendedDataGridViewCheckBoxColumn,
+            this.inAverageDataGridViewCheckBoxColumn,
+            this.passedDataGridViewCheckBoxColumn,
+            this.semesterIDDataGridViewTextBoxColumn});
+            this.dataGridViewSessions.DataMember = "CourseSessions";
+            this.dataGridViewSessions.DataSource = this.myDatabaseDataSet;
+            resources.ApplyResources(this.dataGridViewSessions, "dataGridViewSessions");
+            this.dataGridViewSessions.Name = "dataGridViewSessions";
+            // 
+            // iDDataGridViewTextBoxColumn
+            // 
+            this.iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
+            resources.ApplyResources(this.iDDataGridViewTextBoxColumn, "iDDataGridViewTextBoxColumn");
+            this.iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
+            // 
+            // courseIDDataGridViewTextBoxColumn2
+            // 
+            this.courseIDDataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.courseIDDataGridViewTextBoxColumn2.DataPropertyName = "Course ID";
+            resources.ApplyResources(this.courseIDDataGridViewTextBoxColumn2, "courseIDDataGridViewTextBoxColumn2");
+            this.courseIDDataGridViewTextBoxColumn2.Name = "courseIDDataGridViewTextBoxColumn2";
+            // 
+            // courseNameDataGridViewTextBoxColumn1
+            // 
+            this.courseNameDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.courseNameDataGridViewTextBoxColumn1.DataPropertyName = "Course Name";
+            resources.ApplyResources(this.courseNameDataGridViewTextBoxColumn1, "courseNameDataGridViewTextBoxColumn1");
+            this.courseNameDataGridViewTextBoxColumn1.Name = "courseNameDataGridViewTextBoxColumn1";
+            // 
+            // gradeDataGridViewTextBoxColumn
+            // 
+            this.gradeDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.gradeDataGridViewTextBoxColumn.DataPropertyName = "Grade";
+            resources.ApplyResources(this.gradeDataGridViewTextBoxColumn, "gradeDataGridViewTextBoxColumn");
+            this.gradeDataGridViewTextBoxColumn.Name = "gradeDataGridViewTextBoxColumn";
+            // 
+            // commentsDataGridViewTextBoxColumn
+            // 
+            this.commentsDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.commentsDataGridViewTextBoxColumn.DataPropertyName = "Comments";
+            resources.ApplyResources(this.commentsDataGridViewTextBoxColumn, "commentsDataGridViewTextBoxColumn");
+            this.commentsDataGridViewTextBoxColumn.Name = "commentsDataGridViewTextBoxColumn";
+            // 
+            // inFinalDataGridViewCheckBoxColumn
+            // 
+            this.inFinalDataGridViewCheckBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.inFinalDataGridViewCheckBoxColumn.DataPropertyName = "inFinal";
+            resources.ApplyResources(this.inFinalDataGridViewCheckBoxColumn, "inFinalDataGridViewCheckBoxColumn");
+            this.inFinalDataGridViewCheckBoxColumn.Name = "inFinalDataGridViewCheckBoxColumn";
+            // 
+            // attendedDataGridViewCheckBoxColumn
+            // 
+            this.attendedDataGridViewCheckBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.attendedDataGridViewCheckBoxColumn.DataPropertyName = "Attended";
+            resources.ApplyResources(this.attendedDataGridViewCheckBoxColumn, "attendedDataGridViewCheckBoxColumn");
+            this.attendedDataGridViewCheckBoxColumn.Name = "attendedDataGridViewCheckBoxColumn";
+            // 
+            // inAverageDataGridViewCheckBoxColumn
+            // 
+            this.inAverageDataGridViewCheckBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.inAverageDataGridViewCheckBoxColumn.DataPropertyName = "inAverage";
+            resources.ApplyResources(this.inAverageDataGridViewCheckBoxColumn, "inAverageDataGridViewCheckBoxColumn");
+            this.inAverageDataGridViewCheckBoxColumn.Name = "inAverageDataGridViewCheckBoxColumn";
+            // 
+            // passedDataGridViewCheckBoxColumn
+            // 
+            this.passedDataGridViewCheckBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.passedDataGridViewCheckBoxColumn.DataPropertyName = "Passed";
+            resources.ApplyResources(this.passedDataGridViewCheckBoxColumn, "passedDataGridViewCheckBoxColumn");
+            this.passedDataGridViewCheckBoxColumn.Name = "passedDataGridViewCheckBoxColumn";
+            // 
+            // semesterIDDataGridViewTextBoxColumn
+            // 
+            this.semesterIDDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.semesterIDDataGridViewTextBoxColumn.DataPropertyName = "Semester ID";
+            resources.ApplyResources(this.semesterIDDataGridViewTextBoxColumn, "semesterIDDataGridViewTextBoxColumn");
+            this.semesterIDDataGridViewTextBoxColumn.Name = "semesterIDDataGridViewTextBoxColumn";
             // 
             // tabCourses
             // 
@@ -333,6 +425,68 @@
             this.dataGridViewSemesters.Name = "dataGridViewSemesters";
             this.dataGridViewSemesters.ReadOnly = true;
             // 
+            // iDDataGridViewTextBoxColumn2
+            // 
+            this.iDDataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.iDDataGridViewTextBoxColumn2.DataPropertyName = "ID";
+            resources.ApplyResources(this.iDDataGridViewTextBoxColumn2, "iDDataGridViewTextBoxColumn2");
+            this.iDDataGridViewTextBoxColumn2.MaxInputLength = 3;
+            this.iDDataGridViewTextBoxColumn2.Name = "iDDataGridViewTextBoxColumn2";
+            this.iDDataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // yearDataGridViewTextBoxColumn
+            // 
+            this.yearDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.yearDataGridViewTextBoxColumn.DataPropertyName = "Year";
+            resources.ApplyResources(this.yearDataGridViewTextBoxColumn, "yearDataGridViewTextBoxColumn");
+            this.yearDataGridViewTextBoxColumn.MaxInputLength = 10;
+            this.yearDataGridViewTextBoxColumn.Name = "yearDataGridViewTextBoxColumn";
+            this.yearDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // seasonDataGridViewTextBoxColumn
+            // 
+            this.seasonDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.seasonDataGridViewTextBoxColumn.DataPropertyName = "Season";
+            resources.ApplyResources(this.seasonDataGridViewTextBoxColumn, "seasonDataGridViewTextBoxColumn");
+            this.seasonDataGridViewTextBoxColumn.MaxInputLength = 4;
+            this.seasonDataGridViewTextBoxColumn.Name = "seasonDataGridViewTextBoxColumn";
+            this.seasonDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // hebrewYearDataGridViewTextBoxColumn
+            // 
+            this.hebrewYearDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.hebrewYearDataGridViewTextBoxColumn.DataPropertyName = "Hebrew Year";
+            resources.ApplyResources(this.hebrewYearDataGridViewTextBoxColumn, "hebrewYearDataGridViewTextBoxColumn");
+            this.hebrewYearDataGridViewTextBoxColumn.MaxInputLength = 5;
+            this.hebrewYearDataGridViewTextBoxColumn.Name = "hebrewYearDataGridViewTextBoxColumn";
+            this.hebrewYearDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // successRateDataGridViewTextBoxColumn
+            // 
+            this.successRateDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.successRateDataGridViewTextBoxColumn.DataPropertyName = "Success Rate";
+            resources.ApplyResources(this.successRateDataGridViewTextBoxColumn, "successRateDataGridViewTextBoxColumn");
+            this.successRateDataGridViewTextBoxColumn.MaxInputLength = 6;
+            this.successRateDataGridViewTextBoxColumn.Name = "successRateDataGridViewTextBoxColumn";
+            this.successRateDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // pointsDataGridViewTextBoxColumn1
+            // 
+            this.pointsDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.pointsDataGridViewTextBoxColumn1.DataPropertyName = "Points";
+            resources.ApplyResources(this.pointsDataGridViewTextBoxColumn1, "pointsDataGridViewTextBoxColumn1");
+            this.pointsDataGridViewTextBoxColumn1.Name = "pointsDataGridViewTextBoxColumn1";
+            this.pointsDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // averageDataGridViewTextBoxColumn
+            // 
+            this.averageDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.averageDataGridViewTextBoxColumn.DataPropertyName = "Average";
+            resources.ApplyResources(this.averageDataGridViewTextBoxColumn, "averageDataGridViewTextBoxColumn");
+            this.averageDataGridViewTextBoxColumn.MaxInputLength = 6;
+            this.averageDataGridViewTextBoxColumn.Name = "averageDataGridViewTextBoxColumn";
+            this.averageDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
             // tabBrowser
             // 
             this.tabBrowser.Controls.Add(this.browser);
@@ -408,7 +562,7 @@
             resources.ApplyResources(this.useridTextbox, "useridTextbox");
             this.useridTextbox.Name = "useridTextbox";
             this.useridTextbox.ShortcutsEnabled = false;
-            this.useridTextbox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
+            this.useridTextbox.TextChanged += new System.EventHandler(this.userIdBox_TextChanged);
             this.useridTextbox.Enter += new System.EventHandler(this.textBox_Enter);
             this.useridTextbox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.numericTextbox_KeyDown);
             // 
@@ -418,7 +572,7 @@
             this.passwordBox.Name = "passwordBox";
             this.passwordBox.ShortcutsEnabled = false;
             this.passwordBox.UseSystemPasswordChar = true;
-            this.passwordBox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
+            this.passwordBox.TextChanged += new System.EventHandler(this.passwordBox_TextChanged);
             this.passwordBox.Enter += new System.EventHandler(this.textBox_Enter);
             this.passwordBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.numericTextbox_KeyDown);
             // 
@@ -524,6 +678,7 @@
             this.flowLayoutPanel1.Controls.Add(this.saveAsButton);
             this.flowLayoutPanel1.Controls.Add(this.button1);
             this.flowLayoutPanel1.Controls.Add(this.goButton);
+            this.flowLayoutPanel1.Controls.Add(this.aboutButton);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             // 
             // button1
@@ -532,6 +687,13 @@
             this.button1.Name = "button1";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.buttonClear_Click);
+            // 
+            // aboutButton
+            // 
+            resources.ApplyResources(this.aboutButton, "aboutButton");
+            this.aboutButton.Name = "aboutButton";
+            this.aboutButton.UseVisualStyleBackColor = true;
+            this.aboutButton.Click += new System.EventHandler(this.aboutButton_Click);
             // 
             // errorProvider1
             // 
@@ -548,68 +710,6 @@
             this.courseIDDataGridViewTextBoxColumn.MaxInputLength = 6;
             this.courseIDDataGridViewTextBoxColumn.Name = "courseIDDataGridViewTextBoxColumn";
             // 
-            // iDDataGridViewTextBoxColumn2
-            // 
-            this.iDDataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.iDDataGridViewTextBoxColumn2.DataPropertyName = "ID";
-            resources.ApplyResources(this.iDDataGridViewTextBoxColumn2, "iDDataGridViewTextBoxColumn2");
-            this.iDDataGridViewTextBoxColumn2.MaxInputLength = 3;
-            this.iDDataGridViewTextBoxColumn2.Name = "iDDataGridViewTextBoxColumn2";
-            this.iDDataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // yearDataGridViewTextBoxColumn
-            // 
-            this.yearDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.yearDataGridViewTextBoxColumn.DataPropertyName = "Year";
-            resources.ApplyResources(this.yearDataGridViewTextBoxColumn, "yearDataGridViewTextBoxColumn");
-            this.yearDataGridViewTextBoxColumn.MaxInputLength = 10;
-            this.yearDataGridViewTextBoxColumn.Name = "yearDataGridViewTextBoxColumn";
-            this.yearDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // seasonDataGridViewTextBoxColumn
-            // 
-            this.seasonDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.seasonDataGridViewTextBoxColumn.DataPropertyName = "Season";
-            resources.ApplyResources(this.seasonDataGridViewTextBoxColumn, "seasonDataGridViewTextBoxColumn");
-            this.seasonDataGridViewTextBoxColumn.MaxInputLength = 4;
-            this.seasonDataGridViewTextBoxColumn.Name = "seasonDataGridViewTextBoxColumn";
-            this.seasonDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // hebrewYearDataGridViewTextBoxColumn
-            // 
-            this.hebrewYearDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.hebrewYearDataGridViewTextBoxColumn.DataPropertyName = "Hebrew Year";
-            resources.ApplyResources(this.hebrewYearDataGridViewTextBoxColumn, "hebrewYearDataGridViewTextBoxColumn");
-            this.hebrewYearDataGridViewTextBoxColumn.MaxInputLength = 5;
-            this.hebrewYearDataGridViewTextBoxColumn.Name = "hebrewYearDataGridViewTextBoxColumn";
-            this.hebrewYearDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // successRateDataGridViewTextBoxColumn
-            // 
-            this.successRateDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.successRateDataGridViewTextBoxColumn.DataPropertyName = "Success Rate";
-            resources.ApplyResources(this.successRateDataGridViewTextBoxColumn, "successRateDataGridViewTextBoxColumn");
-            this.successRateDataGridViewTextBoxColumn.MaxInputLength = 6;
-            this.successRateDataGridViewTextBoxColumn.Name = "successRateDataGridViewTextBoxColumn";
-            this.successRateDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // pointsDataGridViewTextBoxColumn1
-            // 
-            this.pointsDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.pointsDataGridViewTextBoxColumn1.DataPropertyName = "Points";
-            resources.ApplyResources(this.pointsDataGridViewTextBoxColumn1, "pointsDataGridViewTextBoxColumn1");
-            this.pointsDataGridViewTextBoxColumn1.Name = "pointsDataGridViewTextBoxColumn1";
-            this.pointsDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // averageDataGridViewTextBoxColumn
-            // 
-            this.averageDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.averageDataGridViewTextBoxColumn.DataPropertyName = "Average";
-            resources.ApplyResources(this.averageDataGridViewTextBoxColumn, "averageDataGridViewTextBoxColumn");
-            this.averageDataGridViewTextBoxColumn.MaxInputLength = 6;
-            this.averageDataGridViewTextBoxColumn.Name = "averageDataGridViewTextBoxColumn";
-            this.averageDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
             // ID
             // 
             this.ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
@@ -624,96 +724,6 @@
             resources.ApplyResources(this.dataGridViewTextBoxColumn1, "dataGridViewTextBoxColumn1");
             this.dataGridViewTextBoxColumn1.MaxInputLength = 6;
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            // 
-            // dataGridViewSessions
-            // 
-            this.dataGridViewSessions.AllowUserToAddRows = false;
-            this.dataGridViewSessions.AutoGenerateColumns = false;
-            this.dataGridViewSessions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewSessions.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.iDDataGridViewTextBoxColumn,
-            this.courseIDDataGridViewTextBoxColumn2,
-            this.courseNameDataGridViewTextBoxColumn1,
-            this.gradeDataGridViewTextBoxColumn,
-            this.commentsDataGridViewTextBoxColumn,
-            this.inFinalDataGridViewCheckBoxColumn,
-            this.attendedDataGridViewCheckBoxColumn,
-            this.inAverageDataGridViewCheckBoxColumn,
-            this.passedDataGridViewCheckBoxColumn,
-            this.semesterIDDataGridViewTextBoxColumn});
-            this.dataGridViewSessions.DataMember = "CourseSessions";
-            this.dataGridViewSessions.DataSource = this.myDatabaseDataSet;
-            resources.ApplyResources(this.dataGridViewSessions, "dataGridViewSessions");
-            this.dataGridViewSessions.Name = "dataGridViewSessions";
-            // 
-            // iDDataGridViewTextBoxColumn
-            // 
-            this.iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
-            resources.ApplyResources(this.iDDataGridViewTextBoxColumn, "iDDataGridViewTextBoxColumn");
-            this.iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
-            // 
-            // courseIDDataGridViewTextBoxColumn2
-            // 
-            this.courseIDDataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.courseIDDataGridViewTextBoxColumn2.DataPropertyName = "Course ID";
-            resources.ApplyResources(this.courseIDDataGridViewTextBoxColumn2, "courseIDDataGridViewTextBoxColumn2");
-            this.courseIDDataGridViewTextBoxColumn2.Name = "courseIDDataGridViewTextBoxColumn2";
-            // 
-            // courseNameDataGridViewTextBoxColumn1
-            // 
-            this.courseNameDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.courseNameDataGridViewTextBoxColumn1.DataPropertyName = "Course Name";
-            resources.ApplyResources(this.courseNameDataGridViewTextBoxColumn1, "courseNameDataGridViewTextBoxColumn1");
-            this.courseNameDataGridViewTextBoxColumn1.Name = "courseNameDataGridViewTextBoxColumn1";
-            // 
-            // gradeDataGridViewTextBoxColumn
-            // 
-            this.gradeDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.gradeDataGridViewTextBoxColumn.DataPropertyName = "Grade";
-            resources.ApplyResources(this.gradeDataGridViewTextBoxColumn, "gradeDataGridViewTextBoxColumn");
-            this.gradeDataGridViewTextBoxColumn.Name = "gradeDataGridViewTextBoxColumn";
-            // 
-            // commentsDataGridViewTextBoxColumn
-            // 
-            this.commentsDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.commentsDataGridViewTextBoxColumn.DataPropertyName = "Comments";
-            resources.ApplyResources(this.commentsDataGridViewTextBoxColumn, "commentsDataGridViewTextBoxColumn");
-            this.commentsDataGridViewTextBoxColumn.Name = "commentsDataGridViewTextBoxColumn";
-            // 
-            // inFinalDataGridViewCheckBoxColumn
-            // 
-            this.inFinalDataGridViewCheckBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.inFinalDataGridViewCheckBoxColumn.DataPropertyName = "inFinal";
-            resources.ApplyResources(this.inFinalDataGridViewCheckBoxColumn, "inFinalDataGridViewCheckBoxColumn");
-            this.inFinalDataGridViewCheckBoxColumn.Name = "inFinalDataGridViewCheckBoxColumn";
-            // 
-            // attendedDataGridViewCheckBoxColumn
-            // 
-            this.attendedDataGridViewCheckBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.attendedDataGridViewCheckBoxColumn.DataPropertyName = "Attended";
-            resources.ApplyResources(this.attendedDataGridViewCheckBoxColumn, "attendedDataGridViewCheckBoxColumn");
-            this.attendedDataGridViewCheckBoxColumn.Name = "attendedDataGridViewCheckBoxColumn";
-            // 
-            // inAverageDataGridViewCheckBoxColumn
-            // 
-            this.inAverageDataGridViewCheckBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.inAverageDataGridViewCheckBoxColumn.DataPropertyName = "inAverage";
-            resources.ApplyResources(this.inAverageDataGridViewCheckBoxColumn, "inAverageDataGridViewCheckBoxColumn");
-            this.inAverageDataGridViewCheckBoxColumn.Name = "inAverageDataGridViewCheckBoxColumn";
-            // 
-            // passedDataGridViewCheckBoxColumn
-            // 
-            this.passedDataGridViewCheckBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.passedDataGridViewCheckBoxColumn.DataPropertyName = "Passed";
-            resources.ApplyResources(this.passedDataGridViewCheckBoxColumn, "passedDataGridViewCheckBoxColumn");
-            this.passedDataGridViewCheckBoxColumn.Name = "passedDataGridViewCheckBoxColumn";
-            // 
-            // semesterIDDataGridViewTextBoxColumn
-            // 
-            this.semesterIDDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.semesterIDDataGridViewTextBoxColumn.DataPropertyName = "Semester ID";
-            resources.ApplyResources(this.semesterIDDataGridViewTextBoxColumn, "semesterIDDataGridViewTextBoxColumn");
-            this.semesterIDDataGridViewTextBoxColumn.Name = "semesterIDDataGridViewTextBoxColumn";
             // 
             // MainForm
             // 
@@ -730,6 +740,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCleanSlate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.myDatabaseDataSet)).EndInit();
             this.tabSessions.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSessions)).EndInit();
             this.tabCourses.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCourseList)).EndInit();
             this.tabSemesters.ResumeLayout(false);
@@ -749,7 +760,6 @@
             this.groupBox1.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSessions)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -829,6 +839,7 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn inAverageDataGridViewCheckBoxColumn;
         private System.Windows.Forms.DataGridViewCheckBoxColumn passedDataGridViewCheckBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn semesterIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Button aboutButton;
     }
 }
 

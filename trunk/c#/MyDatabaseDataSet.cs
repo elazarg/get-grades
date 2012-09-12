@@ -162,10 +162,11 @@ namespace getGradesForms
                 if (s.Points != actual.Points || s.Average != actual.Average || s.SuccessRate != actual.SuccessRate)
                     MessageBox.Show("(" + points + " : " + s.Points + ")" + "(" + successRate + " : " + s.SuccessRate + ")" + "(" + average + " : " + s.Average + ")");
             }
-            else if (!decimal.TryParse(successRate, out s.Points))
+            else if (decimal.TryParse(successRate, out p))
             {
-                MessageBox.Show("cannot parse: (" + points + " " + successRate + "  " + average + ")");
+                s.Points = sumPoints(CourseSessions.Where(x => x.Semester_ID == last.ID));
             }
+            else MessageBox.Show("cannot parse: (" + points + " " + successRate + "  " + average + ")");
 
             last.Points = s.Points;
             last.Average = s.Average;
@@ -180,7 +181,7 @@ namespace getGradesForms
 
             ViewTable.Clear();
             foreach (var row in CourseSessions.Where(x => x.inFinal).Reverse())
-                if (row.inFinal && row.Grade >= 55)
+                if (row.inFinal && row.Passed)
                     ViewTable.AddViewTableRow(row.Course_ID, row.CourseListRow.Name, row.CourseListRow.Points, row.inAverage ? row.Grade : 1);
 
         }

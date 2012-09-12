@@ -69,10 +69,9 @@ namespace getGradesForms
             state = State.DONE;
         }
 
-        public void saveFile(string fileName)
+        public void saveCsvFile(string fileName)
         {
-            var txt = string.Join("\r\n", from row in dataSet.ViewTable
-                                              select string.Join(" , ", row.ItemArray));
+            var txt = string.Join("\r\n", dataSet.ViewTable.Select( row => string.Join(" , ", row.ItemArray)));
             File.WriteAllText(fileName, txt, Connection.hebrewEncoding);
         }
 
