@@ -7,6 +7,20 @@ using System.ComponentModel;
 
 namespace getGradesForms
 {
+    public static class SString 
+    {
+        public static string Join(string s, IEnumerable<string> arr)
+        {
+            string x = arr.First();
+            foreach (string i in arr.Skip(1))
+            {
+                x = x + s + i;
+            }
+            return x;
+        }
+    }
+
+
     class Grades : IDisposable
     {
         public readonly UGDatabase dataSet = new UGDatabase();
@@ -71,7 +85,7 @@ namespace getGradesForms
 
         public void saveCsvFile(string fileName)
         {
-            var txt = string.Join("\r\n", dataSet.cleanView.Select(row => string.Join(" , ", row.course.ToString(), row.grade.ToString())));
+            var txt = SString.Join("\r\n", dataSet.cleanView.Select(row => SString.Join(" , ", new string[] { row.course.ToString(), row.grade.ToString() })));
             File.WriteAllText(fileName, txt, Connection.hebrewEncoding);
         }
 

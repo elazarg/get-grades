@@ -65,7 +65,7 @@ namespace getGradesForms
             string[] nameAndId = s.Value.Split(new string[] { " " }, 10, StringSplitOptions.None);
 
             var courseId = Regex.Match(s.Value, "[0-9]{6}", RegexOptions.Compiled);
-            string name = reverse(string.Join(" ", nameAndId.TakeWhile(str => str != courseId.Value)))
+            string name = reverse(SString.Join(" ", nameAndId.TakeWhile(str => str != courseId.Value)))
                             .Replace('(', '$').Replace(')', '(').Replace('$', ')');
             if (courseId.Success)
                 name += "</td><td>" + courseId.Value;
@@ -105,7 +105,7 @@ namespace getGradesForms
             {
                 if (lines[i].StartsWith("<td"))
                 {
-                    lines[i] = "<td>" + string.Join("</td><td>", lines[i].Substring(4, lines[i].Length - 9).Split(new string[] { "</td><td>" }, StringSplitOptions.None).Reverse()) + "</td>";
+                    lines[i] = "<td>" + SString.Join("</td><td>", lines[i].Substring(4, lines[i].Length - 9).Split(new string[] { "</td><td>" }, StringSplitOptions.None).Reverse()) + "</td>";
                     switch (lines[i].Substring(4, 5))
                     {
                         case "ממוצע" : lines[i] = "<td>ממוצע</td><td>שיעור הצלחות</td><td>נקודות מצטברות</td>"; break;
@@ -135,7 +135,7 @@ namespace getGradesForms
             string tabsep = "</TABLE>\r\n<BR>\r\n<TABLE BORDER=1 CELLPADDING=3 CELLSPACING=0>";
             string[] fulltables = html.Split(new string[] {tabsep}, StringSplitOptions.None);
 
-            this.fixedHtml = fulltables[0] + tabsep + fulltables[1] + tabsep + string.Join("", fulltables.Skip(2));
+            this.fixedHtml = fulltables[0] + tabsep + fulltables[1] + tabsep + SString.Join("", fulltables.Skip(2));
 
             //the ultimate split - [table][line][cell]
             return (from t in fulltables

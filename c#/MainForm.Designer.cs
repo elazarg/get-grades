@@ -35,12 +35,13 @@
             this.saveAsButton = new System.Windows.Forms.Button();
             this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabControl = new System.Windows.Forms.TabControl();
             this.tabCleanSlate = new System.Windows.Forms.TabPage();
             this.dataGridViewCleanSlate = new System.Windows.Forms.DataGridView();
             this.tabSessions = new System.Windows.Forms.TabPage();
             this.dataGridViewSessions = new System.Windows.Forms.DataGridView();
             this.tabCourses = new System.Windows.Forms.TabPage();
+            this.dataGridViewCourseList = new System.Windows.Forms.DataGridView();
             this.tabSemesters = new System.Windows.Forms.TabPage();
             this.dataGridViewSemesters = new System.Windows.Forms.DataGridView();
             this.tabBrowser = new System.Windows.Forms.TabPage();
@@ -77,7 +78,6 @@
             this.courseIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewCourseList = new System.Windows.Forms.DataGridView();
             this.courseIdDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.courseNameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gradeDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -101,12 +101,13 @@
             this.successRateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pointsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
-            this.tabControl1.SuspendLayout();
+            this.tabControl.SuspendLayout();
             this.tabCleanSlate.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCleanSlate)).BeginInit();
             this.tabSessions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSessions)).BeginInit();
             this.tabCourses.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCourseList)).BeginInit();
             this.tabSemesters.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSemesters)).BeginInit();
             this.tabBrowser.SuspendLayout();
@@ -119,7 +120,6 @@
             this.groupBox1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCourseList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uGDatabaseBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -153,7 +153,7 @@
             // tableLayoutPanel1
             // 
             resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
-            this.tableLayoutPanel1.Controls.Add(this.tabControl1, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.tabControl, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.statusStrip1, 2, 2);
             this.tableLayoutPanel1.Controls.Add(this.personalDetailsGroup, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.statusStrip2, 0, 2);
@@ -162,19 +162,19 @@
             this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel1, 1, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             // 
-            // tabControl1
+            // tabControl
             // 
-            this.tableLayoutPanel1.SetColumnSpan(this.tabControl1, 4);
-            this.tabControl1.Controls.Add(this.tabCleanSlate);
-            this.tabControl1.Controls.Add(this.tabSessions);
-            this.tabControl1.Controls.Add(this.tabCourses);
-            this.tabControl1.Controls.Add(this.tabSemesters);
-            this.tabControl1.Controls.Add(this.tabBrowser);
-            this.tabControl1.Controls.Add(this.tabHtml);
-            resources.ApplyResources(this.tabControl1, "tabControl1");
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.TabStop = false;
+            this.tableLayoutPanel1.SetColumnSpan(this.tabControl, 4);
+            this.tabControl.Controls.Add(this.tabCleanSlate);
+            this.tabControl.Controls.Add(this.tabSessions);
+            this.tabControl.Controls.Add(this.tabCourses);
+            this.tabControl.Controls.Add(this.tabSemesters);
+            this.tabControl.Controls.Add(this.tabBrowser);
+            this.tabControl.Controls.Add(this.tabHtml);
+            resources.ApplyResources(this.tabControl, "tabControl");
+            this.tabControl.Name = "tabControl";
+            this.tabControl.SelectedIndex = 0;
+            this.tabControl.TabStop = false;
             // 
             // tabCleanSlate
             // 
@@ -227,6 +227,19 @@
             resources.ApplyResources(this.tabCourses, "tabCourses");
             this.tabCourses.Name = "tabCourses";
             this.tabCourses.UseVisualStyleBackColor = true;
+            // 
+            // dataGridViewCourseList
+            // 
+            this.dataGridViewCourseList.AutoGenerateColumns = false;
+            this.dataGridViewCourseList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewCourseList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idDataGridViewTextBoxColumn1,
+            this.nameDataGridViewTextBoxColumn,
+            this.pointsDataGridViewTextBoxColumn1});
+            this.dataGridViewCourseList.DataMember = "courses";
+            this.dataGridViewCourseList.DataSource = this.uGDatabaseBindingSource;
+            resources.ApplyResources(this.dataGridViewCourseList, "dataGridViewCourseList");
+            this.dataGridViewCourseList.Name = "dataGridViewCourseList";
             // 
             // tabSemesters
             // 
@@ -489,19 +502,6 @@
             this.dataGridViewTextBoxColumn1.MaxInputLength = 6;
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             // 
-            // dataGridViewCourseList
-            // 
-            this.dataGridViewCourseList.AutoGenerateColumns = false;
-            this.dataGridViewCourseList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewCourseList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idDataGridViewTextBoxColumn1,
-            this.nameDataGridViewTextBoxColumn,
-            this.pointsDataGridViewTextBoxColumn1});
-            this.dataGridViewCourseList.DataMember = "courses";
-            this.dataGridViewCourseList.DataSource = this.uGDatabaseBindingSource;
-            resources.ApplyResources(this.dataGridViewCourseList, "dataGridViewCourseList");
-            this.dataGridViewCourseList.Name = "dataGridViewCourseList";
-            // 
             // courseIdDataGridViewTextBoxColumn2
             // 
             this.courseIdDataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
@@ -670,12 +670,13 @@
             this.ShowIcon = false;
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            this.tabControl1.ResumeLayout(false);
+            this.tabControl.ResumeLayout(false);
             this.tabCleanSlate.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCleanSlate)).EndInit();
             this.tabSessions.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSessions)).EndInit();
             this.tabCourses.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCourseList)).EndInit();
             this.tabSemesters.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSemesters)).EndInit();
             this.tabBrowser.ResumeLayout(false);
@@ -693,7 +694,6 @@
             this.groupBox1.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCourseList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.uGDatabaseBindingSource)).EndInit();
             this.ResumeLayout(false);
 
@@ -736,7 +736,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.Button aboutButton;
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.TabPage tabCleanSlate;
         private System.Windows.Forms.TabPage tabSessions;
         private System.Windows.Forms.TabPage tabCourses;
