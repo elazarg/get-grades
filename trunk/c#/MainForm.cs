@@ -21,8 +21,6 @@ namespace getGradesForms
         public MainForm()
         {
             InitializeComponent();
-            useridTextbox.Tag = false;
-            passwordBox.Tag = false;
         }
 
         void browser_Navigated(object sender, WebBrowserDocumentCompletedEventArgs e)
@@ -99,7 +97,6 @@ namespace getGradesForms
             }
             catch (BadHtmlFormat) {
                 statusLabel.Text = "שגיאת הזדהות";
-       //        MessageBox.Show(ex.Message, "שגיאה לא ידועה");
             }
             backgroundWorker.CancelAsync();
             e.Result = false;
@@ -118,6 +115,8 @@ namespace getGradesForms
                 } 
         }
 
+        UGDatabase ugDatabase;
+
         string htmlfilename =  Path.GetTempPath() + "getgrades.html";
         private void refresh()
         {
@@ -127,14 +126,14 @@ namespace getGradesForms
             browser.Navigate(htmlfilename);
             browser.Document.Encoding = "iso-8859-8-i";
 
-            var details = myDatabaseDataSet.PersonalDetails.Last();
-            labelName.Text = details.First_Name + " " + details.Last_Name + " ," + details.Id;
-            labelFaculty.Text = details.Faculty;
-            labelProgram.Text = details.Program;
+            var details = ugDatabase.personalDetails;
+            labelName.Text = details.firstName + " " + details.lastName + " ," + details.id;
+            labelFaculty.Text = details.faculty;
+            labelProgram.Text = details.program;
 
-            textBoxAvGrade.Text = myDatabaseDataSet.total.Average.ToString();
-            textBoxPoints.Text = myDatabaseDataSet.total.Points.ToString();
-            textBoxSuccessRate.Text = myDatabaseDataSet.total.SuccessRate.ToString();
+            textBoxAvGrade.Text = ugDatabase.total.Average.ToString();
+            textBoxPoints.Text = ugDatabase.total.Points.ToString();
+            textBoxSuccessRate.Text = ugDatabase.total.SuccessRate.ToString();
         }
 
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -143,9 +142,11 @@ namespace getGradesForms
                 if (!(bool)e.Result)
                     return;
 
-                myDatabaseDataSet = grades.dataSet;
-                foreach (var i in new DataGridView[] { dataGridViewSessions, dataGridViewCourseList, dataGridViewSemesters, dataGridViewCleanSlate }) {
-                    i.DataSource = this.myDatabaseDataSet;
+                ugDatabase = grades.dataSet;
+                foreach (var i in new DataGridView[] { dataGridViewSessions, /*dataGridViewCourseList,*/ dataGridViewSemesters, dataGridViewCleanSlate
+                }) {
+                    uGDatabaseBindingSource.DataSource = this.ugDatabase;
+                    i.Refresh();
                 }
                 refresh();
                 saveAsButton.Enabled = true;
@@ -157,7 +158,6 @@ namespace getGradesForms
                 this.Focus();
             }
         }
-
 
         AboutBox ab = null;
         private void aboutButton_Click(object sender, EventArgs e)
