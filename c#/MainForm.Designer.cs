@@ -78,7 +78,6 @@
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewCourseList = new System.Windows.Forms.DataGridView();
-            this.semestersBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.courseIdDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.courseNameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gradeDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -121,7 +120,6 @@
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCourseList)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.semestersBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uGDatabaseBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -504,11 +502,6 @@
             resources.ApplyResources(this.dataGridViewCourseList, "dataGridViewCourseList");
             this.dataGridViewCourseList.Name = "dataGridViewCourseList";
             // 
-            // semestersBindingSource
-            // 
-            this.semestersBindingSource.DataMember = "semesters";
-            this.semestersBindingSource.DataSource = this.uGDatabaseBindingSource;
-            // 
             // courseIdDataGridViewTextBoxColumn2
             // 
             this.courseIdDataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
@@ -701,7 +694,6 @@
             this.flowLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCourseList)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.semestersBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.uGDatabaseBindingSource)).EndInit();
             this.ResumeLayout(false);
 
@@ -758,7 +750,6 @@
         private System.Windows.Forms.DataGridView dataGridViewSessions;
         private System.Windows.Forms.DataGridView dataGridViewCleanSlate;
         private System.Windows.Forms.DataGridView dataGridViewCourseList;
-        private System.Windows.Forms.BindingSource semestersBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn courseIdDataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn courseNameDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn gradeDataGridViewTextBoxColumn1;
