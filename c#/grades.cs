@@ -9,7 +9,7 @@ namespace getGradesForms
 {
     class Grades : IDisposable
     {
-        public readonly MyDatabaseDataSet dataSet= new getGradesForms.MyDatabaseDataSet();
+        public readonly UGDatabase dataSet = new UGDatabase();
         public String html { get; private set; }
 
         private BackgroundWorker bw;
@@ -71,7 +71,7 @@ namespace getGradesForms
 
         public void saveCsvFile(string fileName)
         {
-            var txt = string.Join("\r\n", dataSet.ViewTable.Select( row => string.Join(" , ", row.ItemArray)));
+            var txt = string.Join("\r\n", dataSet.cleanView.Select(row => string.Join(" , ", row.course.ToString(), row.grade.ToString())));
             File.WriteAllText(fileName, txt, Connection.hebrewEncoding);
         }
 
@@ -79,13 +79,15 @@ namespace getGradesForms
         {
             html = "";
             dataSet.init();
-            dataSet.PersonalDetails.AddPersonalDetailsRow(new DateTime(), "", "", "", "", "");
+            /*
+            dataSet.personalDetails.AddPersonalDetailsRow(new DateTime(), "", "", "", "", "");
             dataSet.Semester.Clear();
+             * */
         }
 
         public void Dispose()
         {
-            dataSet.Dispose();
+            //dataSet.Dispose();
         }
     }
 }
