@@ -11,6 +11,9 @@ using System.Threading;
 using System.Text.RegularExpressions;
 using System.Net.Sockets;
 using System.Text;
+
+using System.Net;
+
 namespace getGradesForms
 {
     public partial class MainForm : Form
@@ -18,6 +21,8 @@ namespace getGradesForms
         public MainForm()
         {
             InitializeComponent();
+            useridTextbox.Tag = false;
+            passwordBox.Tag = false;
         }
 
         void browser_Navigated(object sender, WebBrowserDocumentCompletedEventArgs e)
@@ -65,7 +70,16 @@ namespace getGradesForms
 
         private void saveFileDialog1_FileOk(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            grades.saveFile(saveFileDialog.FileName);
+            MessageBox.Show(Path.GetExtension(saveFileDialog.FileName));
+            switch (Path.GetExtension(saveFileDialog.FileName))
+            {
+                case ".csv": 
+                    grades.saveCsvFile(saveFileDialog.FileName);
+                    break;
+                case ".htm" :  case ".html":
+                    File.WriteAllText(saveFileDialog.FileName, grades.html, Connection.hebrewEncoding);
+                    break;
+            }
         }
 
         Grades grades;
@@ -104,17 +118,17 @@ namespace getGradesForms
                 } 
         }
 
+        string htmlfilename =  Path.GetTempPath() + "getgrades.html";
         private void refresh()
         {
             richTextBoxHtml.Text = grades.html;
-
-            string htmlfilename = "Z:\\grades.html";
+            
             File.WriteAllText(htmlfilename, grades.html, Connection.hebrewEncoding);
             browser.Navigate(htmlfilename);
             browser.Document.Encoding = "iso-8859-8-i";
 
             var details = myDatabaseDataSet.PersonalDetails.Last();
-            labelName.Text = details.First_Name + " " + details.Last_Name;
+            labelName.Text = details.First_Name + " " + details.Last_Name + " ," + details.Id;
             labelFaculty.Text = details.Faculty;
             labelProgram.Text = details.Program;
 
@@ -143,13 +157,16 @@ namespace getGradesForms
                 this.Focus();
             }
         }
-        
-        
-        AboutBox ab = new AboutBox();
-        private void button1_Click(object sender, EventArgs e)
+
+
+        AboutBox ab = null;
+        private void aboutButton_Click(object sender, EventArgs e)
         {
+            if (ab == null || ab.IsDisposed)
+                ab = new AboutBox();
             ab.Activate();
-            ab.Show();
+            if (!ab.Visible)
+                ab.Show(this);
         }
 
         private void labelPD_TextChanged(object sender, EventArgs e)
@@ -177,16 +194,29 @@ namespace getGradesForms
             e.SuppressKeyPress = true;
         }
 
-        private void TextBox_TextChanged(object sender, EventArgs e)
+        private bool passValid = false, idValid = false;
+        private void userIdBox_TextChanged(object sender, EventArgs e)
         {
-            Func<int, int, int> tr = (int d, int i) => i%2==1 ? d : (2*d / 10 ) + (2*d % 10);
-            Func<string, bool> validateId = delegate (string userid) {
+            Func<int, int, int> tr = (int d, int i) => i % 2 == 1 ? d : (2 * d / 10) + (2 * d % 10);
+            Func<string, bool> validateId = delegate(string userid)
+            {
                 var usernums = (from c in userid.Reverse() select int.Parse(char.ToString(c))).ToArray();
                 return usernums[0] == (10 - usernums.Skip(1).Select(tr).Sum() % 10);
             };
-            goButton.Enabled = useridTextbox.TextLength /2  == useridTextbox.MaxLength /2 //8 or 9
-                && validateId(useridTextbox.Text)
-                && passwordBox.TextLength == passwordBox.MaxLength;
+            idValid = useridTextbox.TextLength / 2 == useridTextbox.MaxLength / 2 //8 or 9
+                && validateId(useridTextbox.Text);
+            checkEnabled();
+        }
+
+        private void passwordBox_TextChanged(object sender, EventArgs e)
+        {
+            passValid = passwordBox.TextLength == passwordBox.MaxLength;
+            checkEnabled();
+        }
+
+        private void checkEnabled()
+        {
+            goButton.Enabled = idValid && passValid;
         }
 
         private void buttonClear_Click(object sender, EventArgs e)
@@ -198,6 +228,7 @@ namespace getGradesForms
             browser.Navigate("about:blank");
             richTextBoxHtml.ResetText();
 
+            File.Delete(htmlfilename);
             foreach (Control i in new Control[] {
                     passwordBox,  useridTextbox,
                     labelName,  labelFaculty, labelProgram,
@@ -219,6 +250,7 @@ namespace getGradesForms
             if (saveAsButton.Enabled) {
                 grades.dataSet.updateCleanSlate();
                 refresh();
+                this.Update();
             }
         }
 

@@ -6,9 +6,9 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Get Grades")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("An application to get, manipulate and save your Technion UG grades.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("אלעזר גרשוני")]
+[assembly: AssemblyCompany("Elazar Gershuni")]
 [assembly: AssemblyProduct("Get Grades")]
 [assembly: AssemblyCopyright("2012")]
 [assembly: AssemblyTrademark("")]
@@ -29,5 +29,5 @@ using System.Runtime.InteropServices;
 //      Build Number
 //      Revision
 //
-[assembly: AssemblyVersion("0.0.3.0")]
+[assembly: AssemblyVersion("0.0.4.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
