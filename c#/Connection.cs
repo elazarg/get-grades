@@ -37,6 +37,8 @@ namespace getGradesForms
 
         internal static SocketError getNetworkConnectionStatus()
         {
+            return SocketError.Success;
+#if false
             InternetConnectionState_e flags = 0;
             if (InternetGetConnectedState(ref flags, 0)) {
                 using (var test1 = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.IP)) {
@@ -63,6 +65,7 @@ namespace getGradesForms
                 }
             }
             return SocketError.NetworkDown;
+#endif
         }
         #endregion
 
