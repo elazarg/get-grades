@@ -23,16 +23,19 @@ namespace getGradesForms
 
     class Semester
     {
-        public int ID { get; set; }
-        public string year { get; set; }
+        internal static int gen = 0;
+        //int id;
+        public int ID { get; private set;  }
+        string _year;
+        public string year { get { return _year; } set { ID = gen; gen++; _year = value; } }
         public string season { get; set; }
         public string hebrewYear { get; set; }
-
-
+        
+        internal Summary sum { get; set; }
         public decimal Average { get { return sum.Average; } }
         public decimal SuccessRate { get { return sum.SuccessRate; } }
         public decimal Points { get { return sum.Points; } }
-        internal Summary sum { get; set; }
+
     }
 
     public struct Summary
