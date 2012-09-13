@@ -7,12 +7,25 @@ namespace getGradesForms
 {
     class UGDatabase
     {
-        internal void init()
+        internal UGDatabase()
         {
-      //    this.Clear();
             sessions = new BindingList<CourseSession>();
             semesters = new BindingList<Semester>();
             cleanView = new BindingList<CleanViewRow>();
+        }
+
+        internal void Clear()
+        {
+            sessions.Clear();
+            semesters.Clear();
+            cleanView.Clear();
+
+            courses.Clear();
+            personalDetails = new PersonalDetails();
+        }
+
+        internal void init()
+        {
             this.semesters.Add( new Semester {
                 ID = 1,
                 hebrewYear = "",
@@ -61,9 +74,9 @@ namespace getGradesForms
         public PersonalDetails personalDetails;
 
         public BindingList<CourseSession> sessions { get; set; }
-        public BindingList<Semester> semesters { get; set; }
+        public BindingList<Semester> semesters { get; private set; }
         public BindingList<Course> courses { get { return new BindingList<Course>(idToCourse.Values.ToList()); } }
-        public BindingList<CleanViewRow> cleanView { get; set; }
+        public BindingList<CleanViewRow> cleanView { get; private set; }
 
         internal Dictionary<string, Course> idToCourse = new Dictionary<string, Course>();
 
@@ -131,10 +144,10 @@ namespace getGradesForms
             return decimal.Round(from, d, MidpointRounding.AwayFromZero);
         }
 
-        Summary computeSemester(Func<int, bool> pred)
+        Summary computeSemester(Func<CourseSession, bool> pred)
         {
             Summary s = new Summary();
-            IEnumerable<CourseSession> taken = sessions.Where(x => pred(x.semester.ID));
+            IEnumerable<CourseSession> taken = sessions.Where(x => pred(x));
 
             var inAverage = taken.Where(x => x.inFinal && x.inAverage);
             if (inAverage.Any())
@@ -162,7 +175,7 @@ namespace getGradesForms
         internal void endSemesterSQL(string successRate, string points, string average)
         {
             Semester last = this.semesters.Last();
-            Summary s = computeSemester(semid => semid == last.ID);
+            Summary s = computeSemester(session => session.semester.ID == last.ID);
 
             // validation
             decimal p;
@@ -187,18 +200,17 @@ namespace getGradesForms
         }
 
         internal Summary total;
-
+        internal Summary totalClean;
         internal void updateCleanSlate(bool show_empty = false)
         {
-            total = computeSemester(semid => true);
-
+            total = computeSemester(session => true);
+            totalClean = computeSemester(session => session.Passed && session.inAverage && session.inFinal);
             cleanView.Clear();
-            foreach (var row in sessions.Where(x => x.inFinal).Reverse())
-                if (row.inFinal && row.Passed)
-                    cleanView.Add(new CleanViewRow {
-                        course = row.course,
-                        grade = row.inAverage ? row.grade : 1 
-                    });
+            foreach (var row in sessions.Where(x => x.inFinal && x.Passed).Reverse())
+                cleanView.Add(new CleanViewRow {
+                    course = row.course,
+                    grade = row.inAverage ? row.grade : 1 
+                });
 
         }
 
