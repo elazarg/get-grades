@@ -13,11 +13,12 @@ namespace getGradesForms
         public MainForm()
         {
             InitializeComponent();
+            browser.DocumentCompleted += delegate { browser.Document.Encoding = "iso-8859-8-i"; };
         }
 
         void browser_Navigated(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
-            richTextBoxHtml.Text = browser.DocumentText;
+            textBoxHtml.Text = browser.DocumentText;
         }
 
         void browser_Navigating(object sender, WebBrowserNavigatingEventArgs e)
@@ -29,20 +30,23 @@ namespace getGradesForms
                 MessageBox.Show(this, "שגיאה לא צפויה. התוכנית תיסגר");
                 this.Close();
             }
-
         }
 
         private void goButton_Click(object sender, EventArgs e)
         {
+            buttonGo.Enabled = false;
+            buttonClear.Enabled = false;
             if (Connection.getNetworkConnectionStatus() != System.Net.Sockets.SocketError.Success)
             {
-                errorProvider1.SetError(goButton, "החיבור לשרת נכשל");
+                errorProvider1.SetError(buttonGo, "החיבור לשרת נכשל");
+                buttonGo.Enabled = true;
+                buttonClear.Enabled = true;
                 return;
             }
             errorProvider1.Clear();
 
             this.Cursor = System.Windows.Forms.Cursors.WaitCursor;
-            goButton.Enabled = false;
+
             toolStripProgressBar.Value = toolStripProgressBar.Minimum;
             backgroundWorker.RunWorkerAsync();
         }
@@ -112,11 +116,11 @@ namespace getGradesForms
         string htmlfilename =  Path.GetTempPath() + "getgrades.html";
         private void refresh()
         {
-            richTextBoxHtml.Text = grades.html;
+            textBoxHtml.Text = grades.html;
             
             File.WriteAllText(htmlfilename, grades.html, Connection.hebrewEncoding);
             browser.Navigate(htmlfilename);
-            browser.Document.Encoding = "iso-8859-8-i";
+            
 
             var details = ugDatabase.personalDetails;
             labelName.Text = details.firstName + " " + details.lastName + " ," + details.id;
@@ -135,16 +139,15 @@ namespace getGradesForms
                     return;
 
                 ugDatabase = grades.dataSet;
-                foreach (var i in new DataGridView[] { dataGridViewSessions, dataGridViewCourseList, dataGridViewSemesters, dataGridViewCleanSlate
-                }) {
+                foreach (var i in new DataGridView[] { dataGridViewSessions, dataGridViewCourseList, dataGridViewSemesters, dataGridViewCleanSlate }) {
                     uGDatabaseBindingSource.DataSource = this.ugDatabase;
-                    i.Refresh();
                 }
                 refresh();
                 saveAsButton.Enabled = true;
             }
             finally {
-                goButton.Enabled = true;
+                buttonGo.Enabled = true;
+                buttonClear.Enabled = true;
                 this.Cursor = System.Windows.Forms.Cursors.Default;
                 this.Refresh();
                 this.Focus();
@@ -178,9 +181,9 @@ namespace getGradesForms
                         && (Sender.TextLength < Sender.MaxLength || Sender.SelectionLength > 0))
                     return;
 
-            if (e.KeyData == Keys.Enter && goButton.Enabled)
+            if (e.KeyData == Keys.Enter && buttonGo.Enabled)
             {
-                goButton.PerformClick();
+                buttonGo.PerformClick();
                 return;
             }
             e.SuppressKeyPress = true;
@@ -208,7 +211,7 @@ namespace getGradesForms
 
         private void checkEnabled()
         {
-            goButton.Enabled = idValid && passValid;
+            buttonGo.Enabled = idValid && passValid;
         }
 
         private void buttonClear_Click(object sender, EventArgs e)
@@ -218,7 +221,7 @@ namespace getGradesForms
             grades = null;
 
             browser.Navigate("about:blank");
-            richTextBoxHtml.ResetText();
+            textBoxHtml.ResetText();
 
             File.Delete(htmlfilename);
             foreach (Control i in new Control[] {
@@ -227,11 +230,14 @@ namespace getGradesForms
                     textBoxAvGrade, textBoxPoints, textBoxSuccessRate
                 })
                 i.ResetText();
-
+            foreach (var i in new DataGridView[] { dataGridViewSessions, dataGridViewCourseList, dataGridViewSemesters, dataGridViewCleanSlate })
+            {
+                uGDatabaseBindingSource.Clear();// DataSource = this.ugDatabase;
+            }
  
             this.Cursor = System.Windows.Forms.Cursors.Default;
 
-            this.goButton.Enabled = false;
+            this.buttonGo.Enabled = false;
             this.saveAsButton.Enabled = false;
             this.Refresh();
             this.Focus();

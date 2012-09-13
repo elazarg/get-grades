@@ -97,22 +97,14 @@ namespace getGradesForms
             output.WriteLine();
             if (postdata != "")
                 output.Write(postdata);
-            output.Flush();
-        }
-
-        private string readLines(int from = 0, int count = 10000)
-        {
-            for (; from > 0; from--)
-                input.ReadLine();
-            string res = "", temp = "";
-            do {
-                tick();
-                temp = input.ReadLine();
-                if (count > 0)
-                    res += temp + "\r\n";
-                count--;
-            } while (temp != "" && !input.EndOfStream && count != 0);
-            return res;
+            try
+            {
+                output.Flush();
+            }
+            catch (IOException)
+            {
+                throw new ConnectionError();
+            }
         }
 
         private int redirect()
@@ -166,6 +158,7 @@ namespace getGradesForms
 
             authenticate(userid, password);
 
+
             String html = validateFormat(readInput());
 
             if (html == "")
@@ -177,23 +170,8 @@ namespace getGradesForms
         private string readInput()
         {
             var reader = new StreamReader(ns, hebrewEncoding);
-            StringBuilder htmlBuilder = new StringBuilder("");
-
-            bool append = false;
-            for (int i = 0; i < 700; i++) {
-                string line = reader.ReadLine();
-
-                append = append || line.ToUpper().Contains("<HTML>");
-
-                if (append) {
-                    htmlBuilder.AppendLine(line);
-
-                    if (line.ToUpper().Contains("</HTML>"))
-                        break;
-                }
-            }
-
-            return htmlBuilder.ToString();
+            s.Disconnect(false);
+            return reader.ReadToEnd();
         }
 
         private void authenticate(string userid, string password)
@@ -215,7 +193,7 @@ namespace getGradesForms
             output.Dispose();
             input.Dispose();
             ns.Dispose();
-          //  s.Dispose();
+        //    s.Dispose();
         }
     }
 

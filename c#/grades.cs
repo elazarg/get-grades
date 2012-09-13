@@ -76,7 +76,7 @@ namespace getGradesForms
         internal void logOut()
         {
             html = "";
-            dataSet.init();
+            dataSet.Clear();
             /*
             dataSet.personalDetails.AddPersonalDetailsRow(new DateTime(), "", "", "", "", "");
             dataSet.Semester.Clear();

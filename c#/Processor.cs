@@ -139,8 +139,7 @@ namespace getGradesForms
             }
 
             // fix grades headers
-            html = string.Join("\r\n", lines).Replace("<td COLSPAN=3>", "<td COLSPAN=4>")
-                         .Replace("ע<BR>", "ע</td><td>");
+            html = string.Join("\r\n", lines).Replace("<td COLSPAN=3>", "<td COLSPAN=4>").Replace("ע<BR>", "ע</td><td>");
 
             // Union grade tables
             string tabsep = "</TABLE>\r\n<BR>\r\n<TABLE BORDER=1 CELLPADDING=3 CELLSPACING=0>";
