@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace getGradesForms
 {
@@ -17,6 +18,8 @@ namespace getGradesForms
         internal void Clear()
         {
             sessions.Clear();
+
+
             semesters.Clear();
             cleanView.Clear();
 
@@ -26,8 +29,9 @@ namespace getGradesForms
 
         internal void init()
         {
+            Semester.gen = 0;
             this.semesters.Add( new Semester {
-                ID = 1,
+              //  ID = 1,
                 hebrewYear = "",
                 year = "זיכויים",
                 season = null,
@@ -187,14 +191,14 @@ namespace getGradesForms
                              };
                 if (s.Points != actual.Points || s.Average != actual.Average || s.SuccessRate != actual.SuccessRate)
                 {
-                 //   MessageBox.Show("(" + points + " : " + s.Points + ")" + "(" + successRate + " : " + s.SuccessRate + ")" + "(" + average + " : " + s.Average + ")");
+                    MessageBox.Show("(" + points + " : " + s.Points + ")" + "(" + successRate + " : " + s.SuccessRate + ")" + "(" + average + " : " + s.Average + ")");
                 }
             }
             else if (decimal.TryParse(successRate, out p))
             {
                 s.Points = sumPoints(sessions.Where(x => x.semester.ID == last.ID));
             }
-       //     else MessageBox.Show("cannot parse: (" + points + " " + successRate + "  " + average + ")");
+            else MessageBox.Show("cannot parse: (" + points + " " + successRate + "  " + average + ")");
 
             last.sum = s;
         }
