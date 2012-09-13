@@ -18,11 +18,8 @@ namespace getGradesForms
         internal void Clear()
         {
             sessions.Clear();
-
-
             semesters.Clear();
             cleanView.Clear();
-
             courses.Clear();
             personalDetails = new PersonalDetails();
         }
@@ -38,30 +35,7 @@ namespace getGradesForms
                 sum = new Summary()
             });
         }
-        Dictionary<string, string> idToFaculty = new Dictionary<string, string>
-        {
-            { "23", "מדעי המחשב" }, 
-            { "13", "ביולוגיה" },
-            { "33", "הנדסה ביו-רפואית" },
-            { "05", "הנדסה כימית" },
-            { "06", "הנדסת ביוטכנולוגיה ומזון" },
-            { "03", "הנדסת מכונות" },
-            { "12", "כימיה" },
-            { "31", "הנדסת חומרים" },
-            { "11", "פיסיקה" },
-            { "20", "ארכיטקטורה ובינוי ערים" },
-            { "21", "הוראת המדעים" },
-            { "01", "הנדסה אזרחית" },
-            { "08", "הנדסת אווירונאוטיקה" },
-            { "04", "הנדסת חשמל" },
-            { "09", "הנדסת תעשיה וניהול" },
-            { "32", "לימודים הומניסטיים ואמנות" },
-            { "39", "ספורט" }, // can take many times
-            { "10", "מתמטיקה" },
-            { "19", "מתמטיקה" }, //advanced
-            { "27", "רפואה" },
-        };
-        
+
         internal void addPersonalDetails(string date, string id, string name, string program, string faculty)
         {
             string[] fullName = name.Split(new char[] { ' ' });
@@ -96,43 +70,37 @@ namespace getGradesForms
             CourseSession cs = new CourseSession
             {
                 course = idToCourse[course_ID],
-                semester = semesters.Last()
+                semester = semesters.Last(),
+                Comments = grade,
             };
-
-            cs.Comments = grade;
-            cs.inAverage = false;
-            cs.inFinal = true;
-            cs.Attended = true;
-            cs.Passed = false;
 
             switch (grade.Trim()) {
                 case "-":    case "לא השלים ש": case "לא השלים ש*":
-                    cs.inFinal = false;
-                    cs.Attended = false;
+                    cs.status = CourseSession.Status.DidNotHappen;
                     break;
 
                 case "לא השלים*":
-                    cs.inFinal = false;
+                    cs.status = CourseSession.Status.NoFinal;
                     break;
 
                 case "לא השלים": case "נכשל":
+                    cs.status = CourseSession.Status.Failed;
                     break;
 
                 case "פטור ללא ניקוד":  case "פטור עם ניקוד":   case "עבר":
-                    cs.Passed = true;
+                    cs.status = CourseSession.Status.Ptor;
                     break;
 
                 default: // Real grade
+                    cs.status = CourseSession.Status.Grade;
                     cs.grade = decimal.Parse(grade.Replace("*", ""));
-                    cs.Passed = cs.grade >= 55;
-                    cs.inAverage = true;
                     break;                    
             }
 
-            if (cs.inFinal && idToFaculty[course_ID.Remove(2)] != "ספורט")
+            if (cs.inFinal && cs.course.onceOnly)
             {
                 foreach (CourseSession last in sessions.Where(row => row.course.name == course_Name))
-                    last.inFinal = false;
+                    last.status &= ~CourseSession.Status.inFinal; // inFinal = false;
             }
 
             sessions.Add(cs);
