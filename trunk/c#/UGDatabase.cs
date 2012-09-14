@@ -6,12 +6,34 @@ using System.Windows.Forms;
 
 namespace getGradesForms
 {
+    static class Selector
+    {
+        public static IEnumerable<CourseSession> Where(this IEnumerable<CourseSession> cs, SessionStatus flags)
+        {
+            return cs.Where( x => x.status.HasFlag(flags));
+        }
+
+        public static decimal Sum(this IEnumerable<CourseSession> cs, Func<decimal, decimal, decimal> func = null)
+        {
+            if (func == null)
+                return cs.Sum(x => x.course.points);
+            return cs.Sum( x => func(x.course.points, x.grade) );
+        }
+    }
     class UGDatabase
     {
+        public PersonalDetails personalDetails;
+
+        public BindingList<CourseSession> sessions { get; set; }
+        public BindingList<Semester> semesters { get; private set; }
+        public BindingList<Course> courses { get; private set; }
+        public BindingList<CleanViewRow> cleanView { get; private set; }
+
         internal UGDatabase()
         {
             sessions = new BindingList<CourseSession>();
             semesters = new BindingList<Semester>();
+            courses = new BindingList<Course>(); 
             cleanView = new BindingList<CleanViewRow>();
         }
 
@@ -27,13 +49,7 @@ namespace getGradesForms
         internal void init()
         {
             Semester.gen = 0;
-            this.semesters.Add( new Semester {
-              //  ID = 1,
-                hebrewYear = "",
-                year = "זיכויים",
-                season = null,
-                sum = new Summary()
-            });
+            this.semesters.Add( new Semester {  year = "זיכויים"  });
         }
 
         internal void addPersonalDetails(string date, string id, string name, string program, string faculty)
@@ -49,139 +65,93 @@ namespace getGradesForms
                 };
         }
 
-        public PersonalDetails personalDetails;
-
-        public BindingList<CourseSession> sessions { get; set; }
-        public BindingList<Semester> semesters { get; private set; }
-        public BindingList<Course> courses { get { return new BindingList<Course>(idToCourse.Values.ToList()); } }
-        public BindingList<CleanViewRow> cleanView { get; private set; }
-
-        internal Dictionary<string, Course> idToCourse = new Dictionary<string, Course>();
-
-        internal void addSessionToSQL(string course_ID, string course_Name, string points, string grade)
+        internal void addSessionToSQL(string courseId, string courseName, string points, string grade)
         {
-            idToCourse[course_ID] = new Course
+            Course course = new Course
             {
-                id = course_ID,
-                name = course_Name,
+                id = courseId,
+                name = courseName,
                 points = decimal.Parse(points)
             };
+            if (!courses.Any(x => x.id == courseId))
+                courses.Add(course);
 
-            CourseSession cs = new CourseSession
+            CourseSession courseSession = new CourseSession(course, semesters.Last(), grade.Trim());
+
+            if (courseSession.inFinal && courseSession.course.onceOnly)
             {
-                course = idToCourse[course_ID],
-                semester = semesters.Last(),
-                Comments = grade,
-            };
-
-            switch (grade.Trim()) {
-                case "-":    case "לא השלים ש": case "לא השלים ש*":
-                    cs.status = CourseSession.Status.DidNotHappen;
-                    break;
-
-                case "לא השלים*":
-                    cs.status = CourseSession.Status.NoFinal;
-                    break;
-
-                case "לא השלים": case "נכשל":
-                    cs.status = CourseSession.Status.Failed;
-                    break;
-
-                case "פטור ללא ניקוד":  case "פטור עם ניקוד":   case "עבר":
-                    cs.status = CourseSession.Status.Ptor;
-                    break;
-
-                default: // Real grade
-                    cs.status = CourseSession.Status.Grade;
-                    cs.grade = decimal.Parse(grade.Replace("*", ""));
-                    break;                    
+                foreach (CourseSession last in sessions.Where(row => row.course.name == courseName))
+                    last.status &= ~SessionStatus.inFinal;
             }
 
-            if (cs.inFinal && cs.course.onceOnly)
-            {
-                foreach (CourseSession last in sessions.Where(row => row.course.name == course_Name))
-                    last.status &= ~CourseSession.Status.inFinal; // inFinal = false;
-            }
-
-            sessions.Add(cs);
+            sessions.Add(courseSession);
         }
 
-        private decimal sumPoints(IEnumerable<CourseSession> rows)
-        {
-            return rows.Sum(x => x.course.points);
-        }
+        private static Func<CourseSession, decimal> selectPoints = cs => cs.course.points;
 
-        private decimal round(decimal from, int d)
-        {
-            return decimal.Round(from, d, MidpointRounding.AwayFromZero);
-        }
-
-        Summary computeSemester(Func<CourseSession, bool> pred)
+        private Summary computeSemester(IEnumerable<CourseSession> taken)
         {
             Summary s = new Summary();
-            IEnumerable<CourseSession> taken = sessions.Where(x => pred(x));
-
-            var inAverage = taken.Where(x => x.inFinal && x.inAverage);
+            var inAverage = taken.Where(SessionStatus.Grade);
             if (inAverage.Any())
-                s.Average = round(inAverage.Sum(x => x.course.points * x.grade) / sumPoints(inAverage), 1);
+                s.Average = inAverage.Sum( (p, g) => p * g) / inAverage.Sum();
 
-            var attendeds = taken.Where(x => x.Attended);
-            if (attendeds.Any()) {
-                s.Points = sumPoints(attendeds.Where(x => x.inFinal && x.Passed));
-                s.SuccessRate = round(sumPoints(attendeds.Where(x => x.Passed)) * 100 / sumPoints(attendeds), 0);
+            if (taken.Where(x => x.Attended).Any()) {
+                s.Points = taken.Where(SessionStatus.inPoints).Sum();
+                s.SuccessRate = taken.Where(SessionStatus.inSuccess).Sum() * 100
+                              / taken.Where(SessionStatus.Attended).Sum();
             }
 
             return s;
         }
 
-        internal void addSemesterToSQL(string year, string hebrewYear, string season)
+        internal void addSemester(string year, string hebrewYear, string season)
         {
             this.semesters.Add( new Semester {
                 year = year,
                 season = season,
                 hebrewYear = hebrewYear,
-                sum = new Summary()
             });
         }
 
-        internal void endSemesterSQL(string successRate, string points, string average)
+        internal void addEndSemester(string successRate, string points, string average)
         {
             Semester last = this.semesters.Last();
-            Summary s = computeSemester(session => session.semester.ID == last.ID);
+            IEnumerable<CourseSession> taken = sessions.Where(session => session.semester.ID == last.ID);
+            Summary summary = computeSemester(taken);
 
             // validation
             decimal p;
-            if (decimal.TryParse(points, out p)){
+            if (decimal.TryParse(points, out p)) {
                 Summary actual = new Summary {
                                  Points = p,
                                  Average = decimal.Parse(average),
                                  SuccessRate = successRate == "" ? 0 : decimal.Parse(successRate),
                              };
-                if (s.Points != actual.Points || s.Average != actual.Average || s.SuccessRate != actual.SuccessRate)
-                {
-                    MessageBox.Show("(" + points + " : " + s.Points + ")" + "(" + successRate + " : " + s.SuccessRate + ")" + "(" + average + " : " + s.Average + ")");
-                }
+                if (!summary.Equals(actual))
+                    MessageBox.Show(string.Format("({0} : {3}, {1} : {4}, {2} : {5}",
+                        actual.Points,  actual.SuccessRate,  actual.Average,
+                        summary.Points, summary.SuccessRate, summary.Average));
             }
             else if (decimal.TryParse(successRate, out p))
-            {
-                s.Points = sumPoints(sessions.Where(x => x.semester.ID == last.ID));
-            }
+                summary.Points = taken.Sum(selectPoints);
             else MessageBox.Show("cannot parse: (" + points + " " + successRate + "  " + average + ")");
 
-            last.sum = s;
+            last.summary = summary;
         }
 
         internal Summary total;
         internal Summary totalClean;
         internal void updateCleanSlate(bool show_empty = false)
         {
-            total = computeSemester(session => true);
-            totalClean = computeSemester(session => session.Passed && session.inAverage && session.inFinal);
+            total = computeSemester(sessions);
+            totalClean = computeSemester(sessions.Where(SessionStatus.inClean));
+
             cleanView.Clear();
-            foreach (var row in sessions.Where(x => x.inFinal && x.Passed).Reverse())
+            foreach (var row in sessions.Where(SessionStatus.inPoints).Reverse())
                 cleanView.Add(new CleanViewRow {
                     course = row.course,
-                    grade = row.inAverage ? row.grade : 1 
+                    grade = row.inAverage ? row.grade.ToString() : row.Comments 
                 });
 
         }

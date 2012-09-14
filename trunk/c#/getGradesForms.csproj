@@ -71,11 +71,12 @@
     <StartupObject>getGradesForms.Program</StartupObject>
   </PropertyGroup>
   <PropertyGroup />
-  <PropertyGroup>
-    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
-  </PropertyGroup>
+  <PropertyGroup />
   <PropertyGroup>
     <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <NoWin32Manifest>true</NoWin32Manifest>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -92,7 +93,7 @@
     </Compile>
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="Connection.cs" />
-    <Compile Include="CourseSession.cs" />
+    <Compile Include="BasicTypes.cs" />
     <Compile Include="grades.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
