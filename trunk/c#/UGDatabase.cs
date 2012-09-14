@@ -89,12 +89,13 @@ namespace getGradesForms
 
         private static Func<CourseSession, decimal> selectPoints = cs => cs.course.points;
 
+
         private Summary computeSemester(IEnumerable<CourseSession> taken)
         {
             Summary s = new Summary();
             var inAverage = taken.Where(SessionStatus.Grade);
             if (inAverage.Any())
-                s.Average = inAverage.Sum( (p, g) => p * g) / inAverage.Sum();
+                s.Average = inAverage.Sum( (p, g) => p * g ) / inAverage.Sum();
 
             if (taken.Where(x => x.Attended).Any()) {
                 s.Points = taken.Where(SessionStatus.inPoints).Sum();

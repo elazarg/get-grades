@@ -40,7 +40,7 @@ namespace getGradesForms
         public delegate void SemesterFinished(string successRate, string points, string average);
         public event SemesterFinished semesterFinished = delegate { };
 
-        string raw_html;
+        internal string raw_html;
         internal string fixedHtml;
         private string[][][] tables;
 
