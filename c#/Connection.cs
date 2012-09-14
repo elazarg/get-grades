@@ -19,56 +19,6 @@ namespace getGradesForms
 
     class Connection : IDisposable
     {
-        #region NETWORK
-
-        [DllImport("wininet.dll", CharSet = CharSet.Auto)]
-        private extern static bool InternetGetConnectedState(ref InternetConnectionState_e lpdwFlags, int dwReserved);
-
-        [Flags]
-        enum InternetConnectionState_e : int
-        {
-            INTERNET_CONNECTION_MODEM = 0x1,
-            INTERNET_CONNECTION_LAN = 0x2,
-            INTERNET_CONNECTION_PROXY = 0x4,
-            INTERNET_RAS_INSTALLED = 0x10,
-            INTERNET_CONNECTION_OFFLINE = 0x20,
-            INTERNET_CONNECTION_CONFIGURED = 0x40
-        }
-
-        internal static SocketError getNetworkConnectionStatus()
-        {
-            return SocketError.Success;
-#if false
-            InternetConnectionState_e flags = 0;
-            if (InternetGetConnectedState(ref flags, 0)) {
-                using (var test1 = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.IP)) {
-                    try {
-                        test1.Connect("www.google.com", 80);
-                        if (!test1.Connected)
-                            return SocketError.HostUnreachable;
-                        test1.Disconnect(true);
-                    }
-                    catch (SocketException ex) {
-                        return ex.SocketErrorCode;
-                    }
-                }
-                using (var test2 = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.IP)) {
-                    try {
-                        test2.Connect(host, 80);
-                        if (!test2.Connected)
-                            return SocketError.HostDown;
-                    }
-                    catch (SocketException ex) {
-                        return ex.SocketErrorCode;
-                    }
-                    return SocketError.Success;
-                }
-            }
-            return SocketError.NetworkDown;
-#endif
-        }
-        #endregion
-
 
         internal bool isConnected { get { return s.Connected && session != null; } }
         public String session { get; private set; }
@@ -200,7 +150,6 @@ namespace getGradesForms
             if (output != null) output.Dispose();
             if (input != null) input.Dispose();
             if (ns != null) ns.Dispose();
-        //    s.Dispose();
         }
     }
 

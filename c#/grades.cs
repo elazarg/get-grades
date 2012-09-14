@@ -9,6 +9,16 @@ namespace getGradesForms
     {
         public readonly UGDatabase dataSet = new UGDatabase();
         public String html { get; private set; }
+        public String csv
+        {
+            get
+            {
+                return SString.Join("\r\n",  dataSet.cleanView.Select(
+                       row => SString.Join(" , ", new string[] {
+                           row.courseId, row.courseName, row.grade.ToString()
+                       })));
+            }
+        }
 
         private BackgroundWorker bw;
 
@@ -41,10 +51,11 @@ namespace getGradesForms
             }
         }
 
+        Processor pr = null;
         private void process()
         {
             state = State.PROCESSING;
-            var pr = new Processor(html);
+            pr = new Processor(html);
             pr.sessionFound         += this.dataSet.addSessionToSQL;
             pr.semesterFound        += this.dataSet.addSemester;
             pr.personalDetailsFound += this.dataSet.addPersonalDetails;
@@ -53,6 +64,13 @@ namespace getGradesForms
             html = pr.fixedHtml;
 
             dataSet.updateCleanSlate();
+        }
+
+        public string getRawHtml()
+        {
+            if (pr != null)
+                return pr.raw_html;
+            return "";
         }
 
         public Grades(string userid, string password, BackgroundWorker bw)
@@ -64,18 +82,19 @@ namespace getGradesForms
 
             connectAndDownload(userid, password);
             process();
-            state = State.DONE;
+
+            this.state = State.DONE;
         }
 
         public void saveCsvFile(string fileName)
         {
-            var txt = SString.Join("\r\n", dataSet.cleanView.Select(row => SString.Join(" , ", new string[] { row.course.ToString(), row.grade.ToString() })));
-            File.WriteAllText(fileName, txt, Connection.hebrewEncoding);
+            File.WriteAllText(fileName, csv, Connection.hebrewEncoding);
         }
 
         internal void logOut()
         {
             html = "";
+            pr = null;
             dataSet.Clear();
         }
     }

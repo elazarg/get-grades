@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Net.Sockets;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 
 namespace getGradesForms
@@ -23,6 +24,9 @@ namespace getGradesForms
 
         void browser_Navigating(object sender, WebBrowserNavigatingEventArgs e)
         {
+            if (e.Url.ToString().Contains("gai"))
+                return;
+
             if (e.Url.ToString().Contains("ug"))
                 e.Cancel = true;
             else
@@ -36,15 +40,6 @@ namespace getGradesForms
         {
             buttonGo.Enabled = false;
             buttonClear.Enabled = false;
-            if (Connection.getNetworkConnectionStatus() != System.Net.Sockets.SocketError.Success)
-            {
-                errorProvider1.SetError(buttonGo, "החיבור לשרת נכשל");
-                buttonGo.Enabled = true;
-                buttonClear.Enabled = true;
-                return;
-            }
-            errorProvider1.Clear();
-
             this.Cursor = System.Windows.Forms.Cursors.WaitCursor;
 
             toolStripProgressBar.Value = toolStripProgressBar.Minimum;
@@ -129,6 +124,9 @@ namespace getGradesForms
             textBoxAvGrade.Text = ugDatabase.total.Average.ToString();
             textBoxPoints.Text = ugDatabase.total.Points.ToString();
             textBoxSuccessRate.Text = ugDatabase.total.SuccessRate.ToString();
+
+            textBoxPtsClean.Text = ugDatabase.totalClean.Points.ToString();
+            textBoxAvrgClean.Text = ugDatabase.totalClean.Average.ToString();
         }
 
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -150,6 +148,8 @@ namespace getGradesForms
             finally {
                 buttonGo.Enabled = true;
                 buttonClear.Enabled = true;
+                groupBoxSum.Visible = true;
+
                 this.Cursor = System.Windows.Forms.Cursors.Default;
                 this.Refresh();
                 this.Focus();
@@ -178,7 +178,7 @@ namespace getGradesForms
                 return;
 
             TextBox Sender = (TextBox)sender;
-            if (// !e.Modifiers.HasFlag(Keys.Shift | Keys.Control | Keys.Alt) &&
+            if ( !e.Modifiers.HasFlag(Keys.Shift | Keys.Control | Keys.Alt) &&
                         (e.KeyData >= Keys.D0 && e.KeyData <= Keys.D9 || e.KeyData >= Keys.NumPad0   && e.KeyData <= Keys.NumPad9)
                         && (Sender.TextLength < Sender.MaxLength || Sender.SelectionLength > 0))
                     return;
@@ -229,7 +229,8 @@ namespace getGradesForms
             foreach (Control i in new Control[] {
                     passwordBox,  useridTextbox,
                     labelName,  labelFaculty, labelProgram,
-                    textBoxAvGrade, textBoxPoints, textBoxSuccessRate
+                    textBoxAvGrade, textBoxPoints, textBoxSuccessRate,
+                    textBoxPtsClean, textBoxAvrgClean
                 })
                 i.ResetText();
             foreach (var i in new DataGridView[] { dataGridViewSessions, dataGridViewCourseList, dataGridViewSemesters, dataGridViewCleanSlate })
@@ -241,6 +242,7 @@ namespace getGradesForms
 
             this.buttonGo.Enabled = false;
             this.saveAsButton.Enabled = false;
+            groupBoxSum.Visible = false;
             this.Refresh();
             this.Focus();
         }
@@ -257,6 +259,35 @@ namespace getGradesForms
         private void textBox_Enter(object sender, EventArgs e)
         {
             ((TextBox)sender).SelectAll();
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            DataGridView dgv = (DataGridView) contextMenuStrip1.Tag;
+            dgv.SuspendLayout();
+            dgv.RightToLeft = RightToLeft.No;
+            dgv.ClipboardCopyMode = DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
+            dgv.SelectAll();
+            Clipboard.SetDataObject(dgv.GetClipboardContent());
+
+            dgv.ClearSelection();
+            dgv.ClipboardCopyMode = DataGridViewClipboardCopyMode.EnableWithAutoHeaderText;
+            dgv.RightToLeft = RightToLeft.Yes;
+            dgv.ResumeLayout();
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start("www.technion.ac.il/~gai/cm/");
+            Process.Start("http://www.undergraduate.technion.ac.il/Tadpis.html");
+        }
+
+        private void dataGridView_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == System.Windows.Forms.MouseButtons.Right) {
+                contextMenuStrip1.Tag = sender;
+                contextMenuStrip1.Show();
+            }
         }
     }
 }
