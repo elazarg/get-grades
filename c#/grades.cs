@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace getGradesForms
 {
-    class Grades : IDisposable
+    class Grades
     {
         public readonly UGDatabase dataSet = new UGDatabase();
         public String html { get; private set; }
@@ -46,9 +46,9 @@ namespace getGradesForms
             state = State.PROCESSING;
             var pr = new Processor(html);
             pr.sessionFound         += this.dataSet.addSessionToSQL;
-            pr.semesterFound        += this.dataSet.addSemesterToSQL;
+            pr.semesterFound        += this.dataSet.addSemester;
             pr.personalDetailsFound += this.dataSet.addPersonalDetails;
-            pr.semesterFinished     += this.dataSet.endSemesterSQL;
+            pr.semesterFinished     += this.dataSet.addEndSemester;
             pr.processText();
             html = pr.fixedHtml;
 
@@ -77,15 +77,6 @@ namespace getGradesForms
         {
             html = "";
             dataSet.Clear();
-            /*
-            dataSet.personalDetails.AddPersonalDetailsRow(new DateTime(), "", "", "", "", "");
-            dataSet.Semester.Clear();
-             * */
-        }
-
-        public void Dispose()
-        {
-            //dataSet.Dispose();
         }
     }
 }

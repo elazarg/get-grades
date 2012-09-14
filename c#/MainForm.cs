@@ -86,16 +86,15 @@ namespace getGradesForms
                 return;
             }
             catch (ConnectionError) {
-                statusLabel.Text = "שגיאת חיבור";
+                e.Result = "שגיאת חיבור";
             }
             catch (SocketException) {
-                statusLabel.Text = "שגיאת חיבור";
+                e.Result = "שגיאת חיבור";
             }
             catch (BadHtmlFormat) {
-                statusLabel.Text = "שגיאת הזדהות";
+                e.Result = "שגיאת הזדהות";
             }
             backgroundWorker.CancelAsync();
-            e.Result = false;
         }
 
         private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
@@ -135,8 +134,11 @@ namespace getGradesForms
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             try {
-                if (!(bool)e.Result)
+                string error = e.Result as String;
+                if (error != null) {
+                    statusLabel.Text = error;
                     return;
+                }
 
                 ugDatabase = grades.dataSet;
                 foreach (var i in new DataGridView[] { dataGridViewSessions, dataGridViewCourseList, dataGridViewSemesters, dataGridViewCleanSlate }) {

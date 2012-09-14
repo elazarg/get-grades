@@ -138,19 +138,23 @@ namespace getGradesForms
 
         internal void connect()
         {
-            this.s = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.IP);
-            this.s.Connect(host, 80);
+            try {
+                this.s = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.IP);
+                this.s.Connect(host, 80);
 
-            this.ns = new NetworkStream(s);
-            this.output = new StreamWriter(ns);
-            this.input = new StreamReader(ns);
-            tick();
-            int NUM_OF_REDIRECT = 60;
-            for (int i = 0; i < NUM_OF_REDIRECT; i++) {
-                if (redirect() > 0)
-                    return;
+                this.ns = new NetworkStream(s);
+                this.output = new StreamWriter(ns);
+                this.input = new StreamReader(ns);
+                tick();
+                int NUM_OF_REDIRECT = 60;
+                for (int i = 0; i < NUM_OF_REDIRECT; i++) {
+                    if (redirect() > 0)
+                        return;
+                }
             }
-            throw new ConnectionError();
+            catch (SocketException) {
+                throw new ConnectionError();
+            }
         }
 
 
@@ -193,9 +197,9 @@ namespace getGradesForms
 
         public void Dispose()
         {
-            output.Dispose();
-            input.Dispose();
-            ns.Dispose();
+            if (output != null) output.Dispose();
+            if (input != null) input.Dispose();
+            if (ns != null) ns.Dispose();
         //    s.Dispose();
         }
     }
