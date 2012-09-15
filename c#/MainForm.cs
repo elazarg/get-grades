@@ -247,7 +247,7 @@ namespace getGradesForms
             this.Focus();
         }
 
-        private void dataGridViewSessions_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        private void dataGrid_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             if (saveAsButton.Enabled) {
                 grades.dataSet.updateCleanSlate();
