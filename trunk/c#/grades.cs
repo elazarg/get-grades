@@ -56,7 +56,7 @@ namespace getGradesForms
         {
             state = State.PROCESSING;
             pr = new Processor(html);
-            pr.sessionFound         += this.dataSet.addSessionToSQL;
+            pr.sessionFound         += this.dataSet.addSession;
             pr.semesterFound        += this.dataSet.addSemester;
             pr.personalDetailsFound += this.dataSet.addPersonalDetails;
             pr.semesterFinished     += this.dataSet.addEndSemester;

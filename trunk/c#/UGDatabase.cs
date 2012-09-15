@@ -17,7 +17,12 @@ namespace getGradesForms
         {
             if (func == null)
                 return cs.Sum(x => x.course.points);
-            return cs.Sum( x => func(x.course.points, x.grade) );
+            return cs.Sum( x => x.mult() );
+        }
+
+        public static decimal Sum(this IEnumerable<CourseSession> cs, SessionStatus ss)
+        {
+            return cs.Where(ss).Sum();
         }
     }
     class UGDatabase
@@ -27,14 +32,14 @@ namespace getGradesForms
         public BindingList<CourseSession> sessions { get; set; }
         public BindingList<Semester> semesters { get; private set; }
         public BindingList<Course> courses { get; private set; }
-        public BindingList<CleanViewRow> cleanView { get; private set; }
+        public BindingList<CourseSession> cleanView { get; private set; }
 
         internal UGDatabase()
         {
             sessions = new BindingList<CourseSession>();
             semesters = new BindingList<Semester>();
-            courses = new BindingList<Course>(); 
-            cleanView = new BindingList<CleanViewRow>();
+            courses = new BindingList<Course>();
+            cleanView = new BindingList<CourseSession>();
         }
 
         internal void Clear()
@@ -65,7 +70,7 @@ namespace getGradesForms
                 };
         }
 
-        internal void addSessionToSQL(string courseId, string courseName, string points, string grade)
+        internal void addSession(string courseId, string courseName, string points, string grade)
         {
             Course course = new Course
             {
@@ -76,33 +81,37 @@ namespace getGradesForms
             if (!courses.Any(x => x.id == courseId))
                 courses.Add(course);
 
-            CourseSession courseSession = new CourseSession(course, semesters.Last(), grade.Trim());
-
-            if (courseSession.inFinal && courseSession.course.onceOnly)
-            {
-                foreach (CourseSession last in sessions.Where(row => row.course.name == courseName))
-                    last.status &= ~SessionStatus.inFinal;
-            }
-
+            CourseSession courseSession = new CourseSession {
+                course = course,
+                semester = semesters.Last(),
+                grade = grade.Trim()
+            };
             sessions.Add(courseSession);
         }
-
-        private static Func<CourseSession, decimal> selectPoints = cs => cs.course.points;
-
 
         private Summary computeSemester(IEnumerable<CourseSession> taken)
         {
             Summary s = new Summary();
 
-            var inAverage = taken.Where(SessionStatus.Grade);
+            List<CourseSession> cleanSessions = new List<CourseSession>();
+
+            foreach (var row in taken.Reverse()) {
+                if (!row.course.onceOnly)
+                    cleanSessions.Add(row);
+                else if (cleanSessions.All(x => x.courseId != row.courseId))
+                    cleanSessions.Add(row);                
+            }
+
+            var inAverage = cleanSessions.Where(SessionStatus.Grade);
             decimal avSum = inAverage.Sum();
             if (avSum > 0)
                 s.Average = inAverage.Sum( (p, g) => p * g ) / avSum;
 
-            decimal sum = taken.Where(SessionStatus.Attended).Sum();
+            s.Points = cleanSessions.Sum(SessionStatus.inPoints);
+
+            decimal sum = taken.Sum(SessionStatus.Attended);
             if (sum > 0) {
-                s.Points = taken.Where(SessionStatus.inPoints).Sum();
-                s.SuccessRate = taken.Where(SessionStatus.inSuccess).Sum() * 100  / sum;
+                s.SuccessRate = taken.Sum(SessionStatus.inSuccess) * 100  / sum;
             }
 
             return s;
@@ -111,16 +120,16 @@ namespace getGradesForms
         internal void addSemester(string year, string hebrewYear, string season)
         {
             this.semesters.Add( new Semester {
-                year = year,
-                season = season,
-                hebrewYear = hebrewYear,
-            });
+                                    year = year,
+                                    season = season,
+                                    hebrewYear = hebrewYear,
+                                });
         }
 
         internal void addEndSemester(string successRate, string points, string average)
         {
             Semester last = this.semesters.Last();
-            IEnumerable<CourseSession> taken = sessions.Where(session => session.semester.ID == last.ID);
+            IEnumerable<CourseSession> taken = sessions.Where(session => session.semester.id == last.id);
             Summary summary = computeSemester(taken);
 
             // validation
@@ -132,12 +141,12 @@ namespace getGradesForms
                                  SuccessRate = successRate == "" ? 0 : decimal.Parse(successRate),
                              };
                 if (!summary.Equals(actual))
-                    MessageBox.Show(string.Format("({0} : {3}, {1} : {4}, {2} : {5}",
+                    MessageBox.Show(string.Format("{0} : {3}, {1} : {4}, {2} : {5}",
                         actual.Points,  actual.SuccessRate,  actual.Average,
                         summary.Points, summary.SuccessRate, summary.Average));
             }
             else if (decimal.TryParse(successRate, out p))
-                summary.Points = taken.Sum(selectPoints);
+                summary.Points = taken.Sum();
             else MessageBox.Show("cannot parse: (" + points + " " + successRate + "  " + average + ")");
 
             last.summary = summary;
@@ -148,15 +157,23 @@ namespace getGradesForms
         internal void updateCleanSlate(bool show_empty = false)
         {
             total = computeSemester(sessions);
-            totalClean = computeSemester(sessions.Where(SessionStatus.inClean));
+            
 
             cleanView.Clear();
-            foreach (var row in sessions.Where(SessionStatus.inPoints).Reverse())
-                cleanView.Add(new CleanViewRow {
-                    course = row.course,
-                    grade = row.inAverage ? row.grade.ToString() : row.Comments 
-                });
+            HashSet<string> ignoreList = new HashSet<string>();
+            foreach (var row in sessions.Reverse()) {
+                if (!row.status.HasFlag(SessionStatus.Passed)) {
+                    ignoreList.Add(row.courseId);
+                    continue;
+                }
+                if (!row.status.HasFlag(SessionStatus.inPoints))
+                    continue;
+                if (!ignoreList.Contains(row.courseId) && cleanView.All(x => x.courseId != row.courseId)
+                    || !row.course.onceOnly)
+                    cleanView.Add(row);
+            }
 
+            totalClean = computeSemester(cleanView);
         }
 
     }

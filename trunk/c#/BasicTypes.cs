@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Windows.Forms;
 
 namespace getGradesForms
 {
@@ -55,9 +56,9 @@ namespace getGradesForms
     {
         internal static int gen = 0;
         //int id;
-        public int ID { get; private set;  }
+        public int id { get; private set;  }
         string _year;
-        public string year { get { return _year; } set { ID = gen; gen++; _year = value; } }
+        public string year { get { return _year; } set { id = gen; gen++; _year = value; } }
         public string season { get; set; }
         public string hebrewYear { get; set; }
         
@@ -82,6 +83,8 @@ namespace getGradesForms
         public decimal SuccessRate { get { return _successRate; } set { _successRate = round(value, 0); } }
         public decimal Points { get; set; }
     }
+
+
     [Flags]
     internal enum SessionStatus
     {
@@ -90,19 +93,20 @@ namespace getGradesForms
         inFinal = 4,
         Passed = 8,
 
-        DidNotHappen = 0,                                //"-" "לא השלים ש" "לא השלים ש*"
-        Grade =     Attended | inAverage    |inFinal,
-        NoFinal =   Attended,                           //"לא השלים*"
-        inPoints =  Attended | Passed       | inFinal, //"פטור ללא ניקוד" "פטור עם ניקוד" "עבר"
-        Failed =    Attended                | inFinal, //"לא השלים" "נכשל"
+        DidNotHappen = 0,                                            //"-" "לא השלים ש" "לא השלים ש*"
+        Grade =     Attended  /* Passed if > 55 */  | inFinal   | inAverage ,
+        NoFinal =   Attended,                                        //"לא השלים*"
+        inPoints =  Attended | Passed   | inFinal,                  //"פטור ללא ניקוד" "פטור עם ניקוד" "עבר"
+        Failed =    Attended            | inFinal,                  //"לא השלים" "נכשל"
 
-        inSuccess = Attended | Passed,
-        inClean = Passed | inAverage | inFinal,
+        inSuccess = Attended |  Passed,
+        inClean =               Passed  | inFinal   | inAverage,
+        All     =   Attended | Passed  | inFinal   | inAverage,
     }
+
+
     internal class CourseSession
     {
-
-
         static Dictionary<string, SessionStatus> commentToStatus = new Dictionary<string,SessionStatus> {
                {"-",                 SessionStatus.DidNotHappen },
                {"לא השלים ש",       SessionStatus.DidNotHappen },
@@ -116,6 +120,8 @@ namespace getGradesForms
                {"פטור ללא ניקוד",   SessionStatus.inPoints },
                {"פטור עם ניקוד",    SessionStatus.inPoints },
                {"עבר",              SessionStatus.inPoints },
+               {"",                 SessionStatus.inPoints }, // ? not sure
+               {"<BR>",                 SessionStatus.inPoints }, // ? not sure
         };
 
         internal Course course;
@@ -125,38 +131,48 @@ namespace getGradesForms
 
         public string courseId { get { return course.id.ToString(); } set { course.id = value; } }
         public string courseName { get { return course.name; } set { course.name = value; } }
-        public decimal grade { get; private set; }
+        public decimal points { get { return course.points; } }
 
-        public string Comments { get; set; }
+        internal decimal _grade;
+        private string _comments;
+        public string grade {
+            get {
+                return _comments == "" ? _grade.ToString() : _comments;
+            }
+            set
+            {
+                if (value == null)
+                    return;
+                if (commentToStatus.ContainsKey(value)) {
+                    this.status = commentToStatus[value];
+                }
+                else {
+                    try {
+                        this._grade = decimal.Parse(value.Replace("*", ""));
+                        this.status = SessionStatus.Grade;
+                        if (_grade >= 55)
+                            this.status |= SessionStatus.Passed;
+                        _comments = "";
+                        return;
+                    }
+                    catch (FormatException) {
+                        MessageBox.Show("Cannot Parse: " + value, "ParseError");
+                        return;
+                    }
+                }
+                _comments = value;
+            }
+        }
+
         internal bool inAverage { get { return status.HasFlag(SessionStatus.inAverage); } }
         internal bool inFinal { get { return status.HasFlag(SessionStatus.inFinal); } }
         internal bool Attended { get { return status.HasFlag(SessionStatus.Attended); } }
-        internal bool Passed { get { return status.HasFlag(SessionStatus.Passed) || grade >= 55; } }
+        internal bool Passed { get { return status.HasFlag(SessionStatus.Passed); } }
 
-        public CourseSession(Course c, Semester s, string comment)
+        internal decimal mult()
         {
-            course = c;
-            semester = s;
-            grade = 0;
-            status = SessionStatus.Grade;
-            Comments = comment;
-            if (commentToStatus.ContainsKey(comment))
-                this.status = commentToStatus[comment];
-            else {
-                this.grade = decimal.Parse(comment.Replace("*", ""));
-                if (grade >= 55)
-                    this.status |= SessionStatus.Passed;
-            }
+            return _grade * points;
         }
-    }
-
-    struct CleanViewRow
-    {
-        internal Course course { get; set; }
-
-        public string courseId { get { return course.id; } }
-        public string courseName { get { return course.name; } }
-        public string grade { get; set; }
     }
 
 }
