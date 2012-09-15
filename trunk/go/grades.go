@@ -9,7 +9,7 @@ import (
 func main() {
 	var r io.Reader
 	res, err := http.Post("http://techmvs.technion.ac.il/cics/wmn/wmngrad?ORD=1",
-		"function=signon&userid=36979821&password=50300072",
+		"function=signon&userid=000000000&password=00000000",
 		r) // http://www.undergraduate.technion.ac.il/Tadpis.html")
 	if err != nil {
 		fmt.Printf("err %e", err)
