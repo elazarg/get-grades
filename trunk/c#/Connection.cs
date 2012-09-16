@@ -4,6 +4,9 @@ using System.Net.Sockets;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Net;
+using System.ComponentModel;
+using System.Windows.Forms;
 
 namespace getGradesForms
 {
@@ -143,6 +146,10 @@ namespace getGradesForms
             send("GET");
         }
 
+
+
+
+
         private string validateFormat(string html)
         {
             return Regex.Match(html, "(?<=.*)<HTML>.*<P>(\\s*<TABLE.*</TABLE>\\s*<BR>)+(\\s*<TABLE.*</TABLE>\\s*)</DIV>\\s*</BODY>\\s*</HTML>", RegexOptions.Singleline).Value;
@@ -154,6 +161,28 @@ namespace getGradesForms
             if (input != null) input.Dispose();
             if (ns != null) ns.Dispose();
         }
+
+        #region download
+
+        private void btnDownload_Click(object sender, EventArgs e)
+        {
+            WebClient webClient = new WebClient();
+            webClient.DownloadFileCompleted += new AsyncCompletedEventHandler(Completed);
+            webClient.DownloadProgressChanged += new DownloadProgressChangedEventHandler(ProgressChanged);
+            webClient.DownloadFileAsync(new Uri("http://mysite.com/myfile.txt"), @"c:\myfile.txt");
+        }
+
+        private void ProgressChanged(object sender, DownloadProgressChangedEventArgs e)
+        {
+           // progressBar.Value = e.ProgressPercentage;
+        }
+
+        private void Completed(object sender, AsyncCompletedEventArgs e)
+        {
+            MessageBox.Show("Download completed!");
+        }
+
+        #endregion
     }
 
 }
