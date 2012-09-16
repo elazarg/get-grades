@@ -130,10 +130,10 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="buttonGo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>74, 35</value>
+    <value>60, 35</value>
   </data>
   <data name="buttonGo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 23</value>
+    <value>45, 23</value>
   </data>
   <data name="buttonGo.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -169,10 +169,10 @@
     <value>NoControl</value>
   </data>
   <data name="saveAsButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>74, 6</value>
+    <value>60, 6</value>
   </data>
   <data name="saveAsButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 23</value>
+    <value>45, 23</value>
   </data>
   <data name="saveAsButton.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -198,44 +198,8 @@
   <data name="tableLayoutPanel1.ColumnCount" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="label5.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="label5.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>55, 46</value>
-  </data>
-  <data name="label5.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
-    <value>No</value>
-  </data>
-  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>43, 13</value>
-  </data>
-  <data name="label5.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="label5.Text" xml:space="preserve">
-    <value>נקודות</value>
-  </data>
-  <data name="label5.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>TopRight</value>
-  </data>
-  <data name="&gt;&gt;label5.Name" xml:space="preserve">
-    <value>label5</value>
-  </data>
-  <data name="&gt;&gt;label5.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
-    <value>groupBoxSum</value>
-  </data>
-  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="panel1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
   </data>
   <data name="label4.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
@@ -247,19 +211,19 @@
     <value>NoControl</value>
   </data>
   <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>52, 20</value>
+    <value>49, 6</value>
   </data>
   <data name="label4.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
     <value>No</value>
   </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 13</value>
+    <value>40, 13</value>
   </data>
   <data name="label4.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
   <data name="label4.Text" xml:space="preserve">
-    <value>ממוצע נקי</value>
+    <value>ממוצע</value>
   </data>
   <data name="label4.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>TopRight</value>
@@ -271,43 +235,16 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label4.Parent" xml:space="preserve">
-    <value>groupBoxSum</value>
+    <value>panel1</value>
   </data>
   <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="textBoxPtsClean.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="textBoxPtsClean.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 43</value>
-  </data>
-  <data name="textBoxPtsClean.MaxLength" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="textBoxPtsClean.Size" type="System.Drawing.Size, System.Drawing">
-    <value>38, 20</value>
-  </data>
-  <data name="textBoxPtsClean.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;textBoxPtsClean.Name" xml:space="preserve">
-    <value>textBoxPtsClean</value>
-  </data>
-  <data name="&gt;&gt;textBoxPtsClean.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;textBoxPtsClean.Parent" xml:space="preserve">
-    <value>groupBoxSum</value>
-  </data>
-  <data name="&gt;&gt;textBoxPtsClean.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>0</value>
   </data>
   <data name="textBoxAvrgClean.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
   <data name="textBoxAvrgClean.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 17</value>
+    <value>5, 3</value>
   </data>
   <data name="textBoxAvrgClean.MaxLength" type="System.Int32, mscorlib">
     <value>6</value>
@@ -325,36 +262,33 @@
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;textBoxAvrgClean.Parent" xml:space="preserve">
-    <value>groupBoxSum</value>
+    <value>panel1</value>
   </data>
   <data name="&gt;&gt;textBoxAvrgClean.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>21, 136</value>
+  </data>
+  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>92, 28</value>
+  </data>
+  <data name="panel1.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
-  <data name="groupBoxSum.Location" type="System.Drawing.Point, System.Drawing">
-    <value>22, 3</value>
-  </data>
-  <data name="groupBoxSum.Size" type="System.Drawing.Size, System.Drawing">
-    <value>118, 77</value>
-  </data>
-  <data name="groupBoxSum.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="groupBoxSum.Text" xml:space="preserve">
-    <value>סיכום</value>
-  </data>
-  <data name="groupBoxSum.Visible" type="System.Boolean, mscorlib">
+  <data name="panel1.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="&gt;&gt;groupBoxSum.Name" xml:space="preserve">
-    <value>groupBoxSum</value>
+  <data name="&gt;&gt;panel1.Name" xml:space="preserve">
+    <value>panel1</value>
   </data>
-  <data name="&gt;&gt;groupBoxSum.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;panel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;groupBoxSum.Parent" xml:space="preserve">
+  <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
     <value>tabCleanSlate</value>
   </data>
-  <data name="&gt;&gt;groupBoxSum.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="courseIdDataGridViewTextBoxColumn2.HeaderText" xml:space="preserve">
@@ -388,16 +322,40 @@
     <value>17, 96</value>
   </metadata>
   <data name="toolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>134, 22</value>
+    <value>175, 22</value>
   </data>
   <data name="toolStripMenuItem1.Text" xml:space="preserve">
     <value>העתק הכל</value>
+  </data>
+  <data name="SurfToCourseToolStripMenuIt.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="SurfToCourseToolStripMenuIt.Size" type="System.Drawing.Size, System.Drawing">
+    <value>175, 22</value>
+  </data>
+  <data name="SurfToCourseToolStripMenuIt.Text" xml:space="preserve">
+    <value>גלוש לאתר הקורס</value>
+  </data>
+  <data name="SurfToUGToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="SurfToUGToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>175, 22</value>
+  </data>
+  <data name="SurfToUGToolStripMenuItem.Text" xml:space="preserve">
+    <value>גלוש לUG</value>
+  </data>
+  <data name="deleteLineToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>175, 22</value>
+  </data>
+  <data name="deleteLineToolStripMenuItem.Text" xml:space="preserve">
+    <value>מחק שורה</value>
   </data>
   <data name="contextMenuStrip1.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
     <value>Yes</value>
   </data>
   <data name="contextMenuStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>135, 26</value>
+    <value>176, 114</value>
   </data>
   <data name="&gt;&gt;contextMenuStrip1.Name" xml:space="preserve">
     <value>contextMenuStrip1</value>
@@ -421,7 +379,7 @@
     <value>Vertical</value>
   </data>
   <data name="dataGridViewCleanSlate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>642, 177</value>
+    <value>594, 161</value>
   </data>
   <data name="dataGridViewCleanSlate.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -445,7 +403,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabCleanSlate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>648, 183</value>
+    <value>600, 167</value>
   </data>
   <data name="tabCleanSlate.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -471,6 +429,12 @@
   <data name="courseIdDataGridViewTextBoxColumn1.Width" type="System.Int32, mscorlib">
     <value>87</value>
   </data>
+  <data name="courseNameDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>שם הקורס</value>
+  </data>
+  <data name="courseNameDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
+    <value>83</value>
+  </data>
   <metadata name="dataGridViewTextBoxColumn2.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -479,12 +443,6 @@
   </data>
   <data name="dataGridViewTextBoxColumn2.Width" type="System.Int32, mscorlib">
     <value>47</value>
-  </data>
-  <data name="courseNameDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>שם הקורס</value>
-  </data>
-  <data name="courseNameDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
-    <value>83</value>
   </data>
   <data name="gradeDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
     <value>ציון</value>
@@ -499,7 +457,7 @@
     <value>3, 3</value>
   </data>
   <data name="dataGridViewSessions.Size" type="System.Drawing.Size, System.Drawing">
-    <value>642, 177</value>
+    <value>594, 161</value>
   </data>
   <data name="dataGridViewSessions.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -523,7 +481,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabSessions.Size" type="System.Drawing.Size, System.Drawing">
-    <value>648, 183</value>
+    <value>600, 167</value>
   </data>
   <data name="tabSessions.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -577,7 +535,7 @@
     <value>3, 3</value>
   </data>
   <data name="dataGridViewCourseList.Size" type="System.Drawing.Size, System.Drawing">
-    <value>642, 177</value>
+    <value>594, 161</value>
   </data>
   <data name="dataGridViewCourseList.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -601,7 +559,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabCourses.Size" type="System.Drawing.Size, System.Drawing">
-    <value>648, 183</value>
+    <value>600, 167</value>
   </data>
   <data name="tabCourses.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -657,6 +615,33 @@
   <data name="pointsDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
     <value>68</value>
   </data>
+  <metadata name="contextMenuStripSemesters.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>91, 97</value>
+  </metadata>
+  <data name="contextMenuStripSemesters.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="העתקהכלToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="העתקהכלToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>134, 22</value>
+  </data>
+  <data name="העתקהכלToolStripMenuItem.Text" xml:space="preserve">
+    <value>העתק הכל</value>
+  </data>
+  <data name="contextMenuStripSemesters.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
+    <value>Yes</value>
+  </data>
+  <data name="contextMenuStripSemesters.Size" type="System.Drawing.Size, System.Drawing">
+    <value>135, 26</value>
+  </data>
+  <data name="&gt;&gt;contextMenuStripSemesters.Name" xml:space="preserve">
+    <value>contextMenuStripSemesters</value>
+  </data>
+  <data name="&gt;&gt;contextMenuStripSemesters.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="dataGridViewSemesters.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -664,7 +649,7 @@
     <value>3, 3</value>
   </data>
   <data name="dataGridViewSemesters.Size" type="System.Drawing.Size, System.Drawing">
-    <value>642, 177</value>
+    <value>594, 161</value>
   </data>
   <data name="dataGridViewSemesters.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -688,7 +673,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabSemesters.Size" type="System.Drawing.Size, System.Drawing">
-    <value>648, 183</value>
+    <value>600, 167</value>
   </data>
   <data name="tabSemesters.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -715,7 +700,7 @@
     <value>3, 3</value>
   </data>
   <data name="browser.Size" type="System.Drawing.Size, System.Drawing">
-    <value>642, 177</value>
+    <value>594, 161</value>
   </data>
   <data name="browser.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -739,7 +724,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabBrowser.Size" type="System.Drawing.Size, System.Drawing">
-    <value>648, 183</value>
+    <value>600, 167</value>
   </data>
   <data name="tabBrowser.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -759,63 +744,6 @@
   <data name="&gt;&gt;tabBrowser.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="textBoxHtml.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="textBoxHtml.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
-  </data>
-  <data name="textBoxHtml.Multiline" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="textBoxHtml.Size" type="System.Drawing.Size, System.Drawing">
-    <value>642, 177</value>
-  </data>
-  <data name="textBoxHtml.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;textBoxHtml.Name" xml:space="preserve">
-    <value>textBoxHtml</value>
-  </data>
-  <data name="&gt;&gt;textBoxHtml.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;textBoxHtml.Parent" xml:space="preserve">
-    <value>tabHtml</value>
-  </data>
-  <data name="&gt;&gt;textBoxHtml.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="tabHtml.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="tabHtml.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="tabHtml.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
-    <value>No</value>
-  </data>
-  <data name="tabHtml.Size" type="System.Drawing.Size, System.Drawing">
-    <value>648, 183</value>
-  </data>
-  <data name="tabHtml.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="tabHtml.Text" xml:space="preserve">
-    <value>HTML</value>
-  </data>
-  <data name="&gt;&gt;tabHtml.Name" xml:space="preserve">
-    <value>tabHtml</value>
-  </data>
-  <data name="&gt;&gt;tabHtml.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabHtml.Parent" xml:space="preserve">
-    <value>tabControl</value>
-  </data>
-  <data name="&gt;&gt;tabHtml.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
   <data name="tabControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -829,7 +757,7 @@
     <value>True</value>
   </data>
   <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>656, 209</value>
+    <value>608, 193</value>
   </data>
   <data name="tabControl.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -856,13 +784,13 @@
     <value>100, 14</value>
   </data>
   <data name="statusStrip1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 299</value>
+    <value>0, 283</value>
   </data>
   <data name="statusStrip1.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
     <value>No</value>
   </data>
   <data name="statusStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>333, 20</value>
+    <value>319, 20</value>
   </data>
   <data name="statusStrip1.TabIndex" type="System.Int32, mscorlib">
     <value>15</value>
@@ -1054,7 +982,7 @@
     <value>Fill</value>
   </data>
   <data name="personalDetailsGroup.Location" type="System.Drawing.Point, System.Drawing">
-    <value>488, 3</value>
+    <value>440, 3</value>
   </data>
   <data name="personalDetailsGroup.Size" type="System.Drawing.Size, System.Drawing">
     <value>171, 78</value>
@@ -1087,10 +1015,10 @@
     <value>מוכן</value>
   </data>
   <data name="statusStrip2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>333, 299</value>
+    <value>319, 283</value>
   </data>
   <data name="statusStrip2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>329, 20</value>
+    <value>295, 20</value>
   </data>
   <data name="statusStrip2.TabIndex" type="System.Int32, mscorlib">
     <value>16</value>
@@ -1129,7 +1057,7 @@
     <value>No</value>
   </data>
   <data name="labelName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>201, 19</value>
+    <value>187, 19</value>
   </data>
   <data name="labelName.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1171,7 +1099,7 @@
     <value>No</value>
   </data>
   <data name="labelProgram.Size" type="System.Drawing.Size, System.Drawing">
-    <value>201, 21</value>
+    <value>187, 21</value>
   </data>
   <data name="labelProgram.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1213,7 +1141,7 @@
     <value>No</value>
   </data>
   <data name="labelFaculty.Size" type="System.Drawing.Size, System.Drawing">
-    <value>201, 19</value>
+    <value>187, 19</value>
   </data>
   <data name="labelFaculty.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1252,7 +1180,7 @@
     <value>3</value>
   </data>
   <data name="tableLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>207, 59</value>
+    <value>193, 59</value>
   </data>
   <data name="tableLayoutPanel2.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -1279,7 +1207,7 @@
     <value>117, 3</value>
   </data>
   <data name="detailsBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>213, 78</value>
+    <value>199, 78</value>
   </data>
   <data name="detailsBox.TabIndex" type="System.Int32, mscorlib">
     <value>17</value>
@@ -1534,7 +1462,7 @@
     <value>3, 6</value>
   </data>
   <data name="buttonClear.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 23</value>
+    <value>51, 23</value>
   </data>
   <data name="buttonClear.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -1561,7 +1489,7 @@
     <value>3, 35</value>
   </data>
   <data name="aboutButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 23</value>
+    <value>51, 23</value>
   </data>
   <data name="aboutButton.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -1588,7 +1516,7 @@
     <value>NoControl</value>
   </data>
   <data name="linkLabel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>37, 61</value>
+    <value>3, 61</value>
   </data>
   <data name="linkLabel1.Size" type="System.Drawing.Size, System.Drawing">
     <value>102, 13</value>
@@ -1612,13 +1540,13 @@
     <value>4</value>
   </data>
   <data name="flowLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>336, 3</value>
+    <value>322, 3</value>
   </data>
   <data name="flowLayoutPanel1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 3, 2, 3</value>
   </data>
   <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>146, 77</value>
+    <value>112, 77</value>
   </data>
   <data name="flowLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
     <value>19</value>
@@ -1648,7 +1576,7 @@
     <value>3</value>
   </data>
   <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>662, 319</value>
+    <value>614, 303</value>
   </data>
   <data name="tableLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -1663,10 +1591,10 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;tableLayoutPanel1.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="tableLayoutPanel1.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="tabControl" Row="1" RowSpan="1" Column="0" ColumnSpan="4" /&gt;&lt;Control Name="statusStrip1" Row="2" RowSpan="1" Column="2" ColumnSpan="2" /&gt;&lt;Control Name="personalDetailsGroup" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="statusStrip2" Row="2" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="detailsBox" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="groupBox1" Row="0" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="flowLayoutPanel1" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Absolute,177,Absolute,152,Percent,100,Absolute,114" /&gt;&lt;Rows Styles="Absolute,84,Percent,100,Absolute,20" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="tabControl" Row="1" RowSpan="1" Column="0" ColumnSpan="4" /&gt;&lt;Control Name="statusStrip1" Row="2" RowSpan="1" Column="2" ColumnSpan="2" /&gt;&lt;Control Name="personalDetailsGroup" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="statusStrip2" Row="2" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="detailsBox" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="groupBox1" Row="0" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="flowLayoutPanel1" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Absolute,177,Absolute,118,Percent,100,Absolute,114" /&gt;&lt;Rows Styles="Absolute,84,Percent,100,Absolute,20" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>269, 17</value>
@@ -1696,13 +1624,10 @@
     <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>662, 319</value>
-  </data>
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+    <value>614, 303</value>
   </data>
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>678, 200</value>
+    <value>630, 210</value>
   </data>
   <data name="$this.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
     <value>Yes</value>
@@ -1737,11 +1662,35 @@
   <data name="&gt;&gt;toolStripMenuItem1.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;SurfToCourseToolStripMenuIt.Name" xml:space="preserve">
+    <value>SurfToCourseToolStripMenuIt</value>
+  </data>
+  <data name="&gt;&gt;SurfToCourseToolStripMenuIt.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;SurfToUGToolStripMenuItem.Name" xml:space="preserve">
+    <value>SurfToUGToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;SurfToUGToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn2.Name" xml:space="preserve">
+    <value>dataGridViewTextBoxColumn2</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;faculty.Name" xml:space="preserve">
     <value>faculty</value>
   </data>
   <data name="&gt;&gt;faculty.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;העתקהכלToolStripMenuItem.Name" xml:space="preserve">
+    <value>העתקהכלToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;העתקהכלToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripProgressBar.Name" xml:space="preserve">
     <value>toolStripProgressBar</value>
@@ -1779,11 +1728,11 @@
   <data name="&gt;&gt;dataGridViewTextBoxColumn1.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn2.Name" xml:space="preserve">
-    <value>dataGridViewTextBoxColumn2</value>
+  <data name="&gt;&gt;deleteLineToolStripMenuItem.Name" xml:space="preserve">
+    <value>deleteLineToolStripMenuItem</value>
   </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;deleteLineToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;courseIdDataGridViewTextBoxColumn2.Name" xml:space="preserve">
     <value>courseIdDataGridViewTextBoxColumn2</value>

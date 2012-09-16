@@ -61,13 +61,16 @@ namespace getGradesForms
         {
             string[] fullName = name.Split(new char[] { ' ' });
             personalDetails = new PersonalDetails {
-                    date = DateTime.Parse(date),
+                    date = DateTime.Today,
                     id = id,
                     firstName = fullName[0],
                     lastName = fullName[1],
                     program = program, 
                     faculty = faculty
                 };
+            DateTime dt;
+            if (DateTime.TryParse(date, out dt))
+                personalDetails.date = dt;
         }
 
         internal void addSession(string courseId, string courseName, string points, string grade)
@@ -75,7 +78,7 @@ namespace getGradesForms
             Course course = new Course
             {
                 id = courseId,
-                name = courseName,
+                name = courseName.Replace("'", ""),
                 points = decimal.Parse(points)
             };
             if (!courses.Any(x => x.id == courseId))

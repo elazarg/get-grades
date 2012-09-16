@@ -40,6 +40,11 @@ namespace getGradesForms
             { "19", "מתמטיקה" }, //advanced
             { "27", "רפואה" },
         };
+
+        internal static bool isFacultyCS(string id)
+        {
+            return id.Remove(2) == "23";
+        }
     }
 
     internal struct Course
@@ -114,9 +119,11 @@ namespace getGradesForms
 
                {"לא השלים*",        SessionStatus.NoFinal },
 
+
                {"לא השלים",         SessionStatus.Failed },
                {"נכשל",              SessionStatus.Failed },
 
+               {"נכשל*",            SessionStatus.inPoints },
                {"פטור ללא ניקוד",   SessionStatus.inPoints },
                {"פטור עם ניקוד",    SessionStatus.inPoints },
                {"עבר",              SessionStatus.inPoints },

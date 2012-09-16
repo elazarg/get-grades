@@ -9,10 +9,10 @@ namespace getGradesForms
 {
     [Serializable]
     public class ConnectionException : System.ApplicationException { }
-    
+
     [Serializable]
     public class ConnectionError : ConnectionException { }
-    
+
     [Serializable]
     public class BadHtmlFormat : ConnectionException { }
 
@@ -39,23 +39,22 @@ namespace getGradesForms
 
         private void send(string op, string postdata = "", string suff = "ORD=1")
         {
-            tick();
-            string dest = path + "?" + session + "&" + suff;
-            output.WriteLine(op + " " + dest + " HTTP/1.1");
-            output.WriteLine("Host: " + host);
-            if (postdata != null) {
-                output.WriteLine("Content-Length: " + postdata.Length);
-                output.WriteLine("Content-Type: application/x-www-form-urlencoded");
-            }
-            output.WriteLine();
-            if (postdata != "")
-                output.Write(postdata);
-            try
-            {
+            try {
+                tick();
+                string dest = path + "?" + session + "&" + suff;
+                output.WriteLine(op + " " + dest + " HTTP/1.1");
+                output.WriteLine("Host: " + host);
+                if (postdata != null) {
+                    output.WriteLine("Content-Length: " + postdata.Length);
+                    output.WriteLine("Content-Type: application/x-www-form-urlencoded");
+                }
+                output.WriteLine();
+                if (postdata != "")
+                    output.Write(postdata);
+
                 output.Flush();
             }
-            catch (IOException)
-            {
+            catch (IOException) {
                 throw new ConnectionError();
             }
         }
@@ -113,15 +112,19 @@ namespace getGradesForms
             if (!s.Connected)
                 connect();
 
-            authenticate(userid, password);
+            try {
+                authenticate(userid, password);
 
 
-            String html = validateFormat(readInput());
+                String html = validateFormat(readInput());
 
-            if (html == "")
-                throw new BadHtmlFormat();
-
-            return html;
+                if (html == "")
+                    throw new BadHtmlFormat();
+                return html;
+            }
+            catch (SocketException) {
+                throw new ConnectionError();
+            }
         }
 
         private string readInput()

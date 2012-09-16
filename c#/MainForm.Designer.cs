@@ -37,26 +37,27 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabCleanSlate = new System.Windows.Forms.TabPage();
-            this.groupBoxSum = new System.Windows.Forms.GroupBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBoxPtsClean = new System.Windows.Forms.TextBox();
             this.textBoxAvrgClean = new System.Windows.Forms.TextBox();
             this.dataGridViewCleanSlate = new System.Windows.Forms.DataGridView();
             this.points = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.SurfToCourseToolStripMenuIt = new System.Windows.Forms.ToolStripMenuItem();
+            this.SurfToUGToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabSessions = new System.Windows.Forms.TabPage();
             this.dataGridViewSessions = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabCourses = new System.Windows.Forms.TabPage();
             this.dataGridViewCourseList = new System.Windows.Forms.DataGridView();
             this.faculty = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabSemesters = new System.Windows.Forms.TabPage();
             this.dataGridViewSemesters = new System.Windows.Forms.DataGridView();
+            this.contextMenuStripSemesters = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.העתקהכלToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabBrowser = new System.Windows.Forms.TabPage();
             this.browser = new System.Windows.Forms.WebBrowser();
-            this.tabHtml = new System.Windows.Forms.TabPage();
-            this.textBoxHtml = new System.Windows.Forms.TextBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripProgressBar = new System.Windows.Forms.ToolStripProgressBar();
             this.personalDetailsGroup = new System.Windows.Forms.GroupBox();
@@ -87,7 +88,7 @@
             this.courseIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.deleteLineToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.courseIdDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.courseNameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gradeDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -107,7 +108,7 @@
             this.tableLayoutPanel1.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.tabCleanSlate.SuspendLayout();
-            this.groupBoxSum.SuspendLayout();
+            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCleanSlate)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.tabSessions.SuspendLayout();
@@ -116,8 +117,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCourseList)).BeginInit();
             this.tabSemesters.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSemesters)).BeginInit();
+            this.contextMenuStripSemesters.SuspendLayout();
             this.tabBrowser.SuspendLayout();
-            this.tabHtml.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.personalDetailsGroup.SuspendLayout();
             this.statusStrip2.SuspendLayout();
@@ -175,7 +176,6 @@
             this.tabControl.Controls.Add(this.tabCourses);
             this.tabControl.Controls.Add(this.tabSemesters);
             this.tabControl.Controls.Add(this.tabBrowser);
-            this.tabControl.Controls.Add(this.tabHtml);
             resources.ApplyResources(this.tabControl, "tabControl");
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
@@ -183,39 +183,24 @@
             // 
             // tabCleanSlate
             // 
-            this.tabCleanSlate.Controls.Add(this.groupBoxSum);
+            this.tabCleanSlate.Controls.Add(this.panel1);
             this.tabCleanSlate.Controls.Add(this.dataGridViewCleanSlate);
             resources.ApplyResources(this.tabCleanSlate, "tabCleanSlate");
             this.tabCleanSlate.Name = "tabCleanSlate";
             this.tabCleanSlate.UseVisualStyleBackColor = true;
             // 
-            // groupBoxSum
+            // panel1
             // 
-            this.groupBoxSum.BackColor = System.Drawing.SystemColors.Control;
-            this.groupBoxSum.Controls.Add(this.label5);
-            this.groupBoxSum.Controls.Add(this.label4);
-            this.groupBoxSum.Controls.Add(this.textBoxPtsClean);
-            this.groupBoxSum.Controls.Add(this.textBoxAvrgClean);
-            resources.ApplyResources(this.groupBoxSum, "groupBoxSum");
-            this.groupBoxSum.Name = "groupBoxSum";
-            this.groupBoxSum.TabStop = false;
-            // 
-            // label5
-            // 
-            resources.ApplyResources(this.label5, "label5");
-            this.label5.Name = "label5";
+            resources.ApplyResources(this.panel1, "panel1");
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.textBoxAvrgClean);
+            this.panel1.Name = "panel1";
             // 
             // label4
             // 
             resources.ApplyResources(this.label4, "label4");
             this.label4.Name = "label4";
             this.label4.TextChanged += new System.EventHandler(this.labelPD_TextChanged);
-            // 
-            // textBoxPtsClean
-            // 
-            resources.ApplyResources(this.textBoxPtsClean, "textBoxPtsClean");
-            this.textBoxPtsClean.Name = "textBoxPtsClean";
-            this.textBoxPtsClean.ReadOnly = true;
             // 
             // textBoxAvrgClean
             // 
@@ -226,6 +211,9 @@
             // dataGridViewCleanSlate
             // 
             this.dataGridViewCleanSlate.AllowUserToAddRows = false;
+            this.dataGridViewCleanSlate.AllowUserToDeleteRows = false;
+            this.dataGridViewCleanSlate.AllowUserToOrderColumns = true;
+            this.dataGridViewCleanSlate.AllowUserToResizeRows = false;
             this.dataGridViewCleanSlate.AutoGenerateColumns = false;
             this.dataGridViewCleanSlate.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewCleanSlate.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -238,7 +226,8 @@
             this.dataGridViewCleanSlate.DataSource = this.uGDatabaseBindingSource;
             resources.ApplyResources(this.dataGridViewCleanSlate, "dataGridViewCleanSlate");
             this.dataGridViewCleanSlate.Name = "dataGridViewCleanSlate";
-            this.dataGridViewCleanSlate.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView_MouseClick);
+            this.dataGridViewCleanSlate.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewCleanSlate.CellContextMenuStripNeeded += new System.Windows.Forms.DataGridViewCellContextMenuStripNeededEventHandler(this.dataGridViewCleanSlate_CellContextMenuStripNeeded);
             // 
             // points
             // 
@@ -251,7 +240,10 @@
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem1});
+            this.toolStripMenuItem1,
+            this.SurfToCourseToolStripMenuIt,
+            this.SurfToUGToolStripMenuItem,
+            this.deleteLineToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             resources.ApplyResources(this.contextMenuStrip1, "contextMenuStrip1");
             // 
@@ -260,6 +252,18 @@
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             resources.ApplyResources(this.toolStripMenuItem1, "toolStripMenuItem1");
             this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
+            // 
+            // SurfToCourseToolStripMenuIt
+            // 
+            resources.ApplyResources(this.SurfToCourseToolStripMenuIt, "SurfToCourseToolStripMenuIt");
+            this.SurfToCourseToolStripMenuIt.Name = "SurfToCourseToolStripMenuIt";
+            this.SurfToCourseToolStripMenuIt.Click += new System.EventHandler(this.SurfToCourseToolStripMenuIt_Click);
+            // 
+            // SurfToUGToolStripMenuItem
+            // 
+            resources.ApplyResources(this.SurfToUGToolStripMenuItem, "SurfToUGToolStripMenuItem");
+            this.SurfToUGToolStripMenuItem.Name = "SurfToUGToolStripMenuItem";
+            this.SurfToUGToolStripMenuItem.Click += new System.EventHandler(this.SurfToUGToolStripMenuItem_Click);
             // 
             // tabSessions
             // 
@@ -271,20 +275,31 @@
             // dataGridViewSessions
             // 
             this.dataGridViewSessions.AllowUserToAddRows = false;
+            this.dataGridViewSessions.AllowUserToOrderColumns = true;
             this.dataGridViewSessions.AutoGenerateColumns = false;
             this.dataGridViewSessions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewSessions.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.courseIdDataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
             this.courseNameDataGridViewTextBoxColumn,
+            this.dataGridViewTextBoxColumn2,
             this.gradeDataGridViewTextBoxColumn});
             this.dataGridViewSessions.ContextMenuStrip = this.contextMenuStrip1;
             this.dataGridViewSessions.DataMember = "sessions";
             this.dataGridViewSessions.DataSource = this.uGDatabaseBindingSource;
             resources.ApplyResources(this.dataGridViewSessions, "dataGridViewSessions");
             this.dataGridViewSessions.Name = "dataGridViewSessions";
+            this.dataGridViewSessions.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewSessions.CellContextMenuStripNeeded += new System.Windows.Forms.DataGridViewCellContextMenuStripNeededEventHandler(this.dataGridViewCleanSlate_CellContextMenuStripNeeded);
             this.dataGridViewSessions.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGrid_CellValueChanged);
-            this.dataGridViewSessions.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView_MouseClick);
+            this.dataGridViewSessions.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.dataGridViewCleanSlate_RowsRemoved);
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "points";
+            resources.ApplyResources(this.dataGridViewTextBoxColumn2, "dataGridViewTextBoxColumn2");
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
             // 
             // tabCourses
             // 
@@ -295,6 +310,8 @@
             // 
             // dataGridViewCourseList
             // 
+            this.dataGridViewCourseList.AllowUserToAddRows = false;
+            this.dataGridViewCourseList.AllowUserToOrderColumns = true;
             this.dataGridViewCourseList.AutoGenerateColumns = false;
             this.dataGridViewCourseList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewCourseList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -307,7 +324,8 @@
             this.dataGridViewCourseList.DataSource = this.uGDatabaseBindingSource;
             resources.ApplyResources(this.dataGridViewCourseList, "dataGridViewCourseList");
             this.dataGridViewCourseList.Name = "dataGridViewCourseList";
-            this.dataGridViewCourseList.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView_MouseClick);
+            this.dataGridViewCourseList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewCourseList.CellContextMenuStripNeeded += new System.Windows.Forms.DataGridViewCellContextMenuStripNeededEventHandler(this.dataGridViewCleanSlate_CellContextMenuStripNeeded);
             // 
             // faculty
             // 
@@ -336,11 +354,25 @@
             this.averageDataGridViewTextBoxColumn,
             this.successRateDataGridViewTextBoxColumn,
             this.pointsDataGridViewTextBoxColumn});
+            this.dataGridViewSemesters.ContextMenuStrip = this.contextMenuStripSemesters;
             this.dataGridViewSemesters.DataMember = "semesters";
             this.dataGridViewSemesters.DataSource = this.uGDatabaseBindingSource;
             resources.ApplyResources(this.dataGridViewSemesters, "dataGridViewSemesters");
             this.dataGridViewSemesters.Name = "dataGridViewSemesters";
-            this.dataGridViewSemesters.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView_MouseClick);
+            this.dataGridViewSemesters.CellContextMenuStripNeeded += new System.Windows.Forms.DataGridViewCellContextMenuStripNeededEventHandler(this.dataGridViewSemesters_CellContextMenuStripNeeded);
+            // 
+            // contextMenuStripSemesters
+            // 
+            resources.ApplyResources(this.contextMenuStripSemesters, "contextMenuStripSemesters");
+            this.contextMenuStripSemesters.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.העתקהכלToolStripMenuItem});
+            this.contextMenuStripSemesters.Name = "contextMenuStripSemesters";
+            // 
+            // העתקהכלToolStripMenuItem
+            // 
+            resources.ApplyResources(this.העתקהכלToolStripMenuItem, "העתקהכלToolStripMenuItem");
+            this.העתקהכלToolStripMenuItem.Name = "העתקהכלToolStripMenuItem";
+            this.העתקהכלToolStripMenuItem.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // tabBrowser
             // 
@@ -354,18 +386,6 @@
             resources.ApplyResources(this.browser, "browser");
             this.browser.MinimumSize = new System.Drawing.Size(20, 20);
             this.browser.Name = "browser";
-            // 
-            // tabHtml
-            // 
-            this.tabHtml.Controls.Add(this.textBoxHtml);
-            resources.ApplyResources(this.tabHtml, "tabHtml");
-            this.tabHtml.Name = "tabHtml";
-            this.tabHtml.UseVisualStyleBackColor = true;
-            // 
-            // textBoxHtml
-            // 
-            resources.ApplyResources(this.textBoxHtml, "textBoxHtml");
-            this.textBoxHtml.Name = "textBoxHtml";
             // 
             // statusStrip1
             // 
@@ -580,13 +600,11 @@
             this.dataGridViewTextBoxColumn1.MaxInputLength = 6;
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             // 
-            // dataGridViewTextBoxColumn2
+            // deleteLineToolStripMenuItem
             // 
-            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "points";
-            resources.ApplyResources(this.dataGridViewTextBoxColumn2, "dataGridViewTextBoxColumn2");
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.deleteLineToolStripMenuItem.Name = "deleteLineToolStripMenuItem";
+            resources.ApplyResources(this.deleteLineToolStripMenuItem, "deleteLineToolStripMenuItem");
+            this.deleteLineToolStripMenuItem.Click += new System.EventHandler(this.deleteRowToolStripMenuItem_Click);
             // 
             // courseIdDataGridViewTextBoxColumn2
             // 
@@ -639,6 +657,7 @@
             this.gradeDataGridViewTextBoxColumn.DataPropertyName = "grade";
             resources.ApplyResources(this.gradeDataGridViewTextBoxColumn, "gradeDataGridViewTextBoxColumn");
             this.gradeDataGridViewTextBoxColumn.Name = "gradeDataGridViewTextBoxColumn";
+            this.gradeDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // idDataGridViewTextBoxColumn1
             // 
@@ -711,7 +730,6 @@
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ContextMenuStrip = this.contextMenuStrip1;
             this.Controls.Add(this.tableLayoutPanel1);
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.Name = "MainForm";
@@ -720,8 +738,8 @@
             this.tableLayoutPanel1.PerformLayout();
             this.tabControl.ResumeLayout(false);
             this.tabCleanSlate.ResumeLayout(false);
-            this.groupBoxSum.ResumeLayout(false);
-            this.groupBoxSum.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCleanSlate)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
             this.tabSessions.ResumeLayout(false);
@@ -730,9 +748,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCourseList)).EndInit();
             this.tabSemesters.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSemesters)).EndInit();
+            this.contextMenuStripSemesters.ResumeLayout(false);
             this.tabBrowser.ResumeLayout(false);
-            this.tabHtml.ResumeLayout(false);
-            this.tabHtml.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.personalDetailsGroup.ResumeLayout(false);
@@ -794,7 +811,6 @@
         private System.Windows.Forms.TabPage tabSemesters;
         private System.Windows.Forms.TabPage tabBrowser;
         private System.Windows.Forms.WebBrowser browser;
-        private System.Windows.Forms.TabPage tabHtml;
         private System.Windows.Forms.BindingSource uGDatabaseBindingSource;
         private System.Windows.Forms.DataGridView dataGridViewSemesters;
         private System.Windows.Forms.DataGridView dataGridViewSessions;
@@ -805,15 +821,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn averageDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn successRateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn pointsDataGridViewTextBoxColumn;
-        private System.Windows.Forms.TextBox textBoxHtml;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn pointsDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn faculty;
-        private System.Windows.Forms.GroupBox groupBoxSum;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBoxPtsClean;
         private System.Windows.Forms.TextBox textBoxAvrgClean;
         private System.Windows.Forms.DataGridView dataGridViewCleanSlate;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
@@ -823,10 +835,16 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn courseNameDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn points;
         private System.Windows.Forms.DataGridViewTextBoxColumn gradeDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.ToolStripMenuItem SurfToCourseToolStripMenuIt;
+        private System.Windows.Forms.ToolStripMenuItem SurfToUGToolStripMenuItem;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStripSemesters;
+        private System.Windows.Forms.ToolStripMenuItem העתקהכלToolStripMenuItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn courseIdDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn courseNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn gradeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.ToolStripMenuItem deleteLineToolStripMenuItem;
     }
 }
 
