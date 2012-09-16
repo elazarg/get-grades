@@ -106,5 +106,10 @@ namespace getGradesForms
             textBox1.Text = saveFileDialog1.FileName;
         }
 
+        protected override void OnClosed(EventArgs e)
+        {
+            webClient.CancelAsync();
+            base.OnClosed(e);
+        }
     }
 }
