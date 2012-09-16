@@ -166,7 +166,7 @@ namespace getGradesForms
             finally {
                 toolStripGoButton.Enabled = true;
                 newToolStripButton.Enabled = true;
-
+                toolStripProgressBar.Value = toolStripProgressBar.Maximum;
                 this.Cursor = System.Windows.Forms.Cursors.Default;
                 this.Refresh();
                 this.Focus();
