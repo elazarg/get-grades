@@ -6,6 +6,8 @@ using System.Net.Sockets;
 using System.Windows.Forms;
 using System.Diagnostics;
 using System.Reflection;
+using System.Net;
+using System.Text.RegularExpressions;
 
 namespace getGradesForms
 {
@@ -400,5 +402,38 @@ namespace getGradesForms
         {
             this.Close();
         }
+
+
+        #region download
+
+        private void updatetoolStripButton_Click(object sender, EventArgs e)
+        {
+            WebClient webClient = new WebClient();
+            webClient.DownloadFileCompleted += new AsyncCompletedEventHandler(Completed);
+            webClient.DownloadProgressChanged += new DownloadProgressChangedEventHandler(ProgressChanged);
+
+            string info = webClient.DownloadString(new Uri("http://get-grades.googlecode.com/svn/trunk/c%23/AssemblyInfo.cs"));
+            Match m = Regex.Match(info, @"\d{,3}\.\d{,3}\.\d{,3}\.\d{,3}");
+            if (m.Success && m.Value != Assembly.GetExecutingAssembly().GetName().Version.ToString()) {
+                string targetFile = System.Reflection.Assembly.GetEntryAssembly().Location;
+                File.Move(targetFile, targetFile + ".backup");
+                Uri webAddress = new Uri("http://get-grades.googlecode.com/svn/trunk/c%23/obj/x86/Debug/getGrades.exe");
+                webClient.DownloadFileAsync(webAddress, targetFile);
+            }
+        }
+
+        private void ProgressChanged(object sender, DownloadProgressChangedEventArgs e)
+        {
+            toolStripProgressBar.Value = e.ProgressPercentage;
+        }
+
+        private void Completed(object sender, AsyncCompletedEventArgs e)
+        {
+            MessageBox.Show("Download completed!");
+        }
+
+        #endregion
+
+
     }
 }

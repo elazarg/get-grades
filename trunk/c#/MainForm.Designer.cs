@@ -98,6 +98,7 @@
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.updatetoolStripButton = new System.Windows.Forms.ToolStripButton();
             this.courseIdDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.courseNameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gradeDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -217,6 +218,7 @@
             // 
             // toolStripContainer2
             // 
+            this.tableLayoutPanel1.SetColumnSpan(this.toolStripContainer2, 2);
             // 
             // toolStripContainer2.ContentPanel
             // 
@@ -235,7 +237,8 @@
             this.toolStrip2.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripRefresButton,
-            this.toolStripGoButton});
+            this.toolStripGoButton,
+            this.updatetoolStripButton});
             this.toolStrip2.Name = "toolStrip2";
             // 
             // toolStripGoButton
@@ -278,7 +281,7 @@
             this.tableLayoutPanel1.Controls.Add(this.detailsBox, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.toolStripContainer1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.toolStripContainer2, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.panel2, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.panel2, 3, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             // 
             // tabControl
@@ -525,7 +528,6 @@
             // 
             // toolStripProgressBar
             // 
-            this.toolStripProgressBar.Maximum = 75;
             this.toolStripProgressBar.Name = "toolStripProgressBar";
             resources.ApplyResources(this.toolStripProgressBar, "toolStripProgressBar");
             this.toolStripProgressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
@@ -702,6 +704,13 @@
             this.panel2.Controls.Add(this.linkLabel1);
             resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Name = "panel2";
+            // 
+            // updatetoolStripButton
+            // 
+            this.updatetoolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            resources.ApplyResources(this.updatetoolStripButton, "updatetoolStripButton");
+            this.updatetoolStripButton.Name = "updatetoolStripButton";
+            this.updatetoolStripButton.Click += new System.EventHandler(this.updatetoolStripButton_Click);
             // 
             // courseIdDataGridViewTextBoxColumn2
             // 
@@ -963,6 +972,7 @@
         private System.Windows.Forms.ToolStripButton toolStripRefresButton;
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.ToolStripButton updatetoolStripButton;
     }
 }
 
