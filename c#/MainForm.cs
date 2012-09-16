@@ -411,25 +411,33 @@ namespace getGradesForms
             WebClient webClient = new WebClient();
             webClient.DownloadFileCompleted += new AsyncCompletedEventHandler(Completed);
             webClient.DownloadProgressChanged += new DownloadProgressChangedEventHandler(ProgressChanged);
+            try {
+                string info = webClient.DownloadString(new Uri("http://get-grades.googlecode.com/svn/trunk/c%23/AssemblyInfo.cs"));
 
-            string info = webClient.DownloadString(new Uri("http://get-grades.googlecode.com/svn/trunk/c%23/AssemblyInfo.cs"));
-
-            Match m = Regex.Match(info, @"[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+");
-            if (m.Success && m.Value != Assembly.GetExecutingAssembly().GetName().Version.ToString()) {
-                DialogResult res = MessageBox.Show(this, "גרסה " + m.Value + ".\r\nלהוריד?\r\n"
-                     + "הקובץ הקיים יישמר בגיבוי", "עדכונים נמצאו",
-                                                    MessageBoxButtons.YesNo);
-                if (res == DialogResult.No)
-                    return;
-                string targetFile = System.Reflection.Assembly.GetEntryAssembly().Location;
-                if (File.Exists(targetFile + ".backup"))
-                    File.Delete(targetFile + ".backup");
-                File.Move(targetFile, targetFile + ".backup");
-                Uri webAddress = new Uri("http://get-grades.googlecode.com/svn/trunk/c%23/download/getGrades.exe");
-                webClient.DownloadFileAsync(webAddress, targetFile);
+                Match m = Regex.Match(info, @"[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+");
+                if (m.Success && m.Value != Assembly.GetExecutingAssembly().GetName().Version.ToString()) {
+                    DialogResult res = MessageBox.Show(this, "גרסה " + m.Value + ".\r\nלהוריד?\r\n"
+                         + ".הקובץ הקיים יישמר בגיבוי", "עדכונים נמצאו",
+                                                        MessageBoxButtons.YesNo);
+                    if (res == DialogResult.No)
+                        return;
+                    string targetFile = System.Reflection.Assembly.GetEntryAssembly().Location;
+                    string backup = targetFile + ".backup";
+                    if (File.Exists(backup))
+                        File.Delete(backup);
+                    File.Move(targetFile, backup);
+                    Uri webAddress = new Uri("http://get-grades.googlecode.com/svn/trunk/c%23/download/getGrades.exe");
+                    webClient.DownloadFileAsync(webAddress, targetFile);
+                }
+                else {
+                    MessageBox.Show(this, ".לא נמצאו עדכונים");
+                }
             }
-            else {
-                MessageBox.Show(this, "לא נמצאו עדכונים");
+            catch (WebException) {
+                MessageBox.Show(this, ".אירעה שגיאה בעת החיבור לאינטרנט");
+            }
+            catch (IOException) {
+                MessageBox.Show(this, ".לא ניתן לשמור את הקובץ");
             }
         }
 
