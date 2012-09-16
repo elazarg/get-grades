@@ -425,7 +425,7 @@ namespace getGradesForms
                 if (File.Exists(targetFile + ".backup"))
                     File.Delete(targetFile + ".backup");
                 File.Move(targetFile, targetFile + ".backup");
-                Uri webAddress = new Uri("http://get-grades.googlecode.com/svn/trunk/c%23/obj/x86/Debug/getGrades.exe");
+                Uri webAddress = new Uri("http://get-grades.googlecode.com/svn/trunk/c%23/download/getGrades.exe");
                 webClient.DownloadFileAsync(webAddress, targetFile);
             }
             else {
