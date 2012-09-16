@@ -399,183 +399,6 @@
   <data name="&gt;&gt;toolStripContainer2.BottomToolStripPanel.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="toolStripContainer2.ContentPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>86, 0</value>
-  </data>
-  <data name="&gt;&gt;toolStripContainer2.ContentPanel.Name" xml:space="preserve">
-    <value>toolStripContainer2.ContentPanel</value>
-  </data>
-  <data name="&gt;&gt;toolStripContainer2.ContentPanel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripContentPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStripContainer2.ContentPanel.Parent" xml:space="preserve">
-    <value>toolStripContainer2</value>
-  </data>
-  <data name="&gt;&gt;toolStripContainer2.ContentPanel.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="toolStripContainer2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="&gt;&gt;toolStripContainer2.LeftToolStripPanel.Name" xml:space="preserve">
-    <value>toolStripContainer2.LeftToolStripPanel</value>
-  </data>
-  <data name="&gt;&gt;toolStripContainer2.LeftToolStripPanel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStripContainer2.LeftToolStripPanel.Parent" xml:space="preserve">
-    <value>toolStripContainer2</value>
-  </data>
-  <data name="&gt;&gt;toolStripContainer2.LeftToolStripPanel.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="toolStripContainer2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>406, 3</value>
-  </data>
-  <data name="toolStripContainer2.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
-    <value>Yes</value>
-  </data>
-  <data name="&gt;&gt;toolStripContainer2.RightToolStripPanel.Name" xml:space="preserve">
-    <value>toolStripContainer2.RightToolStripPanel</value>
-  </data>
-  <data name="&gt;&gt;toolStripContainer2.RightToolStripPanel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStripContainer2.RightToolStripPanel.Parent" xml:space="preserve">
-    <value>toolStripContainer2</value>
-  </data>
-  <data name="&gt;&gt;toolStripContainer2.RightToolStripPanel.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="toolStripContainer2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>86, 22</value>
-  </data>
-  <data name="toolStripContainer2.TabIndex" type="System.Int32, mscorlib">
-    <value>21</value>
-  </data>
-  <data name="toolStripContainer2.Text" xml:space="preserve">
-    <value>toolStripContainer2</value>
-  </data>
-  <metadata name="toolStrip2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>366, 97</value>
-  </metadata>
-  <data name="toolStrip2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="toolStripRefresButton.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="toolStripRefresButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIISURBVDhPpZP7S1NxGMbPPxKaXVUkMEq8IpKUCoY/hGgI
-        ymqkDYYXcCjDZOANURSjCNGFQUTsl4GXVMxKk62YU4fXQpaIlygHQxBRH8/zwvyaIAYe+HLgnPN8nue9
-        HA3nvDTq63oW/jm13XOwvPTB3DYFY5MH+bXfcN8ygfTSMSSXfESicQDxBqdYHwH29g9w2tnZ3UcguIvN
-        rR3417exuBJE5N1n/wfwLgXEOc38Bc6xNRHb+/y4nm49G0Bnit2zf9H6bkliE/jKuYxrd6oVgDWfjB+K
-        TWeKMyrGEVfowITvD9re/9ABVQrAhh0HHK+ZselMMaN/mvwtDb+aVqkA7HYIwIj3ysfluPTorJnP6Ezx
-        oHsD1s5ZXEktUwCOioB5f1CEPR9+wTG6iuiserTo8dkwng7HT/R+XUPF8xlcTjErAOdMcW6NW8STiwG8
-        7vej8oUPN/PsEv3t8Ao0TZP3T1u8uJRkUgAuSYHtO97oLxmXd5t9Ho8aPTK+GzntqNfrLm2fFoihwYOI
-        xGIF4KjoGBLzY1OrF9k6OOFxnwDC4wxIMX1G0pMhgVyMNyoA13PAtS7OrJk1PrC69LUdQWxuF6IybHrX
-        LRI7JrtZdoDAo1XmbjMyD+tjSXxGcXRmnYg5ttD9QuxDhN0uUgDOmbvNTpPOJaGAo2K36cyaGZvOFIfd
-        KlSA8/zRh9ABIDUG+1JpAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="toolStripRefresButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="toolStripRefresButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>41, 22</value>
-  </data>
-  <data name="toolStripRefresButton.Text" xml:space="preserve">
-    <value>שחזר</value>
-  </data>
-  <data name="toolStripGoButton.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="toolStripGoButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIISURBVDhPpZP7S1NxGMbPPxKaXVUkMEq8IpKUCoY/hGgI
-        ymqkDYYXcCjDZOANURSjCNGFQUTsl4GXVMxKk62YU4fXQpaIlygHQxBRH8/zwvyaIAYe+HLgnPN8nue9
-        HA3nvDTq63oW/jm13XOwvPTB3DYFY5MH+bXfcN8ygfTSMSSXfESicQDxBqdYHwH29g9w2tnZ3UcguIvN
-        rR3417exuBJE5N1n/wfwLgXEOc38Bc6xNRHb+/y4nm49G0Bnit2zf9H6bkliE/jKuYxrd6oVgDWfjB+K
-        TWeKMyrGEVfowITvD9re/9ABVQrAhh0HHK+ZselMMaN/mvwtDb+aVqkA7HYIwIj3ysfluPTorJnP6Ezx
-        oHsD1s5ZXEktUwCOioB5f1CEPR9+wTG6iuiserTo8dkwng7HT/R+XUPF8xlcTjErAOdMcW6NW8STiwG8
-        7vej8oUPN/PsEv3t8Ao0TZP3T1u8uJRkUgAuSYHtO97oLxmXd5t9Ho8aPTK+GzntqNfrLm2fFoihwYOI
-        xGIF4KjoGBLzY1OrF9k6OOFxnwDC4wxIMX1G0pMhgVyMNyoA13PAtS7OrJk1PrC69LUdQWxuF6IybHrX
-        LRI7JrtZdoDAo1XmbjMyD+tjSXxGcXRmnYg5ttD9QuxDhN0uUgDOmbvNTpPOJaGAo2K36cyaGZvOFIfd
-        KlSA8/zRh9ABIDUG+1JpAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="toolStripGoButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="toolStripGoButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>37, 22</value>
-  </data>
-  <data name="toolStripGoButton.Text" xml:space="preserve">
-    <value>הורד</value>
-  </data>
-  <data name="toolStrip2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 0</value>
-  </data>
-  <data name="toolStrip2.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
-    <value>Yes</value>
-  </data>
-  <data name="toolStrip2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>81, 25</value>
-  </data>
-  <data name="toolStrip2.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;toolStrip2.Name" xml:space="preserve">
-    <value>toolStrip2</value>
-  </data>
-  <data name="&gt;&gt;toolStrip2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStrip2.Parent" xml:space="preserve">
-    <value>toolStripContainer2.TopToolStripPanel</value>
-  </data>
-  <data name="&gt;&gt;toolStrip2.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="toolStripContainer2.TopToolStripPanel.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
-    <value>No</value>
-  </data>
-  <data name="&gt;&gt;toolStripContainer2.TopToolStripPanel.Name" xml:space="preserve">
-    <value>toolStripContainer2.TopToolStripPanel</value>
-  </data>
-  <data name="&gt;&gt;toolStripContainer2.TopToolStripPanel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStripContainer2.TopToolStripPanel.Parent" xml:space="preserve">
-    <value>toolStripContainer2</value>
-  </data>
-  <data name="&gt;&gt;toolStripContainer2.TopToolStripPanel.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;toolStripContainer2.Name" xml:space="preserve">
-    <value>toolStripContainer2</value>
-  </data>
-  <data name="&gt;&gt;toolStripContainer2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripContainer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStripContainer2.Parent" xml:space="preserve">
-    <value>tableLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;toolStripContainer2.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <metadata name="saveFileDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>156, 17</value>
-  </metadata>
-  <data name="saveFileDialog.Filter" xml:space="preserve">
-    <value>CSV files (*.csv)|*.csv|HTML files (*.html)|*.html|All files (*.*)|*.*</value>
-  </data>
-  <metadata name="backgroundWorker.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
   <data name="tableLayoutPanel1.ColumnCount" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
@@ -1171,7 +994,7 @@
     <value>No</value>
   </data>
   <data name="statusStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>403, 20</value>
+    <value>405, 20</value>
   </data>
   <data name="statusStrip1.TabIndex" type="System.Int32, mscorlib">
     <value>15</value>
@@ -1201,10 +1024,10 @@
     <value>מוכן</value>
   </data>
   <data name="statusStrip2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>403, 318</value>
+    <value>405, 318</value>
   </data>
   <data name="statusStrip2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>228, 20</value>
+    <value>226, 20</value>
   </data>
   <data name="statusStrip2.TabIndex" type="System.Int32, mscorlib">
     <value>16</value>
@@ -1465,7 +1288,7 @@
     <value>NoControl</value>
   </data>
   <data name="passwordCheckBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>193, 47</value>
+    <value>191, 47</value>
   </data>
   <data name="passwordCheckBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>15, 14</value>
@@ -1495,7 +1318,7 @@
     <value>NoControl</value>
   </data>
   <data name="labelPassword.Location" type="System.Drawing.Point, System.Drawing">
-    <value>133, 48</value>
+    <value>131, 48</value>
   </data>
   <data name="labelPassword.Size" type="System.Drawing.Size, System.Drawing">
     <value>44, 13</value>
@@ -1528,7 +1351,7 @@
     <value>NoControl</value>
   </data>
   <data name="labelUserId.Location" type="System.Drawing.Point, System.Drawing">
-    <value>133, 22</value>
+    <value>131, 22</value>
   </data>
   <data name="labelUserId.Size" type="System.Drawing.Size, System.Drawing">
     <value>78, 13</value>
@@ -1558,7 +1381,7 @@
     <value>Courier New, 9pt</value>
   </data>
   <data name="useridTextbox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>55, 18</value>
+    <value>53, 18</value>
   </data>
   <data name="useridTextbox.MaxLength" type="System.Int32, mscorlib">
     <value>9</value>
@@ -1591,7 +1414,7 @@
     <value>Courier New, 9pt</value>
   </data>
   <data name="passwordBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>63, 43</value>
+    <value>61, 43</value>
   </data>
   <data name="passwordBox.MaxLength" type="System.Int32, mscorlib">
     <value>8</value>
@@ -1621,10 +1444,10 @@
     <value>Fill</value>
   </data>
   <data name="personalDetailsGroup.Location" type="System.Drawing.Point, System.Drawing">
-    <value>406, 31</value>
+    <value>408, 31</value>
   </data>
   <data name="personalDetailsGroup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>222, 77</value>
+    <value>220, 77</value>
   </data>
   <data name="personalDetailsGroup.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -1663,7 +1486,7 @@
     <value>No</value>
   </data>
   <data name="labelName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>210, 19</value>
+    <value>212, 19</value>
   </data>
   <data name="labelName.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1705,7 +1528,7 @@
     <value>No</value>
   </data>
   <data name="labelProgram.Size" type="System.Drawing.Size, System.Drawing">
-    <value>210, 20</value>
+    <value>212, 20</value>
   </data>
   <data name="labelProgram.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1747,7 +1570,7 @@
     <value>No</value>
   </data>
   <data name="labelFaculty.Size" type="System.Drawing.Size, System.Drawing">
-    <value>210, 19</value>
+    <value>212, 19</value>
   </data>
   <data name="labelFaculty.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1786,7 +1609,7 @@
     <value>3</value>
   </data>
   <data name="tableLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>216, 58</value>
+    <value>218, 58</value>
   </data>
   <data name="tableLayoutPanel2.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -1813,7 +1636,7 @@
     <value>178, 31</value>
   </data>
   <data name="detailsBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>222, 77</value>
+    <value>224, 77</value>
   </data>
   <data name="detailsBox.TabIndex" type="System.Int32, mscorlib">
     <value>17</value>
@@ -1843,7 +1666,7 @@
     <value>NoControl</value>
   </data>
   <data name="linkLabel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>117, 6</value>
+    <value>64, 6</value>
   </data>
   <data name="linkLabel1.Size" type="System.Drawing.Size, System.Drawing">
     <value>102, 13</value>
@@ -1870,10 +1693,10 @@
     <value>Fill</value>
   </data>
   <data name="panel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>178, 3</value>
+    <value>3, 3</value>
   </data>
   <data name="panel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>222, 22</value>
+    <value>169, 22</value>
   </data>
   <data name="panel2.TabIndex" type="System.Int32, mscorlib">
     <value>22</value>
@@ -1921,8 +1744,209 @@
     <value>2</value>
   </data>
   <data name="tableLayoutPanel1.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="tabControl" Row="2" RowSpan="1" Column="0" ColumnSpan="4" /&gt;&lt;Control Name="statusStrip1" Row="3" RowSpan="1" Column="2" ColumnSpan="2" /&gt;&lt;Control Name="statusStrip2" Row="3" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="groupBox1" Row="1" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="personalDetailsGroup" Row="1" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="detailsBox" Row="1" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="toolStripContainer1" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="toolStripContainer2" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="panel2" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Absolute,136,Absolute,92,Percent,100,Absolute,175" /&gt;&lt;Rows Styles="Absolute,28,Absolute,83,Percent,100,Absolute,20" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="tabControl" Row="2" RowSpan="1" Column="0" ColumnSpan="4" /&gt;&lt;Control Name="statusStrip1" Row="3" RowSpan="1" Column="2" ColumnSpan="2" /&gt;&lt;Control Name="statusStrip2" Row="3" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="groupBox1" Row="1" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="personalDetailsGroup" Row="1" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="detailsBox" Row="1" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="toolStripContainer1" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="toolStripContainer2" Row="0" RowSpan="1" Column="1" ColumnSpan="2" /&gt;&lt;Control Name="panel2" Row="0" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Absolute,136,Absolute,90,Percent,100,Absolute,175" /&gt;&lt;Rows Styles="Absolute,28,Absolute,83,Percent,100,Absolute,20" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
+  <data name="toolStripContainer2.ContentPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>314, 0</value>
+  </data>
+  <data name="&gt;&gt;toolStripContainer2.ContentPanel.Name" xml:space="preserve">
+    <value>toolStripContainer2.ContentPanel</value>
+  </data>
+  <data name="&gt;&gt;toolStripContainer2.ContentPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripContentPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripContainer2.ContentPanel.Parent" xml:space="preserve">
+    <value>toolStripContainer2</value>
+  </data>
+  <data name="&gt;&gt;toolStripContainer2.ContentPanel.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="toolStripContainer2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="&gt;&gt;toolStripContainer2.LeftToolStripPanel.Name" xml:space="preserve">
+    <value>toolStripContainer2.LeftToolStripPanel</value>
+  </data>
+  <data name="&gt;&gt;toolStripContainer2.LeftToolStripPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripContainer2.LeftToolStripPanel.Parent" xml:space="preserve">
+    <value>toolStripContainer2</value>
+  </data>
+  <data name="&gt;&gt;toolStripContainer2.LeftToolStripPanel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="toolStripContainer2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>178, 3</value>
+  </data>
+  <data name="toolStripContainer2.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
+    <value>Yes</value>
+  </data>
+  <data name="&gt;&gt;toolStripContainer2.RightToolStripPanel.Name" xml:space="preserve">
+    <value>toolStripContainer2.RightToolStripPanel</value>
+  </data>
+  <data name="&gt;&gt;toolStripContainer2.RightToolStripPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripContainer2.RightToolStripPanel.Parent" xml:space="preserve">
+    <value>toolStripContainer2</value>
+  </data>
+  <data name="&gt;&gt;toolStripContainer2.RightToolStripPanel.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="toolStripContainer2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>314, 22</value>
+  </data>
+  <data name="toolStripContainer2.TabIndex" type="System.Int32, mscorlib">
+    <value>21</value>
+  </data>
+  <data name="toolStripContainer2.Text" xml:space="preserve">
+    <value>toolStripContainer2</value>
+  </data>
+  <metadata name="toolStrip2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>366, 97</value>
+  </metadata>
+  <data name="toolStrip2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="toolStripRefresButton.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="toolStripRefresButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIISURBVDhPpZP7S1NxGMbPPxKaXVUkMEq8IpKUCoY/hGgI
+        ymqkDYYXcCjDZOANURSjCNGFQUTsl4GXVMxKk62YU4fXQpaIlygHQxBRH8/zwvyaIAYe+HLgnPN8nue9
+        HA3nvDTq63oW/jm13XOwvPTB3DYFY5MH+bXfcN8ygfTSMSSXfESicQDxBqdYHwH29g9w2tnZ3UcguIvN
+        rR3417exuBJE5N1n/wfwLgXEOc38Bc6xNRHb+/y4nm49G0Bnit2zf9H6bkliE/jKuYxrd6oVgDWfjB+K
+        TWeKMyrGEVfowITvD9re/9ABVQrAhh0HHK+ZselMMaN/mvwtDb+aVqkA7HYIwIj3ysfluPTorJnP6Ezx
+        oHsD1s5ZXEktUwCOioB5f1CEPR9+wTG6iuiserTo8dkwng7HT/R+XUPF8xlcTjErAOdMcW6NW8STiwG8
+        7vej8oUPN/PsEv3t8Ao0TZP3T1u8uJRkUgAuSYHtO97oLxmXd5t9Ho8aPTK+GzntqNfrLm2fFoihwYOI
+        xGIF4KjoGBLzY1OrF9k6OOFxnwDC4wxIMX1G0pMhgVyMNyoA13PAtS7OrJk1PrC69LUdQWxuF6IybHrX
+        LRI7JrtZdoDAo1XmbjMyD+tjSXxGcXRmnYg5ttD9QuxDhN0uUgDOmbvNTpPOJaGAo2K36cyaGZvOFIfd
+        KlSA8/zRh9ABIDUG+1JpAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="toolStripRefresButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="toolStripRefresButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>41, 22</value>
+  </data>
+  <data name="toolStripRefresButton.Text" xml:space="preserve">
+    <value>שחזר</value>
+  </data>
+  <data name="toolStripGoButton.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="toolStripGoButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIISURBVDhPpZP7S1NxGMbPPxKaXVUkMEq8IpKUCoY/hGgI
+        ymqkDYYXcCjDZOANURSjCNGFQUTsl4GXVMxKk62YU4fXQpaIlygHQxBRH8/zwvyaIAYe+HLgnPN8nue9
+        HA3nvDTq63oW/jm13XOwvPTB3DYFY5MH+bXfcN8ygfTSMSSXfESicQDxBqdYHwH29g9w2tnZ3UcguIvN
+        rR3417exuBJE5N1n/wfwLgXEOc38Bc6xNRHb+/y4nm49G0Bnit2zf9H6bkliE/jKuYxrd6oVgDWfjB+K
+        TWeKMyrGEVfowITvD9re/9ABVQrAhh0HHK+ZselMMaN/mvwtDb+aVqkA7HYIwIj3ysfluPTorJnP6Ezx
+        oHsD1s5ZXEktUwCOioB5f1CEPR9+wTG6iuiserTo8dkwng7HT/R+XUPF8xlcTjErAOdMcW6NW8STiwG8
+        7vej8oUPN/PsEv3t8Ao0TZP3T1u8uJRkUgAuSYHtO97oLxmXd5t9Ho8aPTK+GzntqNfrLm2fFoihwYOI
+        xGIF4KjoGBLzY1OrF9k6OOFxnwDC4wxIMX1G0pMhgVyMNyoA13PAtS7OrJk1PrC69LUdQWxuF6IybHrX
+        LRI7JrtZdoDAo1XmbjMyD+tjSXxGcXRmnYg5ttD9QuxDhN0uUgDOmbvNTpPOJaGAo2K36cyaGZvOFIfd
+        KlSA8/zRh9ABIDUG+1JpAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="toolStripGoButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="toolStripGoButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>37, 22</value>
+  </data>
+  <data name="toolStripGoButton.Text" xml:space="preserve">
+    <value>הורד</value>
+  </data>
+  <data name="updatetoolStripButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIISURBVDhPpZP7S1NxGMbPPxKaXVUkMEq8IpKUCoY/hGgI
+        ymqkDYYXcCjDZOANURSjCNGFQUTsl4GXVMxKk62YU4fXQpaIlygHQxBRH8/zwvyaIAYe+HLgnPN8nue9
+        HA3nvDTq63oW/jm13XOwvPTB3DYFY5MH+bXfcN8ygfTSMSSXfESicQDxBqdYHwH29g9w2tnZ3UcguIvN
+        rR3417exuBJE5N1n/wfwLgXEOc38Bc6xNRHb+/y4nm49G0Bnit2zf9H6bkliE/jKuYxrd6oVgDWfjB+K
+        TWeKMyrGEVfowITvD9re/9ABVQrAhh0HHK+ZselMMaN/mvwtDb+aVqkA7HYIwIj3ysfluPTorJnP6Ezx
+        oHsD1s5ZXEktUwCOioB5f1CEPR9+wTG6iuiserTo8dkwng7HT/R+XUPF8xlcTjErAOdMcW6NW8STiwG8
+        7vej8oUPN/PsEv3t8Ao0TZP3T1u8uJRkUgAuSYHtO97oLxmXd5t9Ho8aPTK+GzntqNfrLm2fFoihwYOI
+        xGIF4KjoGBLzY1OrF9k6OOFxnwDC4wxIMX1G0pMhgVyMNyoA13PAtS7OrJk1PrC69LUdQWxuF6IybHrX
+        LRI7JrtZdoDAo1XmbjMyD+tjSXxGcXRmnYg5ttD9QuxDhN0uUgDOmbvNTpPOJaGAo2K36cyaGZvOFIfd
+        KlSA8/zRh9ABIDUG+1JpAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="updatetoolStripButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="updatetoolStripButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>85, 22</value>
+  </data>
+  <data name="updatetoolStripButton.Text" xml:space="preserve">
+    <value>בדוק עדכונים</value>
+  </data>
+  <data name="toolStrip2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>88, 0</value>
+  </data>
+  <data name="toolStrip2.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
+    <value>No</value>
+  </data>
+  <data name="toolStrip2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>166, 25</value>
+  </data>
+  <data name="toolStrip2.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;toolStrip2.Name" xml:space="preserve">
+    <value>toolStrip2</value>
+  </data>
+  <data name="&gt;&gt;toolStrip2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStrip2.Parent" xml:space="preserve">
+    <value>toolStripContainer2.TopToolStripPanel</value>
+  </data>
+  <data name="&gt;&gt;toolStrip2.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="toolStripContainer2.TopToolStripPanel.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
+    <value>Yes</value>
+  </data>
+  <data name="&gt;&gt;toolStripContainer2.TopToolStripPanel.Name" xml:space="preserve">
+    <value>toolStripContainer2.TopToolStripPanel</value>
+  </data>
+  <data name="&gt;&gt;toolStripContainer2.TopToolStripPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripContainer2.TopToolStripPanel.Parent" xml:space="preserve">
+    <value>toolStripContainer2</value>
+  </data>
+  <data name="&gt;&gt;toolStripContainer2.TopToolStripPanel.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;toolStripContainer2.Name" xml:space="preserve">
+    <value>toolStripContainer2</value>
+  </data>
+  <data name="&gt;&gt;toolStripContainer2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripContainer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripContainer2.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;toolStripContainer2.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <metadata name="saveFileDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>156, 17</value>
+  </metadata>
+  <data name="saveFileDialog.Filter" xml:space="preserve">
+    <value>CSV files (*.csv)|*.csv|HTML files (*.html)|*.html|All files (*.*)|*.*</value>
+  </data>
+  <metadata name="backgroundWorker.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>269, 17</value>
   </metadata>
@@ -1952,6 +1976,9 @@
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>631, 338</value>
+  </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>630, 210</value>
@@ -2114,6 +2141,12 @@
   </data>
   <data name="&gt;&gt;dataGridViewTextBoxColumn1.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;updatetoolStripButton.Name" xml:space="preserve">
+    <value>updatetoolStripButton</value>
+  </data>
+  <data name="&gt;&gt;updatetoolStripButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;courseIdDataGridViewTextBoxColumn2.Name" xml:space="preserve">
     <value>courseIdDataGridViewTextBoxColumn2</value>
