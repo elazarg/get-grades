@@ -413,12 +413,23 @@ namespace getGradesForms
             webClient.DownloadProgressChanged += new DownloadProgressChangedEventHandler(ProgressChanged);
 
             string info = webClient.DownloadString(new Uri("http://get-grades.googlecode.com/svn/trunk/c%23/AssemblyInfo.cs"));
-            Match m = Regex.Match(info, @"\d{,3}\.\d{,3}\.\d{,3}\.\d{,3}");
+
+            Match m = Regex.Match(info, @"[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+");
             if (m.Success && m.Value != Assembly.GetExecutingAssembly().GetName().Version.ToString()) {
+                DialogResult res = MessageBox.Show(this, "גרסה " + m.Value + ".\r\nלהוריד?\r\n"
+                     + "הקובץ הקיים יישמר בגיבוי", "עדכונים נמצאו",
+                                                    MessageBoxButtons.YesNo);
+                if (res == DialogResult.No)
+                    return;
                 string targetFile = System.Reflection.Assembly.GetEntryAssembly().Location;
+                if (File.Exists(targetFile + ".backup"))
+                    File.Delete(targetFile + ".backup");
                 File.Move(targetFile, targetFile + ".backup");
                 Uri webAddress = new Uri("http://get-grades.googlecode.com/svn/trunk/c%23/obj/x86/Debug/getGrades.exe");
                 webClient.DownloadFileAsync(webAddress, targetFile);
+            }
+            else {
+                MessageBox.Show(this, "לא נמצאו עדכונים");
             }
         }
 
@@ -429,7 +440,7 @@ namespace getGradesForms
 
         private void Completed(object sender, AsyncCompletedEventArgs e)
         {
-            MessageBox.Show("Download completed!");
+            MessageBox.Show("ההורדה הושלמה. להשלמת הפעולה הפעל מחדש את התוכנית.");
         }
 
         #endregion
