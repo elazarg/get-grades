@@ -31,7 +31,7 @@ namespace getGradesForms
     {
         public PersonalDetails personalDetails;
 
-        public BindingList<CourseSession> sessions { get; set; }
+        public SortableBindingList<CourseSession> sessions { get; set; }
         public BindingList<Semester> semesters { get; private set; }
         public BindingList<Course> courses { get; private set; }
         public BindingList<CourseSession> cleanView { get; private set; }
@@ -55,7 +55,7 @@ namespace getGradesForms
 
         internal void init()
         {
-            Semester.gen = 0;
+            this.Clear();
             this.semesters.Add( new Semester {  year = "זיכויים"  });
         }
 
@@ -87,6 +87,7 @@ namespace getGradesForms
                 courses.Add(course);
 
             CourseSession courseSession = new CourseSession {
+                index = sessions.Count + 1,
                 course = course,
                 semester = semesters.Last(),
                 grade = grade.Trim()
@@ -100,7 +101,7 @@ namespace getGradesForms
 
             List<CourseSession> cleanSessions = new List<CourseSession>();
 
-            foreach (var row in taken.Reverse()) {
+            foreach (var row in taken.OrderByDescending(cs => cs.index)) {
                 if (!row.course.onceOnly)
                     cleanSessions.Add(row);
                 else if (cleanSessions.All(x => x.courseId != row.courseId))
@@ -125,6 +126,7 @@ namespace getGradesForms
         internal void addSemester(string year, string hebrewYear, string season)
         {
             this.semesters.Add( new Semester {
+                                    id = semesters.Count(),
                                     year = year,
                                     season = season,
                                     hebrewYear = hebrewYear,
@@ -152,28 +154,29 @@ namespace getGradesForms
             }
             else if (decimal.TryParse(successRate, out p))
                 summary.Points = taken.Sum();
-            else MessageBox.Show("cannot parse: (" + points + " " + successRate + "  " + average + ")");
+            else
+                MessageBox.Show(string.Format(
+                    "Cannot parse: ({0} {1} {2})", points , successRate , average));
 
             last.summary = summary;
         }
 
         internal Summary total;
         internal Summary totalClean;
-        internal void updateCleanSlate(bool show_empty = false)
+        internal void updateCleanSlate()
         {
             total = computeSemester(sessions);
-            
 
             cleanView.Clear();
             HashSet<string> ignoreList = new HashSet<string>();
-            foreach (var row in sessions.Reverse()) {
+            foreach (var row in sessions.OrderByDescending(cs => cs.index)) {
                 if (!row.status.HasFlag(SessionStatus.Passed)) {
-                    ignoreList.Add(row.courseId);
+                    ignoreList.Add(row.courseName);
                     continue;
                 }
                 if (!row.status.HasFlag(SessionStatus.inPoints))
                     continue;
-                if (!ignoreList.Contains(row.courseId) && cleanView.All(x => x.courseId != row.courseId)
+                if (!ignoreList.Contains(row.courseName) && cleanView.All(x => x.courseName != row.courseName)
                     || !row.course.onceOnly)
                     cleanView.Add(row);
             }
