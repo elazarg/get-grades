@@ -367,6 +367,17 @@ namespace getGradesForms
 
         #endregion
 
+        ListSortDirection dr = ListSortDirection.Ascending;
+        private void dataGridViewSessions_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            DataGridView dgv = (DataGridView)sender;
+            dgv.Sort(dgv.Columns[e.ColumnIndex], dr);
+            if (dr == ListSortDirection.Ascending)
+                dr = ListSortDirection.Descending;
+            else
+                dr = ListSortDirection.Ascending;
+        }
+
 
 
     }
