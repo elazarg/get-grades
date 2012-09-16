@@ -15,6 +15,7 @@ namespace getGradesForms
         public string faculty { get; set; }
     }
 
+
     static class Info
     {
         internal static Dictionary<string, string> idToFaculty = new Dictionary<string, string>

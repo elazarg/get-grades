@@ -4,6 +4,8 @@ using System.ComponentModel;
 using System.Linq;
 using System.Windows.Forms;
 
+using Be.Timvw.Framework;
+
 namespace getGradesForms
 {
     static class Selector
@@ -36,10 +38,10 @@ namespace getGradesForms
 
         internal UGDatabase()
         {
-            sessions = new BindingList<CourseSession>();
-            semesters = new BindingList<Semester>();
-            courses = new BindingList<Course>();
-            cleanView = new BindingList<CourseSession>();
+            sessions = new SortableBindingList<CourseSession>();
+            semesters = new SortableBindingList<Semester>();
+            courses = new SortableBindingList<Course>();
+            cleanView = new SortableBindingList<CourseSession>();
         }
 
         internal void Clear()
