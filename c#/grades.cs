@@ -8,6 +8,7 @@ namespace getGradesForms
     class Grades
     {
         public readonly UGDatabase dataSet = new UGDatabase();
+        public String raw_html { get; private set; }
         public String html { get; private set; }
         public String csv
         {
@@ -20,7 +21,7 @@ namespace getGradesForms
             }
         }
 
-        private BackgroundWorker bw;
+        internal BackgroundWorker bw;
 
         public enum State {
             READY,
@@ -36,7 +37,8 @@ namespace getGradesForms
             get { return innerState; }
             private set {
                 innerState = value;
-                bw.ReportProgress(1, innerState);
+                if (bw != null)
+                    bw.ReportProgress(1, innerState);
             }
         }
         private void connectAndDownload(string userid, string password)
@@ -47,15 +49,16 @@ namespace getGradesForms
                 conn.connect();
                 conn.tick += delegate { bw.ReportProgress(10); };
                 state = State.AUTHENTICATING;
-                html = conn.retrieveHTML(userid, password);
+                raw_html = conn.retrieveHTML(userid, password);
             }
         }
 
         Processor pr = null;
-        private void process()
+        internal void process()
         {
             state = State.PROCESSING;
-            pr = new Processor(html);
+            dataSet.init();
+            pr = new Processor(raw_html);
             pr.sessionFound         += this.dataSet.addSession;
             pr.semesterFound        += this.dataSet.addSemester;
             pr.personalDetailsFound += this.dataSet.addPersonalDetails;
@@ -75,12 +78,13 @@ namespace getGradesForms
 
         public Grades(string userid, string password, BackgroundWorker bw)
         {
-            dataSet.init();
+
             this.bw = bw;
 
             this.state = State.READY;
 
-            connectAndDownload(userid, password);
+            connectAndDownload(userid, password); 
+
             process();
 
             this.state = State.DONE;

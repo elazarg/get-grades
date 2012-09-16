@@ -39,8 +39,9 @@ namespace getGradesForms
 
         private void goButton_Click(object sender, EventArgs e)
         {
-            buttonGo.Enabled = false;
-            buttonClear.Enabled = false;
+            toolStripGoButton.Enabled = false;
+            newToolStripButton.Enabled = false;
+            toolStripRefresButton.Enabled = false;
             this.Cursor = System.Windows.Forms.Cursors.WaitCursor;
 
             toolStripProgressBar.Value = toolStripProgressBar.Minimum;
@@ -145,7 +146,7 @@ namespace getGradesForms
                     uGDatabaseBindingSource.DataSource = this.ugDatabase;
                 }
                 refresh();
-                saveAsButton.Enabled = true;
+                saveToolStripButton.Enabled = true;
 
                 contextMenuStrip1.Enabled = true;
                 foreach (ToolStripMenuItem i in contextMenuStrip1.Items)
@@ -158,10 +159,11 @@ namespace getGradesForms
                 contextMenuStripSemesters.Tag = null;
 
                 panel1.Visible = true;
+                this.toolStripRefresButton.Enabled = true;
             }
             finally {
-                buttonGo.Enabled = true;
-                buttonClear.Enabled = true;
+                toolStripGoButton.Enabled = true;
+                newToolStripButton.Enabled = true;
 
                 this.Cursor = System.Windows.Forms.Cursors.Default;
                 this.Refresh();
@@ -192,8 +194,9 @@ namespace getGradesForms
 
             this.Cursor = System.Windows.Forms.Cursors.Default;
 
-            this.buttonGo.Enabled = false;
-            this.saveAsButton.Enabled = false;
+            this.toolStripGoButton.Enabled = false;
+            this.saveToolStripButton.Enabled = false;
+            this.toolStripRefresButton.Enabled = false;
             panel1.Visible = false;
             contextMenuStrip1.Enabled = false;
             contextMenuStripSemesters.Enabled = false;
@@ -229,9 +232,9 @@ namespace getGradesForms
                         && (Sender.TextLength < Sender.MaxLength || Sender.SelectionLength > 0))
                     return;
 
-            if (e.KeyData == Keys.Enter && buttonGo.Enabled)
+            if (e.KeyData == Keys.Enter && toolStripGoButton.Enabled)
             {
-                buttonGo.PerformClick();
+                toolStripGoButton.PerformClick();
                 return;
             }
             e.SuppressKeyPress = true;
@@ -247,7 +250,8 @@ namespace getGradesForms
                 return usernums[0] == (10 - usernums.Skip(1).Select(tr).Sum() % 10);
             };
             idValid = useridTextbox.TextLength / 2 == useridTextbox.MaxLength / 2 //8 or 9
-                && validateId(useridTextbox.Text);
+               // && validateId(useridTextbox.Text)
+                ;
             checkEnabled();
         }
 
@@ -259,12 +263,12 @@ namespace getGradesForms
 
         private void checkEnabled()
         {
-            buttonGo.Enabled = idValid && passValid;
+            toolStripGoButton.Enabled = idValid && passValid;
         }
 
         private void dataGrid_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            if (saveAsButton.Enabled) {
+            if (saveToolStripButton.Enabled) {
                 grades.dataSet.updateCleanSlate();
                 refresh();
                 this.Update();
@@ -273,7 +277,7 @@ namespace getGradesForms
 
         private void dataGridViewCleanSlate_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
         {
-            if (saveAsButton.Enabled) {
+            if (saveToolStripButton.Enabled) {
                 grades.dataSet.updateCleanSlate();
                 refresh();
                 this.Update();
@@ -371,14 +375,30 @@ namespace getGradesForms
         private void dataGridViewSessions_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             DataGridView dgv = (DataGridView)sender;
+            if (dgv.RowCount == 0)
+                return;
+            if (dgv.SortedColumn == dgv.Columns[e.ColumnIndex]) {
+                if (dr == ListSortDirection.Ascending)
+                    dr = ListSortDirection.Descending;
+                else
+                    dr = ListSortDirection.Ascending;
+            }
             dgv.Sort(dgv.Columns[e.ColumnIndex], dr);
-            if (dr == ListSortDirection.Ascending)
-                dr = ListSortDirection.Descending;
-            else
-                dr = ListSortDirection.Ascending;
         }
 
+        private void buttonRefresh_Click(object sender, EventArgs e)
+        {
+            if (grades == null)
+                return;
+            grades.bw = null;
+            grades.process();
+            this.refresh();
+            this.Update();
+        }
 
-
+        private void toolStripButton3_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

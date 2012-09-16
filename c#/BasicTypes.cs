@@ -60,11 +60,9 @@ namespace getGradesForms
 
     class Semester
     {
-        internal static int gen = 0;
         //int id;
-        public int id { get; private set;  }
-        string _year;
-        public string year { get { return _year; } set { id = gen; gen++; _year = value; } }
+        public int id { get; internal set;  }
+        public string year { get; set; }
         public string season { get; set; }
         public string hebrewYear { get; set; }
         
@@ -136,6 +134,8 @@ namespace getGradesForms
         internal Semester semester;
 
         internal SessionStatus status;
+
+        internal int index;
 
         public string courseId { get { return course.id.ToString(); } set { course.id = value; } }
         public string courseName { get { return course.name; } set { course.name = value; } }
