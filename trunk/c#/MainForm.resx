@@ -1888,7 +1888,7 @@
     <value>בדוק עדכונים</value>
   </data>
   <data name="toolStrip2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>88, 0</value>
+    <value>0, 0</value>
   </data>
   <data name="toolStrip2.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
     <value>No</value>
@@ -1977,9 +1977,6 @@
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>631, 338</value>
   </data>
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>630, 210</value>
   </data>
@@ -2034,16 +2031,22 @@
   <data name="&gt;&gt;helpToolStripButton.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;toolStripRefresButton.Name" xml:space="preserve">
+    <value>toolStripRefresButton</value>
+  </data>
+  <data name="&gt;&gt;toolStripRefresButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;toolStripGoButton.Name" xml:space="preserve">
     <value>toolStripGoButton</value>
   </data>
   <data name="&gt;&gt;toolStripGoButton.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;toolStripRefresButton.Name" xml:space="preserve">
-    <value>toolStripRefresButton</value>
+  <data name="&gt;&gt;updatetoolStripButton.Name" xml:space="preserve">
+    <value>updatetoolStripButton</value>
   </data>
-  <data name="&gt;&gt;toolStripRefresButton.Type" xml:space="preserve">
+  <data name="&gt;&gt;updatetoolStripButton.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;saveFileDialog.Name" xml:space="preserve">
@@ -2141,12 +2144,6 @@
   </data>
   <data name="&gt;&gt;dataGridViewTextBoxColumn1.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;updatetoolStripButton.Name" xml:space="preserve">
-    <value>updatetoolStripButton</value>
-  </data>
-  <data name="&gt;&gt;updatetoolStripButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;courseIdDataGridViewTextBoxColumn2.Name" xml:space="preserve">
     <value>courseIdDataGridViewTextBoxColumn2</value>

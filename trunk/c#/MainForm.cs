@@ -403,56 +403,15 @@ namespace getGradesForms
             this.Close();
         }
 
-
-        #region download
-
+        UpdateForm uf = null;
         private void updatetoolStripButton_Click(object sender, EventArgs e)
         {
-            WebClient webClient = new WebClient();
-            webClient.DownloadFileCompleted += new AsyncCompletedEventHandler(Completed);
-            webClient.DownloadProgressChanged += new DownloadProgressChangedEventHandler(ProgressChanged);
-            try {
-                string info = webClient.DownloadString(new Uri("http://get-grades.googlecode.com/svn/trunk/c%23/AssemblyInfo.cs"));
-
-                Match m = Regex.Match(info, @"[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+");
-                if (m.Success && m.Value != Assembly.GetExecutingAssembly().GetName().Version.ToString()) {
-                    DialogResult res = MessageBox.Show(this, "גרסה " + m.Value + ".\r\nלהוריד?\r\n"
-                         + ".הקובץ הקיים יישמר בגיבוי", "עדכונים נמצאו",
-                                                        MessageBoxButtons.YesNo);
-                    if (res == DialogResult.No)
-                        return;
-                    string targetFile = System.Reflection.Assembly.GetEntryAssembly().Location;
-                    string backup = targetFile + ".backup";
-                    if (File.Exists(backup))
-                        File.Delete(backup);
-                    File.Move(targetFile, backup);
-                    Uri webAddress = new Uri("http://get-grades.googlecode.com/svn/trunk/c%23/download/getGrades.exe");
-                    webClient.DownloadFileAsync(webAddress, targetFile);
-                }
-                else {
-                    MessageBox.Show(this, ".לא נמצאו עדכונים");
-                }
-            }
-            catch (WebException) {
-                MessageBox.Show(this, ".אירעה שגיאה בעת החיבור לאינטרנט");
-            }
-            catch (IOException) {
-                MessageBox.Show(this, ".לא ניתן לשמור את הקובץ");
-            }
+            if (uf == null || uf.IsDisposed)
+                uf = new UpdateForm();
+            uf.Activate();
+            if (!uf.Visible)
+                uf.Show(this);
         }
-
-        private void ProgressChanged(object sender, DownloadProgressChangedEventArgs e)
-        {
-            toolStripProgressBar.Value = e.ProgressPercentage;
-        }
-
-        private void Completed(object sender, AsyncCompletedEventArgs e)
-        {
-            MessageBox.Show("ההורדה הושלמה. להשלמת הפעולה הפעל מחדש את התוכנית.");
-        }
-
-        #endregion
-
-
+        
     }
 }
