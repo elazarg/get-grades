@@ -93,6 +93,9 @@ namespace getGradesForms
             catch (BadHtmlFormat) {
                 e.Result = "שגיאת הזדהות";
             }
+            catch (DimaErorr) {
+                e.Result = "שגיאה בקריאה מהשרת";
+            }
             backgroundWorker.CancelAsync();
         }
 

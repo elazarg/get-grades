@@ -17,7 +17,7 @@ namespace getGradesForms
     public partial class UpdateForm : Form
     {
         string thisFilename = System.Reflection.Assembly.GetEntryAssembly().Location;
-        Uri webFileAddress = new Uri("http://get-grades.googlecode.com/svn/trunk/c%23/download/getGrades.exe");
+        Uri webFileAddress = new Uri("http://code.google.com/p/get-grades/downloads/list");
         Uri webAssemblyAddress = new Uri("http://get-grades.googlecode.com/svn/trunk/c%23/AssemblyInfo.cs");
 
         WebClient webClient;
