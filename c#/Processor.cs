@@ -3,6 +3,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using System.Collections.Generic;
+using System.Text;
 
 namespace getGradesForms
 {
@@ -27,8 +28,8 @@ namespace getGradesForms
                 + Regex.Match(html_in, "(?<=<P>).*</HTML>", RegexOptions.Singleline).Value;
             tables = fixHtml(raw_html);
         }
-              
-        public delegate void PersonalDetailsFound(string date, string id, string name, string program, string faculty);
+
+        public delegate void PersonalDetailsFound(string date, string id, string name, string faculty, string program);
         public event PersonalDetailsFound personalDetailsFound = delegate { };
 
         public delegate void SessionFound(string Course_ID, string name, string points, string grade);
@@ -132,7 +133,7 @@ namespace getGradesForms
                             lines[i] = "<td>" + string.Join("</td><td>", new string[] { "סה\"כ", temp[2]+ "%" + " הצלחות " , temp[0], temp[1] }) + "</td>";
                             break;
                         case "שם מק": lines[i] = lines[i].Replace("<td>שם מקצוע</td>", "<td>מספר מקצוע</td><td>שם מקצוע</td>"); break;
-                        default: //MessageBox.Show(lines[i]);
+                        default://MessageBox.Show(lines[i]);
                             break;
                     }
                 }
@@ -145,7 +146,9 @@ namespace getGradesForms
             string tabsep = "</TABLE>\r\n<BR>\r\n<TABLE BORDER=1 CELLPADDING=3 CELLSPACING=0>";
             string[] fulltables = html.Split(new string[] {tabsep}, StringSplitOptions.None);
 
-            this.fixedHtml = fulltables[0] + tabsep + fulltables[1] + tabsep + SString.Join("", fulltables.Skip(2));
+            this.fixedHtml = (fulltables[0]
+                + tabsep + fulltables[1]
+                + tabsep + SString.Join("", fulltables.Skip(2)));
 
             //the ultimate split - [table][line][cell]
             return (from t in fulltables

@@ -60,7 +60,7 @@ namespace getGradesForms
             this.semesters.Add( new Semester {  year = "זיכויים"  });
         }
 
-        internal void addPersonalDetails(string date, string id, string name, string program, string faculty)
+        internal void addPersonalDetails(string date, string id, string name, string faculty, string program)
         {
             string[] fullName = name.Split(new char[] { ' ' });
             personalDetails = new PersonalDetails {
@@ -166,6 +166,11 @@ namespace getGradesForms
 
         internal Summary total { get { return computeSemester(sessions); } }
         internal Summary totalClean { get { return computeSemester(cleanView); } }
+        internal Summary totalFaculty {
+            get { 
+                return computeSemester(cleanView.Where(ses => ses.course.faculty == personalDetails.faculty));
+            }
+        }
         internal void updateCleanSlate()
         {
             int n = semesters.Count;

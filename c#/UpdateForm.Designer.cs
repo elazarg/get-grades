@@ -27,30 +27,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.buttonDownload = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.SuspendLayout();
             // 
-            // buttonDownload
-            // 
-            this.buttonDownload.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonDownload.Enabled = false;
-            this.buttonDownload.Location = new System.Drawing.Point(12, 91);
-            this.buttonDownload.Name = "buttonDownload";
-            this.buttonDownload.Size = new System.Drawing.Size(69, 23);
-            this.buttonDownload.TabIndex = 0;
-            this.buttonDownload.Text = "הורד";
-            this.buttonDownload.UseVisualStyleBackColor = true;
-            this.buttonDownload.Click += new System.EventHandler(this.button1_Click);
-            // 
             // buttonCancel
             // 
             this.buttonCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonCancel.Location = new System.Drawing.Point(95, 91);
+            this.buttonCancel.Location = new System.Drawing.Point(52, 91);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(60, 23);
             this.buttonCancel.TabIndex = 0;
@@ -99,7 +86,6 @@
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonCancel);
-            this.Controls.Add(this.buttonDownload);
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(183, 164);
             this.MinimizeBox = false;
@@ -108,6 +94,7 @@
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.RightToLeftLayout = true;
             this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "עדכונים";
@@ -118,7 +105,6 @@
 
         #endregion
 
-        private System.Windows.Forms.Button buttonDownload;
         private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.LinkLabel linkLabel1;

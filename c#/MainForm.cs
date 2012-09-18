@@ -22,7 +22,7 @@ namespace getGradesForms
 
         void browser_Navigated(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
-           // textBoxHtml.Text = browser.DocumentText;
+            // textBoxHtml.Text = browser.DocumentText;
         }
 
         void browser_Navigating(object sender, WebBrowserNavigatingEventArgs e)
@@ -32,8 +32,7 @@ namespace getGradesForms
 
             if (e.Url.ToString().Contains("ug"))
                 e.Cancel = true;
-            else
-            {
+            else {
                 MessageBox.Show(this, "שגיאה לא צפויה. התוכנית תיסגר");
                 this.Close();
             }
@@ -64,12 +63,11 @@ namespace getGradesForms
         private void saveFileDialog1_FileOk(object sender, System.ComponentModel.CancelEventArgs e)
         {
             MessageBox.Show(Path.GetExtension(saveFileDialog.FileName));
-            switch (Path.GetExtension(saveFileDialog.FileName))
-            {
-                case ".csv": 
+            switch (Path.GetExtension(saveFileDialog.FileName)) {
+                case ".csv":
                     grades.saveCsvFile(saveFileDialog.FileName);
                     break;
-                case ".htm" :
+                case ".htm":
                 case ".html":
                     File.WriteAllText(saveFileDialog.FileName, grades.html, Connection.hebrewEncoding);
                     break;
@@ -107,19 +105,18 @@ namespace getGradesForms
                     case Grades.State.CONNECTING: statusLabel.Text = "מתחבר"; break;
                     case Grades.State.AUTHENTICATING: statusLabel.Text = "מבצע הזדהות"; break;
                     case Grades.State.FAILED: statusLabel.Text = "נכשל. בדוק שם משתמש וסיסמא"; break;
-                } 
+                }
         }
 
         UGDatabase ugDatabase;
 
-        string htmlfilename =  Path.GetTempPath() + "getgrades.html";
-        private void refresh()
+        string htmlfilename = Path.GetTempPath() + "getgrades.html";
+        private void RefreshGrades()
         {
-         //   textBoxHtml.Text = grades.html;
-            
+            //   textBoxHtml.Text = grades.html;
+
             File.WriteAllText(htmlfilename, grades.html, Connection.hebrewEncoding);
             browser.Navigate(htmlfilename);
-            
 
             var details = ugDatabase.personalDetails;
             labelName.Text = details.firstName + " " + details.lastName + " ," + details.id;
@@ -130,8 +127,9 @@ namespace getGradesForms
             textBoxPoints.Text = ugDatabase.total.Points.ToString();
             textBoxSuccessRate.Text = ugDatabase.total.SuccessRate.ToString();
 
-          //  textBoxPtsClean.Text = ugDatabase.totalClean.Points.ToString();
+            //  textBoxPtsClean.Text = ugDatabase.totalClean.Points.ToString();
             textBoxAvrgClean.Text = ugDatabase.totalClean.Average.ToString();
+            textBoxAvrgFaculty.Text = ugDatabase.totalFaculty.Average.ToString();
         }
 
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -147,7 +145,7 @@ namespace getGradesForms
                 foreach (var i in new DataGridView[] { dataGridViewSessions, dataGridViewCourseList, dataGridViewSemesters, dataGridViewCleanSlate }) {
                     uGDatabaseBindingSource.DataSource = this.ugDatabase;
                 }
-                refresh();
+                RefreshGrades();
                 saveToolStripButton.Enabled = true;
 
                 contextMenuStrip1.Enabled = true;
@@ -160,7 +158,7 @@ namespace getGradesForms
                     i.Enabled = true;
                 contextMenuStripSemesters.Tag = null;
 
-                panel1.Visible = true;
+                //     panel1.Visible = true;
                 this.toolStripRefresButton.Enabled = true;
             }
             finally {
@@ -182,7 +180,9 @@ namespace getGradesForms
             browser.Navigate("about:blank");
             //      textBoxHtml.ResetText();
 
-            File.Delete(htmlfilename);
+
+            if (File.Exists(htmlfilename))
+                File.Delete(htmlfilename);
             foreach (Control i in new Control[] {
                     passwordBox,  useridTextbox,
                     labelName,  labelFaculty, labelProgram,
@@ -199,7 +199,7 @@ namespace getGradesForms
             this.toolStripGoButton.Enabled = false;
             this.saveToolStripButton.Enabled = false;
             this.toolStripRefresButton.Enabled = false;
-            panel1.Visible = false;
+            //   panel1.Visible = false;
             contextMenuStrip1.Enabled = false;
             contextMenuStripSemesters.Enabled = false;
 
@@ -224,18 +224,17 @@ namespace getGradesForms
 
         private void numericTextbox_KeyDown(object sender, KeyEventArgs e)
         {
-            if (new Keys[] { Keys.Delete, Keys.Back,  Keys.Right, Keys.Left, Keys.Home, Keys.End }
+            if (new Keys[] { Keys.Delete, Keys.Back, Keys.Right, Keys.Left, Keys.Home, Keys.End }
                 .Contains(e.KeyData & ~Keys.Shift))
                 return;
 
             TextBox Sender = (TextBox)sender;
-            if ( !e.Modifiers.HasFlag(Keys.Shift | Keys.Control | Keys.Alt) &&
-                        (e.KeyData >= Keys.D0 && e.KeyData <= Keys.D9 || e.KeyData >= Keys.NumPad0   && e.KeyData <= Keys.NumPad9)
+            if (!e.Modifiers.HasFlag(Keys.Shift | Keys.Control | Keys.Alt) &&
+                        (e.KeyData >= Keys.D0 && e.KeyData <= Keys.D9 || e.KeyData >= Keys.NumPad0 && e.KeyData <= Keys.NumPad9)
                         && (Sender.TextLength < Sender.MaxLength || Sender.SelectionLength > 0))
-                    return;
+                return;
 
-            if (e.KeyData == Keys.Enter && toolStripGoButton.Enabled)
-            {
+            if (e.KeyData == Keys.Enter && toolStripGoButton.Enabled) {
                 toolStripGoButton.PerformClick();
                 return;
             }
@@ -245,21 +244,22 @@ namespace getGradesForms
         private bool passValid = false, idValid = false;
         private void userIdBox_TextChanged(object sender, EventArgs e)
         {
+            TextBox Sender = (TextBox)sender;
             Func<int, int, int> tr = (int d, int i) => i % 2 == 1 ? d : (2 * d / 10) + (2 * d % 10);
-            Func<string, bool> validateId = delegate(string userid)
-            {
+            Func<string, bool> validateId = delegate(string userid) {
                 var usernums = (from c in userid.Reverse() select int.Parse(char.ToString(c))).ToArray();
                 return usernums[0] == (10 - usernums.Skip(1).Select(tr).Sum() % 10);
             };
-            idValid = useridTextbox.TextLength / 2 == useridTextbox.MaxLength / 2 //8 or 9
-               // && validateId(useridTextbox.Text)
+            idValid = Sender.TextLength / 2 == Sender.MaxLength / 2 //8 or 9
+                // && validateId(useridTextbox.Text)
                 ;
             checkEnabled();
         }
 
         private void passwordBox_TextChanged(object sender, EventArgs e)
         {
-            passValid = passwordBox.TextLength == passwordBox.MaxLength;
+            TextBox Sender = (TextBox)sender;
+            passValid = Sender.TextLength == Sender.MaxLength;
             checkEnabled();
         }
 
@@ -272,7 +272,7 @@ namespace getGradesForms
         {
             if (saveToolStripButton.Enabled) {
                 grades.dataSet.updateCleanSlate();
-                refresh();
+                RefreshGrades();
                 this.Update();
             }
         }
@@ -293,12 +293,6 @@ namespace getGradesForms
         private void textBox_Enter(object sender, EventArgs e)
         {
             ((TextBox)sender).SelectAll();
-        }
-
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            Process.Start("www.technion.ac.il/~gai/cm/");
-            Process.Start("http://www.undergraduate.technion.ac.il/Tadpis.html");
         }
 
         #region Context Menu
@@ -346,6 +340,18 @@ namespace getGradesForms
                 && Sender.SelectedCells.Count > 0;
         }
 
+        private void updatetoolStripButton_Click(object sender, EventArgs e)
+        {
+            new UpdateForm().ShowDialog(this);
+        }
+
+
+        private void toolStripLabel1_Click(object sender, EventArgs e)
+        {
+            Process.Start("www.technion.ac.il/~gai/cm/");
+            Process.Start("http://www.undergraduate.technion.ac.il/Tadpis.html");
+        }
+
         private void SurfToCourseToolStripMenuIt_Click(object sender, EventArgs e)
         {
             Process.Start("http://webcourse.cs.technion.ac.il/"
@@ -359,8 +365,6 @@ namespace getGradesForms
             Process.Start("http://ug.technion.ac.il/rishum/mikdet.php?MK="
                 + ((ContextData)ts.Tag).data + "&SEM=201201");
         }
-
-
 
         private void dataGridViewSemesters_CellContextMenuStripNeeded(object sender, DataGridViewCellContextMenuStripNeededEventArgs e)
         {
@@ -395,7 +399,7 @@ namespace getGradesForms
             int index = e.ColumnIndex;
             if (dgv.Columns[e.ColumnIndex].HeaderText == "ציון")
                 index++;
-            dgv.Sort(dgv.Columns[index], dr); 
+            dgv.Sort(dgv.Columns[index], dr);
         }
 
         private void buttonRefresh_Click(object sender, EventArgs e)
@@ -404,7 +408,7 @@ namespace getGradesForms
                 return;
             grades.bw = null;
             grades.process();
-            this.refresh();
+            this.RefreshGrades();
             this.Update();
         }
 
@@ -413,16 +417,12 @@ namespace getGradesForms
             this.Close();
         }
 
-        UpdateForm uf = null;
-        private void updatetoolStripButton_Click(object sender, EventArgs e)
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (uf == null || uf.IsDisposed)
-                uf = new UpdateForm();
-            uf.Activate();
-            if (!uf.Visible)
-                uf.Show(this);
+            buttonClear_Click(sender, e);
         }
 
-        
+
+
     }
 }
