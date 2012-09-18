@@ -277,12 +277,20 @@ namespace getGradesForms
             }
         }
 
-        private void dataGridViewCleanSlate_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
+        private void dataGridViewSessions_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
         {
             if (saveToolStripButton.Enabled) {
                 grades.dataSet.updateCleanSlate();
                 refresh();
                 this.Update();
+            }
+        }
+
+        private void dataGridViewCleanSlate_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
+        {
+            if (saveToolStripButton.Enabled) {
+                textBoxAvrgClean.Text = ugDatabase.totalClean.Average.ToString();
+                textBoxAvrgClean.Update();
             }
         }
 
@@ -385,7 +393,10 @@ namespace getGradesForms
                 else
                     dr = ListSortDirection.Ascending;
             }
-            dgv.Sort(dgv.Columns[e.ColumnIndex], dr);
+            int index = e.ColumnIndex;
+            if (dgv.Columns[e.ColumnIndex].HeaderText == "ציון")
+                index++;
+            dgv.Sort(dgv.Columns[index], dr); 
         }
 
         private void buttonRefresh_Click(object sender, EventArgs e)
@@ -412,6 +423,7 @@ namespace getGradesForms
             if (!uf.Visible)
                 uf.Show(this);
         }
+
         
     }
 }

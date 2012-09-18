@@ -55,7 +55,7 @@ namespace getGradesForms
         public decimal points { get; set; }
         public string faculty { get { return Info.idToFaculty[id.Remove(2)]; } }
 
-        internal bool onceOnly { get { return Info.idToFaculty[id.Remove(2)] != "ספורט"; } }
+        internal bool onceOnly { get { return faculty!= "ספורט"; } }
     }
 
     class Semester
@@ -67,6 +67,7 @@ namespace getGradesForms
         public string hebrewYear { get; set; }
         
         internal Summary summary { get; set; }
+
         public decimal Average { get { return summary.Average; } }
         public decimal SuccessRate { get { return summary.SuccessRate; } }
         public decimal Points { get { return summary.Points; } }
@@ -111,6 +112,13 @@ namespace getGradesForms
 
     internal class CourseSession
     {
+        static List<string> commentsOrder = new List<string> {
+               "NOTHING",
+               "-", "לא השלים ש", "לא השלים ש*",
+               "לא השלים*",
+               "לא השלים", "נכשל",
+               "נכשל*", "פטור ללא ניקוד","פטור עם ניקוד", "עבר", "" };
+
         static Dictionary<string, SessionStatus> commentToStatus = new Dictionary<string,SessionStatus> {
                {"-",                 SessionStatus.DidNotHappen },
                {"לא השלים ש",       SessionStatus.DidNotHappen },
@@ -141,7 +149,7 @@ namespace getGradesForms
         public string courseName { get { return course.name; } set { course.name = value; } }
         public decimal points { get { return course.points; } }
 
-        internal decimal _grade;
+        public decimal _grade { get; private set; }
         private string _comments;
         public string grade {
             get {
@@ -153,10 +161,16 @@ namespace getGradesForms
                     return;
                 if (commentToStatus.ContainsKey(value)) {
                     this.status = commentToStatus[value];
+                    this._grade = - commentsOrder.IndexOf(value);
+                    this._comments = "";
                 }
                 else {
                     try {
-                        this._grade = decimal.Parse(value.Replace("*", ""));
+                        decimal temp = decimal.Parse(value.Replace("*", ""));
+                        if (0 <= temp && temp <= 100)
+                            this._grade = temp;
+                        else
+                            return;
                         this.status = SessionStatus.Grade;
                         if (_grade >= 55)
                             this.status |= SessionStatus.Passed;

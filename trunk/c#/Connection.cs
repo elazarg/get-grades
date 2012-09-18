@@ -146,10 +146,6 @@ namespace getGradesForms
             send("GET");
         }
 
-
-
-
-
         private string validateFormat(string html)
         {
             return Regex.Match(html, "(?<=.*)<HTML>.*<P>(\\s*<TABLE.*</TABLE>\\s*<BR>)+(\\s*<TABLE.*</TABLE>\\s*)</DIV>\\s*</BODY>\\s*</HTML>", RegexOptions.Singleline).Value;

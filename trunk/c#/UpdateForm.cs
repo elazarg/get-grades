@@ -15,7 +15,7 @@ namespace getGradesForms
 {
     public partial class UpdateForm : Form
     {
-
+        string thisFilename = System.Reflection.Assembly.GetEntryAssembly().Location;
         WebClient webClient;
         public UpdateForm()
         {
@@ -26,8 +26,6 @@ namespace getGradesForms
 
             webClient.DownloadStringCompleted += new DownloadStringCompletedEventHandler(webClient_DownloadStringCompleted);
             webClient.DownloadStringAsync(new Uri("http://get-grades.googlecode.com/svn/trunk/c%23/AssemblyInfo.cs"));
-            textBox1.Text = System.Reflection.Assembly.GetEntryAssembly().Location;
-            //Dialog1.InitialDirectory = System.Reflection.Assembly.GetEntryAssembly().Location;
         }
 
         void webClient_DownloadStringCompleted(object sender, DownloadStringCompletedEventArgs e)
@@ -38,8 +36,8 @@ namespace getGradesForms
                 Match m = Regex.Match(info, @"[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+");
                 if (m.Success && m.Value != Assembly.GetExecutingAssembly().GetName().Version.ToString()) {
                     buttonDownload.Enabled = true;
-                    buttonDirectory.Enabled = true;
-                    label1.Text = "נמצאה גרסה " + m.Value + ".\r\nלהוריד?\r\n";
+                    linkLabel1.Enabled = true;
+                    label1.Text = "נמצאה גרסה חדשה.";
                 }
                 else {
                     label1.Text = "לא נמצאו עדכונים.";
@@ -48,18 +46,21 @@ namespace getGradesForms
             catch (WebException) {
                 label1.Text = "אירעה שגיאה בעת החיבור לאינטרנט.";
             }
+            catch (TargetInvocationException) {
+                //We're closing the window. continue normally.
+            }
         }
         
         private void ProgressChanged(object sender, DownloadProgressChangedEventArgs e)
         {
-            toolStripProgressBar1.Value = e.ProgressPercentage;
+            progressBar1.Value = e.ProgressPercentage;
         }
 
         private void Completed(object sender, AsyncCompletedEventArgs e)
         {
             label1.Text = "ההורדה הושלמה.\r\nלהשלמת הפעולה הפעל מחדש את התוכנית.";
             buttonDownload.Enabled = false;
-            buttonDirectory.Enabled = false;
+            linkLabel1.Enabled = false;
             buttonCancel.Text = "אישור";
         }
 
@@ -73,7 +74,7 @@ namespace getGradesForms
             buttonDownload.Enabled = false;
             try
             {
-                string targetFile = textBox1.Text;
+                string targetFile = thisFilename;
                 Uri webAddress = new Uri("http://get-grades.googlecode.com/svn/trunk/c%23/download/getGrades.exe");
                 if (File.Exists(targetFile))
                     File.Delete(targetFile);
@@ -94,16 +95,6 @@ namespace getGradesForms
                 buttonDownload.Enabled = true;
             }
 
-        }
-
-        private void buttonDirectory_Click(object sender, EventArgs e)
-        {
-            saveFileDialog1.ShowDialog(this);
-        }
-
-        private void saveFileDialog1_FileOk(object sender, CancelEventArgs e)
-        {
-            textBox1.Text = saveFileDialog1.FileName;
         }
 
         protected override void OnClosed(EventArgs e)
