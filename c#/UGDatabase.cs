@@ -27,21 +27,22 @@ namespace getGradesForms
             return cs.Where(ss).Sum();
         }
     }
+
     class UGDatabase
     {
         public PersonalDetails personalDetails;
 
-        public SortableBindingList<CourseSession> sessions { get; set; }
+        public SortableBindingList<CourseSession> sessions { get; private set; }
         public BindingList<Semester> semesters { get; private set; }
-        public BindingList<Course> courses { get; private set; }
+        public BindingList<Course> courses { get; set; }
         public BindingList<CourseSession> cleanView { get; private set; }
 
         internal UGDatabase()
         {
             sessions = new SortableBindingList<CourseSession>();
+            cleanView = new SortableBindingList<CourseSession>();
             semesters = new SortableBindingList<Semester>();
             courses = new SortableBindingList<Course>();
-            cleanView = new SortableBindingList<CourseSession>();
         }
 
         internal void Clear()
@@ -97,17 +98,14 @@ namespace getGradesForms
 
         private Summary computeSemester(IEnumerable<CourseSession> taken)
         {
-            Summary s = new Summary();
-
-            List<CourseSession> cleanSessions = new List<CourseSession>();
+            var cleanSessions = new List<CourseSession>();
 
             foreach (var row in taken.OrderByDescending(cs => cs.index)) {
-                if (!row.course.onceOnly)
-                    cleanSessions.Add(row);
-                else if (cleanSessions.All(x => x.courseId != row.courseId))
+                if (!row.course.onceOnly || cleanSessions.All(x => x.courseId != row.courseId))
                     cleanSessions.Add(row);                
             }
 
+            Summary s = new Summary();
             var inAverage = cleanSessions.Where(SessionStatus.Grade);
             decimal avSum = inAverage.Sum();
             if (avSum > 0)
@@ -123,6 +121,11 @@ namespace getGradesForms
             return s;
         }
 
+        private void computeSemester(int id)
+        {
+            semesters.Single(sem => sem.id == id).summary = computeSemester(sessions.Where(s => s.semester.id == id));
+        }
+
         internal void addSemester(string year, string hebrewYear, string season)
         {
             this.semesters.Add( new Semester {
@@ -136,7 +139,7 @@ namespace getGradesForms
         internal void addEndSemester(string successRate, string points, string average)
         {
             Semester last = this.semesters.Last();
-            IEnumerable<CourseSession> taken = sessions.Where(session => session.semester.id == last.id);
+            IEnumerable<CourseSession> taken = sessions.Where(s => s.semester.id == last.id);
             Summary summary = computeSemester(taken);
 
             // validation
@@ -161,11 +164,13 @@ namespace getGradesForms
             last.summary = summary;
         }
 
-        internal Summary total;
-        internal Summary totalClean;
+        internal Summary total { get { return computeSemester(sessions); } }
+        internal Summary totalClean { get { return computeSemester(cleanView); } }
         internal void updateCleanSlate()
         {
-            total = computeSemester(sessions);
+            int n = semesters.Count;
+            for (int i = 0; i < n; i++)
+                computeSemester(i);
 
             cleanView.Clear();
             HashSet<string> ignoreList = new HashSet<string>();
@@ -180,9 +185,6 @@ namespace getGradesForms
                     || !row.course.onceOnly)
                     cleanView.Add(row);
             }
-
-            totalClean = computeSemester(cleanView);
         }
-
     }
 }
