@@ -19,6 +19,8 @@ namespace getGradesForms
     [Serializable]
     public class BadHtmlFormat : ConnectionException { }
 
+    [Serializable]
+    public class DimaErorr: ConnectionException { }
 
     class Connection : IDisposable
     {
@@ -64,26 +66,31 @@ namespace getGradesForms
 
         private int redirect()
         {
-            string[] sep = { "Location: http://techmvs.technion.ac.il:80/cics/wmn/wmngrad" };
-            send("HEAD");
-            tick();
-            string temp = input.ReadLine();
-            if (temp.Contains("302")) {
-                input.ReadLine();
-                temp = input.ReadLine();
-                session = temp.Split(sep, 3, StringSplitOptions.None)[1].Substring(1, 8);
-                while (input.ReadLine() != "") ;
-                return -1;
+            try {
+                string[] sep = { "Location: http://techmvs.technion.ac.il:80/cics/wmn/wmngrad" };
+                send("HEAD");
+                tick();
+                string temp = input.ReadLine();
+                if (temp.Contains("302")) {
+                    input.ReadLine();
+                    temp = input.ReadLine();
+                    session = temp.Split(sep, 3, StringSplitOptions.None)[1].Substring(1, 8);
+                    while (input.ReadLine() != "") ;
+                    return -1;
+                }
+                else if (temp.Contains("200")) {
+                    String line;
+                    int res = -1;
+                    do {
+                        line = input.ReadLine();
+                        if (line.Contains("Content-Length:"))
+                            return System.Int32.Parse(line.Substring(16));
+                    } while (!input.EndOfStream && line != null && line.Trim() != "");
+                    return res;
+                }
             }
-            else if (temp.Contains("200")) {
-                String line;
-                int res = -1;
-                do {
-                    line = input.ReadLine();
-                    if (line.Contains("Content-Length:"))
-                        return System.Int32.Parse(line.Substring(16));
-                } while (!input.EndOfStream && line != null && line.Trim() != "");
-                return res;
+            catch (WebException) {
+                throw new DimaErorr();
             }
             return 0;
         }
