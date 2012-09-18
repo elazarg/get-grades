@@ -18,6 +18,7 @@ namespace getGradesForms
             InitializeComponent();
             browser.DocumentCompleted += delegate { browser.Document.Encoding = "iso-8859-8-i"; };
             this.Text += String.Format(" (גרסה {0})", Assembly.GetExecutingAssembly().GetName().Version.ToString());
+            activeContext = new ContextData { data = null, grid = dataGridViewCleanSlate };
         }
 
         void browser_Navigated(object sender, WebBrowserDocumentCompletedEventArgs e)
@@ -160,6 +161,7 @@ namespace getGradesForms
 
                 //     panel1.Visible = true;
                 this.toolStripRefresButton.Enabled = true;
+                this.copyToolStripButton.Enabled = true;
             }
             finally {
                 toolStripGoButton.Enabled = true;
@@ -198,10 +200,13 @@ namespace getGradesForms
 
             this.toolStripGoButton.Enabled = false;
             this.saveToolStripButton.Enabled = false;
+            this.copyToolStripButton.Enabled = false;
             this.toolStripRefresButton.Enabled = false;
             //   panel1.Visible = false;
-            contextMenuStrip1.Enabled = false;
-            contextMenuStripSemesters.Enabled = false;
+            this.contextMenuStrip1.Enabled = false;
+            this.contextMenuStripSemesters.Enabled = false;
+            this.activeContext = null;
+
 
             this.Refresh();
             this.Focus();
@@ -297,22 +302,35 @@ namespace getGradesForms
 
         #region Context Menu
 
-        struct ContextData
+        class ContextData
         {
             internal DataGridView grid;
             internal Object data;
-
-            static internal ContextData fromSender(object sender)
-            {
-                ToolStripItem Sender = (ToolStripItem)sender;
-                ToolStrip ts = Sender.GetCurrentParent();
-                return (ContextData)ts.Tag;
-            }
         }
 
-        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        ContextData activeContext = null;
+        private void tabControl_Selected(object sender, TabControlEventArgs e)
         {
-            DataGridView dgv = ContextData.fromSender(sender).grid;
+            var seq = e.TabPage.Controls.OfType<DataGridView>();
+
+            if (seq.Count() > 0) {
+                activeContext = new ContextData { grid = seq.First(), data = null };
+                if (seq.First().RowCount > 0) {
+                    copyToolStripButton.Enabled = true;
+                    return;
+                }
+            }
+            copyToolStripButton.Enabled = false;
+        }
+
+        private void copyToolStripButton_Click(object sender, EventArgs e)
+        {
+            toolStripMenuItemCopy_Click(sender, e);
+        }
+
+        private void toolStripMenuItemCopy_Click(object sender, EventArgs e)
+        {
+            DataGridView dgv = activeContext.grid;
             dgv.SuspendLayout();
             dgv.RightToLeft = RightToLeft.No;
             dgv.ClipboardCopyMode = DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
@@ -330,7 +348,7 @@ namespace getGradesForms
             DataGridView Sender = (DataGridView)sender;
             string courseId = Sender.Rows[e.RowIndex].Cells[0].Value.ToString();
 
-            Sender.ContextMenuStrip.Tag = new ContextData {
+            activeContext = new ContextData {
                 grid = Sender,
                 data = courseId
             };
@@ -355,7 +373,7 @@ namespace getGradesForms
         private void SurfToCourseToolStripMenuIt_Click(object sender, EventArgs e)
         {
             Process.Start("http://webcourse.cs.technion.ac.il/"
-                + ContextData.fromSender(sender).data);
+                + activeContext.data);
         }
 
         private void SurfToUGToolStripMenuItem_Click(object sender, EventArgs e)
@@ -363,7 +381,7 @@ namespace getGradesForms
             ToolStripItem Sender = (ToolStripItem)sender;
             ToolStrip ts = Sender.GetCurrentParent();
             Process.Start("http://ug.technion.ac.il/rishum/mikdet.php?MK="
-                + ((ContextData)ts.Tag).data + "&SEM=201201");
+                + activeContext.data + "&SEM=201201");
         }
 
         private void dataGridViewSemesters_CellContextMenuStripNeeded(object sender, DataGridViewCellContextMenuStripNeededEventArgs e)
@@ -377,7 +395,7 @@ namespace getGradesForms
 
         private void deleteRowToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DataGridView dgv = ContextData.fromSender(sender).grid;
+            DataGridView dgv = activeContext.grid;
             foreach (DataGridViewRow row in dgv.SelectedRows)
                 dgv.Rows.Remove(row);
         }
