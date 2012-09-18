@@ -10,12 +10,16 @@ using System.Net;
 using System.Text.RegularExpressions;
 using System.IO;
 using System.Reflection;
+using System.Diagnostics;
 
 namespace getGradesForms
 {
     public partial class UpdateForm : Form
     {
         string thisFilename = System.Reflection.Assembly.GetEntryAssembly().Location;
+        Uri webFileAddress = new Uri("http://get-grades.googlecode.com/svn/trunk/c%23/download/getGrades.exe");
+        Uri webAssemblyAddress = new Uri("http://get-grades.googlecode.com/svn/trunk/c%23/AssemblyInfo.cs");
+
         WebClient webClient;
         public UpdateForm()
         {
@@ -25,7 +29,7 @@ namespace getGradesForms
             webClient.DownloadProgressChanged += new DownloadProgressChangedEventHandler(ProgressChanged);
 
             webClient.DownloadStringCompleted += new DownloadStringCompletedEventHandler(webClient_DownloadStringCompleted);
-            webClient.DownloadStringAsync(new Uri("http://get-grades.googlecode.com/svn/trunk/c%23/AssemblyInfo.cs"));
+            webClient.DownloadStringAsync(webFileAddress);
         }
 
         void webClient_DownloadStringCompleted(object sender, DownloadStringCompletedEventArgs e)
@@ -74,11 +78,9 @@ namespace getGradesForms
             buttonDownload.Enabled = false;
             try
             {
-                string targetFile = thisFilename;
-                Uri webAddress = new Uri("http://get-grades.googlecode.com/svn/trunk/c%23/download/getGrades.exe");
-                if (File.Exists(targetFile))
-                    File.Delete(targetFile);
-                webClient.DownloadFileAsync(webAddress, targetFile);
+                if (File.Exists(thisFilename))
+                    File.Delete(thisFilename);
+                webClient.DownloadFileAsync(webAssemblyAddress, thisFilename);
             }
             catch (WebException) {
                 label1.Text = "אירעה שגיאה בעת החיבור לאינטרנט.";
@@ -101,6 +103,11 @@ namespace getGradesForms
         {
             webClient.CancelAsync();
             base.OnClosed(e);
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start(webFileAddress.ToString());
         }
     }
 }
