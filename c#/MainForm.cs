@@ -268,7 +268,7 @@ namespace getGradesForms
             toolStripGoButton.Enabled = idValid && passValid;
         }
 
-        private void dataGrid_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        private void dataGrid_SomethingChanged(object sender, DataGridViewCellEventArgs e)
         {
             if (saveToolStripButton.Enabled) {
                 grades.dataSet.updateCleanSlate();
@@ -279,11 +279,7 @@ namespace getGradesForms
 
         private void dataGridViewSessions_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
         {
-            if (saveToolStripButton.Enabled) {
-                grades.dataSet.updateCleanSlate();
-                refresh();
-                this.Update();
-            }
+            dataGrid_SomethingChanged(sender, null);
         }
 
         private void dataGridViewCleanSlate_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
@@ -345,6 +341,9 @@ namespace getGradesForms
                 data = courseId
             };
             Sender.ContextMenuStrip.Items[1].Enabled = Info.isFacultyCS(courseId);
+            Sender.ContextMenuStrip.Items[3].Enabled =
+                Sender.AllowUserToDeleteRows
+                && Sender.SelectedCells.Count > 0;
         }
 
         private void SurfToCourseToolStripMenuIt_Click(object sender, EventArgs e)
