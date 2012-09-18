@@ -39,7 +39,7 @@ namespace getGradesForms
 
                 Match m = Regex.Match(info, @"[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+");
                 if (m.Success && m.Value != Assembly.GetExecutingAssembly().GetName().Version.ToString()) {
-                    buttonDownload.Enabled = true;
+          //          buttonDownload.Enabled = true;
                     linkLabel1.Enabled = true;
                     label1.Text = "נמצאה גרסה חדשה.";
                 }
@@ -63,7 +63,7 @@ namespace getGradesForms
         private void Completed(object sender, AsyncCompletedEventArgs e)
         {
             label1.Text = "ההורדה הושלמה.\r\nלהשלמת הפעולה הפעל מחדש את התוכנית.";
-            buttonDownload.Enabled = false;
+          //  buttonDownload.Enabled = false;
             linkLabel1.Enabled = false;
             buttonCancel.Text = "אישור";
         }
@@ -71,32 +71,6 @@ namespace getGradesForms
         private void button3_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            buttonDownload.Enabled = false;
-            try
-            {
-                if (File.Exists(thisFilename))
-                    File.Delete(thisFilename);
-                webClient.DownloadFileAsync(webAssemblyAddress, thisFilename);
-            }
-            catch (WebException) {
-                label1.Text = "אירעה שגיאה בעת החיבור לאינטרנט.";
-            }
-            catch (InvalidOperationException) {
-                label1.Text = "אירעה שגיאה בעת החיבור לאינטרנט.";
-            }
-            catch (IOException) {
-                label1.Text = "לא ניתן לשמור את הקובץ.";
-                buttonDownload.Enabled = true;
-            }
-            catch (UnauthorizedAccessException) {
-                label1.Text = "לא ניתן לשמור את הקובץ.";
-                buttonDownload.Enabled = true;
-            }
-
         }
 
         protected override void OnClosed(EventArgs e)

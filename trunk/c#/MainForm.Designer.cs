@@ -39,19 +39,15 @@
             this.copyToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.helpToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.toolStripContainer2 = new System.Windows.Forms.ToolStripContainer();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
-            this.toolStripRefresButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripGoButton = new System.Windows.Forms.ToolStripButton();
-            this.updatetoolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripRefresButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabCleanSlate = new System.Windows.Forms.TabPage();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.textBoxAvrgClean = new System.Windows.Forms.TextBox();
             this.dataGridViewCleanSlate = new System.Windows.Forms.DataGridView();
             this.courseIdDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.courseNameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -95,8 +91,12 @@
             this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.textBoxAvrgClean = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.textBoxAvrgFaculty = new System.Windows.Forms.TextBox();
             this.textBoxSuccessRate = new System.Windows.Forms.TextBox();
             this.textBoxPoints = new System.Windows.Forms.TextBox();
             this.textBoxAvGrade = new System.Windows.Forms.TextBox();
@@ -112,7 +112,11 @@
             this.labelProgram = new System.Windows.Forms.Label();
             this.labelFaculty = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.toolStrip3 = new System.Windows.Forms.ToolStrip();
+            this.updatetoolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.linkGuyLabel = new System.Windows.Forms.ToolStripLabel();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.courseIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -120,13 +124,10 @@
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
-            this.toolStripContainer2.TopToolStripPanel.SuspendLayout();
-            this.toolStripContainer2.SuspendLayout();
             this.toolStrip2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.tabCleanSlate.SuspendLayout();
-            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCleanSlate)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uGDatabaseBindingSource)).BeginInit();
@@ -145,6 +146,8 @@
             this.detailsBox.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.toolStrip3.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStripContainer1
@@ -218,38 +221,16 @@
             this.helpToolStripButton.Name = "helpToolStripButton";
             this.helpToolStripButton.Click += new System.EventHandler(this.aboutButton_Click);
             // 
-            // toolStripContainer2
-            // 
-            this.tableLayoutPanel1.SetColumnSpan(this.toolStripContainer2, 2);
-            // 
-            // toolStripContainer2.ContentPanel
-            // 
-            resources.ApplyResources(this.toolStripContainer2.ContentPanel, "toolStripContainer2.ContentPanel");
-            resources.ApplyResources(this.toolStripContainer2, "toolStripContainer2");
-            this.toolStripContainer2.Name = "toolStripContainer2";
-            // 
-            // toolStripContainer2.TopToolStripPanel
-            // 
-            this.toolStripContainer2.TopToolStripPanel.Controls.Add(this.toolStrip2);
-            resources.ApplyResources(this.toolStripContainer2.TopToolStripPanel, "toolStripContainer2.TopToolStripPanel");
-            // 
             // toolStrip2
             // 
+            this.tableLayoutPanel1.SetColumnSpan(this.toolStrip2, 2);
             resources.ApplyResources(this.toolStrip2, "toolStrip2");
             this.toolStrip2.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripRefresButton,
             this.toolStripGoButton,
-            this.updatetoolStripButton});
+            this.toolStripRefresButton,
+            this.toolStripSeparator2});
             this.toolStrip2.Name = "toolStrip2";
-            // 
-            // toolStripRefresButton
-            // 
-            this.toolStripRefresButton.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripRefresButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            resources.ApplyResources(this.toolStripRefresButton, "toolStripRefresButton");
-            this.toolStripRefresButton.Name = "toolStripRefresButton";
-            this.toolStripRefresButton.Click += new System.EventHandler(this.buttonRefresh_Click);
             // 
             // toolStripGoButton
             // 
@@ -259,12 +240,18 @@
             this.toolStripGoButton.Name = "toolStripGoButton";
             this.toolStripGoButton.Click += new System.EventHandler(this.goButton_Click);
             // 
-            // updatetoolStripButton
+            // toolStripRefresButton
             // 
-            this.updatetoolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            resources.ApplyResources(this.updatetoolStripButton, "updatetoolStripButton");
-            this.updatetoolStripButton.Name = "updatetoolStripButton";
-            this.updatetoolStripButton.Click += new System.EventHandler(this.updatetoolStripButton_Click);
+            this.toolStripRefresButton.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripRefresButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            resources.ApplyResources(this.toolStripRefresButton, "toolStripRefresButton");
+            this.toolStripRefresButton.Name = "toolStripRefresButton";
+            this.toolStripRefresButton.Click += new System.EventHandler(this.buttonRefresh_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            resources.ApplyResources(this.toolStripSeparator2, "toolStripSeparator2");
             // 
             // saveFileDialog
             // 
@@ -289,8 +276,8 @@
             this.tableLayoutPanel1.Controls.Add(this.personalDetailsGroup, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.detailsBox, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.toolStripContainer1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.toolStripContainer2, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel2, 3, 0);
+            this.tableLayoutPanel1.Controls.Add(this.toolStrip2, 1, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             // 
             // tabControl
@@ -308,30 +295,10 @@
             // 
             // tabCleanSlate
             // 
-            this.tabCleanSlate.Controls.Add(this.panel1);
             this.tabCleanSlate.Controls.Add(this.dataGridViewCleanSlate);
             resources.ApplyResources(this.tabCleanSlate, "tabCleanSlate");
             this.tabCleanSlate.Name = "tabCleanSlate";
             this.tabCleanSlate.UseVisualStyleBackColor = true;
-            // 
-            // panel1
-            // 
-            resources.ApplyResources(this.panel1, "panel1");
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.textBoxAvrgClean);
-            this.panel1.Name = "panel1";
-            // 
-            // label4
-            // 
-            resources.ApplyResources(this.label4, "label4");
-            this.label4.Name = "label4";
-            this.label4.TextChanged += new System.EventHandler(this.labelPD_TextChanged);
-            // 
-            // textBoxAvrgClean
-            // 
-            resources.ApplyResources(this.textBoxAvrgClean, "textBoxAvrgClean");
-            this.textBoxAvrgClean.Name = "textBoxAvrgClean";
-            this.textBoxAvrgClean.ReadOnly = true;
             // 
             // dataGridViewCleanSlate
             // 
@@ -699,8 +666,12 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.textBoxAvrgClean);
             this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.textBoxAvrgFaculty);
             this.groupBox1.Controls.Add(this.textBoxSuccessRate);
             this.groupBox1.Controls.Add(this.textBoxPoints);
             this.groupBox1.Controls.Add(this.textBoxAvGrade);
@@ -714,17 +685,41 @@
             this.label3.Name = "label3";
             this.label3.TextChanged += new System.EventHandler(this.labelPD_TextChanged);
             // 
+            // textBoxAvrgClean
+            // 
+            resources.ApplyResources(this.textBoxAvrgClean, "textBoxAvrgClean");
+            this.textBoxAvrgClean.Name = "textBoxAvrgClean";
+            this.textBoxAvrgClean.ReadOnly = true;
+            // 
             // label2
             // 
             resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
             this.label2.TextChanged += new System.EventHandler(this.labelPD_TextChanged);
             // 
+            // label6
+            // 
+            resources.ApplyResources(this.label6, "label6");
+            this.label6.Name = "label6";
+            this.label6.TextChanged += new System.EventHandler(this.labelPD_TextChanged);
+            // 
+            // label5
+            // 
+            resources.ApplyResources(this.label5, "label5");
+            this.label5.Name = "label5";
+            this.label5.TextChanged += new System.EventHandler(this.labelPD_TextChanged);
+            // 
             // label1
             // 
             resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
             this.label1.TextChanged += new System.EventHandler(this.labelPD_TextChanged);
+            // 
+            // textBoxAvrgFaculty
+            // 
+            resources.ApplyResources(this.textBoxAvrgFaculty, "textBoxAvrgFaculty");
+            this.textBoxAvrgFaculty.Name = "textBoxAvrgFaculty";
+            this.textBoxAvrgFaculty.ReadOnly = true;
             // 
             // textBoxSuccessRate
             // 
@@ -828,16 +823,44 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.linkLabel1);
+            this.panel2.Controls.Add(this.panel3);
             resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Name = "panel2";
             // 
-            // linkLabel1
+            // panel3
             // 
-            resources.ApplyResources(this.linkLabel1, "linkLabel1");
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            this.panel3.Controls.Add(this.toolStrip3);
+            resources.ApplyResources(this.panel3, "panel3");
+            this.panel3.Name = "panel3";
+            // 
+            // toolStrip3
+            // 
+            resources.ApplyResources(this.toolStrip3, "toolStrip3");
+            this.toolStrip3.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.toolStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.updatetoolStripButton,
+            this.toolStripSeparator3,
+            this.linkGuyLabel});
+            this.toolStrip3.Name = "toolStrip3";
+            // 
+            // updatetoolStripButton
+            // 
+            this.updatetoolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            resources.ApplyResources(this.updatetoolStripButton, "updatetoolStripButton");
+            this.updatetoolStripButton.Name = "updatetoolStripButton";
+            this.updatetoolStripButton.Click += new System.EventHandler(this.updatetoolStripButton_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            resources.ApplyResources(this.toolStripSeparator3, "toolStripSeparator3");
+            // 
+            // linkGuyLabel
+            // 
+            this.linkGuyLabel.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.linkGuyLabel.IsLink = true;
+            this.linkGuyLabel.Name = "linkGuyLabel";
+            resources.ApplyResources(this.linkGuyLabel, "linkGuyLabel");
             // 
             // courseIDDataGridViewTextBoxColumn
             // 
@@ -870,24 +893,19 @@
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.Name = "MainForm";
             this.ShowIcon = false;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.toolStripContainer1.TopToolStripPanel.ResumeLayout(false);
             this.toolStripContainer1.TopToolStripPanel.PerformLayout();
             this.toolStripContainer1.ResumeLayout(false);
             this.toolStripContainer1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
-            this.toolStripContainer2.TopToolStripPanel.ResumeLayout(false);
-            this.toolStripContainer2.TopToolStripPanel.PerformLayout();
-            this.toolStripContainer2.ResumeLayout(false);
-            this.toolStripContainer2.PerformLayout();
             this.toolStrip2.ResumeLayout(false);
             this.toolStrip2.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.tabControl.ResumeLayout(false);
             this.tabCleanSlate.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCleanSlate)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.uGDatabaseBindingSource)).EndInit();
@@ -911,7 +929,10 @@
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            this.toolStrip3.ResumeLayout(false);
+            this.toolStrip3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -968,12 +989,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn pointsDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn faculty;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textBoxAvrgClean;
         private System.Windows.Forms.DataGridView dataGridViewCleanSlate;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ToolStripMenuItem SurfToCourseToolStripMenuIt;
         private System.Windows.Forms.ToolStripMenuItem SurfToUGToolStripMenuItem;
         private System.Windows.Forms.ContextMenuStrip contextMenuStripSemesters;
@@ -989,12 +1008,8 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton helpToolStripButton;
         private System.Windows.Forms.ToolStrip toolStrip2;
-        private System.Windows.Forms.ToolStripButton toolStripGoButton;
-        private System.Windows.Forms.ToolStripContainer toolStripContainer2;
         private System.Windows.Forms.ToolStripButton toolStripRefresButton;
-        private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.ToolStripButton updatetoolStripButton;
         private System.Windows.Forms.DataGridViewTextBoxColumn courseIdDataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn courseNameDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn points;
@@ -1005,6 +1020,16 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn gradeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn _grade;
+        private System.Windows.Forms.ToolStripButton toolStripGoButton;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.ToolStrip toolStrip3;
+        private System.Windows.Forms.ToolStripButton updatetoolStripButton;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripLabel linkGuyLabel;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox textBoxAvrgFaculty;
     }
 }
 
