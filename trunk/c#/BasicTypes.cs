@@ -93,20 +93,16 @@ namespace getGradesForms
     [Flags]
     internal enum SessionStatus
     {
-        Attended = 1,
-        inAverage = 2,
-        inFinal = 4,
+        Ptor = 1,
+        LoShStar = 2,
+        LoSh = 4,
         Passed = 8,
-
-        DidNotHappen = 0,                                            //"-" "לא השלים ש" "לא השלים ש*"
-        Grade =     Attended  /* Passed if > 55 */  | inFinal   | inAverage ,
-        NoFinal =   Attended,                                        //"לא השלים*"
-        inPoints =  Attended | Passed   | inFinal,                  //"פטור ללא ניקוד" "פטור עם ניקוד" "עבר"
-        Failed =    Attended            | inFinal,                  //"לא השלים" "נכשל"
-
-        inSuccess = Attended |  Passed,
-        inClean =               Passed  | inFinal   | inAverage,
-        All     =   Attended | Passed  | inFinal   | inAverage,
+        InCompleteStar = 16,
+        InComplete = 32,
+        Failed = 64,
+        FailedStar = 128,
+        Minus = 256,
+        Grade = 512
     }
 
 
@@ -120,22 +116,25 @@ namespace getGradesForms
                "נכשל*", "פטור ללא ניקוד","פטור עם ניקוד", "עבר", "" };
 
         static Dictionary<string, SessionStatus> commentToStatus = new Dictionary<string,SessionStatus> {
-               {"-",                 SessionStatus.DidNotHappen },
-               {"לא השלים ש",       SessionStatus.DidNotHappen },
-               {"לא השלים ש*",      SessionStatus.DidNotHappen },
+               
+                {"-",                 SessionStatus.Minus },
 
-               {"לא השלים*",        SessionStatus.NoFinal },
+                {"לא השלים ש*",      SessionStatus.LoShStar },
+               {"לא השלים ש",       SessionStatus.LoSh },
+
+               {"לא השלים*",        SessionStatus.InCompleteStar },
 
 
-               {"לא השלים",         SessionStatus.Failed },
+               {"לא השלים",         SessionStatus.InComplete },
                {"נכשל",              SessionStatus.Failed },
 
-               {"נכשל*",            SessionStatus.inPoints },
-               {"פטור ללא ניקוד",   SessionStatus.inPoints },
-               {"פטור עם ניקוד",    SessionStatus.inPoints },
-               {"עבר",              SessionStatus.inPoints },
-               {"",                 SessionStatus.inPoints }, // ? not sure
-               {"<BR>",                 SessionStatus.inPoints }, // ? not sure
+               {"נכשל*",            SessionStatus.FailedStar },
+               {"פטור ללא ניקוד",   SessionStatus.Ptor },
+               {"פטור עם ניקוד",    SessionStatus.Ptor },
+               {"עבר",              SessionStatus.Passed },
+
+               {"",                 SessionStatus.Ptor }, // ? not sure
+               {"<BR>",                 SessionStatus.Ptor }, // ? not sure
         };
 
         internal Course course;
@@ -172,8 +171,10 @@ namespace getGradesForms
                         else
                             return;
                         this.status = SessionStatus.Grade;
+                        /*
                         if (_grade >= 55)
                             this.status |= SessionStatus.Passed;
+                         * */
                         _comments = "";
                         return;
                     }
@@ -185,11 +186,9 @@ namespace getGradesForms
                 _comments = value;
             }
         }
-
-        internal bool inAverage { get { return status.HasFlag(SessionStatus.inAverage); } }
-        internal bool inFinal { get { return status.HasFlag(SessionStatus.inFinal); } }
-        internal bool Attended { get { return status.HasFlag(SessionStatus.Attended); } }
-        internal bool Passed { get { return status.HasFlag(SessionStatus.Passed); } }
+        internal bool Passed { 
+            get { return status.HasFlag(SessionStatus.Passed)
+                      || status.HasFlag(SessionStatus.Grade) && _grade >= 55; } }
 
         internal decimal mult()
         {

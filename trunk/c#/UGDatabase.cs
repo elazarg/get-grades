@@ -10,22 +10,23 @@ namespace getGradesForms
 {
     static class Selector
     {
+        /*
         public static IEnumerable<CourseSession> Where(this IEnumerable<CourseSession> cs, SessionStatus flags)
         {
             return cs.Where( x => x.status.HasFlag(flags));
         }
-
+        */
         public static decimal Sum(this IEnumerable<CourseSession> cs, Func<decimal, decimal, decimal> func = null)
         {
             if (func == null)
                 return cs.Sum(x => x.course.points);
             return cs.Sum( x => x.mult() );
         }
-
+        /*
         public static decimal Sum(this IEnumerable<CourseSession> cs, SessionStatus ss)
         {
             return cs.Where(ss).Sum();
-        }
+        }*/
     }
 
     class UGDatabase
@@ -98,27 +99,64 @@ namespace getGradesForms
 
         private Summary computeSemester(IEnumerable<CourseSession> taken)
         {
-            var cleanSessions = new List<CourseSession>();
+            IEnumerable<CourseSession> lasts = filterLasts(taken);
 
-            foreach (var row in taken.OrderByDescending(cs => cs.index)) {
-                if (!row.course.onceOnly || cleanSessions.All(x => x.courseId != row.courseId))
-                    cleanSessions.Add(row);                
+            return new Summary {
+                Average = getAverage(lasts),
+                Points = getPoints(lasts),
+                SuccessRate = getSuccessRate(taken)
+            };
+        }
+
+        private static List<CourseSession> filterLasts(IEnumerable<CourseSession> taken)
+        {
+            var temp = taken.Where(x =>
+                     !x.status.HasFlag(SessionStatus.LoSh)
+                  && !x.status.HasFlag(SessionStatus.Minus)
+                  && !x.status.HasFlag(SessionStatus.InCompleteStar)).OrderBy(x => x.index);
+            var courseSet = new HashSet<string>(temp.Where(x => x.course.onceOnly).Select(x => x.courseName));
+            var lasts = new List<CourseSession>(temp.Where(x => !x.course.onceOnly));
+            foreach (var name in courseSet) {
+                lasts.Add(temp.Last(x => x.courseName == name));
             }
+            return lasts;
+        }
 
-            Summary s = new Summary();
-            var inAverage = cleanSessions.Where(SessionStatus.Grade);
-            decimal avSum = inAverage.Sum();
+        private static decimal getSuccessRate(IEnumerable<CourseSession> taken)
+        {
+            Func<CourseSession, bool> inSuccessPoints =
+            x => x.status.HasFlag(SessionStatus.Failed)
+              || x.status.HasFlag(SessionStatus.Passed)
+              || x.status.HasFlag(SessionStatus.InComplete)
+              || x.status.HasFlag(SessionStatus.InCompleteStar)
+              || x.status.HasFlag(SessionStatus.Grade);
+
+            var successable = taken.Where(inSuccessPoints);
+            decimal sum = successable.Sum();
+            if (sum > 0)
+                return successable.Where(x => x.Passed).Sum() * 100 / sum;
+            return 0;
+        }
+
+        private static decimal getPoints(IEnumerable<CourseSession> lasts)
+        {
+            Func<CourseSession, bool> pointable =
+                x => x.status.HasFlag(SessionStatus.Ptor)
+                  || x.status.HasFlag(SessionStatus.Passed)
+                  || x.Passed;
+            return lasts.Where(pointable).Sum();
+        }
+
+        private static decimal getAverage(IEnumerable<CourseSession> lasts)
+        {
+            Func<CourseSession, bool> inAverage =
+                x => x.status.HasFlag(SessionStatus.Grade);
+
+            var averageable = lasts.Where(inAverage);
+            decimal avSum = averageable.Sum();
             if (avSum > 0)
-                s.Average = inAverage.Sum( (p, g) => p * g ) / avSum;
-
-            s.Points = cleanSessions.Sum(SessionStatus.inPoints);
-
-            decimal sum = taken.Sum(SessionStatus.Attended);
-            if (sum > 0) {
-                s.SuccessRate = taken.Sum(SessionStatus.inSuccess) * 100  / sum;
-            }
-
-            return s;
+                return averageable.Sum((p, g) => p * g) / avSum;
+            return 0;
         }
 
         private void computeSemester(int id)
@@ -156,7 +194,7 @@ namespace getGradesForms
                         summary.Points, summary.SuccessRate, summary.Average));
             }
             else if (decimal.TryParse(successRate, out p))
-                summary.Points = taken.Sum();
+                summary = computeSemester(taken);
             else
                 MessageBox.Show(string.Format(
                     "Cannot parse: ({0} {1} {2})", points , successRate , average));
@@ -168,28 +206,18 @@ namespace getGradesForms
         internal Summary totalClean { get { return computeSemester(cleanView); } }
         internal Summary totalFaculty {
             get { 
-                return computeSemester(cleanView.Where(ses => ses.course.faculty == personalDetails.faculty));
+                return computeSemester(cleanView.Where(
+                    ses => ses.course.faculty == 
+                        personalDetails.faculty.Split("()".ToCharArray(), StringSplitOptions.RemoveEmptyEntries)[0]
+                    ));
             }
         }
         internal void updateCleanSlate()
         {
-            int n = semesters.Count;
-            for (int i = 0; i < n; i++)
+            for (int i = 0; i < semesters.Count; i++)
                 computeSemester(i);
 
-            cleanView.Clear();
-            HashSet<string> ignoreList = new HashSet<string>();
-            foreach (var row in sessions.OrderByDescending(cs => cs.index)) {
-                if (!row.status.HasFlag(SessionStatus.Passed)) {
-                    ignoreList.Add(row.courseName);
-                    continue;
-                }
-                if (!row.status.HasFlag(SessionStatus.inPoints))
-                    continue;
-                if (!ignoreList.Contains(row.courseName) && cleanView.All(x => x.courseName != row.courseName)
-                    || !row.course.onceOnly)
-                    cleanView.Add(row);
-            }
+            cleanView = new BindingList<CourseSession>(filterLasts(sessions.Where(x => x.Passed)));
         }
     }
 }
