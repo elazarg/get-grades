@@ -1,4 +1,4 @@
-﻿using System;
+ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
@@ -121,6 +121,9 @@ namespace getGradesForms
 
                 {"לא השלים ש*",      SessionStatus.LoShStar },
                {"לא השלים ש",       SessionStatus.LoSh },
+                {"לא השלים מילואים*",      SessionStatus.LoShStar },
+               {"לא השלים מילואים",       SessionStatus.LoSh },
+
 
                {"לא השלים*",        SessionStatus.InCompleteStar },
 
