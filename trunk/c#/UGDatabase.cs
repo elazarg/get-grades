@@ -67,8 +67,7 @@ namespace getGradesForms
             personalDetails = new PersonalDetails {
                     date = DateTime.Today,
                     id = id,
-                    firstName = fullName[0],
-                    lastName = fullName[1],
+                    Name = name,
                     program = program, 
                     faculty = faculty
                 };

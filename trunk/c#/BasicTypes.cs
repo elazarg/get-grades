@@ -9,8 +9,7 @@ namespace getGradesForms
     {
         public DateTime date { get; set; }
         public string id { get; set; }
-        public string firstName { get; set; }
-        public string lastName { get; set; }
+        public string Name { get; set; }
         public string program { get; set; }
         public string faculty { get; set; }
     }
@@ -117,27 +116,27 @@ namespace getGradesForms
 
         static Dictionary<string, SessionStatus> commentToStatus = new Dictionary<string,SessionStatus> {
                
-                {"-",                 SessionStatus.Minus },
+               {"-",                 SessionStatus.Minus },
 
-                {"לא השלים ש*",      SessionStatus.LoShStar },
-               {"לא השלים ש",       SessionStatus.LoSh },
-                {"לא השלים מילואים*",      SessionStatus.LoShStar },
-               {"לא השלים מילואים",       SessionStatus.LoSh },
+               {"לא השלים ש*",          SessionStatus.LoShStar },
+               {"לא השלים ש",           SessionStatus.LoSh },
+               {"לא השלים מילואים*",   SessionStatus.LoShStar },
+               {"לא השלים מילואים",    SessionStatus.LoSh },
 
 
                {"לא השלים*",        SessionStatus.InCompleteStar },
 
 
-               {"לא השלים",         SessionStatus.InComplete },
-               {"נכשל",              SessionStatus.Failed },
+               {"לא השלים",        SessionStatus.InComplete },
+               {"נכשל",             SessionStatus.Failed },
 
                {"נכשל*",            SessionStatus.FailedStar },
-               {"פטור ללא ניקוד",   SessionStatus.Ptor },
-               {"פטור עם ניקוד",    SessionStatus.Ptor },
+               {"פטור ללא ניקוד",  SessionStatus.Ptor },
+               {"פטור עם ניקוד",   SessionStatus.Ptor },
                {"עבר",              SessionStatus.Passed },
 
                {"",                 SessionStatus.Ptor }, // ? not sure
-               {"<BR>",                 SessionStatus.Ptor }, // ? not sure
+               {"<BR>",             SessionStatus.Ptor }, // ? not sure
         };
 
         internal Course course;
