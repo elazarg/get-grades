@@ -123,7 +123,7 @@ namespace getGradesForms
             browser.Navigate(htmlfilename);
 
             var details = ugDatabase.personalDetails;
-            labelName.Text = details.firstName + " " + details.lastName + " ," + details.id;
+            labelName.Text = details.Name + " ," + details.id;
             labelFaculty.Text = details.faculty;
             labelProgram.Text = details.program;
 
