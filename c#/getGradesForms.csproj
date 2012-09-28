@@ -83,7 +83,10 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Messaging" />
+    <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
@@ -94,9 +97,15 @@
       <DependentUpon>AboutBox.cs</DependentUpon>
     </Compile>
     <Compile Include="AssemblyInfo.cs" />
-    <Compile Include="Connection.cs" />
     <Compile Include="BasicTypes.cs" />
+    <Compile Include="ConnectionControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ConnectionControl.Designer.cs">
+      <DependentUpon>ConnectionControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="grades.cs" />
+    <Compile Include="GradesDocument.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -126,6 +135,9 @@
     <EmbeddedResource Include="AboutBox.resx">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ConnectionControl.resx">
+      <DependentUpon>ConnectionControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -141,6 +153,8 @@
     <None Include="app.config" />
     <None Include="Properties\app.manifest" />
     <None Include="Properties\DataSources\MainForm.datasource" />
+    <None Include="Properties\DataSources\PersonalDetails.datasource" />
+    <None Include="Properties\DataSources\Summary.datasource" />
     <None Include="Properties\DataSources\UGDatabase.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

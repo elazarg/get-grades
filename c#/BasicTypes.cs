@@ -57,7 +57,7 @@ namespace getGradesForms
         internal bool onceOnly { get { return faculty!= "ספורט"; } }
     }
 
-    class Semester
+    class Semester : ICloneable
     {
         //int id;
         public int id { get; internal set;  }
@@ -70,6 +70,13 @@ namespace getGradesForms
         public decimal Average { get { return summary.Average; } }
         public decimal SuccessRate { get { return summary.SuccessRate; } }
         public decimal Points { get { return summary.Points; } }
+
+
+
+        public object Clone()
+        {
+            return MemberwiseClone();
+        }
     }
            
 
@@ -105,7 +112,7 @@ namespace getGradesForms
     }
 
 
-    internal class CourseSession
+    internal class CourseSession : ICloneable
     {
         static List<string> commentsOrder = new List<string> {
                "NOTHING",
@@ -139,19 +146,14 @@ namespace getGradesForms
                {"<BR>",             SessionStatus.Ptor }, // ? not sure
         };
 
-        internal Course course;
-        internal Semester semester;
 
-        internal SessionStatus status;
-
-        internal int index;
 
         public string courseId { get { return course.id.ToString(); } set { course.id = value; } }
         public string courseName { get { return course.name; } set { course.name = value; } }
         public decimal points { get { return course.points; } }
 
         public decimal _grade { get; private set; }
-        private string _comments;
+
         public string grade {
             get {
                 return _comments == "" ? _grade.ToString() : _comments;
@@ -173,10 +175,6 @@ namespace getGradesForms
                         else
                             return;
                         this.status = SessionStatus.Grade;
-                        /*
-                        if (_grade >= 55)
-                            this.status |= SessionStatus.Passed;
-                         * */
                         _comments = "";
                         return;
                     }
@@ -192,9 +190,30 @@ namespace getGradesForms
             get { return status.HasFlag(SessionStatus.Passed)
                       || status.HasFlag(SessionStatus.Grade) && _grade >= 55; } }
 
+        public bool inList { get; set; }
         internal decimal mult()
         {
             return _grade * points;
+        }
+
+        internal Course course;
+        internal Semester semester;
+        internal SessionStatus status;
+        internal int index;
+        private string _comments;
+
+        public object Clone()
+        {/*
+            CourseSession res = new CourseSession {
+                course = course,
+                semester = semester,
+                status = status,
+                _grade = _grade,
+                index = index,
+                inList = inList,
+                _comments = _comments,
+            };*/
+            return this.MemberwiseClone();
         }
     }
 
