@@ -35,16 +35,12 @@
             this.newToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.openToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.saveToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.copyToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.helpToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.toolStripGoButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripRefresButton = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
-            this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabCleanSlate = new System.Windows.Forms.TabPage();
@@ -59,6 +55,7 @@
             this.SurfToCourseToolStripMenuIt = new System.Windows.Forms.ToolStripMenuItem();
             this.SurfToUGToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteLineToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.RestoreLinesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.uGDatabaseBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabSessions = new System.Windows.Forms.TabPage();
             this.dataGridViewSessions = new System.Windows.Forms.DataGridView();
@@ -92,12 +89,15 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
             this.textBoxAvrgClean = new System.Windows.Forms.TextBox();
+            this.summaryBindingSourceClean = new System.Windows.Forms.BindingSource(this.components);
             this.label2 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxAvrgFaculty = new System.Windows.Forms.TextBox();
+            this.summaryBindingSourceFaculty = new System.Windows.Forms.BindingSource(this.components);
             this.textBoxSuccessRate = new System.Windows.Forms.TextBox();
+            this.summaryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.textBoxPoints = new System.Windows.Forms.TextBox();
             this.textBoxAvGrade = new System.Windows.Forms.TextBox();
             this.personalDetailsGroup = new System.Windows.Forms.GroupBox();
@@ -109,6 +109,7 @@
             this.detailsBox = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.labelName = new System.Windows.Forms.Label();
+            this.personalDetailsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.labelProgram = new System.Windows.Forms.Label();
             this.labelFaculty = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -142,9 +143,13 @@
             this.statusStrip1.SuspendLayout();
             this.statusStrip2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.summaryBindingSourceClean)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.summaryBindingSourceFaculty)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.summaryBindingSource)).BeginInit();
             this.personalDetailsGroup.SuspendLayout();
             this.detailsBox.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.personalDetailsBindingSource)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.toolStrip3.SuspendLayout();
@@ -172,9 +177,7 @@
             this.newToolStripButton,
             this.openToolStripButton,
             this.saveToolStripButton,
-            this.toolStripSeparator,
             this.copyToolStripButton,
-            this.toolStripSeparator1,
             this.helpToolStripButton});
             this.toolStrip1.Name = "toolStrip1";
             // 
@@ -183,6 +186,7 @@
             this.newToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             resources.ApplyResources(this.newToolStripButton, "newToolStripButton");
             this.newToolStripButton.Name = "newToolStripButton";
+            this.newToolStripButton.Padding = new System.Windows.Forms.Padding(0, 0, 3, 0);
             this.newToolStripButton.Click += new System.EventHandler(this.buttonClear_Click);
             // 
             // openToolStripButton
@@ -190,6 +194,7 @@
             this.openToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             resources.ApplyResources(this.openToolStripButton, "openToolStripButton");
             this.openToolStripButton.Name = "openToolStripButton";
+            this.openToolStripButton.Padding = new System.Windows.Forms.Padding(0, 0, 3, 0);
             // 
             // saveToolStripButton
             // 
@@ -198,22 +203,12 @@
             this.saveToolStripButton.Name = "saveToolStripButton";
             this.saveToolStripButton.Click += new System.EventHandler(this.saveAs_Click);
             // 
-            // toolStripSeparator
-            // 
-            this.toolStripSeparator.Name = "toolStripSeparator";
-            resources.ApplyResources(this.toolStripSeparator, "toolStripSeparator");
-            // 
             // copyToolStripButton
             // 
             this.copyToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             resources.ApplyResources(this.copyToolStripButton, "copyToolStripButton");
             this.copyToolStripButton.Name = "copyToolStripButton";
             this.copyToolStripButton.Click += new System.EventHandler(this.copyToolStripButton_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
             // 
             // helpToolStripButton
             // 
@@ -229,8 +224,7 @@
             this.toolStrip2.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripGoButton,
-            this.toolStripRefresButton,
-            this.toolStripSeparator2});
+            this.toolStripRefresButton});
             this.toolStrip2.Name = "toolStrip2";
             this.toolStrip2.Stretch = true;
             // 
@@ -250,23 +244,10 @@
             this.toolStripRefresButton.Name = "toolStripRefresButton";
             this.toolStripRefresButton.Click += new System.EventHandler(this.buttonRefresh_Click);
             // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            resources.ApplyResources(this.toolStripSeparator2, "toolStripSeparator2");
-            // 
             // saveFileDialog
             // 
             resources.ApplyResources(this.saveFileDialog, "saveFileDialog");
             this.saveFileDialog.FileOk += new System.ComponentModel.CancelEventHandler(this.saveFileDialog1_FileOk);
-            // 
-            // backgroundWorker
-            // 
-            this.backgroundWorker.WorkerReportsProgress = true;
-            this.backgroundWorker.WorkerSupportsCancellation = true;
-            this.backgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
-            this.backgroundWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker1_ProgressChanged);
-            this.backgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
             // 
             // tableLayoutPanel1
             // 
@@ -309,7 +290,6 @@
             this.dataGridViewCleanSlate.AllowUserToDeleteRows = false;
             this.dataGridViewCleanSlate.AllowUserToOrderColumns = true;
             this.dataGridViewCleanSlate.AllowUserToResizeRows = false;
-            resources.ApplyResources(this.dataGridViewCleanSlate, "dataGridViewCleanSlate");
             this.dataGridViewCleanSlate.AutoGenerateColumns = false;
             this.dataGridViewCleanSlate.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewCleanSlate.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -321,10 +301,14 @@
             this.dataGridViewCleanSlate.ContextMenuStrip = this.contextMenuStrip1;
             this.dataGridViewCleanSlate.DataMember = "cleanView";
             this.dataGridViewCleanSlate.DataSource = this.uGDatabaseBindingSource;
+            resources.ApplyResources(this.dataGridViewCleanSlate, "dataGridViewCleanSlate");
             this.dataGridViewCleanSlate.Name = "dataGridViewCleanSlate";
             this.dataGridViewCleanSlate.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewCleanSlate.TabStop = false;
             this.dataGridViewCleanSlate.CellContextMenuStripNeeded += new System.Windows.Forms.DataGridViewCellContextMenuStripNeededEventHandler(this.dataGridViewCleanSlate_CellContextMenuStripNeeded);
+            this.dataGridViewCleanSlate.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewSessions_ColumnHeaderMouseClick);
             this.dataGridViewCleanSlate.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.dataGridViewCleanSlate_RowsRemoved);
+            this.dataGridViewCleanSlate.MouseEnter += new System.EventHandler(this.dataGridView_MouseEnter);
             // 
             // courseIdDataGridViewTextBoxColumn2
             // 
@@ -372,7 +356,8 @@
             this.toolStripMenuItem1,
             this.SurfToCourseToolStripMenuIt,
             this.SurfToUGToolStripMenuItem,
-            this.deleteLineToolStripMenuItem});
+            this.deleteLineToolStripMenuItem,
+            this.RestoreLinesToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             resources.ApplyResources(this.contextMenuStrip1, "contextMenuStrip1");
             // 
@@ -399,6 +384,12 @@
             this.deleteLineToolStripMenuItem.Name = "deleteLineToolStripMenuItem";
             resources.ApplyResources(this.deleteLineToolStripMenuItem, "deleteLineToolStripMenuItem");
             this.deleteLineToolStripMenuItem.Click += new System.EventHandler(this.deleteRowToolStripMenuItem_Click);
+            // 
+            // RestoreLinesToolStripMenuItem
+            // 
+            this.RestoreLinesToolStripMenuItem.Name = "RestoreLinesToolStripMenuItem";
+            resources.ApplyResources(this.RestoreLinesToolStripMenuItem, "RestoreLinesToolStripMenuItem");
+            this.RestoreLinesToolStripMenuItem.Click += new System.EventHandler(this.RestoreLinesToolStripMenuItem_Click);
             // 
             // uGDatabaseBindingSource
             // 
@@ -430,10 +421,12 @@
             resources.ApplyResources(this.dataGridViewSessions, "dataGridViewSessions");
             this.dataGridViewSessions.Name = "dataGridViewSessions";
             this.dataGridViewSessions.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewSessions.TabStop = false;
             this.dataGridViewSessions.CellContextMenuStripNeeded += new System.Windows.Forms.DataGridViewCellContextMenuStripNeededEventHandler(this.dataGridViewCleanSlate_CellContextMenuStripNeeded);
             this.dataGridViewSessions.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGrid_SomethingChanged);
             this.dataGridViewSessions.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewSessions_ColumnHeaderMouseClick);
             this.dataGridViewSessions.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.dataGridViewSessions_RowsRemoved);
+            this.dataGridViewSessions.MouseEnter += new System.EventHandler(this.dataGridView_MouseEnter);
             // 
             // courseIdDataGridViewTextBoxColumn1
             // 
@@ -502,7 +495,9 @@
             this.dataGridViewCourseList.Name = "dataGridViewCourseList";
             this.dataGridViewCourseList.ReadOnly = true;
             this.dataGridViewCourseList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewCourseList.TabStop = false;
             this.dataGridViewCourseList.CellContextMenuStripNeeded += new System.Windows.Forms.DataGridViewCellContextMenuStripNeededEventHandler(this.dataGridViewCleanSlate_CellContextMenuStripNeeded);
+            this.dataGridViewCourseList.MouseEnter += new System.EventHandler(this.dataGridView_MouseEnter);
             // 
             // idDataGridViewTextBoxColumn1
             // 
@@ -564,7 +559,9 @@
             resources.ApplyResources(this.dataGridViewSemesters, "dataGridViewSemesters");
             this.dataGridViewSemesters.Name = "dataGridViewSemesters";
             this.dataGridViewSemesters.ReadOnly = true;
+            this.dataGridViewSemesters.TabStop = false;
             this.dataGridViewSemesters.CellContextMenuStripNeeded += new System.Windows.Forms.DataGridViewCellContextMenuStripNeededEventHandler(this.dataGridViewSemesters_CellContextMenuStripNeeded);
+            this.dataGridViewSemesters.MouseHover += new System.EventHandler(this.dataGridView_MouseEnter);
             // 
             // yearDataGridViewTextBoxColumn
             // 
@@ -639,6 +636,7 @@
             resources.ApplyResources(this.browser, "browser");
             this.browser.MinimumSize = new System.Drawing.Size(20, 20);
             this.browser.Name = "browser";
+            this.browser.TabStop = false;
             // 
             // statusStrip1
             // 
@@ -689,61 +687,88 @@
             // 
             resources.ApplyResources(this.label3, "label3");
             this.label3.Name = "label3";
+            this.toolTip1.SetToolTip(this.label3, resources.GetString("label3.ToolTip"));
             this.label3.TextChanged += new System.EventHandler(this.labelPD_TextChanged);
             // 
             // textBoxAvrgClean
             // 
             resources.ApplyResources(this.textBoxAvrgClean, "textBoxAvrgClean");
+            this.textBoxAvrgClean.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.summaryBindingSourceClean, "Average", true));
             this.textBoxAvrgClean.Name = "textBoxAvrgClean";
             this.textBoxAvrgClean.ReadOnly = true;
+            this.textBoxAvrgClean.TabStop = false;
+            // 
+            // summaryBindingSourceClean
+            // 
+            this.summaryBindingSourceClean.DataSource = typeof(getGradesForms.Summary);
             // 
             // label2
             // 
             resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
+            this.toolTip1.SetToolTip(this.label2, resources.GetString("label2.ToolTip"));
             this.label2.TextChanged += new System.EventHandler(this.labelPD_TextChanged);
             // 
             // label6
             // 
             resources.ApplyResources(this.label6, "label6");
             this.label6.Name = "label6";
+            this.toolTip1.SetToolTip(this.label6, resources.GetString("label6.ToolTip"));
             this.label6.TextChanged += new System.EventHandler(this.labelPD_TextChanged);
             // 
             // label5
             // 
             resources.ApplyResources(this.label5, "label5");
             this.label5.Name = "label5";
+            this.toolTip1.SetToolTip(this.label5, resources.GetString("label5.ToolTip"));
             this.label5.TextChanged += new System.EventHandler(this.labelPD_TextChanged);
             // 
             // label1
             // 
             resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
+            this.toolTip1.SetToolTip(this.label1, resources.GetString("label1.ToolTip"));
             this.label1.TextChanged += new System.EventHandler(this.labelPD_TextChanged);
             // 
             // textBoxAvrgFaculty
             // 
             resources.ApplyResources(this.textBoxAvrgFaculty, "textBoxAvrgFaculty");
+            this.textBoxAvrgFaculty.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.summaryBindingSourceFaculty, "Average", true));
             this.textBoxAvrgFaculty.Name = "textBoxAvrgFaculty";
             this.textBoxAvrgFaculty.ReadOnly = true;
+            this.textBoxAvrgFaculty.TabStop = false;
+            // 
+            // summaryBindingSourceFaculty
+            // 
+            this.summaryBindingSourceFaculty.DataSource = typeof(getGradesForms.Summary);
             // 
             // textBoxSuccessRate
             // 
             resources.ApplyResources(this.textBoxSuccessRate, "textBoxSuccessRate");
+            this.textBoxSuccessRate.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.summaryBindingSource, "SuccessRate", true));
             this.textBoxSuccessRate.Name = "textBoxSuccessRate";
             this.textBoxSuccessRate.ReadOnly = true;
+            this.textBoxSuccessRate.TabStop = false;
+            // 
+            // summaryBindingSource
+            // 
+            this.summaryBindingSource.DataSource = typeof(getGradesForms.Summary);
             // 
             // textBoxPoints
             // 
             resources.ApplyResources(this.textBoxPoints, "textBoxPoints");
+            this.textBoxPoints.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.summaryBindingSource, "Points", true));
             this.textBoxPoints.Name = "textBoxPoints";
             this.textBoxPoints.ReadOnly = true;
+            this.textBoxPoints.TabStop = false;
             // 
             // textBoxAvGrade
             // 
             resources.ApplyResources(this.textBoxAvGrade, "textBoxAvGrade");
+            this.textBoxAvGrade.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.summaryBindingSource, "Average", true));
             this.textBoxAvGrade.Name = "textBoxAvGrade";
             this.textBoxAvGrade.ReadOnly = true;
+            this.textBoxAvGrade.TabStop = false;
             // 
             // personalDetailsGroup
             // 
@@ -762,6 +787,7 @@
             resources.ApplyResources(this.passwordCheckBox, "passwordCheckBox");
             this.passwordCheckBox.Name = "passwordCheckBox";
             this.passwordCheckBox.TabStop = false;
+            this.toolTip1.SetToolTip(this.passwordCheckBox, resources.GetString("passwordCheckBox.ToolTip"));
             this.passwordCheckBox.UseVisualStyleBackColor = true;
             this.passwordCheckBox.CheckStateChanged += new System.EventHandler(this.passwordCheckBox_CheckStateChanged);
             // 
@@ -812,18 +838,25 @@
             // labelName
             // 
             resources.ApplyResources(this.labelName, "labelName");
+            this.labelName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.personalDetailsBindingSource, "Name", true));
             this.labelName.Name = "labelName";
             this.labelName.TextChanged += new System.EventHandler(this.labelPD_TextChanged);
+            // 
+            // personalDetailsBindingSource
+            // 
+            this.personalDetailsBindingSource.DataSource = typeof(getGradesForms.PersonalDetails);
             // 
             // labelProgram
             // 
             resources.ApplyResources(this.labelProgram, "labelProgram");
+            this.labelProgram.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.personalDetailsBindingSource, "program", true));
             this.labelProgram.Name = "labelProgram";
             this.labelProgram.TextChanged += new System.EventHandler(this.labelPD_TextChanged);
             // 
             // labelFaculty
             // 
             resources.ApplyResources(this.labelFaculty, "labelFaculty");
+            this.labelFaculty.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.personalDetailsBindingSource, "faculty", true));
             this.labelFaculty.Name = "labelFaculty";
             this.labelFaculty.TextChanged += new System.EventHandler(this.labelPD_TextChanged);
             // 
@@ -929,11 +962,15 @@
             this.statusStrip2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.summaryBindingSourceClean)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.summaryBindingSourceFaculty)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.summaryBindingSource)).EndInit();
             this.personalDetailsGroup.ResumeLayout(false);
             this.personalDetailsGroup.PerformLayout();
             this.detailsBox.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.personalDetailsBindingSource)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
@@ -946,7 +983,6 @@
         #endregion
 
         private System.Windows.Forms.SaveFileDialog saveFileDialog;
-        private System.ComponentModel.BackgroundWorker backgroundWorker;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.GroupBox personalDetailsGroup;
         private System.Windows.Forms.CheckBox passwordCheckBox;
@@ -1009,9 +1045,7 @@
         private System.Windows.Forms.ToolStripButton newToolStripButton;
         private System.Windows.Forms.ToolStripButton openToolStripButton;
         private System.Windows.Forms.ToolStripButton saveToolStripButton;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator;
         private System.Windows.Forms.ToolStripButton copyToolStripButton;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton helpToolStripButton;
         private System.Windows.Forms.ToolStrip toolStrip2;
         private System.Windows.Forms.ToolStripButton toolStripRefresButton;
@@ -1021,21 +1055,25 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn points;
         private System.Windows.Forms.DataGridViewTextBoxColumn gradeDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.ToolStripButton toolStripGoButton;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.ToolStrip toolStrip3;
+        private System.Windows.Forms.ToolStripButton updatetoolStripButton;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3; 
+        private System.Windows.Forms.ToolStripLabel linkGuyLabel;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox textBoxAvrgFaculty;
+        private System.Windows.Forms.BindingSource personalDetailsBindingSource;
+        private System.Windows.Forms.BindingSource summaryBindingSource;
+        private System.Windows.Forms.BindingSource summaryBindingSourceClean;
+        private System.Windows.Forms.BindingSource summaryBindingSourceFaculty;
+        private System.Windows.Forms.ToolStripMenuItem RestoreLinesToolStripMenuItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn courseIdDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn courseNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn gradeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn _grade;
-        private System.Windows.Forms.ToolStripButton toolStripGoButton;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.ToolStrip toolStrip3;
-        private System.Windows.Forms.ToolStripButton updatetoolStripButton;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-        private System.Windows.Forms.ToolStripLabel linkGuyLabel;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBoxAvrgFaculty;
     }
 }
 

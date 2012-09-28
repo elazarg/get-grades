@@ -7,99 +7,102 @@ namespace getGradesForms
 {
     class Grades
     {
-        public readonly UGDatabase dataSet = new UGDatabase();
-        public String raw_html { get; private set; }
-        public String html { get; private set; }
+
+        ConnectionControl conn;
+
+        public string raw_html;
+        public GradesDocument emptyDocument;
+        public GradesDocument rawDocument;
+        public GradesDocument document;
+
+        public Grades()
+        {
+            conn = new ConnectionControl();
+            emptyDocument = new GradesDocument();
+        }
+
         public String csv
         {
             get
             {
-                return SString.Join("\r\n",  dataSet.cleanView.Select(
+                return SString.Join("\r\n",  document.dataSet.cleanView.Select(
                        row => SString.Join(" , ", new string[] {
                            row.courseId, row.courseName, row.grade.ToString()
                        })));
             }
         }
 
-        internal BackgroundWorker bw;
-
         public enum State {
             READY,
             CONNECTING,
+            CONNECTED,
             AUTHENTICATING,
+            AUTHENTICATED,
             PROCESSING,
             FAILED,
             DONE
         }
+
+        public delegate void Tick(State state);
+        public event Tick tick = delegate { };
 
         private State innerState; 
         public State state {
             get { return innerState; }
             private set {
                 innerState = value;
-                if (bw != null)
-                    bw.ReportProgress(1, innerState);
-            }
-        }
-        private void connectAndDownload(string userid, string password)
-        {
-            state = State.CONNECTING;
-            using (Connection conn = new Connection())
-            {
-                conn.connect();
-                conn.tick += delegate { bw.ReportProgress(10); };
-                state = State.AUTHENTICATING;
-                raw_html = conn.retrieveHTML(userid, password);
+                tick(innerState);
             }
         }
 
-        Processor pr = null;
+        internal void connect()
+        {
+            if (!conn.isConnected) {
+                state = State.CONNECTING;
+                conn.tick += delegate { tick(state); };
+                conn.connect();
+                state = State.CONNECTED;
+            }
+        }
+
+        public void retrieve(string userid, string password) {
+            state = State.AUTHENTICATING;
+            raw_html = conn.retrieveHTML(userid, password);
+            state = State.AUTHENTICATED;
+        }
+
         internal void process()
         {
             state = State.PROCESSING;
-            dataSet.init();
-            pr = new Processor(raw_html);
-            pr.sessionFound         += this.dataSet.addSession;
-            pr.semesterFound        += this.dataSet.addSemester;
-            pr.personalDetailsFound += this.dataSet.addPersonalDetails;
-            pr.semesterFinished     += this.dataSet.addEndSemester;
-            pr.processText();
-            html = pr.fixedHtml;
+            rawDocument = new GradesDocument(raw_html);
+            restore();
+            state = State.DONE;
+        }
 
-            dataSet.updateCleanSlate();
+        internal void restore()
+        {
+            document = (GradesDocument)rawDocument.Clone();
         }
 
         public string getRawHtml()
         {
-            if (pr != null)
-                return pr.raw_html;
+            if (document != null)
+                return raw_html;
             return "";
         }
 
-        public Grades(string userid, string password, BackgroundWorker bw)
-        {
-
-            this.bw = bw;
-
-            this.state = State.READY;
-
-            connectAndDownload(userid, password); 
-
-            process();
-
-            this.state = State.DONE;
-        }
 
         public void saveCsvFile(string fileName)
         {
-            File.WriteAllText(fileName, csv, Connection.hebrewEncoding);
+            File.WriteAllText(fileName, csv, ConnectionControl.hebrewEncoding);
         }
 
         internal void logOut()
         {
-            html = "";
-            pr = null;
-            dataSet.Clear();
+            raw_html = "";
+            if (document != null)
+                   document.clear();
+            this.state = State.READY;
         }
     }
 }

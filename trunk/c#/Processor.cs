@@ -22,18 +22,12 @@ namespace getGradesForms
 
     class Processor
     {
-        internal Processor(String html_in)
-        {
-            this.raw_html = "<HTML DIR=\"RTL\"><BODY><DIV ALIGN=RIGHT>"
-                + Regex.Match(html_in, "(?<=<P>).*</HTML>", RegexOptions.Singleline).Value;
-            tables = fixHtml(raw_html);
-        }
 
         public delegate void PersonalDetailsFound(string date, string id, string name, string faculty, string program);
         public event PersonalDetailsFound personalDetailsFound = delegate { };
 
         public delegate void SessionFound(string Course_ID, string name, string points, string grade);
-        public event SessionFound sessionFound = delegate { };
+        public event SessionFound sessionFound;// = delegate { };
 
         public delegate void SemesterFound(string year, string hebrewYear, string season);
         public event SemesterFound semesterFound = delegate { };
@@ -45,8 +39,13 @@ namespace getGradesForms
         internal string fixedHtml;
         private string[][][] tables;
 
-        internal void processText()
+        internal void processText(string html_in)
         {
+            this.raw_html = "<HTML DIR=\"RTL\"><BODY><DIV ALIGN=RIGHT>"
+                + Regex.Match(html_in, "(?<=<P>).*</HTML>", RegexOptions.Singleline).Value;
+
+            tables = fixHtml(raw_html);
+
             personalDetailsFound(tables[0][0][1], tables[0][1][1], tables[0][2][1], tables[0][3][1], tables[0][4][1]);
             //TODO Summary - tables[1][1];
             foreach (var table in tables.Skip(2))
