@@ -2,6 +2,9 @@
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
+using System.Net;
+using System.Text.RegularExpressions;
+using System.Windows.Forms;
 
 namespace getGradesForms
 {
@@ -65,11 +68,14 @@ namespace getGradesForms
             }
         }
 
+
         public void retrieve(string userid, string password) {
             state = State.AUTHENTICATING;
             raw_html = conn.retrieveHTML(userid, password);
             state = State.AUTHENTICATED;
         }
+
+
 
         internal void process()
         {
