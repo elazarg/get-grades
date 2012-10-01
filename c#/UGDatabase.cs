@@ -63,7 +63,6 @@ namespace getGradesForms
 
         internal void addPersonalDetails(string date, string id, string name, string faculty, string program)
         {
-            string[] fullName = name.Split(new char[] { ' ' });
             personalDetails = new PersonalDetails {
                     date = DateTime.Today,
                     id = id,
@@ -78,8 +77,7 @@ namespace getGradesForms
 
         internal void addSession(string courseId, string courseName, string points, string grade)
         {
-            Course course = new Course
-            {
+            Course course = new Course {
                 id = courseId,
                 name = courseName.Replace("'", ""),
                 points = decimal.Parse(points)
@@ -90,11 +88,11 @@ namespace getGradesForms
             CourseSession courseSession = new CourseSession {
                 index = sessions.Count + 1,
                 course = course,
-                semester = semesters.Last(),
+                semester = semesters.Aggregate( (prev, cur) => prev.index > cur.index ? prev : cur),
                 grade = grade.Trim(),
                 inList = true,
             };
-            sessions.Add(courseSession);
+            sessions.Insert(0, courseSession);
         }
 
         private Summary computeSemester(IEnumerable<CourseSession> taken)
@@ -110,73 +108,57 @@ namespace getGradesForms
 
         private static List<CourseSession> filterLasts(IEnumerable<CourseSession> taken)
         {
-            var temp = taken.Where(x =>  x.inList 
-                  && !x.status.HasFlag(SessionStatus.LoSh)
-                  && !x.status.HasFlag(SessionStatus.Minus)
-                  && !x.status.HasFlag(SessionStatus.InCompleteStar))
-                  .OrderBy(x => x.index);
+            var toFilter = new SessionStatus[] {
+                SessionStatus.LoSh,  SessionStatus.Miluim, SessionStatus.MiluimStar,
+                SessionStatus.Minus, SessionStatus.InCompleteStar
+             };
+            var temp = taken.Where(x =>  x.inList && !toFilter.Contains(x.status)).OrderBy(x => x.index);
 
-            var courseSet = new HashSet<string>(temp.Where(x => x.course.onceOnly).Select(x => x.courseName));
             var lasts = new List<CourseSession>(temp.Where(x => !x.course.onceOnly));
+            var courseSet = new HashSet<string>(temp.Where(x => x.course.onceOnly).Select(x => x.courseName));
             foreach (var name in courseSet) {
-                lasts.Add(temp.Last(x => x.courseName == name));
+                lasts.Add(temp.Where(x => x.courseName == name).Aggregate((prev, cur) => prev.index > cur.index ? prev : cur));
             }
             return lasts;
         }
 
-        static bool inSuccessPoints(CourseSession x) 
-        {
-            return x.inList && (
-                 x.status.HasFlag(SessionStatus.Failed)
-              || x.status.HasFlag(SessionStatus.Passed)
-              || x.status.HasFlag(SessionStatus.InComplete)
-              || x.status.HasFlag(SessionStatus.InCompleteStar)
-              || x.status.HasFlag(SessionStatus.Grade));
-        }
         private static decimal getSuccessRate(IEnumerable<CourseSession> taken)
         {
-            var successable = taken.Where(inSuccessPoints);
+            var inSuccessPoints = new SessionStatus[] {
+                SessionStatus.Failed, SessionStatus.Passed, SessionStatus.InComplete, 
+                SessionStatus.InCompleteStar, SessionStatus.Grade
+            };
+            var successable = taken.Where(x => x.inList && inSuccessPoints.Contains(x.status));
             decimal sum = successable.Sum();
             if (sum > 0)
                 return successable.Where(x => x.Passed).Sum() * 100 / sum;
             return 0;
         }
 
-        static bool inAverage(CourseSession x)
-        {   
-            return x.status.HasFlag(SessionStatus.Grade);
-        }
         private static decimal getAverage(IEnumerable<CourseSession> lasts)
         {
-            var averageable = lasts.Where(inAverage);
+            var averageable = lasts.Where(x => x.status == SessionStatus.Grade);
             decimal sum = averageable.Sum();
             if (sum > 0)
                 return averageable.Sum((p, g) => p * g) / sum;
             return 0;
         }
 
-        static bool inPoints(CourseSession x)
-        {
-            return x.status.HasFlag(SessionStatus.Ptor)
-                  || x.status.HasFlag(SessionStatus.Passed)
-                  || x.Passed;
-        }
         private static decimal getPoints(IEnumerable<CourseSession> lasts)
         {
-            return lasts.Where(inPoints).Sum();
+            return lasts.Where(x => x.Passed).Sum();
         }
-
 
         private void computeSemester(int id)
         {
-            semesters.Single(sem => sem.id == id).summary =
-                computeSemester(sessions.Where(s => s.semester.id == id));
+            semesters.Single(sem => sem.index == id).summary =
+                computeSemester(sessions.Where(s => s.semester.index == id));
         }
 
         internal void addSemester(string year, string hebrewYear, string season)
         {
-            this.semesters.Add( new Semester {
-                                    id = semesters.Count(),
+            this.semesters.Insert(0,  new Semester {
+                                    index = semesters.Count(),
                                     year = year,
                                     season = season,
                                     hebrewYear = hebrewYear,
@@ -185,8 +167,8 @@ namespace getGradesForms
 
         internal void addEndSemester(string successRate, string points, string average)
         {
-            Semester last = this.semesters.Last();
-            IEnumerable<CourseSession> taken = sessions.Where(s => s.semester.id == last.id);
+            Semester last = this.semesters.Aggregate((prev, cur) => prev.index > cur.index ? prev : cur);
+            IEnumerable<CourseSession> taken = sessions.Where(s => s.semester.index == last.index);
             Summary summary = computeSemester(taken);
 
             // validation
@@ -228,22 +210,27 @@ namespace getGradesForms
 
             cleanView = new SortableBindingList<CourseSession>(
                 filterLasts(sessions.Where(x => x.Passed)
-                            .Select(x => (CourseSession)x.Clone())));
+                            .Select(x => (CourseSession)x.Clone())).OrderBy(x => x._grade).Reverse());
+        }
+
+        private UGDatabase(UGDatabase other)
+        {
+            this.personalDetails = other.personalDetails;
+            this.courses = new SortableBindingList<Course>(other.courses);
+            this.semesters = new SortableBindingList<Semester>();
+            foreach (var i in other.semesters)
+                this.semesters.Add((Semester)i.Clone());
+            this.sessions = new SortableBindingList<CourseSession>();
+            foreach (var i in other.sessions)
+                this.sessions.Add((CourseSession)i.Clone());
+            this.cleanView = new SortableBindingList<CourseSession>();
+            foreach (var i in other.cleanView)
+                this.cleanView.Add((CourseSession)i.Clone());
         }
 
         public object Clone()
         {
-            UGDatabase res = new UGDatabase();
-            res.personalDetails = personalDetails;
-            foreach (var i in this.courses)
-                res.courses.Add(i);
-            foreach (var i in this.semesters)
-                res.semesters.Add((Semester)i.Clone());
-            foreach (var i in this.sessions)
-                res.sessions.Add((CourseSession)i.Clone());
-            foreach (var i in this.cleanView)
-                res.cleanView.Add((CourseSession)i.Clone());
-            return res;
+            return new UGDatabase(this);
         }
     }
 }

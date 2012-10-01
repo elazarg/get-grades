@@ -14,7 +14,6 @@ namespace getGradesForms
         public string faculty { get; set; }
     }
 
-
     static class Info
     {
         internal static Dictionary<string, string> idToFaculty = new Dictionary<string, string>
@@ -60,7 +59,7 @@ namespace getGradesForms
     class Semester : ICloneable
     {
         //int id;
-        public int id { get; internal set;  }
+        public int index { get; internal set;  }
         public string year { get; set; }
         public string season { get; set; }
         public string hebrewYear { get; set; }
@@ -95,41 +94,34 @@ namespace getGradesForms
         public decimal Points { get; set; }
     }
 
-
-    [Flags]
     internal enum SessionStatus
     {
-        Ptor = 1,
-        LoShStar = 2,
-        LoSh = 4,
-        Passed = 8,
-        InCompleteStar = 16,
-        InComplete = 32,
-        Failed = 64,
-        FailedStar = 128,
-        Minus = 256,
-        Grade = 512
+        Ptor,
+        LoShStar,
+        LoSh,
+        Passed,
+        InCompleteStar,
+        InComplete,
+        Failed,
+        FailedStar,
+        Minus,
+        Grade,
+        MiluimStar,
+        Miluim
     }
 
 
     internal class CourseSession : ICloneable
     {
-        static List<string> commentsOrder = new List<string> {
-               "NOTHING",
-               "-", "לא השלים ש", "לא השלים ש*","לא השלים מילואים*", "לא השלים מילואים", 
-               "לא השלים*",
-               "לא השלים", "נכשל",
-               "נכשל*", "פטור ללא ניקוד","פטור עם ניקוד", "עבר", "" };
-
         static Dictionary<string, SessionStatus> commentToStatus = new Dictionary<string,SessionStatus> {
                
                {"-",                 SessionStatus.Minus },
 
                {"לא השלים ש*",          SessionStatus.LoShStar },
                {"לא השלים ש",           SessionStatus.LoSh },
-               {"לא השלים מילואים*",   SessionStatus.LoShStar },
-               {"לא השלים מילואים",    SessionStatus.LoSh },
 
+               {"לא השלים מילואים*",   SessionStatus.MiluimStar },
+               {"לא השלים מילואים",    SessionStatus.Miluim },
 
                {"לא השלים*",        SessionStatus.InCompleteStar },
 
@@ -145,8 +137,6 @@ namespace getGradesForms
                {"",                 SessionStatus.Ptor }, // ? not sure
                {"<BR>",             SessionStatus.Ptor }, // ? not sure
         };
-
-
 
         public string courseId { get { return course.id.ToString(); } set { course.id = value; } }
         public string courseName { get { return course.name; } set { course.name = value; } }
@@ -164,7 +154,7 @@ namespace getGradesForms
                     return;
                 if (commentToStatus.ContainsKey(value)) {
                     this.status = commentToStatus[value];
-                    this._grade = - commentsOrder.IndexOf(value);
+                    this._grade = - (int)(this.status);
                     this._comments = "";
                 }
                 else {
@@ -187,8 +177,9 @@ namespace getGradesForms
             }
         }
         internal bool Passed { 
-            get { return status.HasFlag(SessionStatus.Passed)
-                      || status.HasFlag(SessionStatus.Grade) && _grade >= 55; } }
+            get { return status == SessionStatus.Passed
+                        || status == SessionStatus.Ptor
+                        || status==SessionStatus.Grade && _grade >= 55; } }
 
         public bool inList { get; set; }
         internal decimal mult()
@@ -199,7 +190,7 @@ namespace getGradesForms
         internal Course course;
         internal Semester semester;
         internal SessionStatus status;
-        internal int index;
+        public int index { get; internal set; }
         private string _comments;
 
         public object Clone()

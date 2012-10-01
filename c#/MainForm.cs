@@ -58,14 +58,46 @@ namespace getGradesForms
         private void userIdBox_TextChanged(object sender, EventArgs e)
         {
             TextBox Sender = (TextBox)sender;
-            Func<int, int, int> tr = (int d, int i) => i % 2 == 1 ? d : (2 * d / 10) + (2 * d % 10);
+            int[,] arr = new int[2, 10] {
+                {0,1,2,3,4,5,6,7,8,9},
+                {0,2,4,6,8,1,3,5,7,9}
+            };
             Func<string, bool> validateId = delegate(string userid) {
-                var usernums = (from c in userid.Reverse() select int.Parse(char.ToString(c))).ToArray();
-                return usernums[0] == (10 - usernums.Skip(1).Select(tr).Sum() % 10);
+                var usernums = userid.Select(c => int.Parse(char.ToString(c)));
+                return usernums.Last() == (10-usernums.Take(8).Select((d, i) => arr[i%2, d]).Sum()%10) % 10;
             };
             idValid = Sender.TextLength / 2 == Sender.MaxLength / 2 //8 or 9
                 // && validateId(useridTextbox.Text)
                 ;
+            if (idValid) {
+                string id = useridTextbox.Text;
+                if (id.Length < 9)
+                    id = "0" + id;
+                if (validateId(id)) {
+                    DateTime rtime;
+                    switch (UG_API.getRtime(id, out rtime)) {
+                        case UG_API.StudentStatus.Valid:
+                            zimunLabel.Text = "תאריך רישום: " + rtime;
+                            Sender.ForeColor = Color.Green;
+                            break;
+                        case UG_API.StudentStatus.NoRishumTime:
+                            zimunLabel.Text = "";
+                            Sender.ForeColor = Color.Black;
+                            break;
+                        case UG_API.StudentStatus.DoesNotExist:
+                            zimunLabel.Text = "סטודנט לא קיים";
+                            Sender.ForeColor = Color.Red;
+                            break;
+                    }
+                }
+                else {
+                    Sender.ForeColor = Color.Blue;
+                    zimunLabel.Text = "מספר סטודנט לא תקין";
+                }
+            }
+            else {
+                Sender.ForeColor = Color.Black;
+            }
             checkEnabled();
         }
 
