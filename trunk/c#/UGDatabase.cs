@@ -20,13 +20,13 @@ namespace getGradesForms
         {
             if (func == null)
                 return cs.Sum(x => x.course.points);
-            return cs.Sum( x => x.mult() );
+            return cs.Sum(x => x._grade * x.points);
         }
-        /*
-        public static decimal Sum(this IEnumerable<CourseSession> cs, SessionStatus ss)
+
+        public static T LastIndex<T>(this IEnumerable<T> ug) where T : UGType
         {
-            return cs.Where(ss).Sum();
-        }*/
+            return ug.Aggregate((prev, cur) => prev.index > cur.index ? prev : cur);
+        }
     }
 
     class UGDatabase : ICloneable
@@ -88,7 +88,7 @@ namespace getGradesForms
             CourseSession courseSession = new CourseSession {
                 index = sessions.Count + 1,
                 course = course,
-                semester = semesters.Aggregate( (prev, cur) => prev.index > cur.index ? prev : cur),
+                semester = semesters.LastIndex(),
                 grade = grade.Trim(),
                 inList = true,
             };
@@ -117,7 +117,7 @@ namespace getGradesForms
             var lasts = new List<CourseSession>(temp.Where(x => !x.course.onceOnly));
             var courseSet = new HashSet<string>(temp.Where(x => x.course.onceOnly).Select(x => x.courseName));
             foreach (var name in courseSet) {
-                lasts.Add(temp.Where(x => x.courseName == name).Aggregate((prev, cur) => prev.index > cur.index ? prev : cur));
+                lasts.Add(temp.Where(x => x.courseName == name).LastIndex());
             }
             return lasts;
         }
@@ -131,7 +131,7 @@ namespace getGradesForms
             var successable = taken.Where(x => x.inList && inSuccessPoints.Contains(x.status));
             decimal sum = successable.Sum();
             if (sum > 0)
-                return successable.Where(x => x.Passed).Sum() * 100 / sum;
+                return successable.Where(CourseSession.Passed).Sum() * 100 / sum;
             return 0;
         }
 
@@ -146,7 +146,7 @@ namespace getGradesForms
 
         private static decimal getPoints(IEnumerable<CourseSession> lasts)
         {
-            return lasts.Where(x => x.Passed).Sum();
+            return lasts.Where(CourseSession.Passed).Sum();
         }
 
         private void computeSemester(int id)
@@ -167,7 +167,7 @@ namespace getGradesForms
 
         internal void addEndSemester(string successRate, string points, string average)
         {
-            Semester last = this.semesters.Aggregate((prev, cur) => prev.index > cur.index ? prev : cur);
+            Semester last = this.semesters.LastIndex();
             IEnumerable<CourseSession> taken = sessions.Where(s => s.semester.index == last.index);
             Summary summary = computeSemester(taken);
 
@@ -209,7 +209,7 @@ namespace getGradesForms
                 computeSemester(i);
 
             cleanView = new SortableBindingList<CourseSession>(
-                filterLasts(sessions.Where(x => x.Passed)
+                filterLasts(sessions.Where(CourseSession.Passed)
                             .Select(x => (CourseSession)x.Clone())).OrderBy(x => x._grade).Reverse());
         }
 

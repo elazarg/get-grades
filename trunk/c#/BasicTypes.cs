@@ -5,6 +5,8 @@ using System.Windows.Forms;
 
 namespace getGradesForms
 {
+
+
     struct PersonalDetails
     {
         public DateTime date { get; set; }
@@ -56,10 +58,17 @@ namespace getGradesForms
         internal bool onceOnly { get { return faculty!= "ספורט"; } }
     }
 
-    class Semester : ICloneable
+    abstract class UGType : ICloneable
     {
-        //int id;
-        public int index { get; internal set;  }
+        public int index { get; internal set; }
+        public object Clone()
+        {
+            return MemberwiseClone();
+        }
+    }
+
+    class Semester : UGType
+    {
         public string year { get; set; }
         public string season { get; set; }
         public string hebrewYear { get; set; }
@@ -69,13 +78,6 @@ namespace getGradesForms
         public decimal Average { get { return summary.Average; } }
         public decimal SuccessRate { get { return summary.SuccessRate; } }
         public decimal Points { get { return summary.Points; } }
-
-
-
-        public object Clone()
-        {
-            return MemberwiseClone();
-        }
     }
            
 
@@ -111,7 +113,7 @@ namespace getGradesForms
     }
 
 
-    internal class CourseSession : ICloneable
+    internal class CourseSession : UGType
     {
         static Dictionary<string, SessionStatus> commentToStatus = new Dictionary<string,SessionStatus> {
                
@@ -176,36 +178,19 @@ namespace getGradesForms
                 _comments = value;
             }
         }
-        internal bool Passed { 
-            get { return status == SessionStatus.Passed
-                        || status == SessionStatus.Ptor
-                        || status==SessionStatus.Grade && _grade >= 55; } }
+        internal static bool Passed(CourseSession x) { 
+            return x.status == SessionStatus.Passed
+                        || x.status == SessionStatus.Ptor
+                        || x.status==SessionStatus.Grade && x._grade >= 55; 
+        }
 
         public bool inList { get; set; }
-        internal decimal mult()
-        {
-            return _grade * points;
-        }
 
         internal Course course;
         internal Semester semester;
         internal SessionStatus status;
-        public int index { get; internal set; }
-        private string _comments;
 
-        public object Clone()
-        {/*
-            CourseSession res = new CourseSession {
-                course = course,
-                semester = semester,
-                status = status,
-                _grade = _grade,
-                index = index,
-                inList = inList,
-                _comments = _comments,
-            };*/
-            return this.MemberwiseClone();
-        }
+        private string _comments;
     }
 
 }

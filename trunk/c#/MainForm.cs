@@ -450,7 +450,7 @@ namespace getGradesForms
                 return;
             }
             Sender.ContextMenuStrip.Enabled = true;
-            string courseId = Sender.Rows[e.RowIndex].Cells[0].Value.ToString();
+            string courseId = Sender.Rows[e.RowIndex].Cells["Course ID"].Value.ToString();
 
             activeContext = new ContextData {
                 grid = Sender,

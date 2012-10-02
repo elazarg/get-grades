@@ -220,6 +220,7 @@
             // 
             // toolStrip2
             // 
+            this.tableLayoutPanel1.SetColumnSpan(this.toolStrip2, 2);
             resources.ApplyResources(this.toolStrip2, "toolStrip2");
             this.toolStrip2.Name = "toolStrip2";
             // 
@@ -268,8 +269,8 @@
             this.tableLayoutPanel1.SetColumnSpan(this.tabControl, 4);
             this.tabControl.Controls.Add(this.tabCleanSlate);
             this.tabControl.Controls.Add(this.tabSessions);
-            this.tabControl.Controls.Add(this.tabCourses);
             this.tabControl.Controls.Add(this.tabSemesters);
+            this.tabControl.Controls.Add(this.tabCourses);
             this.tabControl.Controls.Add(this.tabBrowser);
             resources.ApplyResources(this.tabControl, "tabControl");
             this.tabControl.Name = "tabControl";
