@@ -825,60 +825,6 @@
   <data name="&gt;&gt;tabCourses.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="browser.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="browser.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
-  </data>
-  <data name="browser.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>20, 20</value>
-  </data>
-  <data name="browser.Size" type="System.Drawing.Size, System.Drawing">
-    <value>611, 169</value>
-  </data>
-  <data name="browser.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;browser.Name" xml:space="preserve">
-    <value>browser</value>
-  </data>
-  <data name="&gt;&gt;browser.Type" xml:space="preserve">
-    <value>System.Windows.Forms.WebBrowser, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;browser.Parent" xml:space="preserve">
-    <value>tabBrowser</value>
-  </data>
-  <data name="&gt;&gt;browser.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="tabBrowser.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="tabBrowser.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="tabBrowser.Size" type="System.Drawing.Size, System.Drawing">
-    <value>617, 175</value>
-  </data>
-  <data name="tabBrowser.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="tabBrowser.Text" xml:space="preserve">
-    <value>דפדפן</value>
-  </data>
-  <data name="&gt;&gt;tabBrowser.Name" xml:space="preserve">
-    <value>tabBrowser</value>
-  </data>
-  <data name="&gt;&gt;tabBrowser.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabBrowser.Parent" xml:space="preserve">
-    <value>tabControl</value>
-  </data>
-  <data name="&gt;&gt;tabBrowser.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
   <data name="tabControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -2013,9 +1959,6 @@
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>631, 338</value>
   </data>
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>630, 210</value>
   </data>
@@ -2082,6 +2025,30 @@
   <data name="&gt;&gt;saveFileDialog.Type" xml:space="preserve">
     <value>System.Windows.Forms.SaveFileDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;courseIdDataGridViewTextBoxColumn2.Name" xml:space="preserve">
+    <value>courseIdDataGridViewTextBoxColumn2</value>
+  </data>
+  <data name="&gt;&gt;courseIdDataGridViewTextBoxColumn2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;courseNameDataGridViewTextBoxColumn1.Name" xml:space="preserve">
+    <value>courseNameDataGridViewTextBoxColumn1</value>
+  </data>
+  <data name="&gt;&gt;courseNameDataGridViewTextBoxColumn1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pointsDataGridViewTextBoxColumn3.Name" xml:space="preserve">
+    <value>pointsDataGridViewTextBoxColumn3</value>
+  </data>
+  <data name="&gt;&gt;pointsDataGridViewTextBoxColumn3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;gradeDataGridViewTextBoxColumn3.Name" xml:space="preserve">
+    <value>gradeDataGridViewTextBoxColumn3</value>
+  </data>
+  <data name="&gt;&gt;gradeDataGridViewTextBoxColumn3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;dataGridViewTextBoxColumn3.Name" xml:space="preserve">
     <value>dataGridViewTextBoxColumn3</value>
   </data>
@@ -2118,10 +2085,46 @@
   <data name="&gt;&gt;RestoreLinesToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;uGDatabaseBindingSource.Name" xml:space="preserve">
+    <value>uGDatabaseBindingSource</value>
+  </data>
+  <data name="&gt;&gt;uGDatabaseBindingSource.Type" xml:space="preserve">
+    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;Column1.Name" xml:space="preserve">
     <value>Column1</value>
   </data>
   <data name="&gt;&gt;Column1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;courseIdDataGridViewTextBoxColumn1.Name" xml:space="preserve">
+    <value>courseIdDataGridViewTextBoxColumn1</value>
+  </data>
+  <data name="&gt;&gt;courseIdDataGridViewTextBoxColumn1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;courseNameDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>courseNameDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;courseNameDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pointsDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>pointsDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;pointsDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;gradeDataGridViewTextBoxColumn1.Name" xml:space="preserve">
+    <value>gradeDataGridViewTextBoxColumn1</value>
+  </data>
+  <data name="&gt;&gt;gradeDataGridViewTextBoxColumn1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;gradeDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>gradeDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;gradeDataGridViewTextBoxColumn.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;Column2.Name" xml:space="preserve">
@@ -2130,11 +2133,59 @@
   <data name="&gt;&gt;Column2.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;yearDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>yearDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;yearDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;seasonDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>seasonDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;seasonDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;hebrewYearDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>hebrewYearDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;hebrewYearDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;averageDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>averageDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;averageDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;successRateDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>successRateDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;successRateDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pointsDataGridViewTextBoxColumn2.Name" xml:space="preserve">
+    <value>pointsDataGridViewTextBoxColumn2</value>
+  </data>
+  <data name="&gt;&gt;pointsDataGridViewTextBoxColumn2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;CopyToolStripMenuItem.Name" xml:space="preserve">
     <value>CopyToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;CopyToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;nameDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>nameDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;nameDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pointsDataGridViewTextBoxColumn1.Name" xml:space="preserve">
+    <value>pointsDataGridViewTextBoxColumn1</value>
+  </data>
+  <data name="&gt;&gt;pointsDataGridViewTextBoxColumn1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;faculty.Name" xml:space="preserve">
     <value>faculty</value>
@@ -2153,6 +2204,30 @@
   </data>
   <data name="&gt;&gt;statusLabel.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;summaryBindingSourceClean.Name" xml:space="preserve">
+    <value>summaryBindingSourceClean</value>
+  </data>
+  <data name="&gt;&gt;summaryBindingSourceClean.Type" xml:space="preserve">
+    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;summaryBindingSourceFaculty.Name" xml:space="preserve">
+    <value>summaryBindingSourceFaculty</value>
+  </data>
+  <data name="&gt;&gt;summaryBindingSourceFaculty.Type" xml:space="preserve">
+    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;summaryBindingSource.Name" xml:space="preserve">
+    <value>summaryBindingSource</value>
+  </data>
+  <data name="&gt;&gt;summaryBindingSource.Type" xml:space="preserve">
+    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;personalDetailsBindingSource.Name" xml:space="preserve">
+    <value>personalDetailsBindingSource</value>
+  </data>
+  <data name="&gt;&gt;personalDetailsBindingSource.Type" xml:space="preserve">
+    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;updatetoolStripButton.Name" xml:space="preserve">
     <value>updatetoolStripButton</value>
@@ -2195,138 +2270,6 @@
   </data>
   <data name="&gt;&gt;dataGridViewTextBoxColumn1.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;courseIdDataGridViewTextBoxColumn2.Name" xml:space="preserve">
-    <value>courseIdDataGridViewTextBoxColumn2</value>
-  </data>
-  <data name="&gt;&gt;courseIdDataGridViewTextBoxColumn2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;courseNameDataGridViewTextBoxColumn1.Name" xml:space="preserve">
-    <value>courseNameDataGridViewTextBoxColumn1</value>
-  </data>
-  <data name="&gt;&gt;courseNameDataGridViewTextBoxColumn1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;pointsDataGridViewTextBoxColumn3.Name" xml:space="preserve">
-    <value>pointsDataGridViewTextBoxColumn3</value>
-  </data>
-  <data name="&gt;&gt;pointsDataGridViewTextBoxColumn3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;gradeDataGridViewTextBoxColumn3.Name" xml:space="preserve">
-    <value>gradeDataGridViewTextBoxColumn3</value>
-  </data>
-  <data name="&gt;&gt;gradeDataGridViewTextBoxColumn3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;uGDatabaseBindingSource.Name" xml:space="preserve">
-    <value>uGDatabaseBindingSource</value>
-  </data>
-  <data name="&gt;&gt;uGDatabaseBindingSource.Type" xml:space="preserve">
-    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;courseIdDataGridViewTextBoxColumn1.Name" xml:space="preserve">
-    <value>courseIdDataGridViewTextBoxColumn1</value>
-  </data>
-  <data name="&gt;&gt;courseIdDataGridViewTextBoxColumn1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;courseNameDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>courseNameDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;courseNameDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;pointsDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>pointsDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;pointsDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;gradeDataGridViewTextBoxColumn1.Name" xml:space="preserve">
-    <value>gradeDataGridViewTextBoxColumn1</value>
-  </data>
-  <data name="&gt;&gt;gradeDataGridViewTextBoxColumn1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;gradeDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>gradeDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;gradeDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;yearDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>yearDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;yearDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;seasonDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>seasonDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;seasonDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;hebrewYearDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>hebrewYearDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;hebrewYearDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;averageDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>averageDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;averageDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;successRateDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>successRateDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;successRateDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;pointsDataGridViewTextBoxColumn2.Name" xml:space="preserve">
-    <value>pointsDataGridViewTextBoxColumn2</value>
-  </data>
-  <data name="&gt;&gt;pointsDataGridViewTextBoxColumn2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;nameDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>nameDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;nameDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;pointsDataGridViewTextBoxColumn1.Name" xml:space="preserve">
-    <value>pointsDataGridViewTextBoxColumn1</value>
-  </data>
-  <data name="&gt;&gt;pointsDataGridViewTextBoxColumn1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;summaryBindingSourceClean.Name" xml:space="preserve">
-    <value>summaryBindingSourceClean</value>
-  </data>
-  <data name="&gt;&gt;summaryBindingSourceClean.Type" xml:space="preserve">
-    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;summaryBindingSourceFaculty.Name" xml:space="preserve">
-    <value>summaryBindingSourceFaculty</value>
-  </data>
-  <data name="&gt;&gt;summaryBindingSourceFaculty.Type" xml:space="preserve">
-    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;summaryBindingSource.Name" xml:space="preserve">
-    <value>summaryBindingSource</value>
-  </data>
-  <data name="&gt;&gt;summaryBindingSource.Type" xml:space="preserve">
-    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;personalDetailsBindingSource.Name" xml:space="preserve">
-    <value>personalDetailsBindingSource</value>
-  </data>
-  <data name="&gt;&gt;personalDetailsBindingSource.Type" xml:space="preserve">
-    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>MainForm</value>

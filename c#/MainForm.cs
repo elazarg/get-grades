@@ -18,7 +18,6 @@ namespace getGradesForms
         public MainForm()
         {
             InitializeComponent();
-            browser.DocumentCompleted += delegate { browser.Document.Encoding = "iso-8859-8-i"; };
             this.Text += String.Format(" (גרסה {0})", Assembly.GetExecutingAssembly().GetName().Version.ToString());
             activeContext = new ContextData { data = null, grid = dataGridViewCleanSlate };
             grades.tick += grades_tick;
@@ -116,24 +115,7 @@ namespace getGradesForms
         }
 
         #endregion
-       
-        void browser_Navigated(object sender, WebBrowserDocumentCompletedEventArgs e)
-        {
-            // textBoxHtml.Text = browser.DocumentText;
-        }
 
-        void browser_Navigating(object sender, WebBrowserNavigatingEventArgs e)
-        {
-            if (e.Url.ToString().Contains("gai"))
-                return;
-
-            if (e.Url.ToString().Contains("ug"))
-                e.Cancel = true;
-            else {
-                MessageBox.Show(this, "שגיאה לא צפויה. התוכנית תיסגר");
-                this.Close();
-            }
-        }
 
         #region BGworker
 
@@ -287,7 +269,6 @@ namespace getGradesForms
             if (grades != null)
                 grades.logOut();
 
-            browser.Navigate("about:blank");
             if (File.Exists(htmlfilename))
                 File.Delete(htmlfilename);
 
@@ -340,7 +321,6 @@ namespace getGradesForms
             summaryBindingSourceFaculty.DataSource = ds.totalFaculty;
 
             File.WriteAllText(htmlfilename, grades.document.html, ConnectionControl.hebrewEncoding);
-            browser.Navigate(htmlfilename);
         }
 
         private void dataGrid_SomethingChanged(object sender, DataGridViewCellEventArgs e)
@@ -450,8 +430,11 @@ namespace getGradesForms
                 return;
             }
             Sender.ContextMenuStrip.Enabled = true;
-            string courseId = Sender.Rows[e.RowIndex].Cells["Course ID"].Value.ToString();
-
+            string courseId;
+            if (Sender == dataGridViewSessions)
+                courseId = Sender.Rows[e.RowIndex].Cells[1].Value.ToString();
+            else
+                courseId = Sender.Rows[e.RowIndex].Cells[0].Value.ToString();
             activeContext = new ContextData {
                 grid = Sender,
                 data = courseId
