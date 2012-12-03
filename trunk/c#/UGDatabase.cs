@@ -174,9 +174,11 @@ namespace getGradesForms
             // validation
             decimal p;
             if (decimal.TryParse(points, out p)) {
+                decimal tmp;
+                decimal.TryParse(average, out tmp);
                 Summary actual = new Summary {
                                  Points = p,
-                                 Average = decimal.Parse(average),
+                                 Average = tmp,
                                  SuccessRate = successRate == "" ? 0 : decimal.Parse(successRate),
                              };
                 if (!summary.Equals(actual))

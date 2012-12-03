@@ -118,6 +118,7 @@ namespace getGradesForms
         static Dictionary<string, SessionStatus> commentToStatus = new Dictionary<string,SessionStatus> {
                
                {"-",                 SessionStatus.Minus },
+               {"- *",                 SessionStatus.Minus },
 
                {"לא השלים ש*",          SessionStatus.LoShStar },
                {"לא השלים ש",           SessionStatus.LoSh },
