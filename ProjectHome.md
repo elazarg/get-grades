@@ -1,0 +1,1 @@
+Turn the grades into csv file, or copy them to an Excel spreadsheet.
